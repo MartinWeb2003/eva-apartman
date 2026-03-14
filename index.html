@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eva Apartman – Your Coastal Retreat</title>
+  <meta name="description" content="Discover Eva Apartman – a charming holiday apartment on the Adriatic coast. Book your perfect getaway today." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-brand" aria-label="Eva Apartman – Home">
+        <img src="images/logo.jpeg" alt="Eva Apartman" class="navbar-logo" />
+      </a>
+
+      <button class="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="navbar-menu" role="list">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="location.html" data-i18n="nav.location">Location</a></li>
+        <li><a href="contact.html" class="navbar-cta" data-i18n="nav.book">Book Now</a></li>
+        <li>
+          <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+            <span class="lt-en lt-active">EN</span><span class="lt-sep">|</span><span class="lt-hr">HR</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════════ -->
+  <section class="hero" aria-label="Welcome to Eva Apartman">
+    <div class="hero-bg" role="img" aria-label="Aerial view of the coast"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n="index.hero.badge">Adriatic Coast · Croatia</div>
+      <h1 data-i18n="index.hero.h1">Your Premier Apartment in Orebić & Pelješac</h1>
+      <p class="hero-subtitle" data-i18n="index.hero.subtitle">
+        Experience the ultimate family holiday on the Adriatic Coast. Nestled between the charm of Orebić and the breeze of Viganj, our apartments offer a serene coastal escape in the heart of Kućište.
+      </p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn btn-accent" data-i18n="index.hero.btn.book">Book Your Stay</a>
+        <a href="#about" class="btn btn-secondary" data-i18n="index.hero.btn.explore">Explore the Region</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       FEATURES / HIGHLIGHTS
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="features-heading" data-i18n="index.feat.heading">Top-Rated Accommodation in Pelješac</h2>
+        <div class="divider"></div>
+        <p data-i18n="index.feat.subtext">Everything for your Pelješac getaway: Modern apartment comfort in Kućište, located perfectly between the historic streets of Orebić and the beaches of Viganj.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon" aria-hidden="true">
+            <!-- Waves -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+              <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+              <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+              <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+            </svg>
+          </div>
+          <h3 data-i18n="index.feat1.title">Steps from the Adriatic</h3>
+          <p data-i18n="index.feat1.desc">Just a short walk from the pristine beaches of Kućište and crystal-clear coves.</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon" aria-hidden="true">
+            <!-- Home -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3 data-i18n="index.feat2.title">Modern Family Comfort</h3>
+          <p data-i18n="index.feat2.desc">Fully equipped with AC and Wi-Fi, perfect for a stress-free family holiday.</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon" aria-hidden="true">
+            <!-- Parking / Car -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+              <rect x="1" y="3" width="15" height="13" rx="2"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <h3 data-i18n="index.feat3.title">Free Private Parking</h3>
+          <p data-i18n="index.feat3.desc">Secure, on-site parking in Kućište, making day trips to Orebić easy.</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon" aria-hidden="true">
+            <!-- Utensils -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+              <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+              <path d="M7 2v20"/>
+              <path d="M21 15V2a5 5 0 0 0-5 5v6h3.5a1.5 1.5 0 0 1 0 3H16v4"/>
+            </svg>
+          </div>
+          <h3 data-i18n="index.feat4.title">Orebić Dining & Wine</h3>
+          <p data-i18n="index.feat4.desc">Walking distance to the best seafood and traditional grill houses in the region.</p>
+        </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       ABOUT / APARTMENT DETAILS
+  ══════════════════════════════════════════════════════ -->
+  <section class="section section-alt" id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image animate-on-scroll">
+          <!-- Replace src with your actual apartment photo -->
+          <img src="images/indoor/indoor1.jpeg"
+               alt="Eva Apartman living area" />
+        </div>
+
+        <div class="about-content animate-on-scroll">
+          <h2 id="about-heading" data-i18n="index.about.heading">Experience the Best of Viganj and Orebić</h2>
+          <div class="divider" style="margin-left:0;"></div>
+          <p data-i18n="index.about.p1">
+            Eva Apartman is a beautifully appointed holiday apartment in Pelješac, designed to give you the freedom and comfort needed for an unforgettable Adriatic holiday. Perfectly situated in Kućište, our home offers a peaceful retreat just a stone's throw from the vibrant windsurfing scene of Viganj and the historic charm of Orebić.
+          </p>
+          <p data-i18n="index.about.p2">
+            The apartment features a bright, open-plan living and dining area, a fully equipped modern kitchen, a spacious bedroom, and a private bathroom. Step out onto your private terrace to breathe in the fresh sea air of the Pelješac coast while enjoying your morning coffee with views of the crystal-clear water.
+          </p>
+          <p data-i18n="index.about.p3">
+            Whether you are seeking a family holiday in Kućište, a romantic getaway near Orebić, or a solo adventure exploring the Pelješac wine roads, Eva Apartman provides the perfect base. Experience the best of the Croatian coast with all the modern amenities of a true home away from home.
+          </p>
+
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number" data-target="2" data-suffix="">2</span>
+              <span class="stat-label" data-i18n="index.stat.bedrooms">Bedrooms</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="4" data-suffix="">4</span>
+              <span class="stat-label" data-i18n="index.stat.guests">Max Guests</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="65" data-suffix="m²">65m²</span>
+              <span class="stat-label" data-i18n="index.stat.area">Floor Area</span>
+            </div>
+          </div>
+
+          <a href="contact.html" class="btn btn-primary" data-i18n="index.about.btn">Book Your Apartment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       PHOTO GALLERY
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="gallery-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="gallery-heading" data-i18n="index.gallery.heading">Explore Eva Apartman & the Pelješac Coast</h2>
+        <div class="divider"></div>
+        <p data-i18n="index.gallery.subtext">View our gallery to see why we are the top choice for an apartment in the Orebić area. Explore our spacious living areas and the peaceful Kućište neighborhood that makes every stay unforgettable.</p>
+      </div>
+
+      <div class="gallery-grid" role="list">
+        <!-- Replace src values with your actual photos -->
+        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Living area">
+          <img src="images/indoor/indoor2.jpeg" alt="Apartment living area" />
+          <div class="gallery-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Kitchen">
+          <img src="images/indoor/indoor5.jpeg" alt="Modern kitchen" />
+          <div class="gallery-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Bedroom">
+          <img src="images/indoor/indoor3.jpeg" alt="Comfortable bedroom" />
+          <div class="gallery-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Terrace">
+          <img src="images/terrace/terrace1.jpeg" alt="Private terrace with sea view" />
+          <div class="gallery-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Beach nearby">
+          <img src="images/beach/beach1.jpeg" alt="Nearby beach" />
+          <div class="gallery-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Sunset view">
+          <img src="images/terrace/terrace4.jpeg" alt="Adriatic sunset view" />
+          <div class="gallery-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- See Full Gallery CTA -->
+      <div class="gallery-full-cta">
+        <a href="gallery.html" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span data-i18n="index.gallery.btn">See Full Gallery — 39 Photos</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Close">✕</button>
+    <img id="lightbox-img" class="lightbox-img" src="" alt="" />
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       TESTIMONIALS
+  ══════════════════════════════════════════════════════ -->
+  <section class="section section-alt testimonials-section" aria-labelledby="reviews-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="reviews-score-badge" aria-label="Rated 5.0 out of 5 stars">
+          <span class="score-stars" aria-hidden="true">★★★★★</span>
+          <span class="score-number">5.0</span>
+          <span class="score-label" data-i18n="index.reviews.score">Average Score</span>
+        </div>
+        <h2 id="reviews-heading" data-i18n="index.reviews.heading">What Guests Love About Eva Apartman</h2>
+        <div class="divider"></div>
+        <p data-i18n="index.reviews.subtext">Verified reviews — every single guest has rated their family holiday experience a perfect 5 stars.</p>
+      </div>
+    </div>
+
+    <!-- Full-width scrolling track (outside container so it bleeds edge-to-edge) -->
+    <div class="reviews-track-wrapper" aria-hidden="true">
+      <div class="reviews-track">
+
+        <!-- ── 9 real cards ─────────────────────────────────── -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev1.text">Best apartment in Croatia. If you visit Pelješac, you should stay here. Great location, best view in a peaceful neighbourhood, close to the sea with umbrella and sunbeds.</p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <strong>Michał Kowalski</strong>
+              <span>3 years ago · Google</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev2.text">Beautiful apartment created with big heart by the Owner with amazing view on the sea and Korčula, very clean, near a great beach with private umbrella and sunbeds! I highly recommend it!!!</p>
+          <div class="review-author">
+            <div class="review-avatar">A</div>
+            <div>
+              <strong>Agata Kowalska</strong>
+              <span>3 years ago · Google</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev3.text">Very nice and clean apartment, right by the sea with free parking.</p>
+          <div class="review-author">
+            <div class="review-avatar">A</div>
+            <div>
+              <strong>Annnavi5</strong>
+              <span>6 months ago · Google</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev4.text">I recommend it — very comfortable apartment, terrace with a wonderful view of Korčula and one of the friendliest hosts we've stayed with (delicious fig cake). Greetings to Ewa and her family! 😉</p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <strong>Maria Węgierek</strong>
+              <span>1 year ago · Google</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev5.text">Beautiful newly renovated apartment. Full praise to the hosts — we will definitely see each other again.</p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <strong>Mili Tolj</strong>
+              <span>1 year ago · Google</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev6.text">Thank you for the wonderful holiday — we look forward to the next time! 💓</p>
+          <div class="review-author">
+            <div class="review-avatar">S</div>
+            <div>
+              <strong>Sabina Roskova</strong>
+              <span>2 years ago · Google</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev7.text">I will be back someday.</p>
+          <div class="review-author">
+            <div class="review-avatar">W</div>
+            <div>
+              <strong>wieslaw dobosz</strong>
+              <span>9 months ago · Google</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-author">
+            <div class="review-avatar">Ł</div>
+            <div>
+              <strong>Łukasz Knap</strong>
+              <span>2 months ago · Google</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-author">
+            <div class="review-avatar">W</div>
+            <div>
+              <strong>Wojtek Wojcieski</strong>
+              <span>3 years ago · Google</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Duplicate set for seamless loop ──────────────── -->
+        <div class="review-card" aria-hidden="true">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev1.text">Best apartment in Croatia. If you visit Pelješac, you should stay here. Great location, best view in a peaceful neighbourhood, close to the sea with umbrella and sunbeds.</p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div><strong>Michał Kowalski</strong><span>3 years ago · Google</span></div>
+          </div>
+        </div>
+        <div class="review-card" aria-hidden="true">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev2.text">Beautiful apartment created with big heart by the Owner with amazing view on the sea and Korčula, very clean, near a great beach with private umbrella and sunbeds! I highly recommend it!!!</p>
+          <div class="review-author">
+            <div class="review-avatar">A</div>
+            <div><strong>Agata Kowalska</strong><span>3 years ago · Google</span></div>
+          </div>
+        </div>
+        <div class="review-card" aria-hidden="true">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev3.text">Very nice and clean apartment, right by the sea with free parking.</p>
+          <div class="review-author">
+            <div class="review-avatar">A</div>
+            <div><strong>Annnavi5</strong><span>6 months ago · Google</span></div>
+          </div>
+        </div>
+        <div class="review-card" aria-hidden="true">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev4.text">I recommend it — very comfortable apartment, terrace with a wonderful view of Korčula and one of the friendliest hosts we've stayed with (delicious fig cake). Greetings to Ewa and her family! 😉</p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div><strong>Maria Węgierek</strong><span>1 year ago · Google</span></div>
+          </div>
+        </div>
+        <div class="review-card" aria-hidden="true">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev5.text">Beautiful newly renovated apartment. Full praise to the hosts — we will definitely see each other again.</p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div><strong>Mili Tolj</strong><span>1 year ago · Google</span></div>
+          </div>
+        </div>
+        <div class="review-card" aria-hidden="true">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev6.text">Thank you for the wonderful holiday — we look forward to the next time! 💓</p>
+          <div class="review-author">
+            <div class="review-avatar">S</div>
+            <div><strong>Sabina Roskova</strong><span>2 years ago · Google</span></div>
+          </div>
+        </div>
+        <div class="review-card" aria-hidden="true">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text" data-i18n="index.rev7.text">I will be back someday.</p>
+          <div class="review-author">
+            <div class="review-avatar">W</div>
+            <div><strong>wieslaw dobosz</strong><span>9 months ago · Google</span></div>
+          </div>
+        </div>
+        <div class="review-card" aria-hidden="true">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-author">
+            <div class="review-avatar">Ł</div>
+            <div><strong>Łukasz Knap</strong><span>2 months ago · Google</span></div>
+          </div>
+        </div>
+        <div class="review-card" aria-hidden="true">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-author">
+            <div class="review-avatar">W</div>
+            <div><strong>Wojtek Wojcieski</strong><span>3 years ago · Google</span></div>
+          </div>
+        </div>
+
+      </div><!-- /.reviews-track -->
+    </div><!-- /.reviews-track-wrapper -->
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       CTA BANNER
+  ══════════════════════════════════════════════════════ -->
+  <section class="cta-banner" aria-labelledby="cta-heading">
+    <div class="container">
+      <h2 id="cta-heading" data-i18n="index.cta.heading">Ready to Book Your Pelješac Getaway?</h2>
+      <p data-i18n="index.cta.subtext">Check available dates for our apartment in Kućište and send us your inquiry — we’ll help you plan the perfect stay near Orebić and Viganj within 24 hours.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-accent" data-i18n="index.cta.btn.check">Check Apartment Dates</a>
+        <a href="location.html" class="btn btn-secondary" data-i18n="index.cta.btn.see">See Nearby Attractions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <a href="index.html" aria-label="Eva Apartman – Home">
+              <div class="footer-logo-wrap">
+                <img src="images/logo.jpeg" alt="Eva Apartman" class="footer-logo" />
+              </div>
+            </a>
+          </div>
+          <p class="footer-desc" data-i18n="footer.desc.index">
+            A charming holiday apartment in Kućište on the Pelješac peninsula — your home away from home between Orebić and Viganj.
+          </p>
+          <div class="footer-social" aria-label="Social media links">
+            <!-- Instagram -->
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <!-- Facebook -->
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading" data-i18n="footer.quicklinks">Quick Links</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html" data-i18n="footer.home">Home</a></li>
+            <li><a href="location.html" data-i18n="footer.location-area">Location &amp; Area</a></li>
+            <li><a href="contact.html" data-i18n="footer.book">Book Now</a></li>
+            <li><a href="contact.html" data-i18n="footer.contact-us">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading" data-i18n="footer.apartment">The Apartment</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html#about" data-i18n="footer.about">About</a></li>
+            <li><a href="gallery.html" data-i18n="footer.gallery">Gallery</a></li>
+            <li><a href="contact.html" data-i18n="footer.availability">Availability</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading" data-i18n="footer.contact">Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>+385 99 380 5141</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span>evaapartman@gmail.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Perna 4, Orebić, Croatia</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Eva Apartman. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>

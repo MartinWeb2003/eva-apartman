@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Stay – Eva Apartman</title>
+  <meta name="description" content="Check availability and send a booking enquiry for Eva Apartman. Pick your dates on the live calendar and we'll be in touch." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-brand" aria-label="Eva Apartman – Home">
+        <img src="images/logo.jpeg" alt="Eva Apartman" class="navbar-logo" />
+      </a>
+
+      <button class="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="navbar-menu" role="list">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="location.html" data-i18n="nav.location">Location</a></li>
+        <li><a href="contact.html" class="navbar-cta" data-i18n="nav.book">Book Now</a></li>
+        <li>
+          <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+            <span class="lt-en lt-active">EN</span><span class="lt-sep">|</span><span class="lt-hr">HR</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE HEADER
+  ══════════════════════════════════════════════════════ -->
+  <header class="page-header" role="banner">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" data-i18n="footer.home">Home</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page" data-i18n="contact.breadcrumb">Book Your Stay</span>
+      </nav>
+      <h1 data-i18n="contact.header.h1">Secure Your Dates on the Pelješac Coast</h1>
+      <p data-i18n="contact.header.p">
+        Select your preferred dates for a Pelješac getaway. Fill in your details below, and we will confirm your family holiday reservation within 24 hours.
+      </p>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════
+       CONTACT / BOOKING SECTION
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="booking-heading">
+    <div class="container">
+      <div class="contact-wrapper">
+
+        <!-- ─── LEFT: Info panel ───────────────────────────── -->
+        <aside class="contact-info-panel animate-on-scroll" aria-label="Contact information">
+          <h3 data-i18n="contact.panel.h3">Get in Touch</h3>
+          <p data-i18n="contact.panel.p">Have questions before booking? We're happy to help.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong data-i18n="contact.phone.lbl">Phone / WhatsApp</strong>
+              <span>+385 99 380 5141</span>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong data-i18n="contact.email.lbl">Email</strong>
+              <span>evaapartman@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong data-i18n="contact.addr.lbl">Address</strong>
+              <span>Perna 4, Orebić, Croatia</span>
+            </div>
+          </div>
+
+          <hr style="border-color:rgba(255,255,255,0.15);margin:1.5rem 0;" />
+
+          <h4 style="color:var(--color-white);margin-bottom:1rem;font-size:0.95rem;" data-i18n="contact.how.h4">How Booking Works</h4>
+          <ol style="padding-left:1.2rem;color:rgba(255,255,255,0.82);font-size:0.88rem;line-height:1.8;">
+            <li data-i18n="contact.step1">Pick your dates on the calendar</li>
+            <li data-i18n="contact.step2">Fill in your details and submit</li>
+            <li data-i18n="contact.step3">We'll confirm availability within 24&nbsp;h</li>
+            <li data-i18n="contact.step4">Arrange payment and check-in details</li>
+          </ol>
+
+          <hr style="border-color:rgba(255,255,255,0.15);margin:1.5rem 0;" />
+
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.6);">
+            <strong style="color:rgba(255,255,255,0.85);" data-i18n="contact.season.lbl">Season:</strong> <span data-i18n="contact.season.val">May – October</span><br>
+            <strong style="color:rgba(255,255,255,0.85);" data-i18n="contact.min.lbl">Min. stay:</strong> <span data-i18n="contact.min.val">3 nights</span><br>
+            <strong style="color:rgba(255,255,255,0.85);" data-i18n="contact.checkin.lbl">Check-in:</strong> <span data-i18n="contact.checkin.val">14:00 – 20:00</span><br>
+            <strong style="color:rgba(255,255,255,0.85);" data-i18n="contact.checkout.lbl">Check-out:</strong> <span data-i18n="contact.checkout.val">by 10:00</span>
+          </div>
+        </aside>
+
+        <!-- ─── RIGHT: Form card ───────────────────────────── -->
+        <div class="contact-form-card animate-on-scroll">
+          <h2 id="booking-heading" style="margin-bottom:0.35rem;" data-i18n="contact.form.h2">Send a Booking Enquiry</h2>
+          <p style="margin-bottom:2rem;" data-i18n-html="contact.form.req">All fields marked <span style="color:var(--color-accent);">*</span> are required.</p>
+
+          <!-- Form -->
+          <form id="contact-form" novalidate aria-label="Booking enquiry form">
+
+            <!-- Name row -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">
+                  <span data-i18n="contact.fname.lbl">First Name</span> <span class="required" aria-label="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="first-name"
+                  name="first-name"
+                  class="form-control"
+                  placeholder="e.g. Ana"
+                  data-i18n-placeholder="contact.fname.ph"
+                  autocomplete="given-name"
+                  required
+                  aria-required="true"
+                  aria-describedby="first-name-error"
+                />
+                <div class="form-error-msg" id="first-name-error" role="alert"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="last-name">
+                  <span data-i18n="contact.lname.lbl">Last Name</span> <span class="required" aria-label="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="last-name"
+                  name="last-name"
+                  class="form-control"
+                  placeholder="e.g. Horvat"
+                  data-i18n-placeholder="contact.lname.ph"
+                  autocomplete="family-name"
+                  required
+                  aria-required="true"
+                  aria-describedby="last-name-error"
+                />
+                <div class="form-error-msg" id="last-name-error" role="alert"></div>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">
+                <span data-i18n="contact.email.fld">Email Address</span>
+                <span style="font-weight:400;color:var(--color-text-light);font-size:0.8rem;" data-i18n="contact.email.opt">(optional — for our reply)</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="e.g. ana.horvat@email.com"
+                data-i18n-placeholder="contact.email.ph"
+                autocomplete="email"
+                aria-describedby="email-error"
+              />
+              <div class="form-error-msg" id="email-error" role="alert"></div>
+            </div>
+
+            <!-- Number of guests -->
+            <div class="form-group">
+              <label for="guests">
+                <span data-i18n="contact.guests.lbl">Number of Guests</span> <span class="required" aria-label="required">*</span>
+              </label>
+              <select
+                id="guests"
+                name="guests"
+                class="form-control"
+                required
+                aria-required="true"
+                aria-describedby="guests-error"
+              >
+                <option value="" data-i18n="contact.guests.def">— Select number of guests —</option>
+                <option value="1" data-i18n="contact.guests.1">1 guest</option>
+                <option value="2" data-i18n="contact.guests.2">2 guests</option>
+                <option value="3" data-i18n="contact.guests.3">3 guests</option>
+                <option value="4" data-i18n="contact.guests.4">4 guests</option>
+                <option value="5" data-i18n="contact.guests.5">5 guests</option>
+                <option value="6" data-i18n="contact.guests.6">6 guests</option>
+                <option value="7" data-i18n="contact.guests.7">7 guests</option>
+                <option value="8" data-i18n="contact.guests.8">8 guests</option>
+              </select>
+              <div class="form-error-msg" id="guests-error" role="alert"></div>
+            </div>
+
+            <!-- ── Calendar ─────────────────────────────────── -->
+            <div class="form-group calendar-section">
+              <label>
+                <span data-i18n="contact.dates.lbl">Stay Dates</span> <span class="required" aria-label="required">*</span>
+              </label>
+              <p style="font-size:0.85rem;color:var(--color-text-light);margin-bottom:0.75rem;" data-i18n-html="contact.cal.instr">
+                Click a <strong style="color:var(--cal-available);">green date</strong> to set check-in,
+                then click another green date to set check-out. Both dates must be green and no
+                booked or off-season days may fall between them.
+              </p>
+
+              <!-- Legend -->
+              <div class="calendar-legend" role="list" aria-label="Calendar colour key">
+                <div class="legend-item" role="listitem">
+                  <span class="legend-dot available" aria-hidden="true"></span>
+                  <span data-i18n="contact.leg.avail">Available</span>
+                </div>
+                <div class="legend-item" role="listitem">
+                  <span class="legend-dot booked" aria-hidden="true"></span>
+                  <span data-i18n="contact.leg.booked">Already booked</span>
+                </div>
+                <div class="legend-item" role="listitem">
+                  <span class="legend-dot offseason" aria-hidden="true"></span>
+                  <span data-i18n="contact.leg.off">Off-season (closed)</span>
+                </div>
+              </div>
+
+              <!-- Calendar widget -->
+              <div id="calendar-container" class="calendar-container" aria-label="Date availability calendar" role="application"></div>
+
+              <!-- Calendar error message -->
+              <div id="calendar-error" class="calendar-error" role="alert" aria-live="assertive"></div>
+
+              <!-- Selected date display -->
+              <div class="date-selection-display" aria-live="polite" aria-label="Selected dates">
+                <div class="date-sel-item">
+                  <div class="date-sel-label" data-i18n="contact.cal.checkin">Check-in</div>
+                  <div id="sel-start-date" class="date-sel-value empty" data-i18n="contact.cal.nosel">Not selected</div>
+                </div>
+                <div class="date-sel-separator" aria-hidden="true">→</div>
+                <div class="date-sel-item">
+                  <div class="date-sel-label" data-i18n="contact.cal.checkout">Check-out</div>
+                  <div id="sel-end-date" class="date-sel-value empty" data-i18n="contact.cal.nosel">Not selected</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Optional message -->
+            <div class="form-group">
+              <label for="message" data-i18n="contact.msg.lbl">Additional Message or Questions</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-control"
+                placeholder="Any special requests, questions, or information you'd like us to know…"
+                data-i18n-placeholder="contact.msg.ph"
+                rows="4"
+                aria-label="Optional message"
+              ></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-submit">
+              <button type="submit" class="btn btn-primary btn-submit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;">
+                  <line x1="22" y1="2" x2="11" y2="13"/>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+                <span data-i18n="contact.submit.btn">Send Booking Enquiry</span>
+              </button>
+              <p style="margin-top:0.75rem;font-size:0.8rem;color:var(--color-text-light);text-align:center;" data-i18n="contact.submit.note">
+                We'll respond within 24 hours. Your data is used only to process your enquiry.
+              </p>
+            </div>
+
+          </form>
+
+          <!-- Success state (hidden until form submitted) -->
+          <div id="form-success" class="form-success" role="status" aria-live="polite">
+            <div class="success-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h3 data-i18n="contact.success.h3">Enquiry Sent!</h3>
+            <p data-i18n-html="contact.success.p">
+              Thank you for your interest in Eva Apartman.<br>
+              We'll be in touch within 24 hours to confirm your booking.
+            </p>
+            <a href="index.html" class="btn btn-outline" data-i18n="contact.success.btn">Back to Home</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <a href="index.html" aria-label="Eva Apartman – Home">
+              <div class="footer-logo-wrap">
+                <img src="images/logo.jpeg" alt="Eva Apartman" class="footer-logo" />
+              </div>
+            </a>
+          </div>
+          <p class="footer-desc" data-i18n="footer.desc.contact">A charming holiday apartment in Kućište on the Pelješac peninsula — your home away from home between Orebić and Viganj.</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading" data-i18n="footer.quicklinks">Quick Links</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html" data-i18n="footer.home">Home</a></li>
+            <li><a href="location.html" data-i18n="footer.location-area">Location &amp; Area</a></li>
+            <li><a href="contact.html" data-i18n="footer.book">Book Now</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading" data-i18n="footer.apartment">The Apartment</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html#about" data-i18n="footer.about">About</a></li>
+            <li><a href="gallery.html" data-i18n="footer.gallery">Gallery</a></li>
+            <li><a href="contact.html" data-i18n="footer.availability">Availability</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading" data-i18n="footer.contact">Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>+385 99 380 5141</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span>evaapartman@gmail.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Perna 4, Orebić, Croatia</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Eva Apartman. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <!-- EmailJS SDK (loaded from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Site scripts -->
+  <script src="js/availability.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>

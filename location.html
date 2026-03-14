@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Location &amp; Area – Eva Apartman, Kućište, Pelješac</title>
+  <meta name="description" content="Eva Apartman is located at Perna 4, Kućište on the Pelješac peninsula — 1 min from the beach, 8 min from Orebić, and 8 min from the Korčula ferry." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-brand" aria-label="Eva Apartman – Home">
+        <img src="images/logo.jpeg" alt="Eva Apartman" class="navbar-logo" />
+      </a>
+
+      <button class="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="navbar-menu" role="list">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="location.html" data-i18n="nav.location">Location</a></li>
+        <li><a href="contact.html" class="navbar-cta" data-i18n="nav.book">Book Now</a></li>
+        <li>
+          <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+            <span class="lt-en lt-active">EN</span><span class="lt-sep">|</span><span class="lt-hr">HR</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE HEADER
+  ══════════════════════════════════════════════════════ -->
+  <header class="page-header" role="banner">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" data-i18n="footer.home">Home</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page" data-i18n="location.breadcrumb">Location &amp; Area</span>
+      </nav>
+      <h1 data-i18n="location.header.h1">Kućište, Pelješac Peninsula</h1>
+      <p data-i18n="location.header.p">Nestled in the quiet village of Kućište between Orebić and Viganj — a minute's walk from the sea, with Korčula island visible across the channel and world-class windsurfing just down the road.</p>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════
+       MAP + LOCATION INFO
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="map-heading">
+    <div class="container">
+      <div class="location-grid">
+
+        <!-- Map -->
+        <div class="animate-on-scroll">
+          <h2 id="map-heading" style="margin-bottom:1.5rem;" data-i18n="location.map.h2">Find Us on the Map</h2>
+          <div class="map-wrapper">
+            <iframe
+              src="https://maps.google.com/maps?q=Ku%C4%87i%C5%A1te%2C+Pelješac%2C+Croatia&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Eva Apartman location on Google Maps — Kućište, Pelješac"
+              aria-label="Google Maps showing Kućište, Pelješac">
+            </iframe>
+          </div>
+          <p style="margin-top:0.85rem;font-size:0.9rem;color:var(--color-text-light);display:flex;align-items:center;gap:0.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;stroke:var(--color-secondary);flex-shrink:0;" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            <strong>Perna 4, Kućište, 20267, Croatia</strong>
+          </p>
+        </div>
+
+        <!-- Info -->
+        <div class="location-info animate-on-scroll">
+          <h3 data-i18n="location.getting.h3">Getting Here</h3>
+          <ul class="info-list" role="list">
+
+            <li class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+              <p data-i18n-html="location.by.car"><strong>By Car:</strong> Arriving at your apartment in Kućište is easier than ever via the new Pelješac Bridge. From the A1 motorway, take the D414 exit and enjoy a scenic drive through Ston and Orebić to reach us. Free private parking is included for all guests.</p>
+            </li>
+
+            <li class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+              <p data-i18n-html="location.by.ferry1"><strong>By Ferry — Orebić ↔ Korčula:</strong> The Orebić car ferry to Korčula Town is just an 8-min drive from our door. This 15-minute crossing is perfect for a family holiday day trip to the islands.</p>
+            </li>
+
+            <li class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+              <p data-i18n-html="location.by.ferry2"><strong>By Ferry — Ploče ↔ Trpanj:</strong> Alternatively, take the Ploče–Trpanj ferry (60 min crossing) for a relaxing shortcut to the Pelješac peninsula, followed by a 35-minute drive to Kućište.</p>
+            </li>
+
+            <li class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <p data-i18n-html="location.airports"><strong>Nearest Airports:</strong> Most guests arrive via Dubrovnik (approx. 2h) or Split (approx. 1h 45m). Both airports offer easy access to the Pelješac peninsula via well-maintained coastal roads.</p>
+            </li>
+
+          </ul>
+
+          <h3 style="margin-top:2rem;" data-i18n="location.dist.h3">Distances at a Glance</h3>
+          <ul class="info-list" role="list">
+
+            <li class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <p data-i18n-html="location.dist1">Kućište pebble beach — <strong>1 min walk</strong></p>
+            </li>
+
+            <li class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <p data-i18n-html="location.dist2">Seaside Konobas & Restaurants — <strong>6 min walk</strong></p>
+            </li>
+
+            <li class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <p data-i18n-html="location.dist3">Viganj Windsurfing & Kite Centers — <strong>5 min drive</strong></p>
+            </li>
+
+            <li class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <p data-i18n-html="location.dist4">Orebić Town, Shops & Supermarkets — <strong>6 min drive</strong></p>
+            </li>
+
+            <li class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <p data-i18n-html="location.dist5">Orebić Ferry to Korčula Island — <strong>6 min drive</strong></p>
+            </li>
+
+            <li class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <p data-i18n-html="location.dist6">Ston Walls & Pelješac Vineyards — <strong>35 min drive</strong></p>
+            </li>
+
+            <li class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <p data-i18n-html="location.dist7">Split / Dubrovnik International Airports — <strong>~1 h 45 min / 2 h</strong></p>
+            </li>
+
+          </ul>
+
+          <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem;" data-i18n="location.dist.btn">
+            Check Dates & Book
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       BEACHES
+  ══════════════════════════════════════════════════════ -->
+  <section class="section section-alt" aria-labelledby="beaches-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="beaches-heading" data-i18n="location.beaches.h2">Top Beaches in Kućište & Orebić</h2>
+        <div class="divider"></div>
+        <p data-i18n="location.beaches.p">The Pelješac peninsula is home to some of the finest shores on the Adriatic coast, from surf spots to sandy coves.</p>
+      </div>
+
+      <div class="poi-grid">
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/perna-beach.jpg" alt="Kućište village beach"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Beach Photo</span></div>'" />
+            <span class="poi-tag">Beach</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.b1.title">Perna Beach</h4>
+            <p data-i18n="location.b1.desc">Steps away from your apartment, offering sunbeds and calm morning waters.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.b1.dist">1 min walk</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/kuciste-beach.jpg" alt="Viganj beach"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Beach Photo</span></div>'" />
+            <span class="poi-tag">Beach</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.b2.title">Kućište Bay</h4>
+            <p data-i18n="location.b2.desc">Discover peaceful pebble coves and crystal-clear turquoise waters along the Kućište promenade.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.b2.dist">5 min drive</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/trstenica-beach.jpg" alt="Orebić beach"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Beach Photo</span></div>'" />
+            <span class="poi-tag">Beach</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.b3.title">Trstenica Beach (Orebić)</h4>
+            <p data-i18n="location.b3.desc">Explore the long pebble and sand stretches of Orebić, just a quick 6-minute drive away.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.b3.dist">6 min drive</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       RESTAURANTS
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="restaurants-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="restaurants-heading" data-i18n="location.rest.h2">Pelješac Dining & Local Cuisine</h2>
+        <div class="divider"></div>
+        <p data-i18n="location.rest.p">From authentic Kućište konobas to the vibrant Orebić restaurant scene and breezy Viganj beach bars, discover the flavors of the Adriatic coast.</p>
+      </div>
+
+      <div class="poi-grid">
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/kuciste-konoba.jpg" alt="Kućište waterfront konoba"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Restaurant Photo</span></div>'" />
+            <span class="poi-tag">Konoba</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.r1.title">Kućište Waterfront Konobas</h4>
+            <p data-i18n="location.r1.desc">Traditional family taverns steps from our apartment. Enjoy fresh grilled fish and local Plavac Mali wine—the highlight of any Pelješac holiday.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.r1.dist">5 min drive</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/orebic-dining.jpg" alt="Orebić restaurants"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Restaurant Photo</span></div>'" />
+            <span class="poi-tag">Restaurant</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.r2.title">Orebić Dining Experience</h4>
+            <p data-i18n="location.r2.desc">The widest choice on the peninsula. Seafood restaurants and pizzerias line the palm-shaded promenade, perfect for a relaxing family holiday dinner.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.r2.dist">8 min drive</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/viganj-bar.jpg" alt="Viganj beach bar"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Bar Photo</span></div>'" />
+            <span class="poi-tag">Beach Bar</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.r3.title">Viganj Beach Bars</h4>
+            <p data-i18n="location.r3.desc">Popular with the international crowd, these bars offer cold drinks and live music with iconic sunsets over the Pelješac channel.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.r3.dist">7 min drive</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       ATTRACTIONS
+  ══════════════════════════════════════════════════════ -->
+  <section class="section section-alt" aria-labelledby="attractions-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="attractions-heading" data-i18n="location.attr.h2">Unforgettable Pelješac Experiences</h2>
+        <div class="divider"></div>
+        <p data-i18n="location.attr.p">History, wine, adventure, and island-hopping — the Pelješac peninsula packs an extraordinary amount into a small space near your Kućište apartment.</p>
+      </div>
+
+      <div class="poi-grid">
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/viganj-windsurfing.jpg" alt="Viganj windsurfing"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Attraction Photo</span></div>'" />
+            <span class="poi-tag">Sport</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.a1.title">Viganj Windsurfing & Watersports</h4>
+            <p data-i18n="location.a1.desc">One of Europe’s top windsurfing destinations. From our location in Kućište, you are minutes away from schools catering to all levels, chasing the famous maestral wind.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.a1.dist">7 min drive</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/korcula.jpg" alt="Korčula island"
+                 onerror="this.parentElement.innerHTML=’<div class=\’img-placeholder\’><svg viewBox=\’0 0 24 24\’ fill=\’none\’ stroke-width=\’1.5\’><rect x=\’3\’ y=\’3\’ width=\’18\’ height=\’18\’ rx=\’2\’/><circle cx=\’8.5\’ cy=\’8.5\’ r=\’1.5\’/><polyline points=\’21 15 16 10 5 21\’/></svg><span>Activity Photo</span></div>’" />
+            <span class="poi-tag">Day Trip</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.a2.title">Island Hopping to Korčula</h4>
+            <p data-i18n="location.a2.desc">Drive 8 minutes to the Orebić ferry port and reach Korčula Town in 15 minutes. Explore the medieval walls and historic charm of this world-famous island.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.a2.dist">8 min drive + 15 min ferry</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/ston.jpg" alt="Ston walls"
+                 onerror="this.parentElement.innerHTML=’<div class=\’img-placeholder\’><svg viewBox=\’0 0 24 24\’ fill=\’none\’ stroke-width=\’1.5\’><rect x=\’3\’ y=\’3\’ width=\’18\’ height=\’18\’ rx=\’2\’/><circle cx=\’8.5\’ cy=\’8.5\’ r=\’1.5\’/><polyline points=\’21 15 16 10 5 21\’/></svg><span>Attraction Photo</span></div>’" />
+            <span class="poi-tag">History</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.a3.title">Ston & The Great Wall of Croatia</h4>
+            <p data-i18n="location.a3.desc">A 35-minute drive takes you to Europe’s longest defensive wall. Climb for panoramic Pelješac views, then sample Ston’s world-famous fresh oysters and mussels.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.a3.dist">35 min drive</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/vinarije.jpg" alt="Pelješac wine route"
+                 onerror="this.parentElement.innerHTML=’<div class=\’img-placeholder\’><svg viewBox=\’0 0 24 24\’ fill=\’none\’ stroke-width=\’1.5\’><rect x=\’3\’ y=\’3\’ width=\’18\’ height=\’18\’ rx=\’2\’/><circle cx=\’8.5\’ cy=\’8.5\’ r=\’1.5\’/><polyline points=\’21 15 16 10 5 21\’/></svg><span>Attraction Photo</span></div>’" />
+            <span class="poi-tag">Wine</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.a4.title">Pelješac Wine Route & Dingač</h4>
+            <p data-i18n="location.a4.desc">Explore Croatia’s finest red-wine region. From your base in Kućište, visit family-run cellars and taste bold Plavac Mali wines just a short drive away.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.a4.dist">20 min drive</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/crkva.jpg" alt="Orebić and Franciscan Monastery"
+                 onerror="this.parentElement.innerHTML=’<div class=\’img-placeholder\’><svg viewBox=\’0 0 24 24\’ fill=\’none\’ stroke-width=\’1.5\’><rect x=\’3\’ y=\’3\’ width=\’18\’ height=\’18\’ rx=\’2\’/><circle cx=\’8.5\’ cy=\’8.5\’ r=\’1.5\’/><polyline points=\’21 15 16 10 5 21\’/></svg><span>Attraction Photo</span></div>’" />
+            <span class="poi-tag">Culture</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.a5.title">Orebić Promenade & Monastery</h4>
+            <p data-i18n="location.a5.desc">Stroll the historic Orebić waterfront and hike to the 15th-century Franciscan Monastery. It is the most picturesque landmark near our Pelješac apartment.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.a5.dist">8 min drive</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="poi-card animate-on-scroll">
+          <div class="poi-image">
+            <img src="images/sv-ilija.jpg" alt="Sveti Ilija hiking"
+                 onerror="this.parentElement.innerHTML=’<div class=\’img-placeholder\’><svg viewBox=\’0 0 24 24\’ fill=\’none\’ stroke-width=\’1.5\’><rect x=\’3\’ y=\’3\’ width=\’18\’ height=\’18\’ rx=\’2\’/><circle cx=\’8.5\’ cy=\’8.5\’ r=\’1.5\’/><polyline points=\’21 15 16 10 5 21\’/></svg><span>Attraction Photo</span></div>’" />
+            <span class="poi-tag">Hiking</span>
+          </div>
+          <div class="poi-body">
+            <h4 data-i18n="location.a6.title">Sveti Ilija Peak</h4>
+            <p data-i18n="location.a6.desc">The highest point on the Pelješac peninsula. The trail from Orebić offers panoramic views of the Adriatic, Korčula, and Viganj, perfect for an active family holiday adventure.</p>
+            <div class="poi-distance">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span data-i18n="location.a6.dist">10 min drive to trailhead</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       CTA
+  ══════════════════════════════════════════════════════ -->
+  <section class="cta-banner" aria-labelledby="location-cta-heading">
+    <div class="container">
+      <h2 id="location-cta-heading" data-i18n="location.cta.h2">Your Kućište Escape Awaits</h2>
+      <p data-i18n="location.cta.p">Just steps from the Adriatic sea, minutes from the Orebić ferry to Korčula, and surrounded by the best of the Pelješac peninsula. Check our availability and secure your holiday apartment today.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-accent" data-i18n="location.cta.btn.book">Book Your Pelješac Stay</a>
+        <a href="index.html" class="btn btn-secondary" data-i18n="location.cta.btn.home">Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <a href="index.html" aria-label="Eva Apartman – Home">
+              <div class="footer-logo-wrap">
+                <img src="images/logo.jpeg" alt="Eva Apartman" class="footer-logo" />
+              </div>
+            </a>
+          </div>
+          <p class="footer-desc" data-i18n="footer.desc.location">A charming holiday apartment in Kućište on the Pelješac peninsula — your home away from home between Orebić and Viganj.</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading" data-i18n="footer.quicklinks">Quick Links</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html" data-i18n="footer.home">Home</a></li>
+            <li><a href="gallery.html" data-i18n="footer.gallery">Gallery</a></li>
+            <li><a href="location.html" data-i18n="footer.location-area">Location &amp; Area</a></li>
+            <li><a href="contact.html" data-i18n="footer.book">Book Now</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading" data-i18n="footer.apartment">The Apartment</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html#about" data-i18n="footer.about">About</a></li>
+            <li><a href="gallery.html" data-i18n="footer.gallery">Gallery</a></li>
+            <li><a href="contact.html" data-i18n="footer.availability">Availability</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading" data-i18n="footer.contact">Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>+385 99 380 5141</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span>evaapartman@gmail.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Perna 4, Orebić, Croatia</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Eva Apartman. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>
