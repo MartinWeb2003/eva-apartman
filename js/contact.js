@@ -1,28 +1,21 @@
 /**
- * Eva Apartman - Contact Form
+ * Eva Apartman — Contact / Booking Form
+ * Sends form data via Web3Forms (no backend, works on any domain).
  *
- * Validates the form and sends it via EmailJS.
+ * ─── ONE-TIME SETUP (takes ~2 minutes, free) ────────────────────────────────
  *
- * ─── SETUP ────────────────────────────────────────────────────────
- * 1. Sign up free at https://www.emailjs.com/
- * 2. "Add Service" → connect your Gmail account → copy the Service ID
- * 3. "Email Templates" → create a template that uses these variables:
- *       {{from_name}}   – guest full name
- *       {{reply_to}}    – guest email (optional, useful for replying)
- *       {{guests}}      – number of people
- *       {{check_in}}    – check-in date
- *       {{check_out}}   – check-out date
- *       {{message}}     – optional extra message
- * 4. Copy the Template ID and your Public Key (Account → API Keys)
- * 5. Paste them into the three constants below.
- * ──────────────────────────────────────────────────────────────────
+ *  1. Open https://web3forms.com in your browser.
+ *  2. Enter  bogojemartin@gmail.com  and click "Create Access Key".
+ *  3. Check that inbox — you'll receive your Access Key by email.
+ *  4. Paste it into the constant below (replace YOUR_ACCESS_KEY).
+ *  5. Done — works on localhost and any custom domain.
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
  */
 
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_abc123'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xyz789'
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // e.g. 'AbCdEf1234567890'
+const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY';   // paste key from web3forms.com here
 
-// ── Utility ──────────────────────────────────────────────────────────────────
+// ── Utility ───────────────────────────────────────────────────────────────────
 
 function formatDateReadable(date) {
   if (!date) return '';
@@ -31,32 +24,43 @@ function formatDateReadable(date) {
   });
 }
 
+function nightsBetween(start, end) {
+  if (!start || !end) return 0;
+  return Math.round((end - start) / (1000 * 60 * 60 * 24));
+}
+
 function setFieldState(field, isValid, message = '') {
   const group = field.closest('.form-group');
   if (!group) return;
-
   group.classList.toggle('has-error', !isValid);
   field.classList.toggle('error', !isValid);
   field.classList.toggle('success', isValid);
-
   const errEl = group.querySelector('.form-error-msg');
   if (errEl) errEl.textContent = message;
 }
 
-function clearFieldState(field) {
-  const group = field.closest('.form-group');
-  if (!group) return;
-  group.classList.remove('has-error');
-  field.classList.remove('error', 'success');
-}
-
-// ── Validators ───────────────────────────────────────────────────────────────
+// ── Validators ────────────────────────────────────────────────────────────────
 
 function validateName(value, label) {
   if (!value.trim()) return `${label} is required.`;
   if (value.trim().length < 2) return `${label} must be at least 2 characters.`;
   if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]+$/.test(value.trim()))
     return `${label} contains invalid characters.`;
+  return null;
+}
+
+function validateEmail(value) {
+  if (!value.trim()) return null; // optional
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()))
+    return 'Please enter a valid email address.';
+  return null;
+}
+
+function validatePhone(value) {
+  if (!value.trim()) return 'Phone number is required.';
+  const stripped = value.replace(/[\s\-().+]/g, '');
+  if (!/^\d{7,15}$/.test(stripped))
+    return 'Please enter a valid phone number (min. 7 digits).';
   return null;
 }
 
@@ -67,13 +71,6 @@ function validateGuests(value) {
   return null;
 }
 
-function validateEmail(value) {
-  if (!value.trim()) return null; // email is optional
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()))
-    return 'Please enter a valid email address.';
-  return null;
-}
-
 // ── Main form logic ───────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -81,20 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const successCard = document.getElementById('form-success');
   if (!form) return;
 
-  // Initialise EmailJS
-  if (typeof emailjs !== 'undefined') {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-  }
-
-  // Live validation on blur
-  ['first-name', 'last-name', 'email', 'guests'].forEach(id => {
+  // Live validation: validate on blur, re-validate on input once an error is showing
+  ['first-name', 'last-name', 'email', 'phone', 'guests'].forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
-
-    el.addEventListener('blur', () => validateField(el));
-    el.addEventListener('input', () => {
-      if (el.classList.contains('error')) validateField(el);
-    });
+    el.addEventListener('blur',  () => validateField(el));
+    el.addEventListener('input', () => { if (el.classList.contains('error')) validateField(el); });
   });
 
   function validateField(el) {
@@ -103,13 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'first-name': error = validateName(el.value, 'First name'); break;
       case 'last-name':  error = validateName(el.value, 'Last name');  break;
       case 'email':      error = validateEmail(el.value);              break;
+      case 'phone':      error = validatePhone(el.value);              break;
       case 'guests':     error = validateGuests(el.value);             break;
     }
-    if (error) {
-      setFieldState(el, false, error);
-    } else {
-      setFieldState(el, true);
-    }
+    setFieldState(el, !error, error || '');
     return !error;
   }
 
@@ -118,16 +104,14 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
 
     // Validate all fields
-    const fields = ['first-name', 'last-name', 'email', 'guests'];
     let allValid = true;
-
-    fields.forEach(id => {
+    ['first-name', 'last-name', 'email', 'phone', 'guests'].forEach(id => {
       const el = document.getElementById(id);
       if (el && !validateField(el)) allValid = false;
     });
 
     // Validate date selection
-    const calError = document.getElementById('calendar-error');
+    const calError  = document.getElementById('calendar-error');
     const startDate = Calendar.getStartDate();
     const endDate   = Calendar.getEndDate();
 
@@ -144,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (!allValid) {
-      // Scroll to first error
       const firstError = form.querySelector('.has-error, .calendar-error.show');
       if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
@@ -154,79 +137,94 @@ document.addEventListener('DOMContentLoaded', () => {
     const firstName = document.getElementById('first-name').value.trim();
     const lastName  = document.getElementById('last-name').value.trim();
     const email     = document.getElementById('email').value.trim();
+    const phone     = document.getElementById('phone').value.trim();
     const guests    = document.getElementById('guests').value;
-    const message   = document.getElementById('message') ? document.getElementById('message').value.trim() : '';
-
-    const templateParams = {
-      from_name:  `${firstName} ${lastName}`,
-      reply_to:   email || '(not provided)',
-      guests:     guests,
-      check_in:   formatDateReadable(startDate),
-      check_out:  formatDateReadable(endDate),
-      message:    message || '(no additional message)',
-    };
+    const message   = document.getElementById('message')?.value.trim() || '';
+    const nights    = nightsBetween(startDate, endDate);
 
     // Show loading state
-    const submitBtn = form.querySelector('.btn-submit');
-    const originalText = submitBtn.innerHTML;
+    const submitBtn   = form.querySelector('.btn-submit');
+    const originalHTML = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = `
-      <svg class="spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-           style="width:18px;height:18px;animation:spin 1s linear infinite;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           style="width:18px;height:18px;animation:eva-spin 1s linear infinite;">
         <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
         <path d="M12 2 a10 10 0 0 1 10 10" stroke-opacity="0.9"/>
       </svg>
       Sending…`;
 
-    // Add spin keyframe once
-    if (!document.getElementById('spin-style')) {
+    if (!document.getElementById('eva-spin-style')) {
       const s = document.createElement('style');
-      s.id = 'spin-style';
-      s.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+      s.id = 'eva-spin-style';
+      s.textContent = '@keyframes eva-spin { to { transform: rotate(360deg); } }';
       document.head.appendChild(s);
     }
 
+    // Remove any previous error banner
+    form.querySelector('.form-alert-error')?.remove();
+
     try {
-      if (typeof emailjs === 'undefined') {
-        // EmailJS not configured yet — simulate for testing
-        await new Promise(r => setTimeout(r, 1200));
-        throw new Error('EmailJS is not configured. Please add your Service ID, Template ID, and Public Key to js/contact.js');
+      if (WEB3FORMS_KEY === 'YOUR_ACCESS_KEY') {
+        await new Promise(r => setTimeout(r, 600));
+        throw new Error(
+          'Form not yet activated. Open js/contact.js, visit web3forms.com, ' +
+          'enter bogojemartin@gmail.com, and paste the Access Key into WEB3FORMS_KEY.'
+        );
       }
 
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      const payload = {
+        access_key:    WEB3FORMS_KEY,
+        subject:       `Booking enquiry from ${firstName} ${lastName}`,
+        from_name:     'Eva Apartman Website',
+        name:          `${firstName} ${lastName}`,
+        email:         email || 'not provided',
+        phone:         phone,
+        guests:        guests,
+        check_in:      formatDateReadable(startDate),
+        check_out:     formatDateReadable(endDate),
+        nights:        `${nights} night${nights !== 1 ? 's' : ''}`,
+        message:       message || '(no additional message)',
+        // Tell Web3Forms to use the email as reply-to if provided
+        replyto:       email || undefined,
+      };
 
-      // Show success
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || 'Submission failed.');
+      }
+
+      // ── Success ──
       form.style.display = 'none';
       successCard.classList.add('show');
       Calendar.reset();
 
     } catch (err) {
-      console.error('EmailJS error:', err);
+      console.error('Form submission error:', err);
       submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
-
-      // Show error to user
-      let userMsg = 'Something went wrong. Please try again or contact us directly by phone.';
-      if (err.message && err.message.includes('EmailJS is not configured')) {
-        userMsg = err.message;
-      }
-
-      const existingAlert = form.querySelector('.form-alert-error');
-      if (existingAlert) existingAlert.remove();
+      submitBtn.innerHTML = originalHTML;
 
       const alert = document.createElement('div');
       alert.className = 'form-alert-error';
-      alert.style.cssText = `
-        padding: 0.9rem 1.2rem;
-        background: #fde8e6;
-        border: 1px solid #c0392b;
-        border-left: 4px solid #c0392b;
-        border-radius: 8px;
-        color: #a93226;
-        font-size: 0.9rem;
-        margin-top: 1rem;
-      `;
-      alert.textContent = userMsg;
+      alert.style.cssText = [
+        'padding:0.9rem 1.2rem',
+        'background:#fde8e6',
+        'border:1px solid #c0392b',
+        'border-left:4px solid #c0392b',
+        'border-radius:8px',
+        'color:#a93226',
+        'font-size:0.9rem',
+        'margin-top:1rem',
+        'line-height:1.5',
+      ].join(';');
+      alert.textContent = err.message ||
+        'Something went wrong. Please try again or contact us directly by phone.';
       form.appendChild(alert);
     }
   });

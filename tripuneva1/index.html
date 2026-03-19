@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – Eva Apartman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal:  #3d3535;
+      --gold:      #e8c840;
+      --gold-dk:   #c9ab20;
+      --bg:        #f8f7f5;
+      --surface:   #ffffff;
+      --border:    #e2ddd8;
+      --text:      #3d3535;
+      --muted:     #7a706c;
+      --green:     #27ae60;
+      --green-lt:  #d4edda;
+      --red:       #e74c3c;
+      --red-lt:    #f8d7da;
+      --grey-lt:   #ece9e6;
+      --teal:      #1a9e8f;
+      --teal-lt:   #d0f0ec;
+      --radius:    8px;
+    }
+
+    body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ── LOGIN ─────────────────────────────────────────────── */
+    #login-screen {
+      position: fixed; inset: 0; z-index: 1000;
+      background: var(--charcoal);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.7rem;
+    }
+    .login-logo { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 2rem; letter-spacing: .05em; }
+    .login-sub  { color: #a09590; font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .5rem; }
+    .login-card {
+      background: #fff; border-radius: 12px; padding: 2.25rem 2rem;
+      width: 330px; max-width: 92vw; display: flex; flex-direction: column; gap: .9rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+    .login-card h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--charcoal); }
+    .login-card p  { font-size: .82rem; color: var(--muted); }
+    .login-input {
+      width: 100%; padding: .72rem 1rem;
+      border: 2px solid var(--border); border-radius: var(--radius);
+      font-family: 'Lato', sans-serif; font-size: 1rem; outline: none; transition: border-color .2s;
+    }
+    .login-input:focus { border-color: var(--gold); }
+    .login-error {
+      display: none; font-size: .8rem; color: var(--red);
+      background: #fdf0ef; padding: .45rem .7rem; border-radius: 6px; text-align: center;
+    }
+    .login-error.show { display: block; }
+    .login-btn {
+      width: 100%; padding: .82rem; background: var(--gold); color: var(--charcoal);
+      border: none; border-radius: var(--radius);
+      font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 700;
+      letter-spacing: .05em; cursor: pointer; transition: background .2s;
+    }
+    .login-btn:hover { background: var(--gold-dk); }
+
+    /* ── HEADER ────────────────────────────────────────────── */
+    #dashboard { display: none; }
+    .admin-header {
+      background: var(--charcoal); height: 52px; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 10px rgba(0,0,0,.3);
+    }
+    .header-brand { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.05rem; }
+    .header-right { display: flex; align-items: center; gap: .75rem; }
+
+    /* Language switch */
+    .lang-sw { display: flex; align-items: center; gap: .15rem; }
+    .lang-sep { color: rgba(255,255,255,.3); font-size: .78rem; padding: 0 .1rem; }
+    .lang-btn {
+      background: transparent; border: none; color: rgba(255,255,255,.45);
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      cursor: pointer; font-family: 'Lato', sans-serif; padding: .22rem .4rem;
+      border-radius: 4px; transition: all .2s;
+    }
+    .lang-btn:hover  { color: rgba(255,255,255,.8); }
+    .lang-btn.active { color: var(--gold); background: rgba(232,200,64,.12); }
+
+    .admin-badge {
+      background: rgba(232,200,64,.15); color: var(--gold);
+      font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+      padding: .18rem .5rem; border-radius: 4px; text-transform: uppercase;
+    }
+    .logout-btn {
+      background: transparent; border: 1px solid rgba(255,255,255,.25); color: rgba(255,255,255,.65);
+      padding: .28rem .75rem; border-radius: 6px; font-size: .76rem;
+      cursor: pointer; font-family: 'Lato', sans-serif; transition: all .2s;
+    }
+    .logout-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── TABS ──────────────────────────────────────────────── */
+    .admin-tabs {
+      background: var(--surface); border-bottom: 2px solid var(--border);
+      padding: 0 1.5rem; display: flex; position: sticky; top: 52px; z-index: 100;
+    }
+    .admin-tab {
+      padding: .85rem 1.2rem; border: none; background: transparent;
+      font-family: 'Lato', sans-serif; font-size: .8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em; color: var(--muted);
+      border-bottom: 3px solid transparent; margin-bottom: -2px;
+      cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: .4rem;
+    }
+    .admin-tab svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .admin-tab:hover  { color: var(--charcoal); }
+    .admin-tab.active { color: var(--charcoal); border-bottom-color: var(--gold); }
+
+    /* ── PANELS ────────────────────────────────────────────── */
+    .admin-panel { display: none; padding: 1.75rem 1.5rem; max-width: 1400px; margin: 0 auto; }
+    .admin-panel.active { display: block; }
+
+    /* ── GALLERY ───────────────────────────────────────────── */
+    .gal-section { margin-bottom: 2.5rem; }
+    .gal-section-title {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--charcoal);
+      padding-bottom: .55rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .gal-meta { font-family: 'Lato', sans-serif; font-size: .76rem; color: var(--muted); font-weight: 400; }
+    .img-grid  { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: .8rem; }
+
+    .img-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 2px solid var(--border); overflow: hidden; transition: border-color .2s, opacity .2s;
+    }
+    .img-card.protected { border-color: var(--gold); }
+    .img-card.is-hidden { opacity: .35; }
+    .img-card.is-custom { border-color: var(--teal); }
+    .img-card-img  { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .img-card-foot {
+      padding: .4rem .55rem; border-top: 1px solid var(--border);
+      background: #faf9f8; display: flex; align-items: center; justify-content: space-between; gap: .3rem;
+    }
+    .img-name { font-size: .65rem; color: var(--muted); font-weight: 700; text-transform: uppercase;
+                letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+    .lock-badge {
+      flex-shrink: 0; font-size: .58rem; font-weight: 700; letter-spacing: .06em;
+      padding: .12rem .38rem; border-radius: 3px; text-transform: uppercase;
+      background: #fef9e7; color: #b8960d; border: 1px solid var(--gold); white-space: nowrap;
+    }
+    .custom-badge {
+      flex-shrink: 0; font-size: .58rem; font-weight: 700; letter-spacing: .06em;
+      padding: .12rem .38rem; border-radius: 3px; text-transform: uppercase;
+      background: var(--teal-lt); color: var(--teal); border: 1px solid var(--teal); white-space: nowrap;
+    }
+    .card-actions { display: flex; align-items: center; gap: .28rem; flex-shrink: 0; }
+
+    /* Toggle */
+    .toggle { position: relative; display: inline-block; width: 34px; height: 19px; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .tog-sl {
+      position: absolute; cursor: pointer; inset: 0;
+      background: #ccc; border-radius: 19px; transition: .25s;
+    }
+    .tog-sl::before {
+      content: ''; position: absolute; width: 13px; height: 13px;
+      left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: .25s;
+    }
+    .toggle input:checked + .tog-sl { background: var(--green); }
+    .toggle input:checked + .tog-sl::before { transform: translateX(15px); }
+
+    /* Delete button */
+    .del-btn {
+      background: transparent; border: none; color: #ccc; cursor: pointer;
+      font-size: .88rem; line-height: 1; padding: .1rem; transition: color .2s; display: flex;
+    }
+    .del-btn:hover { color: var(--red); }
+    .del-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── AMENITIES ADMIN GRID ──────────────────────────────── */
+    .am-admin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: .75rem;
+    }
+    .am-admin-row {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: .7rem 1rem;
+      transition: border-color .2s, opacity .2s;
+    }
+    .am-admin-row.is-available {
+      border-color: var(--green);
+    }
+    .am-admin-row:not(.is-available) {
+      opacity: .6;
+    }
+    .am-admin-icon {
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--grey-lt); border-radius: 50%; flex-shrink: 0; color: var(--charcoal);
+    }
+    .am-admin-row.is-available .am-admin-icon {
+      background: #fef9e7; color: var(--charcoal);
+    }
+    .am-admin-icon svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .am-admin-name { flex: 1; font-size: .82rem; font-weight: 700; color: var(--text); }
+    .am-admin-status { font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      padding: .15rem .5rem; border-radius: 4px; flex-shrink: 0; }
+    .am-admin-row.is-available .am-admin-status { background: var(--green-lt); color: var(--green); }
+    .am-admin-row:not(.is-available) .am-admin-status { background: var(--grey-lt); color: var(--muted); }
+
+    /* ── ADD PHOTO CARD ────────────────────────────────────── */
+    .add-photo-wrap {
+      background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);
+      overflow: hidden; margin-top: 0.5rem;
+    }
+    .add-photo-head {
+      background: var(--charcoal); color: #fff; padding: .62rem 1rem;
+      font-family: 'Playfair Display', serif; font-size: .9rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .add-photo-head svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: .7; }
+    .add-photo-body {
+      padding: 1rem; display: grid; grid-template-columns: 180px 1fr; gap: 1rem; align-items: start;
+    }
+    @media (max-width: 600px) { .add-photo-body { grid-template-columns: 1fr; } }
+
+    .upload-zone {
+      border: 2px dashed var(--border); border-radius: var(--radius);
+      aspect-ratio: 4/3; position: relative; overflow: hidden; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: .4rem; transition: border-color .2s; background: var(--bg);
+    }
+    .upload-zone:hover  { border-color: var(--gold); }
+    .upload-zone.has-img { border-style: solid; border-color: var(--teal); }
+    .upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .upload-zone img   { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .upload-zone-hint  { font-size: .72rem; color: var(--muted); text-align: center; pointer-events: none; }
+    .upload-zone svg   { pointer-events: none; width: 22px; height: 22px; stroke: var(--muted); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .upload-form { display: flex; flex-direction: column; gap: .5rem; }
+    .uf-label { font-size: .68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .uf-select, .uf-input {
+      width: 100%; padding: .42rem .6rem; border: 1px solid var(--border); border-radius: 6px;
+      font-family: 'Lato', sans-serif; font-size: .85rem; outline: none; transition: border-color .2s;
+      background: #fff;
+    }
+    .uf-select:focus, .uf-input:focus { border-color: var(--gold); }
+
+    /* ── AVAILABILITY ──────────────────────────────────────── */
+    .avail-layout { display: grid; grid-template-columns: 1fr 298px; gap: 1.25rem; align-items: start; }
+    @media (max-width: 880px) { .avail-layout { grid-template-columns: 1fr; } }
+
+    .cal-wrap { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; }
+    .cal-top  {
+      background: var(--charcoal); padding: .8rem 1.25rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cal-top h3 { font-family: 'Playfair Display', serif; color: #fff; font-size: .95rem; }
+    .cal-nav {
+      background: transparent; border: 1px solid rgba(255,255,255,.3); color: #fff;
+      width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-size: .95rem;
+      display: flex; align-items: center; justify-content: center; transition: all .2s;
+    }
+    .cal-nav:hover { background: var(--gold); border-color: var(--gold); color: var(--charcoal); }
+
+    .cal-months-wrap { display: grid; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 560px) { .cal-months-wrap { grid-template-columns: 1fr; } }
+    .cal-month { padding: .9rem; }
+    .cal-month + .cal-month { border-left: 1px solid var(--border); }
+    .cal-month-name {
+      font-size: .76rem; font-weight: 700; text-align: center; color: var(--charcoal);
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: .55rem;
+    }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .cal-dow  { text-align: center; font-size: .58rem; font-weight: 700; color: var(--muted); padding: 3px 0; text-transform: uppercase; }
+    .cal-day {
+      aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+      font-size: .72rem; border-radius: 5px; cursor: pointer;
+      transition: transform .12s; user-select: none;
+    }
+    .cal-day.empty     { cursor: default; }
+    .cal-day.past      { background: #f1efed; color: #c5bcba; cursor: not-allowed; }
+    .cal-day.offseason { background: var(--grey-lt); color: var(--muted); }
+    .cal-day.available { background: var(--green-lt); color: #155724; font-weight: 700; }
+    .cal-day.booked    { background: var(--red-lt); color: #721c24; font-weight: 700; }
+    .cal-day.sel-edge  { background: var(--gold) !important; color: var(--charcoal) !important; font-weight: 700 !important; }
+    .cal-day.sel-mid   { background: rgba(232,200,64,.22) !important; color: var(--charcoal) !important; }
+    .cal-day:not(.empty):not(.past):hover { transform: scale(1.13); z-index: 2; position: relative; }
+
+    .cal-legend {
+      display: flex; flex-wrap: wrap; gap: .5rem .9rem;
+      padding: .6rem .9rem; border-top: 1px solid var(--border); background: #faf9f8;
+    }
+    .leg { display: flex; align-items: center; gap: .3rem; font-size: .7rem; color: var(--muted); }
+    .leg-dot { width: 9px; height: 9px; border-radius: 3px; flex-shrink: 0; }
+    .leg-dot.available { background: var(--green-lt); border: 1px solid var(--green); }
+    .leg-dot.booked    { background: var(--red-lt); border: 1px solid var(--red); }
+    .leg-dot.offseason { background: var(--grey-lt); border: 1px solid #bdc3c7; }
+    .leg-dot.past      { background: #f1efed; border: 1px solid #c5bcba; }
+    .leg-dot.selected  { background: var(--gold); border: 1px solid var(--gold-dk); }
+
+    .sel-bar {
+      padding: .6rem .9rem; border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; background: var(--surface);
+    }
+    .sel-label { font-size: .76rem; color: var(--muted); white-space: nowrap; }
+    .sel-dates { font-size: .8rem; font-weight: 700; color: var(--charcoal); flex: 1; }
+    .sel-clear-btn {
+      background: transparent; border: 1px solid var(--border); color: var(--muted);
+      padding: .2rem .5rem; border-radius: 5px; font-size: .7rem;
+      cursor: pointer; font-family: 'Lato', sans-serif; transition: all .2s;
+    }
+    .sel-clear-btn:hover { border-color: var(--red); color: var(--red); }
+
+    /* Sidebar */
+    .avail-sidebar { display: flex; flex-direction: column; gap: .9rem; }
+    .sb-card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; }
+    .sb-head {
+      background: var(--charcoal); color: #fff; padding: .6rem .9rem;
+      font-family: 'Playfair Display', serif; font-size: .88rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .sb-head-note { font-family: 'Lato', sans-serif; font-size: .65rem; color: rgba(255,255,255,.5); font-weight: 400; }
+    .sb-body { padding: .7rem; }
+
+    .range-list { display: flex; flex-direction: column; gap: .32rem; }
+    .range-row  {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .35rem .5rem; background: var(--bg); border-radius: 5px;
+    }
+    .range-dates { font-size: .74rem; font-weight: 700; color: var(--charcoal); }
+    .range-del   {
+      background: transparent; border: none; color: #ccc; cursor: pointer;
+      font-size: .88rem; line-height: 1; padding: 0 .12rem; transition: color .2s;
+    }
+    .range-del:hover { color: var(--red); }
+    .range-empty { font-size: .76rem; color: var(--muted); font-style: italic; }
+
+    .sb-divider { border: none; border-top: 1px solid var(--border); margin: .55rem 0; }
+    .sb-label   {
+      display: block; font-size: .65rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: .22rem;
+    }
+    .sb-input {
+      display: block; width: 100%; padding: .4rem .52rem; margin-bottom: .42rem;
+      border: 1px solid var(--border); border-radius: 5px;
+      font-family: 'Lato', sans-serif; font-size: .8rem; outline: none; transition: border-color .2s;
+    }
+    .sb-input:focus { border-color: var(--gold); }
+
+    /* Action buttons */
+    .act-btn {
+      display: block; width: 100%; padding: .58rem .75rem; border: none;
+      border-radius: 6px; font-family: 'Lato', sans-serif; font-size: .78rem; font-weight: 700;
+      cursor: pointer; transition: all .2s; text-align: center; letter-spacing: .03em; margin-top: .38rem;
+    }
+    .act-btn:disabled { opacity: .4; cursor: not-allowed; }
+    .act-btn.green    { background: var(--green-lt); color: #155724; }
+    .act-btn.green:not(:disabled):hover   { background: var(--green); color: #fff; }
+    .act-btn.red      { background: var(--red-lt); color: #721c24; }
+    .act-btn.red:not(:disabled):hover     { background: var(--red); color: #fff; }
+    .act-btn.grey     { background: var(--grey-lt); color: var(--charcoal); }
+    .act-btn.grey:not(:disabled):hover    { background: #9b9590; color: #fff; }
+    .act-btn.gold     { background: var(--gold); color: var(--charcoal); }
+    .act-btn.gold:not(:disabled):hover    { background: var(--gold-dk); }
+    .act-btn.ghost-red { background: transparent; border: 1px solid var(--red); color: var(--red); }
+    .act-btn.ghost-red:not(:disabled):hover { background: var(--red); color: #fff; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9000;
+      background: var(--charcoal); color: #fff; padding: .65rem 1.1rem;
+      border-radius: 8px; font-size: .82rem; font-weight: 700;
+      border-left: 4px solid var(--gold); box-shadow: 0 4px 18px rgba(0,0,0,.3);
+      transform: translateY(80px); opacity: 0; pointer-events: none;
+      transition: all .3s cubic-bezier(.34,1.56,.64,1);
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ LOGIN ═══════════ -->
+<div id="login-screen">
+  <div class="login-logo">Eva Apartman</div>
+  <div class="login-sub" id="ls-sub">Admin Panel</div>
+  <div class="login-card">
+    <h2 id="ls-title">Administrator Login</h2>
+    <p id="ls-desc">Enter the admin password to access the control panel.</p>
+    <input class="login-input" type="password" id="pw-input" autocomplete="current-password" />
+    <div class="login-error" id="login-error">Incorrect password. Please try again.</div>
+    <button class="login-btn" id="login-btn">Sign In</button>
+  </div>
+</div>
+
+<!-- ═══════════ DASHBOARD ═══════════ -->
+<div id="dashboard">
+
+  <header class="admin-header">
+    <div class="header-brand">Eva Apartman</div>
+    <div class="header-right">
+      <div class="lang-sw">
+        <button class="lang-btn active" data-lang-switch="en">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang-switch="hr">HR</button>
+      </div>
+      <span class="admin-badge">Admin</span>
+      <button class="logout-btn" id="logout-btn">Log Out</button>
+    </div>
+  </header>
+
+  <nav class="admin-tabs">
+    <button class="admin-tab active" data-tab="gallery">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span data-i18n="tab.gallery">Gallery</span>
+    </button>
+    <button class="admin-tab" data-tab="availability">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span data-i18n="tab.avail">Availability</span>
+    </button>
+    <button class="admin-tab" data-tab="amenities">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span data-i18n="tab.amenities">Amenities</span>
+    </button>
+  </nav>
+
+  <!-- ── GALLERY PANEL ──────────────────────── -->
+  <div class="admin-panel active" id="panel-gallery">
+
+    <div class="gal-section">
+      <div class="gal-section-title">
+        <span data-i18n="gal.interior">Interior</span>
+        <span class="gal-meta" id="meta-interior"></span>
+      </div>
+      <div class="img-grid" id="grid-interior"></div>
+    </div>
+
+    <div class="gal-section">
+      <div class="gal-section-title">
+        <span data-i18n="gal.terrace">Terrace &amp; Views</span>
+        <span class="gal-meta" id="meta-terrace"></span>
+      </div>
+      <div class="img-grid" id="grid-terrace"></div>
+    </div>
+
+    <div class="gal-section">
+      <div class="gal-section-title">
+        <span data-i18n="gal.beach">Beach &amp; Area</span>
+        <span class="gal-meta" id="meta-beach"></span>
+      </div>
+      <div class="img-grid" id="grid-beach"></div>
+    </div>
+
+    <!-- Add Photo -->
+    <div class="add-photo-wrap">
+      <div class="add-photo-head">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span data-i18n="gal.add.title">Add New Photo</span>
+      </div>
+      <div class="add-photo-body">
+
+        <div class="upload-zone" id="upload-zone">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span class="upload-zone-hint" id="upload-hint" data-i18n="gal.add.hint">Click to choose image</span>
+          <img id="upload-preview" src="" alt="" style="display:none" />
+          <input type="file" id="file-input" accept="image/*" />
+        </div>
+
+        <div class="upload-form">
+          <label class="uf-label" data-i18n="gal.add.section">Section</label>
+          <select class="uf-select" id="upload-section">
+            <option value="interior" data-i18n="gal.interior">Interior</option>
+            <option value="terrace"  data-i18n="gal.terrace">Terrace &amp; Views</option>
+            <option value="beach"    data-i18n="gal.beach">Beach &amp; Area</option>
+          </select>
+          <label class="uf-label" data-i18n="gal.add.name">Name (optional)</label>
+          <input  class="uf-input" type="text" id="upload-name" maxlength="40" />
+          <button class="act-btn gold" id="btn-upload" disabled data-i18n="gal.add.save">Add to Gallery</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /panel-gallery -->
+
+  <!-- ── AVAILABILITY PANEL ─────────────────── -->
+  <div class="admin-panel" id="panel-availability">
+    <div class="avail-layout">
+
+      <!-- Calendar -->
+      <div>
+        <div class="cal-wrap">
+          <div class="cal-top">
+            <button class="cal-nav" id="cal-prev">&#8592;</button>
+            <h3 id="cal-title"></h3>
+            <button class="cal-nav" id="cal-next">&#8594;</button>
+          </div>
+          <div class="cal-months-wrap" id="cal-months"></div>
+          <div class="cal-legend">
+            <div class="leg"><div class="leg-dot available"></div> <span data-i18n="leg.available">Available</span></div>
+            <div class="leg"><div class="leg-dot booked"></div> <span data-i18n="leg.booked">Booked</span></div>
+            <div class="leg"><div class="leg-dot offseason"></div> <span data-i18n="leg.offseason">Off-season</span></div>
+            <div class="leg"><div class="leg-dot past"></div> <span data-i18n="leg.past">Past</span></div>
+            <div class="leg"><div class="leg-dot selected"></div> <span data-i18n="leg.selected">Selected</span></div>
+          </div>
+          <div class="sel-bar">
+            <span class="sel-label" data-i18n="sel.label">Selection:</span>
+            <span class="sel-dates" id="sel-display"></span>
+            <button class="sel-clear-btn" id="sel-clear" data-i18n="sel.clear">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="avail-sidebar">
+
+        <div class="sb-card">
+          <div class="sb-head" data-i18n="avail.apply.title">Apply Selection</div>
+          <div class="sb-body">
+            <p style="font-size:.76rem;color:var(--muted);margin-bottom:.5rem" data-i18n="avail.apply.hint">Select a range, then apply:</p>
+            <button class="act-btn green"     id="btn-add-season"  disabled data-i18n="avail.btn.season">＋ Add as Season (Available)</button>
+            <button class="act-btn red"       id="btn-add-booked"  disabled data-i18n="avail.btn.booked">＋ Mark as Booked</button>
+            <button class="act-btn grey"      id="btn-offseason"   disabled data-i18n="avail.btn.offseason">− Set as Off-Season</button>
+            <button class="act-btn ghost-red" id="btn-rm-booked"   disabled data-i18n="avail.btn.rmbooked">✕ Remove Overlapping Booked</button>
+          </div>
+        </div>
+
+        <div class="sb-card">
+          <div class="sb-head">
+            <span data-i18n="avail.seasons.title">Season Windows</span>
+            <span class="sb-head-note" data-i18n="avail.seasons.note">available periods</span>
+          </div>
+          <div class="sb-body">
+            <div class="range-list" id="seasons-list"></div>
+            <div class="sb-divider"></div>
+            <span class="sb-label" data-i18n="add.manually">Add manually</span>
+            <span class="sb-label" data-i18n="lbl.from">From</span>
+            <input type="date" class="sb-input" id="season-start" />
+            <span class="sb-label" data-i18n="lbl.to">To</span>
+            <input type="date" class="sb-input" id="season-end" />
+            <button class="act-btn gold" id="btn-season-add" data-i18n="btn.add.season">Add Season</button>
+          </div>
+        </div>
+
+        <div class="sb-card">
+          <div class="sb-head">
+            <span data-i18n="avail.booked.title">Booked Periods</span>
+            <span class="sb-head-note" data-i18n="avail.booked.note">taken dates</span>
+          </div>
+          <div class="sb-body">
+            <div class="range-list" id="booked-list"></div>
+            <div class="sb-divider"></div>
+            <span class="sb-label" data-i18n="add.manually">Add manually</span>
+            <span class="sb-label" data-i18n="lbl.from">From</span>
+            <input type="date" class="sb-input" id="booked-start" />
+            <span class="sb-label" data-i18n="lbl.to">To</span>
+            <input type="date" class="sb-input" id="booked-end" />
+            <button class="act-btn red" id="btn-booked-add" data-i18n="btn.add.booked">Add Booked Period</button>
+          </div>
+        </div>
+
+        <div class="sb-card">
+          <div class="sb-head" style="background:#6b6060" data-i18n="avail.reset.title">Reset</div>
+          <div class="sb-body">
+            <p style="font-size:.76rem;color:var(--muted);margin-bottom:.5rem" data-i18n="avail.reset.hint">Restore default seasons and booked dates.</p>
+            <button class="act-btn ghost-red" id="btn-reset" data-i18n="avail.reset.btn">Reset to Defaults</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /panel-availability -->
+
+  <!-- ── AMENITIES PANEL ────────────────────── -->
+  <div class="admin-panel" id="panel-amenities">
+    <div class="gal-section-title" style="margin-bottom:1.2rem;">
+      <span data-i18n="tab.amenities">Amenities</span>
+      <span class="gal-meta" id="am-meta"></span>
+    </div>
+    <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.5rem;max-width:560px;" data-i18n="am.hint">Toggle each amenity to mark it as available or unavailable. Changes are reflected immediately on the main page.</p>
+    <div class="am-admin-grid" id="amenities-admin-grid"></div>
+  </div><!-- /panel-amenities -->
+
+</div><!-- #dashboard -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+/* ═══════════════════════════════════════════════════════
+   TRANSLATIONS
+═══════════════════════════════════════════════════════ */
+var TRANSLATIONS = {
+  en: {
+    /* login */
+    'ls.sub': 'Admin Panel', 'ls.title': 'Administrator Login',
+    'ls.desc': 'Enter the admin password to access the control panel.',
+    'pw.placeholder': 'Password', 'login.error': 'Incorrect password. Please try again.',
+    'login.btn': 'Sign In', 'logout': 'Log Out',
+    /* tabs */
+    'tab.gallery': 'Gallery', 'tab.avail': 'Availability',
+    /* gallery sections */
+    'gal.interior': 'Interior', 'gal.terrace': 'Terrace \u0026 Views', 'gal.beach': 'Beach \u0026 Area',
+    /* add photo */
+    'gal.add.title': 'Add New Photo', 'gal.add.section': 'Section',
+    'gal.add.name': 'Name (optional)', 'gal.add.hint': 'Click to choose image',
+    'gal.add.save': 'Add to Gallery',
+    /* badges */
+    'badge.lock': '\uD83D\uDD12 main page', 'badge.custom': 'custom',
+    /* meta */
+    'meta.of': 'of', 'meta.visible': 'visible',
+    /* availability */
+    'avail.apply.title': 'Apply Selection',
+    'avail.apply.hint': 'Select a date range on the calendar, then apply it:',
+    'avail.btn.season': '\uFF0B Add as Season (Available)',
+    'avail.btn.booked': '\uFF0B Mark as Booked',
+    'avail.btn.offseason': '\u2212 Set as Off-Season',
+    'avail.btn.rmbooked': '\u2715 Remove Overlapping Booked',
+    'avail.seasons.title': 'Season Windows', 'avail.seasons.note': 'available periods',
+    'avail.seasons.empty': 'No season windows defined.',
+    'avail.booked.title': 'Booked Periods', 'avail.booked.note': 'taken dates',
+    'avail.booked.empty': 'No booked periods.',
+    'avail.reset.title': 'Reset',
+    'avail.reset.hint': 'Restore default seasons and booked dates. All manual changes will be discarded.',
+    'avail.reset.btn': 'Reset to Defaults',
+    /* legend */
+    'leg.available': 'Available', 'leg.booked': 'Booked',
+    'leg.offseason': 'Off-season', 'leg.past': 'Past', 'leg.selected': 'Selected',
+    /* selection */
+    'sel.label': 'Selection:', 'sel.start': 'Click a day to start',
+    'sel.picking': '\u2192 click end date', 'sel.clear': 'Clear',
+    /* form */
+    'add.manually': 'Add manually', 'lbl.from': 'From', 'lbl.to': 'To',
+    'btn.add.season': 'Add Season', 'btn.add.booked': 'Add Booked Period',
+    /* toasts */
+    'toast.shown': 'Image shown in gallery \u2713', 'toast.hidden': 'Image hidden from gallery',
+    'toast.deleted': 'Image permanently deleted \u2713',
+    'toast.added': 'Photo added to gallery \u2713',
+    'toast.storage': 'Storage full \u2014 try a smaller image',
+    'toast.season.added': 'Season window added \u2713',
+    'toast.booked.added': 'Booked period added \u2713',
+    'toast.offseason': 'Set as off-season \u2713',
+    'toast.rmbooked': ' booked period(s) removed \u2713',
+    'toast.rmbooked.none': 'No overlapping booked periods found',
+    'toast.reset': 'Reset to defaults \u2713',
+    'toast.season.removed': 'Season window removed',
+    'toast.booked.removed': 'Booked period removed',
+    'toast.fill': 'Please fill in both dates',
+    'toast.order': 'Start must be before end date',
+    /* confirms */
+    'confirm.delete': 'Permanently delete this image from the gallery? This cannot be undone.',
+    'confirm.reset': 'Reset all availability to defaults? This cannot be undone.',
+    /* amenities tab */
+    'tab.amenities': 'Amenities',
+    'am.hint': 'Toggle each amenity to mark it as available or unavailable. Changes are reflected immediately on the main page.',
+    'am.available': 'Available',
+    'am.unavailable': 'Unavailable',
+    'toast.am.enabled': 'Amenity marked as available \u2713',
+    'toast.am.disabled': 'Amenity marked as unavailable',
+    /* amenity names */
+    'am.wifi':'Wi-Fi Internet','am.tv':'TV (×3)','am.satellite':'Satellite TV',
+    'am.ac':'Air Conditioning','am.heating':'Heating','am.microwave':'Microwave',
+    'am.fridge':'Fridge','am.kettle':'Kettle','am.dishwasher':'Dishwasher',
+    'am.streaming':'Netflix / HBO / IPTV','am.coffee':'Coffee Machine','am.washer':'Washing Machine',
+    'am.safe':'Safe','am.babycot':'Baby Cot','am.phone':'Phone',
+    'am.console':'Game Console','am.radio':'Radio','am.computer':'Computer',
+  },
+  hr: {
+    /* login */
+    'ls.sub': 'Admin Panel', 'ls.title': 'Prijava Administratora',
+    'ls.desc': 'Unesite administratorsku lozinku za pristup upravljačkoj ploči.',
+    'pw.placeholder': 'Lozinka', 'login.error': 'Netočna lozinka. Pokušajte ponovo.',
+    'login.btn': 'Prijava', 'logout': 'Odjava',
+    /* tabs */
+    'tab.gallery': 'Galerija', 'tab.avail': 'Dostupnost',
+    /* gallery sections */
+    'gal.interior': 'Unutrašnjost', 'gal.terrace': 'Terasa i Pogled', 'gal.beach': 'Plaža i Okolica',
+    /* add photo */
+    'gal.add.title': 'Dodaj Novu Fotografiju', 'gal.add.section': 'Sekcija',
+    'gal.add.name': 'Naziv (neobavezno)', 'gal.add.hint': 'Klikni za odabir slike',
+    'gal.add.save': 'Dodaj u Galeriju',
+    /* badges */
+    'badge.lock': '\uD83D\uDD12 glavna str.', 'badge.custom': 'prilagođeno',
+    /* meta */
+    'meta.of': 'od', 'meta.visible': 'vidljivo',
+    /* availability */
+    'avail.apply.title': 'Primijeni Odabir',
+    'avail.apply.hint': 'Odaberite raspon datuma na kalendaru, zatim ga primijenite:',
+    'avail.btn.season': '\uFF0B Dodaj kao Sezonu (Dostupno)',
+    'avail.btn.booked': '\uFF0B Označi kao Zauzeto',
+    'avail.btn.offseason': '\u2212 Postavi kao Van Sezone',
+    'avail.btn.rmbooked': '\u2715 Ukloni Preklapajuće Rezervacije',
+    'avail.seasons.title': 'Sezonski Prozori', 'avail.seasons.note': 'dostupni periodi',
+    'avail.seasons.empty': 'Nema definiranih sezonskih prozora.',
+    'avail.booked.title': 'Rezervirani Periodi', 'avail.booked.note': 'zauzeti datumi',
+    'avail.booked.empty': 'Nema rezerviranih perioda.',
+    'avail.reset.title': 'Resetiraj',
+    'avail.reset.hint': 'Vrati zadane sezone i rezervirane datume. Sve ručne promjene bit će odbačene.',
+    'avail.reset.btn': 'Vrati na Zadano',
+    /* legend */
+    'leg.available': 'Dostupno', 'leg.booked': 'Zauzeto',
+    'leg.offseason': 'Van sezone', 'leg.past': 'Prošlo', 'leg.selected': 'Odabrano',
+    /* selection */
+    'sel.label': 'Odabir:', 'sel.start': 'Klikni dan za početak',
+    'sel.picking': '\u2192 klikni krajnji datum', 'sel.clear': 'Poništi',
+    /* form */
+    'add.manually': 'Dodaj ručno', 'lbl.from': 'Od', 'lbl.to': 'Do',
+    'btn.add.season': 'Dodaj Sezonu', 'btn.add.booked': 'Dodaj Rezervirani Period',
+    /* toasts */
+    'toast.shown': 'Slika prikazana u galeriji \u2713', 'toast.hidden': 'Slika skrivena iz galerije',
+    'toast.deleted': 'Slika trajno obrisana \u2713',
+    'toast.added': 'Fotografija dodana u galeriju \u2713',
+    'toast.storage': 'Memorija puna \u2014 pokušajte s manjom slikom',
+    'toast.season.added': 'Sezonski prozor dodan \u2713',
+    'toast.booked.added': 'Rezervirani period dodan \u2713',
+    'toast.offseason': 'Postavljeno kao van sezone \u2713',
+    'toast.rmbooked': ' rezervirani period(i) uklonjen(i) \u2713',
+    'toast.rmbooked.none': 'Nema preklapajućih rezerviranih perioda',
+    'toast.reset': 'Vraćeno na zadano \u2713',
+    'toast.season.removed': 'Sezonski prozor uklonjen',
+    'toast.booked.removed': 'Rezervirani period uklonjen',
+    'toast.fill': 'Molimo popunite oba datuma',
+    'toast.order': 'Početak mora biti prije krajnjeg datuma',
+    /* confirms */
+    'confirm.delete': 'Trajno brisanje ove slike iz galerije? Ova radnja se ne može poništiti.',
+    'confirm.reset': 'Resetirati dostupnost na zadano? Ova radnja se ne može poništiti.',
+    /* amenities tab */
+    'tab.amenities': 'Opremljenost',
+    'am.hint': 'Uključite ili isključite svaku pogodnost da biste je označili kao dostupnu ili nedostupnu. Promjene se odmah odražavaju na glavnoj stranici.',
+    'am.available': 'Dostupno',
+    'am.unavailable': 'Nedostupno',
+    'toast.am.enabled': 'Pogodnost označena kao dostupna \u2713',
+    'toast.am.disabled': 'Pogodnost označena kao nedostupna',
+    /* amenity names */
+    'am.wifi':'Internet / Wi-Fi','am.tv':'Televizija (×3)','am.satellite':'Satelitska televizija',
+    'am.ac':'Klima uređaj','am.heating':'Grijanje','am.microwave':'Mikrovalna pećnica',
+    'am.fridge':'Hladnjak','am.kettle':'Kuhalo za vodu','am.dishwasher':'Perilica suđa',
+    'am.streaming':'Netflix / HBO / IPTV','am.coffee':'Aparat za kavu','am.washer':'Perilica rublja',
+    'am.safe':'Sef','am.babycot':'Dječji krevetić','am.phone':'Telefon',
+    'am.console':'Igraća konzola','am.radio':'Radio','am.computer':'Računalo',
+  }
+};
+
+/* ═══════════════════════════════════════════════════════
+   CONSTANTS
+═══════════════════════════════════════════════════════ */
+var PASSWORD = 'Sottomonte2026!';
+
+var PROTECTED = [
+  'images/indoor/indoor1.jpeg', 'images/indoor/indoor2.jpeg',
+  'images/indoor/indoor5.jpeg', 'images/indoor/indoor3.jpeg',
+  'images/terrace/terrace1.jpeg', 'images/beach/beach1.jpeg',
+  'images/terrace/terrace4.jpeg'
+];
+
+var ALL_IMAGES = {
+  interior: [
+    'images/indoor/indoor1.jpeg',  'images/indoor/indoor2.jpeg',
+    'images/indoor/indoor3.jpeg',  'images/indoor/indoor4.jpeg',
+    'images/indoor/indoor5.jpeg',  'images/indoor/indoor6.jpeg',
+    'images/indoor/indoor7.jpeg',  'images/indoor/indoor8.jpeg',
+    'images/indoor/indoor9.jpeg',  'images/indoor/indoor10.jpeg',
+    'images/indoor/indoor11.jpeg', 'images/indoor/indoor12.jpeg',
+    'images/indoor/indoor13.jpeg', 'images/indoor/indoor14.jpeg',
+    'images/indoor/indoor15.jpeg', 'images/indoor/indoor16.jpeg',
+    'images/indoor/indoor17.jpeg', 'images/indoor/indoor18.jpeg',
+    'images/indoor/indoor19.jpeg', 'images/indoor/indoor20.jpeg',
+    'images/indoor/indoor21.jpeg', 'images/indoor/indoor22.jpeg',
+    'images/indoor/indoor23.jpeg', 'images/indoor/indoor24.jpeg',
+    'images/indoor/indoor25.jpeg', 'images/indoor/indoor26.jpeg',
+    'images/indoor/indoor27.jpeg', 'images/indoor/indoor29.jpeg',
+    'images/indoor/indoor30.jpeg', 'images/indoor/indoor31.jpeg',
+    'images/indoor/indoor32.jpeg'
+  ],
+  terrace: [
+    'images/terrace/terrace1.jpeg', 'images/terrace/terrace2.jpeg',
+    'images/terrace/terrace3.jpeg', 'images/terrace/terrace4.jpeg',
+    'images/terrace/terrace5.jpeg', 'images/terrace/terrace6.jpeg'
+  ],
+  beach: ['images/beach/beach1.jpeg', 'images/beach/beach2.jpeg']
+};
+
+/* Amenities */
+var AMENITY_DEFAULT = ['wifi','tv','satellite','ac','heating','microwave','fridge','kettle','dishwasher'];
+var amenityAvail = [];
+
+var AMENITY_DEFS = [
+  { id:'wifi',      svgPath:'<path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/>' },
+  { id:'tv',        svgPath:'<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5"/><path d="M16 7V5"/><path d="M12 7V3"/>' },
+  { id:'satellite', svgPath:'<circle cx="12" cy="12" r="4"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49"/><path d="M7.76 16.24a6 6 0 0 1 0-8.49"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 19.07a10 10 0 0 1 0-14.14"/>' },
+  { id:'ac',        svgPath:'<rect x="2" y="3" width="20" height="8" rx="2"/><path d="M7 15l.01 0"/><path d="M12 15l.01 0"/><path d="M17 15l.01 0"/><path d="M7 19l.01 0"/><path d="M12 19l.01 0"/><path d="M17 19l.01 0"/>' },
+  { id:'heating',   svgPath:'<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/>' },
+  { id:'microwave', svgPath:'<rect x="2" y="5" width="20" height="14" rx="2"/><rect x="6" y="9" width="9" height="6" rx="1"/><path d="M18 9h.01"/><path d="M18 12h.01"/><path d="M18 15h.01"/>' },
+  { id:'fridge',    svgPath:'<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 10h14"/><path d="M10 6v2"/><path d="M10 14v4"/>' },
+  { id:'kettle',    svgPath:'<path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/>' },
+  { id:'dishwasher',svgPath:'<rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20"/><path d="M11 8h6"/><path d="M11 12h6"/><path d="M11 16h6"/>' },
+  { id:'streaming', svgPath:'<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>' },
+  { id:'coffee',    svgPath:'<path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>' },
+  { id:'washer',    svgPath:'<rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="12" cy="13" r="5"/><path d="M6 6h.01"/><path d="M9 6h.01"/>' },
+  { id:'safe',      svgPath:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M12 9V7"/><path d="M12 17v-2"/><path d="M15 12h2"/><path d="M7 12h2"/>' },
+  { id:'babycot',   svgPath:'<path d="M2 9V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 9h20"/><path d="M2 9v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9"/><path d="M6 19v2"/><path d="M18 19v2"/><path d="M7 9v4"/><path d="M12 9v4"/><path d="M17 9v4"/>' },
+  { id:'phone',     svgPath:'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l1.06-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>' },
+  { id:'console',   svgPath:'<line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="11" x2="15.01" y2="11"/><line x1="18" y1="13" x2="18.01" y2="13"/><rect x="2" y="6" width="20" height="12" rx="4"/>' },
+  { id:'radio',     svgPath:'<path d="M16.5 8.5l-9-5"/><rect x="2" y="9" width="20" height="12" rx="2"/><circle cx="8" cy="15" r="3"/><path d="M16 12h2"/><path d="M16 16h2"/>' },
+  { id:'computer',  svgPath:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>' }
+];
+
+var DEFAULT_SEASONS = [{ start: '2026-05-01', end: '2026-10-31' }];
+var DEFAULT_BOOKED  = [
+  { start: '2026-06-20', end: '2026-06-28' },
+  { start: '2026-07-10', end: '2026-07-25' },
+  { start: '2026-08-01', end: '2026-08-14' },
+  { start: '2026-08-20', end: '2026-08-31' },
+  { start: '2026-09-05', end: '2026-09-12' }
+];
+
+/* ═══════════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════════ */
+var adminLang    = 'en';
+var hiddenImages = [];
+var customImages = [];   // [{ id, src, section, name, hidden }]
+var seasons      = [];
+var bookedRanges = [];
+var calYear, calMonth;
+var selStart = null, selEnd = null;
+var pendingDataURL = null;   // file chosen but not yet saved
+
+function clone(o)  { return JSON.parse(JSON.stringify(o)); }
+
+function loadAmenityState() {
+  try {
+    var v = JSON.parse(localStorage.getItem('eva-amenities'));
+    amenityAvail = Array.isArray(v) ? v : AMENITY_DEFAULT.slice();
+  } catch(e) { amenityAvail = AMENITY_DEFAULT.slice(); }
+}
+
+function saveAmenityState() {
+  localStorage.setItem('eva-amenities', JSON.stringify(amenityAvail));
+}
+
+function renderAmenitiesPanel() {
+  var grid = document.getElementById('amenities-admin-grid');
+  var meta = document.getElementById('am-meta');
+  if (!grid) return;
+  var availCount = amenityAvail.length;
+  meta.textContent = availCount + ' / ' + AMENITY_DEFS.length + ' ' + t('am.available').toLowerCase();
+  grid.innerHTML = '';
+  AMENITY_DEFS.forEach(function(def) {
+    var isAvail = amenityAvail.indexOf(def.id) !== -1;
+    var name = t('am.' + def.id) || def.id;
+    var statusText = isAvail ? t('am.available') : t('am.unavailable');
+    var row = document.createElement('div');
+    row.className = 'am-admin-row' + (isAvail ? ' is-available' : '');
+    row.innerHTML =
+      '<span class="am-admin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + def.svgPath + '</svg></span>' +
+      '<span class="am-admin-name">' + name + '</span>' +
+      '<label class="toggle" style="flex-shrink:0">' +
+        '<input type="checkbox"' + (isAvail ? ' checked' : '') + ' data-am-id="' + def.id + '" />' +
+        '<span class="tog-sl"></span>' +
+      '</label>' +
+      '<span class="am-admin-status">' + statusText + '</span>';
+    grid.appendChild(row);
+  });
+
+  grid.querySelectorAll('input[data-am-id]').forEach(function(input) {
+    input.addEventListener('change', function() {
+      var id = this.getAttribute('data-am-id');
+      var row = this.closest('.am-admin-row');
+      var statusEl = row.querySelector('.am-admin-status');
+      if (this.checked) {
+        if (amenityAvail.indexOf(id) === -1) amenityAvail.push(id);
+        row.classList.add('is-available');
+        statusEl.textContent = t('am.available');
+        showToast(t('toast.am.enabled'));
+      } else {
+        amenityAvail = amenityAvail.filter(function(a) { return a !== id; });
+        row.classList.remove('is-available');
+        statusEl.textContent = t('am.unavailable');
+        showToast(t('toast.am.disabled'));
+      }
+      saveAmenityState();
+      var cnt = amenityAvail.length;
+      document.getElementById('am-meta').textContent = cnt + ' / ' + AMENITY_DEFS.length + ' ' + t('am.available').toLowerCase();
+    });
+  });
+}
+
+function loadState() {
+  try { hiddenImages = JSON.parse(localStorage.getItem('eva-hidden-images') || '[]'); }
+  catch(e) { hiddenImages = []; }
+  try { customImages = JSON.parse(localStorage.getItem('eva-custom-images') || '[]'); }
+  catch(e) { customImages = []; }
+  try {
+    var sv = localStorage.getItem('eva-admin-seasons');
+    seasons = sv ? JSON.parse(sv) : clone(DEFAULT_SEASONS);
+  } catch(e) { seasons = clone(DEFAULT_SEASONS); }
+  try {
+    var bv = localStorage.getItem('eva-admin-booked');
+    bookedRanges = bv ? JSON.parse(bv) : clone(DEFAULT_BOOKED);
+  } catch(e) { bookedRanges = clone(DEFAULT_BOOKED); }
+}
+
+function saveHidden()  { localStorage.setItem('eva-hidden-images',  JSON.stringify(hiddenImages)); }
+function saveSeasons() { localStorage.setItem('eva-admin-seasons',  JSON.stringify(seasons)); }
+function saveBooked()  { localStorage.setItem('eva-admin-booked',   JSON.stringify(bookedRanges)); }
+function saveCustom() {
+  try { localStorage.setItem('eva-custom-images', JSON.stringify(customImages)); }
+  catch(e) {
+    // QuotaExceededError — pop the last item we just pushed and alert
+    customImages.pop();
+    showToast(t('toast.storage'));
+    throw e;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   LANGUAGE
+═══════════════════════════════════════════════════════ */
+function t(key) {
+  return (TRANSLATIONS[adminLang] && TRANSLATIONS[adminLang][key]) || key;
+}
+
+function applyLang() {
+  // Static data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    el.textContent = t(el.dataset.i18n);
+  });
+  // Placeholder on pw input
+  document.getElementById('pw-input').placeholder = t('pw.placeholder');
+  // Login screen dynamic text
+  document.getElementById('ls-sub').textContent   = t('ls.sub');
+  document.getElementById('ls-title').textContent = t('ls.title');
+  document.getElementById('ls-desc').textContent  = t('ls.desc');
+  document.getElementById('login-error').textContent = t('login.error');
+  document.getElementById('login-btn').textContent   = t('login.btn');
+  document.getElementById('logout-btn').textContent  = t('logout');
+  // Upload hint
+  document.getElementById('upload-hint').textContent = t('gal.add.hint');
+  document.getElementById('upload-name').placeholder = t('gal.add.name');
+  // Update upload section options
+  ['interior','terrace','beach'].forEach(function(v) {
+    var opt = document.querySelector('#upload-section option[value="' + v + '"]');
+    if (opt) opt.textContent = t('gal.' + v);
+  });
+  // Selection display
+  updateSelDisplay();
+  // Meta counts
+  ['interior','terrace','beach'].forEach(function(k) {
+    var el = document.getElementById('meta-' + k);
+    if (el) el.textContent = buildMeta(k);
+  });
+  // Active lang button
+  document.querySelectorAll('[data-lang-switch]').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.langSwitch === adminLang);
+  });
+}
+
+function initLang() {
+  adminLang = localStorage.getItem('eva-admin-lang') || 'en';
+  document.querySelectorAll('[data-lang-switch]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      adminLang = btn.dataset.langSwitch;
+      localStorage.setItem('eva-admin-lang', adminLang);
+      applyLang();
+      renderSidebar();        // re-render empty-state strings
+      renderAmenitiesPanel(); // re-render amenity names in new language
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   AUTH
+═══════════════════════════════════════════════════════ */
+function checkAuth() {
+  if (sessionStorage.getItem('eva-admin-auth') === '1') showDashboard();
+}
+
+function showDashboard() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  loadState();
+  loadAmenityState();
+  applyLang();
+  renderGallery();
+  renderAmenitiesPanel();
+  initCalendar();
+  renderSidebar();
+}
+
+document.getElementById('login-btn').addEventListener('click', function() {
+  var pw  = document.getElementById('pw-input').value;
+  var err = document.getElementById('login-error');
+  if (pw === PASSWORD) {
+    sessionStorage.setItem('eva-admin-auth', '1');
+    err.classList.remove('show');
+    showDashboard();
+  } else {
+    err.classList.add('show');
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
+  }
+});
+document.getElementById('pw-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') document.getElementById('login-btn').click();
+});
+document.getElementById('logout-btn').addEventListener('click', function() {
+  sessionStorage.removeItem('eva-admin-auth'); location.reload();
+});
+
+/* ═══════════════════════════════════════════════════════
+   TABS
+═══════════════════════════════════════════════════════ */
+document.querySelectorAll('.admin-tab').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.admin-tab').forEach(function(t)  { t.classList.remove('active'); });
+    document.querySelectorAll('.admin-panel').forEach(function(p) { p.classList.remove('active'); });
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+/* ═══════════════════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════════════════ */
+var toastTimer;
+function showToast(msg) {
+  var el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function() { el.classList.remove('show'); }, 2800);
+}
+
+/* ═══════════════════════════════════════════════════════
+   GALLERY
+═══════════════════════════════════════════════════════ */
+var TRASH_SVG = '<svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>';
+
+function renderGallery() {
+  ['interior','terrace','beach'].forEach(renderSection);
+}
+
+function buildMeta(key) {
+  var built     = ALL_IMAGES[key];
+  var custSlice = customImages.filter(function(c) { return c.section === key; });
+  var total     = built.length + custSlice.length;
+  var hiddenCnt = built.filter(function(p) { return hiddenImages.indexOf(p) !== -1; }).length;
+  hiddenCnt    += custSlice.filter(function(c) { return c.hidden; }).length;
+  return (total - hiddenCnt) + ' ' + t('meta.of') + ' ' + total + ' ' + t('meta.visible');
+}
+
+function renderSection(key) {
+  var grid = document.getElementById('grid-' + key);
+  grid.innerHTML = '';
+
+  // ── Built-in images
+  ALL_IMAGES[key].forEach(function(path) {
+    var isProt   = PROTECTED.indexOf(path) !== -1;
+    var isHidden = hiddenImages.indexOf(path) !== -1;
+    var file     = path.split('/').pop().replace('.jpeg','');
+    var label    = file.replace('indoor','Int ').replace('terrace','Ter ').replace('beach','Beach ');
+
+    var card = document.createElement('div');
+    card.className = 'img-card' + (isProt ? ' protected' : '') + (isHidden ? ' is-hidden' : '');
+
+    var footHtml;
+    if (isProt) {
+      footHtml = '<div class="img-card-foot"><span class="img-name">' + label + '</span>' +
+                 '<span class="lock-badge">' + t('badge.lock') + '</span></div>';
+    } else {
+      footHtml = '<div class="img-card-foot"><span class="img-name">' + label + '</span>' +
+                 '<div class="card-actions">' +
+                 '<label class="toggle"><input type="checkbox" data-path="' + path + '"' +
+                 (!isHidden ? ' checked' : '') + ' /><span class="tog-sl"></span></label>' +
+                 '<button class="del-btn" data-del-path="' + path + '" title="Delete">' + TRASH_SVG + '</button>' +
+                 '</div></div>';
+    }
+
+    card.innerHTML = '<img class="img-card-img" src="../' + path + '" alt="' + label + '" loading="lazy" />' + footHtml;
+    grid.appendChild(card);
+
+    if (!isProt) {
+      // Toggle visibility
+      card.querySelector('input[type="checkbox"]').addEventListener('change', (function(p, c) {
+        return function() {
+          var idx = hiddenImages.indexOf(p);
+          if (this.checked) { if (idx !== -1) hiddenImages.splice(idx, 1); c.classList.remove('is-hidden'); showToast(t('toast.shown')); }
+          else              { if (idx === -1) hiddenImages.push(p);         c.classList.add('is-hidden');    showToast(t('toast.hidden')); }
+          saveHidden();
+          document.getElementById('meta-' + key).textContent = buildMeta(key);
+        };
+      }(path, card)));
+
+      // Delete permanently (adds to hidden, removes from admin)
+      card.querySelector('.del-btn').addEventListener('click', (function(p, c) {
+        return function() {
+          if (!confirm(t('confirm.delete'))) return;
+          var idx = hiddenImages.indexOf(p);
+          if (idx === -1) hiddenImages.push(p);
+          saveHidden();
+          c.remove();
+          document.getElementById('meta-' + key).textContent = buildMeta(key);
+          showToast(t('toast.deleted'));
+        };
+      }(path, card)));
+    }
+  });
+
+  // ── Custom images for this section
+  customImages.filter(function(c) { return c.section === key; }).forEach(function(ci) {
+    renderCustomCard(ci, key, grid);
+  });
+
+  document.getElementById('meta-' + key).textContent = buildMeta(key);
+}
+
+function renderCustomCard(ci, section, grid) {
+  var card = document.createElement('div');
+  card.className = 'img-card is-custom' + (ci.hidden ? ' is-hidden' : '');
+  card.dataset.cid = ci.id;
+
+  var label = ci.name || ('Custom ' + ci.id.slice(-4));
+  var footHtml = '<div class="img-card-foot"><span class="img-name">' + label + '</span>' +
+    '<div class="card-actions">' +
+    '<span class="custom-badge">' + t('badge.custom') + '</span>' +
+    '<label class="toggle"><input type="checkbox" data-cid="' + ci.id + '"' +
+    (!ci.hidden ? ' checked' : '') + ' /><span class="tog-sl"></span></label>' +
+    '<button class="del-btn" data-del-cid="' + ci.id + '" title="Delete">' + TRASH_SVG + '</button>' +
+    '</div></div>';
+
+  card.innerHTML = '<img class="img-card-img" src="' + ci.src + '" alt="' + label + '" />' + footHtml;
+  grid.appendChild(card);
+
+  // Toggle
+  card.querySelector('input[type="checkbox"]').addEventListener('change', (function(id, c) {
+    return function() {
+      var item = customImages.find(function(x) { return x.id === id; });
+      if (!item) return;
+      item.hidden = !this.checked;
+      saveCustom();
+      c.classList.toggle('is-hidden', item.hidden);
+      showToast(this.checked ? t('toast.shown') : t('toast.hidden'));
+      document.getElementById('meta-' + section).textContent = buildMeta(section);
+    };
+  }(ci.id, card)));
+
+  // Delete
+  card.querySelector('.del-btn').addEventListener('click', (function(id, c) {
+    return function() {
+      if (!confirm(t('confirm.delete'))) return;
+      customImages = customImages.filter(function(x) { return x.id !== id; });
+      saveCustom();
+      c.remove();
+      document.getElementById('meta-' + section).textContent = buildMeta(section);
+      showToast(t('toast.deleted'));
+    };
+  }(ci.id, card)));
+}
+
+/* ═══════════════════════════════════════════════════════
+   FILE UPLOAD
+═══════════════════════════════════════════════════════ */
+var fileInput   = document.getElementById('file-input');
+var uploadZone  = document.getElementById('upload-zone');
+var uploadPrev  = document.getElementById('upload-preview');
+var uploadHint  = document.getElementById('upload-hint');
+var btnUpload   = document.getElementById('btn-upload');
+
+fileInput.addEventListener('change', function() {
+  var file = this.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    resizeImage(e.target.result, 1200, function(resized) {
+      pendingDataURL = resized;
+      uploadPrev.src = resized;
+      uploadPrev.style.display = 'block';
+      uploadHint.style.display = 'none';
+      uploadZone.querySelector('svg').style.display = 'none';
+      uploadZone.classList.add('has-img');
+      btnUpload.disabled = false;
+    });
+  };
+  reader.readAsDataURL(file);
+});
+
+btnUpload.addEventListener('click', function() {
+  if (!pendingDataURL) return;
+  var section = document.getElementById('upload-section').value;
+  var name    = document.getElementById('upload-name').value.trim();
+  var id      = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+
+  customImages.push({ id: id, src: pendingDataURL, section: section, name: name, hidden: false });
+  try {
+    saveCustom();
+  } catch(e) { return; }  // saveCustom already shows toast and reverts
+
+  // Add card to the correct grid
+  var grid = document.getElementById('grid-' + section);
+  renderCustomCard(customImages[customImages.length - 1], section, grid);
+
+  // Reset upload UI
+  pendingDataURL = null;
+  fileInput.value = '';
+  uploadPrev.style.display = 'none';
+  uploadPrev.src = '';
+  uploadHint.style.display = '';
+  uploadZone.querySelector('svg').style.display = '';
+  uploadZone.classList.remove('has-img');
+  btnUpload.disabled = true;
+  document.getElementById('upload-name').value = '';
+
+  showToast(t('toast.added'));
+});
+
+function resizeImage(dataURL, maxW, cb) {
+  var img = new Image();
+  img.onload = function() {
+    var ratio  = Math.min(maxW / img.width, 1);
+    var w      = Math.round(img.width  * ratio);
+    var h      = Math.round(img.height * ratio);
+    var canvas = document.createElement('canvas');
+    canvas.width = w; canvas.height = h;
+    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+    cb(canvas.toDataURL('image/jpeg', 0.82));
+  };
+  img.src = dataURL;
+}
+
+/* ═══════════════════════════════════════════════════════
+   AVAILABILITY HELPERS
+═══════════════════════════════════════════════════════ */
+function parseDate(str) {
+  var p = str.split('-').map(Number);
+  return new Date(p[0], p[1]-1, p[2]);
+}
+function toDay(d)  { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+function fmtISO(d) {
+  return d.getFullYear() + '-' +
+    String(d.getMonth()+1).padStart(2,'0') + '-' +
+    String(d.getDate()).padStart(2,'0');
+}
+function fmtDisp(d) {
+  return d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+}
+function dayPlusOne(d) { var n = new Date(d); n.setDate(n.getDate()+1); return n; }
+function dayMinusOne(d){ var n = new Date(d); n.setDate(n.getDate()-1); return n; }
+
+function getStatus(date) {
+  var day   = toDay(date);
+  var today = toDay(new Date());
+  if (day < today) return 'past';
+  var inSzn = seasons.some(function(s) {
+    return day >= parseDate(s.start) && day <= parseDate(s.end);
+  });
+  if (!inSzn) return 'offseason';
+  var isBkd = bookedRanges.some(function(b) {
+    return day >= parseDate(b.start) && day <= parseDate(b.end);
+  });
+  return isBkd ? 'booked' : 'available';
+}
+
+/* ═══════════════════════════════════════════════════════
+   CALENDAR
+═══════════════════════════════════════════════════════ */
+var MN = ['January','February','March','April','May','June',
+          'July','August','September','October','November','December'];
+var DW = ['Mo','Tu','We','Th','Fr','Sa','Su'];
+
+function initCalendar() {
+  var now  = new Date();
+  calYear  = now.getFullYear();
+  calMonth = now.getMonth();
+  renderCalendar();
+  document.getElementById('cal-prev').addEventListener('click', function() {
+    calMonth--; if (calMonth < 0)  { calMonth = 11; calYear--; }
+    renderCalendar();
+  });
+  document.getElementById('cal-next').addEventListener('click', function() {
+    calMonth++; if (calMonth > 11) { calMonth = 0;  calYear++; }
+    renderCalendar();
+  });
+  document.getElementById('sel-clear').addEventListener('click', clearSel);
+}
+
+function renderCalendar() {
+  var y1 = calYear, m1 = calMonth;
+  var y2 = calYear, m2 = calMonth + 1;
+  if (m2 > 11) { m2 = 0; y2++; }
+
+  var title = (y1 === y2)
+    ? MN[m1] + ' \u2013 ' + MN[m2] + ' ' + y1
+    : MN[m1] + ' ' + y1 + ' \u2013 ' + MN[m2] + ' ' + y2;
+  document.getElementById('cal-title').textContent = title;
+
+  var wrap = document.getElementById('cal-months');
+  wrap.innerHTML = '';
+  wrap.appendChild(buildMonth(y1, m1));
+  wrap.appendChild(buildMonth(y2, m2));
+
+  updateSelDisplay();
+  updateActionBtns();
+}
+
+function buildMonth(year, month) {
+  var wrap = document.createElement('div');
+  wrap.className = 'cal-month';
+
+  var nameEl = document.createElement('div');
+  nameEl.className = 'cal-month-name';
+  nameEl.textContent = MN[month] + ' ' + year;
+  wrap.appendChild(nameEl);
+
+  var grid = document.createElement('div');
+  grid.className = 'cal-grid';
+
+  DW.forEach(function(d) {
+    var h = document.createElement('div'); h.className = 'cal-dow'; h.textContent = d; grid.appendChild(h);
+  });
+
+  var firstDow = new Date(year, month, 1).getDay();
+  var offset   = (firstDow === 0) ? 6 : firstDow - 1;
+  for (var i = 0; i < offset; i++) {
+    var emp = document.createElement('div'); emp.className = 'cal-day empty'; grid.appendChild(emp);
+  }
+
+  var daysInMonth = new Date(year, month+1, 0).getDate();
+  for (var d = 1; d <= daysInMonth; d++) {
+    var date   = new Date(year, month, d);
+    var dayObj = toDay(date);
+    var status = getStatus(date);
+
+    var cell = document.createElement('div');
+    cell.className = 'cal-day ' + status;
+    cell.textContent = d;
+    cell.dataset.date = fmtISO(date);
+
+    if (selStart) {
+      var lo = selEnd ? (selStart <= selEnd ? selStart : selEnd) : selStart;
+      var hi = selEnd ? (selStart <= selEnd ? selEnd   : selStart) : selStart;
+      var ts = dayObj.getTime();
+      if (ts === lo.getTime() || ts === hi.getTime()) { cell.classList.add('sel-edge'); }
+      else if (selEnd && dayObj > lo && dayObj < hi)  { cell.classList.add('sel-mid'); }
+    }
+
+    if (status !== 'past') {
+      cell.addEventListener('click', (function(dt) {
+        return function() { handleClick(toDay(dt)); };
+      }(date)));
+    }
+    grid.appendChild(cell);
+  }
+  wrap.appendChild(grid);
+  return wrap;
+}
+
+function handleClick(date) {
+  if (!selStart) { selStart = date; selEnd = null; }
+  else if (!selEnd) {
+    if (date.getTime() === selStart.getTime()) { selStart = null; }
+    else { selEnd = date; if (selEnd < selStart) { var tmp = selStart; selStart = selEnd; selEnd = tmp; } }
+  } else { selStart = date; selEnd = null; }
+  renderCalendar();
+}
+
+function clearSel() { selStart = null; selEnd = null; renderCalendar(); }
+
+function updateSelDisplay() {
+  var el = document.getElementById('sel-display');
+  if (!selStart)    el.textContent = t('sel.start');
+  else if (!selEnd) el.textContent = fmtDisp(selStart) + '  ' + t('sel.picking');
+  else              el.textContent = fmtDisp(selStart) + '  \u2192  ' + fmtDisp(selEnd);
+}
+
+function updateActionBtns() {
+  var has = !!(selStart && selEnd);
+  ['btn-add-season','btn-add-booked','btn-offseason','btn-rm-booked'].forEach(function(id) {
+    document.getElementById(id).disabled = !has;
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════════════════ */
+function renderSidebar() { renderSeasonsList(); renderBookedList(); }
+
+function renderSeasonsList() {
+  var list = document.getElementById('seasons-list');
+  list.innerHTML = '';
+  if (!seasons.length) { list.innerHTML = '<div class="range-empty">' + t('avail.seasons.empty') + '</div>'; return; }
+  seasons.forEach(function(s, i) {
+    var row = document.createElement('div');
+    row.className = 'range-row';
+    row.innerHTML = '<span class="range-dates">' +
+      fmtDisp(parseDate(s.start)) + ' \u2013 ' + fmtDisp(parseDate(s.end)) +
+      '</span><button class="range-del" data-i="' + i + '">\u2715</button>';
+    row.querySelector('.range-del').addEventListener('click', function() {
+      seasons.splice(+this.dataset.i, 1);
+      saveSeasons(); renderSidebar(); renderCalendar();
+      showToast(t('toast.season.removed'));
+    });
+    list.appendChild(row);
+  });
+}
+
+function renderBookedList() {
+  var list = document.getElementById('booked-list');
+  list.innerHTML = '';
+  if (!bookedRanges.length) { list.innerHTML = '<div class="range-empty">' + t('avail.booked.empty') + '</div>'; return; }
+  bookedRanges.forEach(function(b, i) {
+    var row = document.createElement('div');
+    row.className = 'range-row';
+    row.innerHTML = '<span class="range-dates">' +
+      fmtDisp(parseDate(b.start)) + ' \u2013 ' + fmtDisp(parseDate(b.end)) +
+      '</span><button class="range-del" data-i="' + i + '">\u2715</button>';
+    row.querySelector('.range-del').addEventListener('click', function() {
+      bookedRanges.splice(+this.dataset.i, 1);
+      saveBooked(); renderSidebar(); renderCalendar();
+      showToast(t('toast.booked.removed'));
+    });
+    list.appendChild(row);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   AVAILABILITY ACTIONS
+═══════════════════════════════════════════════════════ */
+document.getElementById('btn-add-season').addEventListener('click', function() {
+  if (!selStart || !selEnd) return;
+  seasons.push({ start: fmtISO(selStart), end: fmtISO(selEnd) });
+  saveSeasons(); renderSidebar(); clearSel();
+  showToast(t('toast.season.added'));
+});
+
+document.getElementById('btn-add-booked').addEventListener('click', function() {
+  if (!selStart || !selEnd) return;
+  bookedRanges.push({ start: fmtISO(selStart), end: fmtISO(selEnd) });
+  saveBooked(); renderSidebar(); clearSel();
+  showToast(t('toast.booked.added'));
+});
+
+document.getElementById('btn-offseason').addEventListener('click', function() {
+  if (!selStart || !selEnd) return;
+  var lo = selStart, hi = selEnd;
+
+  // Split or trim any season windows that overlap the selection
+  var newSeasons = [];
+  seasons.forEach(function(s) {
+    var ss = parseDate(s.start), se = parseDate(s.end);
+    if (se < lo || ss > hi) {
+      newSeasons.push(s);   // no overlap — keep
+      return;
+    }
+    // Left remainder
+    if (ss < lo) {
+      var leftEnd = dayMinusOne(lo);
+      if (leftEnd >= ss) newSeasons.push({ start: fmtISO(ss), end: fmtISO(leftEnd) });
+    }
+    // Right remainder
+    if (se > hi) {
+      var rightStart = dayPlusOne(hi);
+      if (rightStart <= se) newSeasons.push({ start: fmtISO(rightStart), end: fmtISO(se) });
+    }
+    // The portion inside [lo, hi] is removed
+  });
+  seasons = newSeasons;
+
+  // Also remove any booked ranges that fall within the now-off-season window
+  bookedRanges = bookedRanges.filter(function(b) {
+    return !(parseDate(b.start) <= hi && parseDate(b.end) >= lo);
+  });
+
+  saveSeasons(); saveBooked(); renderSidebar(); clearSel();
+  showToast(t('toast.offseason'));
+});
+
+document.getElementById('btn-rm-booked').addEventListener('click', function() {
+  if (!selStart || !selEnd) return;
+  var before = bookedRanges.length;
+  bookedRanges = bookedRanges.filter(function(b) {
+    return !(parseDate(b.start) <= selEnd && parseDate(b.end) >= selStart);
+  });
+  saveBooked(); renderSidebar(); clearSel();
+  var n = before - bookedRanges.length;
+  showToast(n > 0 ? n + t('toast.rmbooked') : t('toast.rmbooked.none'));
+});
+
+document.getElementById('btn-season-add').addEventListener('click', function() {
+  var s = document.getElementById('season-start').value;
+  var e = document.getElementById('season-end').value;
+  if (!s || !e) { showToast(t('toast.fill')); return; }
+  if (s > e)    { showToast(t('toast.order')); return; }
+  seasons.push({ start: s, end: e });
+  saveSeasons(); renderSidebar(); renderCalendar();
+  document.getElementById('season-start').value = '';
+  document.getElementById('season-end').value   = '';
+  showToast(t('toast.season.added'));
+});
+
+document.getElementById('btn-booked-add').addEventListener('click', function() {
+  var s = document.getElementById('booked-start').value;
+  var e = document.getElementById('booked-end').value;
+  if (!s || !e) { showToast(t('toast.fill')); return; }
+  if (s > e)    { showToast(t('toast.order')); return; }
+  bookedRanges.push({ start: s, end: e });
+  saveBooked(); renderSidebar(); renderCalendar();
+  document.getElementById('booked-start').value = '';
+  document.getElementById('booked-end').value   = '';
+  showToast(t('toast.booked.added'));
+});
+
+document.getElementById('btn-reset').addEventListener('click', function() {
+  if (!confirm(t('confirm.reset'))) return;
+  localStorage.removeItem('eva-admin-seasons');
+  localStorage.removeItem('eva-admin-booked');
+  seasons = clone(DEFAULT_SEASONS); bookedRanges = clone(DEFAULT_BOOKED);
+  clearSel(); renderSidebar();
+  showToast(t('toast.reset'));
+});
+
+/* ═══════════════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════════════ */
+initLang();
+checkAuth();
+</script>
+</body>
+</html>

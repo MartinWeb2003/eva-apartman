@@ -4,8 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eva Apartman – Your Coastal Retreat</title>
-  <meta name="description" content="Discover Eva Apartman – a charming holiday apartment on the Adriatic coast. Book your perfect getaway today." />
+  <meta name="description" content="Eva Apartman – holiday apartment from €75/night in Kućište, Pelješac. Wi-Fi, AC, fully-equipped kitchen, private terrace. Steps from the Adriatic. Book direct." />
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Eva Apartman",
+    "description": "Holiday apartment in Kućište, Pelješac peninsula, Croatia. Steps from the Adriatic sea with private terrace, AC, Wi-Fi and full kitchen.",
+    "url": "https://www.evaapartman.com/",
+    "image": "https://www.evaapartman.com/images/indoor/indoor1.jpeg",
+    "priceRange": "€75–€120",
+    "currenciesAccepted": "EUR",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kućište",
+      "addressLocality": "Orebić",
+      "addressRegion": "Dubrovnik-Neretva County",
+      "postalCode": "20250",
+      "addressCountry": "HR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 42.977,
+      "longitude": 17.115
+    },
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Wi-Fi", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Private terrace", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Free parking", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Fully equipped kitchen", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Dishwasher", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Washing machine", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "TV", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Netflix / HBO / IPTV", "value": true}
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "75",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "75",
+        "priceCurrency": "EUR",
+        "unitText": "night"
+      }
+    },
+    "numberOfRooms": 2,
+    "occupancy": {
+      "@type": "QuantitativeValue",
+      "minValue": 1,
+      "maxValue": 4
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -27,10 +82,19 @@
         <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
         <li><a href="location.html" data-i18n="nav.location">Location</a></li>
         <li><a href="contact.html" class="navbar-cta" data-i18n="nav.book">Book Now</a></li>
-        <li>
-          <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
-            <span class="lt-en lt-active">EN</span><span class="lt-sep">|</span><span class="lt-hr">HR</span>
+        <li class="lang-menu-wrap">
+          <button class="lang-menu-btn" id="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </button>
+          <ul class="lang-dropdown" role="listbox" aria-label="Language">
+            <li><button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button></li>
+            <li><button class="lang-option" data-lang="hr"><span class="lang-flag">🇭🇷</span> Hrvatski</button></li>
+            <li><button class="lang-option" data-lang="pl"><span class="lang-flag">🇵🇱</span> Polski</button></li>
+            <li><button class="lang-option" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch</button></li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -49,6 +113,12 @@
       <p class="hero-subtitle" data-i18n="index.hero.subtitle">
         Experience the ultimate family holiday on the Adriatic Coast. Nestled between the charm of Orebić and the breeze of Viganj, our apartments offer a serene coastal escape in the heart of Kućište.
       </p>
+      <div class="hero-price-badge" aria-label="Price from €75 per night">
+        <span class="hero-price-from" data-i18n="index.hero.price.from">from</span>
+        <span class="hero-price-value">€75</span>
+        <span class="hero-price-unit" data-i18n="index.hero.price.unit">/ night</span>
+      </div>
+
       <div class="hero-actions">
         <a href="contact.html" class="btn btn-accent" data-i18n="index.hero.btn.book">Book Your Stay</a>
         <a href="#about" class="btn btn-secondary" data-i18n="index.hero.btn.explore">Explore the Region</a>
@@ -170,6 +240,328 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       OPREMLJENOST / AMENITIES
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" id="amenities" aria-labelledby="amenities-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="amenities-heading" data-i18n="index.amenities.heading">Everything for Your Pelješac Family Holiday</h2>
+        <div class="divider"></div>
+        <p data-i18n="index.amenities.subtext">After a day of windsurfing in Viganj or exploring the Pelješac wine roads, return to a home with modern amenities, air conditioning, and a sea-view terrace.</p>
+      </div>
+
+      <div class="amenities-wrapper" id="amenities-wrapper">
+        <ul class="amenities-grid" id="amenities-grid" role="list">
+
+          <!-- Wi-Fi -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="wifi">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                <circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.wifi">Wi-Fi Internet</span>
+          </li>
+
+          <!-- TV ×3 -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="tv">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M8 7V5"/><path d="M16 7V5"/><path d="M12 7V3"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.tv">TV (×3)</span>
+          </li>
+
+          <!-- Satellite TV -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="satellite">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M16.24 7.76a6 6 0 0 1 0 8.49"/>
+                <path d="M7.76 16.24a6 6 0 0 1 0-8.49"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                <path d="M4.93 19.07a10 10 0 0 1 0-14.14"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.satellite">Satellite TV</span>
+          </li>
+
+          <!-- Air Conditioning -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="ac">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="8" rx="2"/>
+                <path d="M7 15l.01 0"/><path d="M12 15l.01 0"/><path d="M17 15l.01 0"/>
+                <path d="M7 19l.01 0"/><path d="M12 19l.01 0"/><path d="M17 19l.01 0"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.ac">Air Conditioning</span>
+          </li>
+
+          <!-- Heating -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="heating">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.heating">Heating</span>
+          </li>
+
+          <!-- Microwave -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="microwave">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                <rect x="6" y="9" width="9" height="6" rx="1"/>
+                <path d="M18 9h.01"/><path d="M18 12h.01"/><path d="M18 15h.01"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.microwave">Microwave</span>
+          </li>
+
+          <!-- Fridge -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="fridge">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2"/>
+                <path d="M5 10h14"/><path d="M10 6v2"/><path d="M10 14v4"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.fridge">Fridge</span>
+          </li>
+
+          <!-- Kettle -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="kettle">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+                <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
+                <line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.kettle">Kettle</span>
+          </li>
+
+          <!-- Dishwasher -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="dishwasher">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="2"/>
+                <path d="M7 2v20"/><path d="M11 8h6"/><path d="M11 12h6"/><path d="M11 16h6"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.dishwasher">Dishwasher</span>
+          </li>
+
+          <!-- Netflix / HBO / IPTV -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="streaming">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.streaming">Netflix / HBO / IPTV</span>
+          </li>
+
+          <!-- Coffee Machine -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="coffee">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                <line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.coffee">Coffee Machine</span>
+          </li>
+
+          <!-- Washing Machine -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="washer">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="2"/>
+                <circle cx="12" cy="13" r="5"/>
+                <path d="M6 6h.01"/><path d="M9 6h.01"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.washer">Washing Machine</span>
+          </li>
+
+          <!-- Safe -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="safe">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 9V7"/><path d="M12 17v-2"/>
+                <path d="M15 12h2"/><path d="M7 12h2"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.safe">Safe</span>
+          </li>
+
+          <!-- Baby Cot -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="babycot">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 9V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/>
+                <path d="M2 9h20"/>
+                <path d="M2 9v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9"/>
+                <path d="M6 19v2"/><path d="M18 19v2"/>
+                <path d="M7 9v4"/><path d="M12 9v4"/><path d="M17 9v4"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.babycot">Baby Cot</span>
+          </li>
+
+          <!-- Phone -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="phone">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l1.06-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.phone">Phone</span>
+          </li>
+
+          <!-- Game Console -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="console">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/>
+                <line x1="15" y1="11" x2="15.01" y2="11"/><line x1="18" y1="13" x2="18.01" y2="13"/>
+                <rect x="2" y="6" width="20" height="12" rx="4"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.console">Game Console</span>
+          </li>
+
+          <!-- Radio -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="radio">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16.5 8.5l-9-5"/>
+                <rect x="2" y="9" width="20" height="12" rx="2"/>
+                <circle cx="8" cy="15" r="3"/>
+                <path d="M16 12h2"/><path d="M16 16h2"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.radio">Radio</span>
+          </li>
+
+          <!-- Computer -->
+          <li class="amenity-item animate-on-scroll" data-amenity-id="computer">
+            <span class="amenity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8"/><path d="M12 17v4"/>
+              </svg>
+            </span>
+            <span class="amenity-name" data-i18n="index.am.computer">Computer</span>
+          </li>
+
+        </ul>
+        <!-- Fade overlay -->
+        <div class="amenities-fade" id="amenities-fade" aria-hidden="true"></div>
+      </div>
+
+      <!-- Expand/collapse button -->
+      <div class="amenities-expand-wrap">
+        <button class="amenities-expand-btn" id="amenities-expand-btn" aria-expanded="false">
+          <span class="am-label-more"><span data-i18n="index.am.showmore">Show all 18 amenities</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+          <span class="am-label-less" style="display:none"><span data-i18n="index.am.showless">Show less</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <script>
+    (function () {
+      var LS  = 'eva-amenities';
+      var DEF = ['wifi','tv','satellite','ac','heating','microwave','fridge','kettle','dishwasher'];
+      var avail;
+      try { var _v = JSON.parse(localStorage.getItem(LS)); avail = Array.isArray(_v) ? _v : DEF.slice(); }
+      catch (e) { avail = DEF.slice(); }
+
+      var grid  = document.getElementById('amenities-grid');
+      var items = Array.prototype.slice.call(grid.querySelectorAll('[data-amenity-id]'));
+      var yes   = items.filter(function (i) { return avail.indexOf(i.getAttribute('data-amenity-id')) !== -1; });
+      var no    = items.filter(function (i) { return avail.indexOf(i.getAttribute('data-amenity-id')) === -1; });
+
+      /* Sort: available first */
+      yes.forEach(function (i) { grid.appendChild(i); });
+      no.forEach(function (i) {
+        i.classList.add('amenity-unavailable');
+        var lbl = document.createElement('span');
+        lbl.className = 'amenity-unavail-label';
+        lbl.setAttribute('data-i18n', 'index.am.unavailable');
+        lbl.textContent = 'Currently unavailable';
+        i.appendChild(lbl);
+        grid.appendChild(i);
+      });
+
+      /* Collapse setup */
+      var wrapper = document.getElementById('amenities-wrapper');
+      var fade    = document.getElementById('amenities-fade');
+      var btn     = document.getElementById('amenities-expand-btn');
+      var more    = btn.querySelector('.am-label-more');
+      var less    = btn.querySelector('.am-label-less');
+      var exp     = false;
+
+      function rowH() {
+        var f = grid.children[0];
+        if (!f) return 220;
+        var gap = parseInt(window.getComputedStyle(grid).rowGap || '20', 10) || 20;
+        return f.offsetHeight + gap;
+      }
+
+      function applyCollapsed() {
+        wrapper.style.maxHeight = rowH() + 'px';
+      }
+
+      /* Initial state */
+      wrapper.style.overflow   = 'hidden';
+      wrapper.style.transition = 'max-height 0.45s ease';
+      applyCollapsed();
+
+      window.addEventListener('resize', function () { if (!exp) applyCollapsed(); });
+
+      btn.addEventListener('click', function () {
+        exp = !exp;
+        btn.setAttribute('aria-expanded', exp ? 'true' : 'false');
+        if (exp) {
+          wrapper.style.maxHeight = grid.scrollHeight + 'px';
+          setTimeout(function () { if (exp) wrapper.style.maxHeight = 'none'; }, 470);
+          fade.style.opacity    = '0';
+          fade.style.pointerEvents = 'none';
+          more.style.display = 'none';
+          less.style.display = '';
+        } else {
+          wrapper.style.maxHeight = grid.scrollHeight + 'px';
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () { applyCollapsed(); });
+          });
+          fade.style.opacity    = '1';
+          fade.style.pointerEvents = '';
+          more.style.display = '';
+          less.style.display = 'none';
+        }
+      });
+    })();
+    </script>
   </section>
 
   <!-- ══════════════════════════════════════════════════════

@@ -27,10 +27,19 @@
         <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
         <li><a href="location.html" data-i18n="nav.location">Location</a></li>
         <li><a href="contact.html" class="navbar-cta" data-i18n="nav.book">Book Now</a></li>
-        <li>
-          <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
-            <span class="lt-en lt-active">EN</span><span class="lt-sep">|</span><span class="lt-hr">HR</span>
+        <li class="lang-menu-wrap">
+          <button class="lang-menu-btn" id="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </button>
+          <ul class="lang-dropdown" role="listbox" aria-label="Language">
+            <li><button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button></li>
+            <li><button class="lang-option" data-lang="hr"><span class="lang-flag">🇭🇷</span> Hrvatski</button></li>
+            <li><button class="lang-option" data-lang="pl"><span class="lang-flag">🇵🇱</span> Polski</button></li>
+            <li><button class="lang-option" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch</button></li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -63,12 +72,12 @@
           <h2 id="map-heading" style="margin-bottom:1.5rem;" data-i18n="location.map.h2">Find Us on the Map</h2>
           <div class="map-wrapper">
             <iframe
-              src="https://maps.google.com/maps?q=Ku%C4%87i%C5%A1te%2C+Pelješac%2C+Croatia&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Apartman+Eva,+Perna+4,+Orebi%C4%87,+Croatia&t=&z=17&ie=UTF8&iwloc=&output=embed"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="Eva Apartman location on Google Maps — Kućište, Pelješac"
-              aria-label="Google Maps showing Kućište, Pelješac">
+              title="Eva Apartman location on Google Maps — Perna 4, Orebić"
+              aria-label="Google Maps showing Eva Apartman, Perna 4, Orebić">
             </iframe>
           </div>
           <p style="margin-top:0.85rem;font-size:0.9rem;color:var(--color-text-light);display:flex;align-items:center;gap:0.5rem;">

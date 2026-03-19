@@ -27,10 +27,19 @@
         <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
         <li><a href="location.html" data-i18n="nav.location">Location</a></li>
         <li><a href="contact.html" class="navbar-cta" data-i18n="nav.book">Book Now</a></li>
-        <li>
-          <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
-            <span class="lt-en lt-active">EN</span><span class="lt-sep">|</span><span class="lt-hr">HR</span>
+        <li class="lang-menu-wrap">
+          <button class="lang-menu-btn" id="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+            <span class="lang-current">EN</span>
+            <svg class="lang-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </button>
+          <ul class="lang-dropdown" role="listbox" aria-label="Language">
+            <li><button class="lang-option" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button></li>
+            <li><button class="lang-option" data-lang="hr"><span class="lang-flag">🇭🇷</span> Hrvatski</button></li>
+            <li><button class="lang-option" data-lang="pl"><span class="lang-flag">🇵🇱</span> Polski</button></li>
+            <li><button class="lang-option" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch</button></li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -189,6 +198,26 @@
                 aria-describedby="email-error"
               />
               <div class="form-error-msg" id="email-error" role="alert"></div>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+              <label for="phone">
+                <span data-i18n="contact.phone.fld">Phone / WhatsApp</span> <span class="required" aria-label="required">*</span>
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="form-control"
+                placeholder="e.g. +385 99 123 4567"
+                data-i18n-placeholder="contact.phone.ph"
+                autocomplete="tel"
+                required
+                aria-required="true"
+                aria-describedby="phone-error"
+              />
+              <div class="form-error-msg" id="phone-error" role="alert"></div>
             </div>
 
             <!-- Number of guests -->
@@ -391,9 +420,6 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-
-  <!-- EmailJS SDK (loaded from CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!-- Site scripts -->
   <script src="js/availability.js"></script>

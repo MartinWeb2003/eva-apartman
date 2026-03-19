@@ -15,15 +15,17 @@
 
 const Availability = (() => {
 
-  // ─── EDIT BELOW ──────────────────────────────────────────────────────────────
+  // ─── DEFAULT SCHEDULE ────────────────────────────────────────────────────────
+  // These values are used when no admin overrides are stored in localStorage.
+  // To update via the admin panel, visit /tripuneva1
 
-  const seasons = [
+  const _defaultSeasons = [
     { start: '2026-05-01', end: '2026-10-31' },
-    // Add more seasons for future years:
+    // Add more years here if needed:
     // { start: '2027-05-01', end: '2027-10-31' },
   ];
 
-  const booked = [
+  const _defaultBooked = [
     { start: '2026-06-20', end: '2026-06-28' },
     { start: '2026-07-10', end: '2026-07-25' },
     { start: '2026-08-01', end: '2026-08-14' },
@@ -31,7 +33,21 @@ const Availability = (() => {
     { start: '2026-09-05', end: '2026-09-12' },
   ];
 
-  // ─── DO NOT EDIT BELOW THIS LINE ─────────────────────────────────────────────
+  // ─── LOAD FROM ADMIN OVERRIDES (localStorage) ────────────────────────────────
+  // If an admin has saved custom ranges via /tripuneva1, use those instead.
+
+  function loadFromStorage(key, fallback) {
+    try {
+      const v = localStorage.getItem(key);
+      if (v) return JSON.parse(v);
+    } catch (e) { /* ignore */ }
+    return fallback;
+  }
+
+  const seasons = loadFromStorage('eva-admin-seasons', _defaultSeasons);
+  const booked  = loadFromStorage('eva-admin-booked',  _defaultBooked);
+
+  // ─── INTERNALS ───────────────────────────────────────────────────────────────
 
   /**
    * Parse a "YYYY-MM-DD" string into a Date object at local midnight.
