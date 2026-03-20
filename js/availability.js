@@ -1,7 +1,9 @@
 /**
  * Eva Apartman - Availability Configuration
  *
- * Edit this file to update the apartment's availability:
+ * Edit the default values below to set the apartment's seasons and booked dates.
+ * After initial setup, changes are managed through the admin panel (/tripuneva1)
+ * and stored persistently on JSONBin.io so all visitors see live data.
  *
  *  - seasons:  Date ranges when the apartment IS available for rent.
  *              Any day outside these ranges is shown as GREY (off-season).
@@ -16,13 +18,20 @@
  *              When two bookings share the same boundary date that day is fully red.
  *
  * Date format: "YYYY-MM-DD"  (e.g. "2026-06-15")
+ *
+ * ── JSONBin.io setup ──────────────────────────────────────────────────────────
+ * JSONBIN_BIN_ID: paste your JSONBin Bin ID here after creating an account.
+ * Leave empty ('') to run from localStorage / hardcoded defaults only.
+ * The admin panel (/tripuneva1) → Cloud Sync handles all writes.
  */
 
 const Availability = (() => {
 
+  // ── Paste your JSONBin Bin ID here after setup ───────────────────────────
+  const JSONBIN_BIN_ID = '69bd6aa7c3097a1dd542e037';
+
   // ─── DEFAULT SCHEDULE ────────────────────────────────────────────────────────
-  // These values are used when no admin overrides are stored in localStorage.
-  // To update via the admin panel, visit /tripuneva1
+  // These values are used when JSONBin is not configured or unreachable.
 
   const _defaultSeasons = [
     { start: '2026-06-01', end: '2026-10-01' },
@@ -38,19 +47,6 @@ const Availability = (() => {
     { start: '2026-09-09', end: '2026-09-21' },
   ];
 
-  // ─── LOAD FROM ADMIN OVERRIDES (localStorage) ────────────────────────────────
-
-  function loadFromStorage(key, fallback) {
-    try {
-      const v = localStorage.getItem(key);
-      if (v) return JSON.parse(v);
-    } catch (e) { /* ignore */ }
-    return fallback;
-  }
-
-  const seasons = loadFromStorage('eva-admin-seasons', _defaultSeasons);
-  const booked  = loadFromStorage('eva-admin-booked',  _defaultBooked);
-
   // ─── INTERNALS ───────────────────────────────────────────────────────────────
 
   function parseDate(str) {
@@ -62,22 +58,67 @@ const Availability = (() => {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate());
   }
 
-  const _seasons = seasons.map(s => ({
-    start: parseDate(s.start),
-    end:   parseDate(s.end),
-  }));
+  function loadFromStorage(key, fallback) {
+    try {
+      const v = localStorage.getItem(key);
+      if (v) return JSON.parse(v);
+    } catch(e) {}
+    return fallback;
+  }
 
-  const _booked = booked.map(b => ({
-    start: parseDate(b.start),
-    end:   parseDate(b.end),
-  }));
+  // Mutable internal arrays — initialised from localStorage/defaults immediately,
+  // then updated once the async JSONBin fetch completes.
+  let _seasons = [];
+  let _booked  = [];
+
+  function applyData(seasonsArr, bookedArr) {
+    _seasons = seasonsArr.map(s => ({ start: parseDate(s.start), end: parseDate(s.end) }));
+    _booked  = bookedArr.map(b  => ({ start: parseDate(b.start), end: parseDate(b.end) }));
+  }
+
+  // Synchronous seed so the calendar can paint before the network call returns.
+  applyData(
+    loadFromStorage('eva-admin-seasons', _defaultSeasons),
+    loadFromStorage('eva-admin-booked',  _defaultBooked)
+  );
+
+  // ─── READY PROMISE ───────────────────────────────────────────────────────────
+  // Resolves once live data has been fetched (or we've given up and are using cache).
+  let _resolveReady;
+  const ready = new Promise(resolve => { _resolveReady = resolve; });
+
+  // Effective Bin ID: constant (code) takes priority, admin localStorage as fallback.
+  const _binId = JSONBIN_BIN_ID || localStorage.getItem('eva-jsonbin-id') || '';
+
+  (async () => {
+    if (_binId) {
+      try {
+        const res = await fetch(
+          `https://api.jsonbin.io/v3/b/${_binId}/latest`,
+          { headers: { 'X-Bin-Meta': 'false' } }
+        );
+        if (res.ok) {
+          const record = await res.json();
+          const s = Array.isArray(record.seasons) ? record.seasons : _defaultSeasons;
+          const b = Array.isArray(record.booked)  ? record.booked  : _defaultBooked;
+          applyData(s, b);
+          // Keep a local cache so the next page load is instant
+          localStorage.setItem('eva-admin-seasons', JSON.stringify(s));
+          localStorage.setItem('eva-admin-booked',  JSON.stringify(b));
+        }
+      } catch(e) { /* network error — fall back to the cached data already applied */ }
+    }
+    _resolveReady();
+  })();
+
+  // ─── STATUS LOGIC ────────────────────────────────────────────────────────────
 
   /**
    * Returns the status of a given date:
    *   'past'       – before today
    *   'offseason'  – not within any season window
    *   'booked'     – fully occupied interior day
-   *   'transition' – checkout AND checkin on same day (back-to-back bookings) — not selectable
+   *   'transition' – checkout AND checkin on same day (back-to-back) — not selectable
    *   'checkout'   – last day of a booking; left half red, right half green — selectable as check-in
    *   'checkin'    – first day of a booking; left half green, right half red — selectable as check-out
    *   'available'  – in season and free
@@ -155,5 +196,5 @@ const Availability = (() => {
     return null;
   }
 
-  return { getStatus, isRangeValid, firstInvalidInRange, parseDate, isStartable, isEndable };
+  return { ready, getStatus, isRangeValid, firstInvalidInRange, parseDate, isStartable, isEndable };
 })();

@@ -330,8 +330,9 @@ const Calendar = (() => {
   return { init, reset, getStartDate, getEndDate, _getWeekdayCells, _renderDays: renderDays };
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   if (document.getElementById('calendar-container')) {
+    await Availability.ready;
     Calendar.init();
   }
 });

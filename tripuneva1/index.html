@@ -371,6 +371,12 @@
     .act-btn.ghost-red { background: transparent; border: 1px solid var(--red); color: var(--red); }
     .act-btn.ghost-red:not(:disabled):hover { background: var(--red); color: #fff; }
 
+    /* Inline code in hint text */
+    .sb-body code {
+      font-family: 'Courier New', monospace; font-size: .7rem;
+      background: var(--grey-lt); padding: .05rem .3rem; border-radius: 3px; color: var(--charcoal);
+    }
+
     /* Toast */
     .toast {
       position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9000;
@@ -568,6 +574,25 @@
           </div>
         </div>
 
+        <!-- Cloud Sync card -->
+        <div class="sb-card" id="card-sync">
+          <div class="sb-head" style="background:#1a6e8f">
+            <span data-i18n="sync.title">☁ Cloud Sync</span>
+            <span class="sb-head-note" id="sync-status-badge">not configured</span>
+          </div>
+          <div class="sb-body">
+            <p style="font-size:.76rem;color:var(--muted);margin-bottom:.6rem" data-i18n="sync.hint">Connect to JSONBin.io so availability changes are visible on all devices instantly.</p>
+            <span class="sb-label" data-i18n="sync.binid">Bin ID</span>
+            <input type="text" class="sb-input" id="sync-bin-id" placeholder="6830d4ad19ca34f8b7c1234a" />
+            <span class="sb-label" data-i18n="sync.key">Master Key</span>
+            <input type="password" class="sb-input" id="sync-master-key" placeholder="$2b$10$…" />
+            <button class="act-btn" style="background:#1a6e8f;color:#fff" id="btn-sync-save" data-i18n="sync.save">Save &amp; Test</button>
+            <p style="font-size:.72rem;color:var(--muted);margin-top:.45rem" data-i18n="sync.guide">
+              <a href="https://jsonbin.io" target="_blank" rel="noopener" style="color:var(--teal)">Create a free JSONBin account</a>, create a public bin with <code>{"seasons":[],"booked":[]}</code>, then paste the Bin ID and Master Key above.
+            </p>
+          </div>
+        </div>
+
         <div class="sb-card">
           <div class="sb-head" style="background:#6b6060" data-i18n="avail.reset.title">Reset</div>
           <div class="sb-body">
@@ -625,7 +650,7 @@ var TRANSLATIONS = {
     'avail.btn.season': '\uFF0B Add as Season (Available)',
     'avail.btn.booked': '\uFF0B Mark as Booked',
     'avail.btn.offseason': '\u2212 Set as Off-Season',
-    'avail.btn.rmbooked': '\u2715 Remove Overlapping Booked',
+    'avail.btn.rmbooked': '\u2715 Mark as Free (Remove Booking)',
     'avail.seasons.title': 'Season Windows', 'avail.seasons.note': 'available periods',
     'avail.seasons.empty': 'No season windows defined.',
     'avail.booked.title': 'Booked Periods', 'avail.booked.note': 'taken dates',
@@ -660,12 +685,26 @@ var TRANSLATIONS = {
     /* confirms */
     'confirm.delete': 'Permanently delete this image from the gallery? This cannot be undone.',
     'confirm.reset': 'Reset all availability to defaults? This cannot be undone.',
+    /* cloud sync */
+    'sync.title': '☁ Cloud Sync',
+    'sync.status.off': 'not configured',
+    'sync.status.ok': 'synced ✓',
+    'sync.status.err': 'sync error',
+    'sync.hint': 'Connect to JSONBin.io so availability changes are visible on all devices instantly.',
+    'sync.binid': 'Bin ID',
+    'sync.key': 'Master Key',
+    'sync.save': 'Save & Test',
+    'sync.guide': 'Create a free JSONBin account, create a public bin with {"seasons":[],"booked":[]}, then paste the Bin ID and Master Key above.',
+    'toast.sync.saved': 'Cloud Sync configured ✓',
+    'toast.sync.ok': 'Synced to cloud ✓',
+    'toast.sync.err': 'Cloud sync failed — saved locally',
+    'toast.sync.nokey': 'Enter your Bin ID and Master Key first',
     /* amenities tab */
     'tab.amenities': 'Amenities',
     'am.hint': 'Toggle each amenity to mark it as available or unavailable. Changes are reflected immediately on the main page.',
     'am.available': 'Available',
     'am.unavailable': 'Unavailable',
-    'toast.am.enabled': 'Amenity marked as available \u2713',
+    'toast.am.enabled': 'Amenity marked as available ✓',
     'toast.am.disabled': 'Amenity marked as unavailable',
     /* amenity names */
     'am.wifi':'Wi-Fi Internet','am.tv':'TV (×3)','am.satellite':'Satellite TV',
@@ -699,7 +738,7 @@ var TRANSLATIONS = {
     'avail.btn.season': '\uFF0B Dodaj kao Sezonu (Dostupno)',
     'avail.btn.booked': '\uFF0B Označi kao Zauzeto',
     'avail.btn.offseason': '\u2212 Postavi kao Van Sezone',
-    'avail.btn.rmbooked': '\u2715 Ukloni Preklapajuće Rezervacije',
+    'avail.btn.rmbooked': '\u2715 Označi kao slobodno (Ukloni rezervaciju)',
     'avail.seasons.title': 'Sezonski Prozori', 'avail.seasons.note': 'dostupni periodi',
     'avail.seasons.empty': 'Nema definiranih sezonskih prozora.',
     'avail.booked.title': 'Rezervirani Periodi', 'avail.booked.note': 'zauzeti datumi',
@@ -734,6 +773,20 @@ var TRANSLATIONS = {
     /* confirms */
     'confirm.delete': 'Trajno brisanje ove slike iz galerije? Ova radnja se ne može poništiti.',
     'confirm.reset': 'Resetirati dostupnost na zadano? Ova radnja se ne može poništiti.',
+    /* cloud sync */
+    'sync.title': '☁ Cloud Sync',
+    'sync.status.off': 'nije konfigurirano',
+    'sync.status.ok': 'sinkronizirano ✓',
+    'sync.status.err': 'greška sinkronizacije',
+    'sync.hint': 'Povežite se s JSONBin.io kako bi promjene dostupnosti bile vidljive na svim uređajima.',
+    'sync.binid': 'Bin ID',
+    'sync.key': 'Master ključ',
+    'sync.save': 'Spremi i Testiraj',
+    'sync.guide': 'Stvorite besplatni JSONBin račun, stvorite javni bin s {"seasons":[],"booked":[]}, zatim zalijepite Bin ID i Master ključ gore.',
+    'toast.sync.saved': 'Cloud Sync konfiguriran ✓',
+    'toast.sync.ok': 'Sinkronizirano u oblak ✓',
+    'toast.sync.err': 'Sinkronizacija nije uspjela — spremljeno lokalno',
+    'toast.sync.nokey': 'Najprije unesite Bin ID i Master ključ',
     /* amenities tab */
     'tab.amenities': 'Opremljenost',
     'am.hint': 'Uključite ili isključite svaku pogodnost da biste je označili kao dostupnu ili nedostupnu. Promjene se odmah odražavaju na glavnoj stranici.',
@@ -815,13 +868,13 @@ var AMENITY_DEFS = [
   { id:'computer',  svgPath:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>' }
 ];
 
-var DEFAULT_SEASONS = [{ start: '2026-05-01', end: '2026-10-31' }];
+var DEFAULT_SEASONS = [{ start: '2026-06-01', end: '2026-10-01' }];
 var DEFAULT_BOOKED  = [
-  { start: '2026-06-20', end: '2026-06-28' },
-  { start: '2026-07-10', end: '2026-07-25' },
-  { start: '2026-08-01', end: '2026-08-14' },
-  { start: '2026-08-20', end: '2026-08-31' },
-  { start: '2026-09-05', end: '2026-09-12' }
+  { start: '2026-06-14', end: '2026-06-20' },
+  { start: '2026-07-26', end: '2026-08-15' },
+  { start: '2026-08-15', end: '2026-08-22' },
+  { start: '2026-08-22', end: '2026-09-04' },
+  { start: '2026-09-09', end: '2026-09-21' }
 ];
 
 /* ═══════════════════════════════════════════════════════
@@ -912,8 +965,16 @@ function loadState() {
 }
 
 function saveHidden()  { localStorage.setItem('eva-hidden-images',  JSON.stringify(hiddenImages)); }
-function saveSeasons() { localStorage.setItem('eva-admin-seasons',  JSON.stringify(seasons)); }
-function saveBooked()  { localStorage.setItem('eva-admin-booked',   JSON.stringify(bookedRanges)); }
+
+function saveSeasons() {
+  localStorage.setItem('eva-admin-seasons', JSON.stringify(seasons));
+  syncToJsonBin();
+}
+function saveBooked() {
+  localStorage.setItem('eva-admin-booked', JSON.stringify(bookedRanges));
+  syncToJsonBin();
+}
+
 function saveCustom() {
   try { localStorage.setItem('eva-custom-images', JSON.stringify(customImages)); }
   catch(e) {
@@ -922,6 +983,84 @@ function saveCustom() {
     showToast(t('toast.storage'));
     throw e;
   }
+}
+
+/* ═══════════════════════════════════════════════════════
+   CLOUD SYNC (JSONBin.io)
+═══════════════════════════════════════════════════════ */
+var _syncDebounce = null;
+
+function syncToJsonBin() {
+  // Debounce: batch rapid saves (e.g. multiple seasons added quickly)
+  clearTimeout(_syncDebounce);
+  _syncDebounce = setTimeout(function() { _doSync(); }, 300);
+}
+
+function _doSync() {
+  var binId  = localStorage.getItem('eva-jsonbin-id')  || '';
+  var apiKey = localStorage.getItem('eva-jsonbin-key') || '';
+  if (!binId || !apiKey) return;   // not configured — localStorage save is enough
+
+  var payload = JSON.stringify({ seasons: seasons, booked: bookedRanges });
+
+  fetch('https://api.jsonbin.io/v3/b/' + binId, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Master-Key': apiKey,
+      'X-Bin-Versioning': 'false'
+    },
+    body: payload
+  })
+  .then(function(res) {
+    if (res.ok) {
+      setSyncBadge('ok');
+      showToast(t('toast.sync.ok'));
+    } else {
+      setSyncBadge('err');
+      showToast(t('toast.sync.err'));
+    }
+  })
+  .catch(function() {
+    setSyncBadge('err');
+    showToast(t('toast.sync.err'));
+  });
+}
+
+function setSyncBadge(state) {
+  var badge = document.getElementById('sync-status-badge');
+  if (!badge) return;
+  if (state === 'ok') {
+    badge.textContent = t('sync.status.ok');
+    badge.style.color = '#27ae60';
+  } else if (state === 'err') {
+    badge.textContent = t('sync.status.err');
+    badge.style.color = '#e74c3c';
+  } else {
+    badge.textContent = t('sync.status.off');
+    badge.style.color = '';
+  }
+}
+
+function initSyncPanel() {
+  var binId  = localStorage.getItem('eva-jsonbin-id')  || '';
+  var apiKey = localStorage.getItem('eva-jsonbin-key') || '';
+  var binInput = document.getElementById('sync-bin-id');
+  var keyInput = document.getElementById('sync-master-key');
+  if (binInput) binInput.value = binId;
+  if (keyInput) keyInput.value = apiKey;
+  setSyncBadge(binId && apiKey ? 'ok' : 'off');
+
+  document.getElementById('btn-sync-save').addEventListener('click', function() {
+    var newBin = (binInput ? binInput.value.trim() : '');
+    var newKey = (keyInput ? keyInput.value.trim() : '');
+    if (!newBin || !newKey) { showToast(t('toast.sync.nokey')); return; }
+    localStorage.setItem('eva-jsonbin-id',  newBin);
+    localStorage.setItem('eva-jsonbin-key', newKey);
+    showToast(t('toast.sync.saved'));
+    // Immediately test by pushing current data
+    syncToJsonBin();
+  });
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -996,6 +1135,7 @@ function showDashboard() {
   renderAmenitiesPanel();
   initCalendar();
   renderSidebar();
+  initSyncPanel();
 }
 
 document.getElementById('login-btn').addEventListener('click', function() {
@@ -1383,10 +1523,13 @@ function updateSelDisplay() {
 }
 
 function updateActionBtns() {
-  var has = !!(selStart && selEnd);
-  ['btn-add-season','btn-add-booked','btn-offseason','btn-rm-booked'].forEach(function(id) {
+  var has       = !!(selStart && selEnd);
+  var hasSingle = !!selStart;
+  ['btn-add-season','btn-add-booked','btn-offseason'].forEach(function(id) {
     document.getElementById(id).disabled = !has;
   });
+  // "Remove booking" works with a single day click too
+  document.getElementById('btn-rm-booked').disabled = !hasSingle;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1485,10 +1628,12 @@ document.getElementById('btn-offseason').addEventListener('click', function() {
 });
 
 document.getElementById('btn-rm-booked').addEventListener('click', function() {
-  if (!selStart || !selEnd) return;
+  if (!selStart) return;
+  var lo = selStart;
+  var hi = selEnd || selStart;   // single-day click: lo === hi
   var before = bookedRanges.length;
   bookedRanges = bookedRanges.filter(function(b) {
-    return !(parseDate(b.start) <= selEnd && parseDate(b.end) >= selStart);
+    return !(parseDate(b.start) <= hi && parseDate(b.end) >= lo);
   });
   saveBooked(); renderSidebar(); clearSel();
   var n = before - bookedRanges.length;
