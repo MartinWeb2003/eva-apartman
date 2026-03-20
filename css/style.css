@@ -241,6 +241,38 @@ p { margin-bottom: 1rem; color: var(--color-text-light); }
 
 .navbar-brand:hover .navbar-logo { opacity: 0.88; }
 
+.navbar-brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.22rem;
+  margin-left: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.navbar-brand-name {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--color-white);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.navbar-brand-sub {
+  font-family: var(--font-body);
+  font-size: 0.56rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1;
+  white-space: nowrap;
+}
+
 .navbar-menu {
   display: flex;
   align-items: center;
@@ -1048,9 +1080,12 @@ textarea.form-control { resize: vertical; min-height: 100px; }
   flex-shrink: 0;
 }
 
-.legend-dot.available { background: var(--cal-available); }
-.legend-dot.booked { background: var(--cal-booked); }
-.legend-dot.offseason { background: var(--cal-offseason); }
+.legend-dot.available  { background: var(--cal-available); }
+.legend-dot.booked     { background: var(--cal-booked); }
+.legend-dot.offseason  { background: var(--cal-offseason); }
+/* Split-colour legend dots */
+.legend-dot.checkout   { background: linear-gradient(to right, var(--cal-booked) 50%, var(--cal-available) 50%); }
+.legend-dot.checkin    { background: linear-gradient(to right, var(--cal-available) 50%, var(--cal-booked) 50%); }
 
 .calendar-container {
   border: 2px solid var(--color-border);
@@ -1161,6 +1196,60 @@ textarea.form-control { resize: vertical; min-height: 100px; }
   color: #ccc;
   cursor: not-allowed;
   background: #fafafa;
+}
+
+/* ── Split-colour boundary dates ───────────────────────────────── */
+
+/* checkout: left half red (still occupied), right half green (free from this day) */
+/* → selectable as check-in start */
+.cal-day.checkout {
+  background: linear-gradient(to right, var(--cal-booked-light) 50%, var(--cal-available-light) 50%);
+  font-weight: 700;
+  cursor: pointer;
+  color: #555;
+}
+.cal-day.checkout::before,
+.cal-day.checkin::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+.cal-day.checkout::before {
+  background: linear-gradient(to right, rgba(192,57,43,0.18) 50%, rgba(45,138,78,0.18) 50%);
+}
+.cal-day.checkout:hover {
+  transform: scale(1.08);
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* checkin: left half green (was free), right half red (now occupied) */
+/* → selectable as check-out end */
+.cal-day.checkin {
+  background: linear-gradient(to right, var(--cal-available-light) 50%, var(--cal-booked-light) 50%);
+  font-weight: 700;
+  cursor: pointer;
+  color: #555;
+}
+.cal-day.checkin::before {
+  background: linear-gradient(to right, rgba(45,138,78,0.18) 50%, rgba(192,57,43,0.18) 50%);
+}
+.cal-day.checkin:hover {
+  transform: scale(1.08);
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* transition: back-to-back bookings — fully blocked, same look as booked */
+.cal-day.transition {
+  color: var(--cal-booked);
+  font-weight: 600;
+  cursor: not-allowed;
+  background: var(--cal-booked-light);
+  text-decoration: line-through;
+  text-decoration-color: rgba(192, 57, 43, 0.4);
 }
 
 .cal-day.selected-start,
@@ -1429,6 +1518,10 @@ textarea.form-control { resize: vertical; min-height: 100px; }
 .animate-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .navbar-brand-text { display: none; }
 }
 
 /* --- Responsive --- */

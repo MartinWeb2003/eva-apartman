@@ -5,6 +5,11 @@
  * Allows selecting a check-in / check-out date range.
  * Depends on: availability.js
  *
+ * Split-colour dates:
+ *   checkout  → left red / right green  — selectable as check-in (range start)
+ *   checkin   → left green / right red  — selectable as check-out (range end)
+ *   transition → fully red (back-to-back bookings) — not selectable
+ *
  * Public API (attached to window.Calendar):
  *   Calendar.init()           – render the calendar for the current month
  *   Calendar.getStartDate()   – returns Date | null
@@ -14,12 +19,29 @@
 
 const Calendar = (() => {
 
-  const MONTHS = [
-    'January','February','March','April','May','June',
-    'July','August','September','October','November','December'
-  ];
+  // ── Locale helpers (uses Intl so names update with language) ───
+  const LANG_LOCALE = { en: 'en-GB', hr: 'hr-HR', pl: 'pl-PL', de: 'de-DE' };
 
-  const WEEKDAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  function getLocale() {
+    const lang = localStorage.getItem('eva-lang') || 'en';
+    return LANG_LOCALE[lang] || 'en-GB';
+  }
+
+  function getMonthName(year, month) {
+    return new Intl.DateTimeFormat(getLocale(), { month: 'long' })
+      .format(new Date(year, month, 1));
+  }
+
+  function getWeekdays() {
+    // Jan 5 2026 is a Monday — use it as anchor to generate Mon–Sun
+    const anchor = new Date(2026, 0, 5);
+    const fmt = new Intl.DateTimeFormat(getLocale(), { weekday: 'short' });
+    return Array.from({ length: 7 }, (_, i) => {
+      const d = new Date(anchor);
+      d.setDate(anchor.getDate() + i);
+      return fmt.format(d);
+    });
+  }
 
   let currentYear  = new Date().getFullYear();
   let currentMonth = new Date().getMonth();
@@ -53,7 +75,7 @@ const Calendar = (() => {
 
   // ── HTML shell (header + weekday row) ──────────────────────────
   function buildShell() {
-    const wdCells = WEEKDAYS.map(d => `<span>${d}</span>`).join('');
+    const wdCells = getWeekdays().map(d => `<span>${d}</span>`).join('');
     return `
       <div class="calendar-header">
         <button type="button" class="cal-nav-btn cal-prev" aria-label="Previous month">
@@ -75,16 +97,16 @@ const Calendar = (() => {
 
   // ── Render days grid ────────────────────────────────────────────
   function renderDays() {
-    monthYearLabel.textContent = `${MONTHS[currentMonth]} ${currentYear}`;
+    // Capitalise first letter since some locales return all-lowercase
+    const monthName = getMonthName(currentYear, currentMonth);
+    monthYearLabel.textContent = `${monthName.charAt(0).toUpperCase()}${monthName.slice(1)} ${currentYear}`;
     daysGrid.innerHTML = '';
 
-    // First day of month (0=Sun … 6=Sat) → convert to Mon-based (0=Mon)
     const firstDow = new Date(currentYear, currentMonth, 1).getDay();
     const offset   = (firstDow + 6) % 7; // Monday = 0
 
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-    // Empty cells before day 1
     for (let i = 0; i < offset; i++) {
       daysGrid.insertAdjacentHTML('beforeend', '<div class="cal-day empty"></div>');
     }
@@ -97,12 +119,14 @@ const Calendar = (() => {
       cell.className = `cal-day ${status}`;
       cell.textContent = d;
       cell.dataset.date = formatDate(date);
+      cell.dataset.status = status;
 
       applyRangeClasses(cell, date, status);
 
-      if (status === 'available') {
-        cell.addEventListener('click',      () => handleClick(date));
-        cell.addEventListener('mouseenter', () => handleHover(date));
+      // Clickable: available, checkout (can be range start), checkin (can be range end)
+      if (status === 'available' || status === 'checkout' || status === 'checkin') {
+        cell.addEventListener('click',      () => handleClick(date, status));
+        cell.addEventListener('mouseenter', () => handleHover(date, status));
         cell.addEventListener('mouseleave', () => handleHoverLeave(date));
       }
 
@@ -112,7 +136,7 @@ const Calendar = (() => {
 
   // ── Range CSS classes ───────────────────────────────────────────
   function applyRangeClasses(cell, date, status) {
-    if (status !== 'available') return;
+    if (status !== 'available' && status !== 'checkout' && status !== 'checkin') return;
 
     const d = toDay(date);
 
@@ -120,7 +144,6 @@ const Calendar = (() => {
     const end   = selectedEnd   ? toDay(selectedEnd)   : null;
     const hover = hoverDate     ? toDay(hoverDate)      : null;
 
-    // Determine the effective end for highlighting (hover before confirm)
     let effectiveEnd = end;
     if (start && !end && hover && hover > start) {
       effectiveEnd = hover;
@@ -136,14 +159,19 @@ const Calendar = (() => {
   }
 
   // ── Click handler ───────────────────────────────────────────────
-  function handleClick(date) {
+  function handleClick(date, status) {
     clearError();
 
     const clickedTs = date.getTime();
     const startTs   = selectedStart ? selectedStart.getTime() : null;
 
     // Case 1: no start yet, or both already selected → begin new selection
+    // checkout dates can be a start; checkin dates cannot start a range
     if (!selectedStart || selectedEnd) {
+      if (!Availability.isStartable(status)) {
+        showError('This date is a check-in day — it can only be used as a check-out. Please pick a green or half-green/half-red date to start.');
+        return;
+      }
       selectedStart = new Date(date);
       selectedEnd   = null;
       updateDisplay();
@@ -153,6 +181,10 @@ const Calendar = (() => {
 
     // Case 2: start set, no end — clicked same day or earlier → restart
     if (clickedTs <= startTs) {
+      if (!Availability.isStartable(status)) {
+        showError('This date is a check-in day — it can only be used as a check-out. Please pick a green or half-green/half-red date to start.');
+        return;
+      }
       selectedStart = new Date(date);
       selectedEnd   = null;
       updateDisplay();
@@ -161,11 +193,17 @@ const Calendar = (() => {
     }
 
     // Case 3: start set, clicked a later date → try to set end
+    // End must be 'available' or 'checkin'
+    if (!Availability.isEndable(status)) {
+      showError('This date is a check-out day — it can only be used as a check-in. Please pick a green or half-red/half-green date as your check-out.');
+      return;
+    }
+
     const invalid = Availability.firstInvalidInRange(selectedStart, date);
     if (invalid) {
       showError(
         `Your selection contains a date that is not available (${formatDisplay(invalid)}). ` +
-        `Please choose dates within a continuous green window.`
+        `Please choose dates within a continuous free window.`
       );
       selectedEnd = null;
       updateDisplay();
@@ -179,9 +217,9 @@ const Calendar = (() => {
   }
 
   // ── Hover handler ───────────────────────────────────────────────
-  // Never rebuilds the DOM — only patches CSS classes on existing cells.
-  function handleHover(date) {
+  function handleHover(date, status) {
     if (!selectedStart || selectedEnd) return;
+    if (date.getTime() <= selectedStart.getTime()) return;
     hoverDate = date;
     updateRangeClasses();
   }
@@ -194,14 +232,16 @@ const Calendar = (() => {
     }
   }
 
-  // Patch range CSS classes on existing cells without touching the DOM structure.
+  // Patch range CSS classes on existing cells without rebuilding DOM.
   function updateRangeClasses() {
-    daysGrid.querySelectorAll('.cal-day.available').forEach(cell => {
+    daysGrid.querySelectorAll('.cal-day').forEach(cell => {
       const ds = cell.dataset.date;
-      if (!ds) return;
+      const st = cell.dataset.status;
+      if (!ds || !st) return;
+      if (st !== 'available' && st !== 'checkout' && st !== 'checkin') return;
       const [y, m, d] = ds.split('-').map(Number);
       cell.classList.remove('selected-start', 'selected-end', 'in-range');
-      applyRangeClasses(cell, new Date(y, m - 1, d), 'available');
+      applyRangeClasses(cell, new Date(y, m - 1, d), st);
     });
   }
 
@@ -282,12 +322,28 @@ const Calendar = (() => {
   function getStartDate() { return selectedStart; }
   function getEndDate()   { return selectedEnd;   }
 
+  function _getWeekdayCells() {
+    return getWeekdays().map(d => `<span>${d}</span>`).join('');
+  }
+
   // ── Public API ──────────────────────────────────────────────────
-  return { init, reset, getStartDate, getEndDate };
+  return { init, reset, getStartDate, getEndDate, _getWeekdayCells, _renderDays: renderDays };
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('calendar-container')) {
     Calendar.init();
+  }
+});
+
+// Re-render when the language changes so month/weekday names update
+document.addEventListener('eva:langchange', () => {
+  if (document.getElementById('calendar-container')) {
+    // Rebuild the weekday header row and re-render the days
+    const wd = document.querySelector('.calendar-weekdays');
+    if (wd) {
+      wd.innerHTML = Calendar._getWeekdayCells();
+    }
+    Calendar._renderDays();
   }
 });

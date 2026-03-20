@@ -5,7 +5,7 @@
  * ─── ONE-TIME SETUP (takes ~2 minutes, free) ────────────────────────────────
  *
  *  1. Open https://web3forms.com in your browser.
- *  2. Enter  bogojemartin@gmail.com  and click "Create Access Key".
+ *  2. Enter  info@visit-eva-orebic.com  and click "Create Access Key".
  *  3. Check that inbox — you'll receive your Access Key by email.
  *  4. Paste it into the constant below (replace YOUR_ACCESS_KEY).
  *  5. Done — works on localhost and any custom domain.
@@ -13,7 +13,7 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY';   // paste key from web3forms.com here
+const WEB3FORMS_KEY = '782273a6-6b47-4c87-b29e-d1d0c0452ff6';
 
 // ── Utility ───────────────────────────────────────────────────────────────────
 
@@ -67,7 +67,7 @@ function validatePhone(value) {
 function validateGuests(value) {
   if (!value) return 'Please select the number of guests.';
   const n = parseInt(value, 10);
-  if (isNaN(n) || n < 1 || n > 8) return 'Number of guests must be between 1 and 8.';
+  if (isNaN(n) || n < 1 || n > 5) return 'Number of guests must be between 1 and 5.';
   return null;
 }
 
@@ -169,14 +169,15 @@ document.addEventListener('DOMContentLoaded', () => {
         await new Promise(r => setTimeout(r, 600));
         throw new Error(
           'Form not yet activated. Open js/contact.js, visit web3forms.com, ' +
-          'enter bogojemartin@gmail.com, and paste the Access Key into WEB3FORMS_KEY.'
+          'enter info@visit-eva-orebic.com, and paste the Access Key into WEB3FORMS_KEY.'
         );
       }
 
       const payload = {
         access_key:    WEB3FORMS_KEY,
-        subject:       `Booking enquiry from ${firstName} ${lastName}`,
+        subject:       `Booking enquiry — ${firstName} ${lastName} · ${formatDateReadable(startDate)} → ${formatDateReadable(endDate)}`,
         from_name:     'Eva Apartman Website',
+        to:            'info@visit-eva-orebic.com',
         name:          `${firstName} ${lastName}`,
         email:         email || 'not provided',
         phone:         phone,
@@ -185,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
         check_out:     formatDateReadable(endDate),
         nights:        `${nights} night${nights !== 1 ? 's' : ''}`,
         message:       message || '(no additional message)',
-        // Tell Web3Forms to use the email as reply-to if provided
         replyto:       email || undefined,
       };
 

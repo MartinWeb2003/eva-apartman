@@ -1055,6 +1055,9 @@
         opt.classList.toggle('active', opt.dataset.lang === lang);
       });
     }
+
+    /* Notify other components (e.g. calendar) that language changed */
+    document.dispatchEvent(new CustomEvent('eva:langchange', { detail: { lang: lang } }));
   }
 
   /* ── Dropdown logic ──────────────────────────────────── */

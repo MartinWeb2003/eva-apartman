@@ -6,11 +6,16 @@
  *  - seasons:  Date ranges when the apartment IS available for rent.
  *              Any day outside these ranges is shown as GREY (off-season).
  *
- *  - booked:   Date ranges (within a season) that are already taken.
- *              These are shown as RED. All other in-season days are GREEN.
+ *  - booked:   Date ranges that are already taken.
+ *              start = check-in day (first occupied night)
+ *              end   = check-out day (last occupied night)
+ *
+ *              Boundary dates are coloured with a split gradient:
+ *                checkout day  → left half red, right half green  (selectable as new check-in)
+ *                checkin day   → left half green, right half red  (selectable as new check-out)
+ *              When two bookings share the same boundary date that day is fully red.
  *
  * Date format: "YYYY-MM-DD"  (e.g. "2026-06-15")
- * Both start and end dates are INCLUSIVE.
  */
 
 const Availability = (() => {
@@ -20,21 +25,20 @@ const Availability = (() => {
   // To update via the admin panel, visit /tripuneva1
 
   const _defaultSeasons = [
-    { start: '2026-05-01', end: '2026-10-31' },
+    { start: '2026-06-01', end: '2026-10-01' },
     // Add more years here if needed:
-    // { start: '2027-05-01', end: '2027-10-31' },
+    // { start: '2027-06-01', end: '2027-10-01' },
   ];
 
   const _defaultBooked = [
-    { start: '2026-06-20', end: '2026-06-28' },
-    { start: '2026-07-10', end: '2026-07-25' },
-    { start: '2026-08-01', end: '2026-08-14' },
-    { start: '2026-08-20', end: '2026-08-31' },
-    { start: '2026-09-05', end: '2026-09-12' },
+    { start: '2026-06-14', end: '2026-06-20' },
+    { start: '2026-07-26', end: '2026-08-15' },
+    { start: '2026-08-15', end: '2026-08-22' },
+    { start: '2026-08-22', end: '2026-09-04' },
+    { start: '2026-09-09', end: '2026-09-21' },
   ];
 
   // ─── LOAD FROM ADMIN OVERRIDES (localStorage) ────────────────────────────────
-  // If an admin has saved custom ranges via /tripuneva1, use those instead.
 
   function loadFromStorage(key, fallback) {
     try {
@@ -49,28 +53,20 @@ const Availability = (() => {
 
   // ─── INTERNALS ───────────────────────────────────────────────────────────────
 
-  /**
-   * Parse a "YYYY-MM-DD" string into a Date object at local midnight.
-   */
   function parseDate(str) {
     const [y, m, d] = str.split('-').map(Number);
     return new Date(y, m - 1, d);
   }
 
-  /**
-   * Normalise any Date to local midnight (strips time component).
-   */
   function toDay(date) {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate());
   }
 
-  /** Pre-parsed season ranges */
   const _seasons = seasons.map(s => ({
     start: parseDate(s.start),
     end:   parseDate(s.end),
   }));
 
-  /** Pre-parsed booked ranges */
   const _booked = booked.map(b => ({
     start: parseDate(b.start),
     end:   parseDate(b.end),
@@ -78,13 +74,16 @@ const Availability = (() => {
 
   /**
    * Returns the status of a given date:
-   *   'past'      – before today
-   *   'offseason' – not within any season window
-   *   'booked'    – within a season but reserved
-   *   'available' – within a season and free
+   *   'past'       – before today
+   *   'offseason'  – not within any season window
+   *   'booked'     – fully occupied interior day
+   *   'transition' – checkout AND checkin on same day (back-to-back bookings) — not selectable
+   *   'checkout'   – last day of a booking; left half red, right half green — selectable as check-in
+   *   'checkin'    – first day of a booking; left half green, right half red — selectable as check-out
+   *   'available'  – in season and free
    */
   function getStatus(date) {
-    const day = toDay(date);
+    const day   = toDay(date);
     const today = toDay(new Date());
 
     if (day < today) return 'past';
@@ -92,44 +91,69 @@ const Availability = (() => {
     const inSeason = _seasons.some(s => day >= s.start && day <= s.end);
     if (!inSeason) return 'offseason';
 
-    const isBooked = _booked.some(b => day >= b.start && day <= b.end);
-    return isBooked ? 'booked' : 'available';
+    const dayTs = day.getTime();
+
+    const isCheckin  = _booked.some(b => b.start.getTime() === dayTs);
+    const isCheckout = _booked.some(b => b.end.getTime()   === dayTs);
+    const isInterior = _booked.some(b => day > b.start && day < b.end);
+
+    if (isInterior)              return 'booked';
+    if (isCheckin && isCheckout) return 'transition';  // fully blocked
+    if (isCheckin)               return 'checkin';
+    if (isCheckout)              return 'checkout';
+
+    return 'available';
+  }
+
+  /** Can this date be used as a check-in (range start)? */
+  function isStartable(status) {
+    return status === 'available' || status === 'checkout';
+  }
+
+  /** Can this date be used as a check-out (range end)? */
+  function isEndable(status) {
+    return status === 'available' || status === 'checkin';
   }
 
   /**
-   * Returns true if a date range [start, end] is valid for booking:
-   *   - Both endpoints must be 'available'
-   *   - No 'booked' or 'offseason' day may lie between them
+   * Returns true if the range [startDate, endDate] is valid:
+   *   - startDate must be 'available' or 'checkout'
+   *   - endDate must be 'available' or 'checkin'
+   *   - every day strictly between them must be 'available'
    */
   function isRangeValid(startDate, endDate) {
     if (!startDate || !endDate) return false;
-    if (startDate > endDate) return false;
+    const start = toDay(startDate);
+    const end   = toDay(endDate);
+    if (start >= end) return false;
 
-    let current = toDay(startDate);
-    const end = toDay(endDate);
+    if (!isStartable(getStatus(start))) return false;
+    if (!isEndable(getStatus(end)))     return false;
 
-    while (current <= end) {
-      const status = getStatus(current);
-      if (status !== 'available') return false;
-      current.setDate(current.getDate() + 1);
+    let cur = new Date(start);
+    cur.setDate(cur.getDate() + 1);
+    while (cur < end) {
+      if (getStatus(cur) !== 'available') return false;
+      cur.setDate(cur.getDate() + 1);
     }
     return true;
   }
 
   /**
-   * Returns first invalid date found in range, or null if range is clean.
+   * Returns first invalid interior date in [startDate, endDate], or null if clean.
+   * (Does NOT re-check the endpoints — they are validated separately.)
    */
   function firstInvalidInRange(startDate, endDate) {
-    let current = toDay(startDate);
+    let cur = toDay(startDate);
+    cur.setDate(cur.getDate() + 1);           // start from day after check-in
     const end = toDay(endDate);
 
-    while (current <= end) {
-      const status = getStatus(current);
-      if (status !== 'available') return new Date(current);
-      current.setDate(current.getDate() + 1);
+    while (cur < end) {
+      if (getStatus(cur) !== 'available') return new Date(cur);
+      cur.setDate(cur.getDate() + 1);
     }
     return null;
   }
 
-  return { getStatus, isRangeValid, firstInvalidInRange, parseDate };
+  return { getStatus, isRangeValid, firstInvalidInRange, parseDate, isStartable, isEndable };
 })();
