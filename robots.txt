@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /tripuneva1/
+
+Sitemap: https://www.visit-eva-orebic.com/sitemap.xml
