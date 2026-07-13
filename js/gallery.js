@@ -7,6 +7,16 @@
 (function () {
   'use strict';
 
+  function init() {
+  // Confirm (via HEAD) that an image really is missing before removing its
+  // tile. Returns false on transient/network errors so a good photo is kept.
+  function confirmMissing(url) {
+    if (typeof fetch !== 'function') return Promise.resolve(false);
+    return fetch(url, { method: 'HEAD' })
+      .then(r => r.status === 404 || r.status === 410) // only a real "gone" removes it
+      .catch(() => false); // network error / transient server error → keep the tile
+  }
+
   // ── Image registry ──────────────────────────────────────────────────
   // Built from every .gm-item on the page, in DOM order.
   const images = [];
@@ -18,14 +28,20 @@
     images.push({ src: img.src, alt: img.alt, section: item.closest('.gallery-section')?.dataset.section || '' });
     item.dataset.idx = i;
 
-    // Replace broken images with a styled placeholder
-    img.addEventListener('error', () => {
-      const ar   = item.dataset.ar || '4/3';
-      const ph   = makePlaceholder(img.alt, ar);
-      img.replaceWith(ph);
-      // Update registry to empty src so lightbox skips broken images gracefully
-      images[i].src = '';
-    });
+    // A listed image whose file is genuinely gone (e.g. deleted from the folder
+    // but the manifest wasn't regenerated yet) is skipped entirely: remove its
+    // tile and blank its registry entry so the lightbox steps over it. We only
+    // do this once a HEAD request confirms a 404 — a transient load error must
+    // not wipe a perfectly good photo.
+    const handleBroken = () => {
+      confirmMissing(img.src).then(missing => {
+        if (!missing) return;
+        images[i].src = '';
+        item.remove();
+        document.dispatchEvent(new CustomEvent('eva:gallery-changed'));
+      });
+    };
+    img.addEventListener('error', handleBroken);
 
     // Open lightbox
     item.addEventListener('click', () => openAt(i));
@@ -78,15 +94,18 @@
       lbImg.style.transform = 'scale(1)';
     });
 
-    lbCount.textContent  = `${currentIdx + 1} / ${images.length}`;
+    // Count only live images so removed (missing) ones don't leave gaps.
+    const live = images.filter(im => im.src).length;
+    const pos  = images.slice(0, currentIdx + 1).filter(im => im.src).length;
+    lbCount.textContent  = `${pos} / ${live}`;
     lbCaption.textContent = section && alt ? `${section}  ·  ${alt}` : (alt || section || '');
 
-    lbPrev.disabled = currentIdx === 0;
-    lbNext.disabled = currentIdx === images.length - 1;
+    lbPrev.disabled = !images.slice(0, currentIdx).some(im => im.src);
+    lbNext.disabled = !images.slice(currentIdx + 1).some(im => im.src);
   }
 
-  function prev() { if (currentIdx > 0) { currentIdx--; render(); } }
-  function next() { if (currentIdx < images.length - 1) { currentIdx++; render(); } }
+  function prev() { for (let i = currentIdx - 1; i >= 0; i--) if (images[i].src) { currentIdx = i; render(); return; } }
+  function next() { for (let i = currentIdx + 1; i < images.length; i++) if (images[i].src) { currentIdx = i; render(); return; } }
 
   // Button listeners
   lbClose.addEventListener('click', closeBox);
@@ -119,21 +138,6 @@
     if (Math.abs(dx) < 45) return; // ignore tiny taps
     dx < 0 ? next() : prev();
   });
-
-  // ── Placeholder helper ──────────────────────────────────────────────
-  function makePlaceholder(label, ar) {
-    const div = document.createElement('div');
-    div.className = 'gm-placeholder';
-    div.style.aspectRatio = ar;
-    div.innerHTML = `
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2"/>
-        <circle cx="8.5" cy="8.5" r="1.5"/>
-        <polyline points="21 15 16 10 5 21"/>
-      </svg>
-      <span>${label || 'Photo coming soon'}</span>`;
-    return div;
-  }
 
   // ── Section tabs + scroll-spy ───────────────────────────────────────
   const tabs     = document.querySelectorAll('.gallery-tab');
@@ -172,6 +176,22 @@
     }, { rootMargin: '-30% 0px -55% 0px' });
 
     sections.forEach(s => spy.observe(s));
+  }
+  } // ── end init() ──
+
+  // ── Startup ─────────────────────────────────────────────────────────
+  // When gallery-loader builds the grids dynamically we wait for its
+  // `eva:gallery-ready` signal so the lightbox indexes the real photos.
+  let started = false;
+  function runInit() { if (started) return; started = true; init(); }
+
+  if (window.__evaGalleryDynamic) {
+    document.addEventListener('eva:gallery-ready', runInit, { once: true });
+    setTimeout(runInit, 6000); // safety net if the loader never signals
+  } else if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runInit);
+  } else {
+    runInit();
   }
 
 })();

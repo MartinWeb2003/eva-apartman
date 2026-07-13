@@ -512,25 +512,14 @@
           </li>
 
         </ul>
-        <!-- Fade overlay -->
-        <div class="amenities-fade" id="amenities-fade" aria-hidden="true"></div>
-      </div>
-
-      <!-- Expand/collapse button -->
-      <div class="amenities-expand-wrap">
-        <button class="amenities-expand-btn" id="amenities-expand-btn" aria-expanded="false">
-          <span class="am-label-more"><span data-i18n="index.am.showmore">Show all 18 amenities</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </span>
-          <span class="am-label-less" style="display:none"><span data-i18n="index.am.showless">Show less</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
-          </span>
-        </button>
       </div>
     </div>
 
     <script>
     (function () {
+      /* Show only the amenities we actually have; the available list can be
+         managed via localStorage ('eva-amenities'), otherwise the default set
+         below is used. Unavailable ones are removed entirely. */
       var LS  = 'eva-amenities';
       var DEF = ['wifi','tv','satellite','ac','heating','microwave','fridge','kettle','dishwasher'];
       var avail;
@@ -539,67 +528,8 @@
 
       var grid  = document.getElementById('amenities-grid');
       var items = Array.prototype.slice.call(grid.querySelectorAll('[data-amenity-id]'));
-      var yes   = items.filter(function (i) { return avail.indexOf(i.getAttribute('data-amenity-id')) !== -1; });
-      var no    = items.filter(function (i) { return avail.indexOf(i.getAttribute('data-amenity-id')) === -1; });
-
-      /* Sort: available first */
-      yes.forEach(function (i) { grid.appendChild(i); });
-      no.forEach(function (i) {
-        i.classList.add('amenity-unavailable');
-        var lbl = document.createElement('span');
-        lbl.className = 'amenity-unavail-label';
-        lbl.setAttribute('data-i18n', 'index.am.unavailable');
-        lbl.textContent = 'Currently unavailable';
-        i.appendChild(lbl);
-        grid.appendChild(i);
-      });
-
-      /* Collapse setup */
-      var wrapper = document.getElementById('amenities-wrapper');
-      var fade    = document.getElementById('amenities-fade');
-      var btn     = document.getElementById('amenities-expand-btn');
-      var more    = btn.querySelector('.am-label-more');
-      var less    = btn.querySelector('.am-label-less');
-      var exp     = false;
-
-      function rowH() {
-        var f = grid.children[0];
-        if (!f) return 220;
-        var gap = parseInt(window.getComputedStyle(grid).rowGap || '20', 10) || 20;
-        return f.offsetHeight + gap;
-      }
-
-      function applyCollapsed() {
-        wrapper.style.maxHeight = rowH() + 'px';
-      }
-
-      /* Initial state */
-      wrapper.style.overflow   = 'hidden';
-      wrapper.style.transition = 'max-height 0.45s ease';
-      applyCollapsed();
-
-      window.addEventListener('resize', function () { if (!exp) applyCollapsed(); });
-
-      btn.addEventListener('click', function () {
-        exp = !exp;
-        btn.setAttribute('aria-expanded', exp ? 'true' : 'false');
-        if (exp) {
-          wrapper.style.maxHeight = grid.scrollHeight + 'px';
-          setTimeout(function () { if (exp) wrapper.style.maxHeight = 'none'; }, 470);
-          fade.style.opacity    = '0';
-          fade.style.pointerEvents = 'none';
-          more.style.display = 'none';
-          less.style.display = '';
-        } else {
-          wrapper.style.maxHeight = grid.scrollHeight + 'px';
-          requestAnimationFrame(function () {
-            requestAnimationFrame(function () { applyCollapsed(); });
-          });
-          fade.style.opacity    = '1';
-          fade.style.pointerEvents = '';
-          more.style.display = '';
-          less.style.display = 'none';
-        }
+      items.forEach(function (i) {
+        if (avail.indexOf(i.getAttribute('data-amenity-id')) === -1) i.remove();
       });
     })();
     </script>
@@ -687,7 +617,7 @@
             <circle cx="8.5" cy="8.5" r="1.5"/>
             <polyline points="21 15 16 10 5 21"/>
           </svg>
-          <span data-i18n="index.gallery.btn">See Full Gallery — 39 Photos</span>
+          <span data-i18n="index.gallery.btn">See Full Gallery</span>
         </a>
       </div>
 

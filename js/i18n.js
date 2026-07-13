@@ -64,7 +64,7 @@
       'index.about.btn':        'Book Your Apartment',
       'index.gallery.heading':  'Explore Eva Apartman & the Pelješac Coast',
       'index.gallery.subtext':  'View our gallery to see why we are the top choice for an apartment in the Orebić area. Explore our spacious living areas and the peaceful Kućište neighborhood that makes every stay unforgettable.',
-      'index.gallery.btn':      'See Full Gallery — 39 Photos',
+      'index.gallery.btn':      'See Full Gallery',
       'index.reviews.heading':  'What Guests Love About Eva Apartman',
       'index.reviews.subtext':  'Verified reviews — every single guest has rated their family holiday experience a perfect 5 stars.',
       'index.reviews.score':    'Average Score',
@@ -86,19 +86,19 @@
       'gallery.title':          'Photo Gallery – Eva Apartman',
       'gallery.breadcrumb':     'Gallery',
       'gallery.header.h1':      'Photo Gallery: Our Kućište Apartment & Pelješac View',
-      'gallery.header.p':       'Browse 39 images of your next family holiday home. From our peaceful terrace views to the crystal-clear Adriatic waters just steps from your door in Kućište.',
+      'gallery.header.p':       'Browse {n} images of your next family holiday home. From our peaceful terrace views to the crystal-clear Adriatic waters just steps from your door in Kućište.',
       'gallery.tab.interior':   'Interior',
       'gallery.tab.terrace':    'Terrace & Views',
       'gallery.tab.beach':      'Beach & Area',
       'gallery.int.h2':         'Interior',
       'gallery.int.p':          'Light-filled, modern rooms designed for comfort and a genuine home-away-from-home feeling.',
-      'gallery.int.count':      '31 photos',
+      'gallery.int.count':      '{n} photos',
       'gallery.ter.h2':         'Terrace & Views',
       'gallery.ter.p':          'Step outside to your private terrace — sunrise coffee, golden hour dinners, and uninterrupted sea air.',
-      'gallery.ter.count':      '6 photos',
+      'gallery.ter.count':      '{n} photos',
       'gallery.bea.h2':         'Beach & Area',
       'gallery.bea.p':          'Crystal-clear Adriatic water, pebble coves, and the wild beauty of Pelješac — all right on your doorstep.',
-      'gallery.bea.count':      '2 photos',
+      'gallery.bea.count':      '{n} photos',
       'gallery.cta.heading':    'Seen Enough? Come Stay.',
       'gallery.cta.p':          'Check available dates and send your enquiry — we\'ll get back to you within 24 hours.',
       'gallery.cta.btn.book':   'Check Availability & Book',
@@ -313,7 +313,7 @@
       'index.about.btn':        'Rezervirajte apartman',
       'index.gallery.heading':  'Istražite Eva Apartman i pelješačku obalu',
       'index.gallery.subtext':  'Pogledajte našu galeriju i uvjerite se zašto smo prvi izbor za apartman u okolici Orebića. Istražite naše prostrane prostorije i mirno Kućište koje svaki boravak čini nezaboravnim.',
-      'index.gallery.btn':      'Cijela galerija — 39 fotografija',
+      'index.gallery.btn':      'Cijela galerija',
       'index.reviews.heading':  'Što gosti vole kod Eve Apartmana',
       'index.reviews.subtext':  'Provjerene recenzije — svaki gost ocijenio je obiteljski odmor savršenom ocjenom 5 zvjezdica.',
       'index.reviews.score':    'Prosječna ocjena',
@@ -335,19 +335,19 @@
       'gallery.title':          'Foto galerija – Eva Apartman',
       'gallery.breadcrumb':     'Galerija',
       'gallery.header.h1':      'Foto galerija: Naš apartman u Kućištu i pogled na Pelješac',
-      'gallery.header.p':       'Pregledajte 39 fotografija vašeg sljedećeg obiteljskog doma za odmor. Od naših mirnih terasa do kristalno čistih jadranskih voda pred vratima u Kućištu.',
+      'gallery.header.p':       'Pregledajte {n} fotografija vašeg sljedećeg obiteljskog doma za odmor. Od naših mirnih terasa do kristalno čistih jadranskih voda pred vratima u Kućištu.',
       'gallery.tab.interior':   'Unutarnji prostori',
       'gallery.tab.terrace':    'Terasa i pogledi',
       'gallery.tab.beach':      'Plaža i okolica',
       'gallery.int.h2':         'Unutarnji prostori',
       'gallery.int.p':          'Svijetle, moderne prostorije dizajnirane za komfor i osjećaj pravog doma daleko od kuće.',
-      'gallery.int.count':      '31 fotografija',
+      'gallery.int.count':      '{n} fotografija',
       'gallery.ter.h2':         'Terasa i pogledi',
       'gallery.ter.p':          'Izađite na privatnu terasu — jutarnja kava uz izlazak sunca, večere u zlatnom satu i neometani morski zrak.',
-      'gallery.ter.count':      '6 fotografija',
+      'gallery.ter.count':      '{n} fotografija',
       'gallery.bea.h2':         'Plaža i okolica',
       'gallery.bea.p':          'Kristalno čista jadranska voda, šljunčane uvale i divlja ljepota Pelješca — sve na dohvat ruke.',
-      'gallery.bea.count':      '2 fotografije',
+      'gallery.bea.count':      '{n} fotografije',
       'gallery.cta.heading':    'Vidjeli ste dovoljno? Dođite na odmor.',
       'gallery.cta.p':          'Provjerite slobodne termine i pošaljite upit — odgovoriti ćemo vam u roku od 24 sata.',
       'gallery.cta.btn.book':   'Provjeri dostupnost i rezerviraj',
@@ -560,7 +560,7 @@
       'index.about.btn':        'Zarezerwuj apartament',
       'index.gallery.heading':  'Odkryj Eva Apartman i peljeskie wybrzeże',
       'index.gallery.subtext':  'Obejrzyj naszą galerię i przekonaj się, dlaczego jesteśmy pierwszym wyborem na apartament w okolicach Orebicia. Odkryj nasze przestronne wnętrza i spokojne Kućište, które sprawia, że każdy pobyt jest niezapomniany.',
-      'index.gallery.btn':      'Zobacz pełną galerię — 39 zdjęć',
+      'index.gallery.btn':      'Zobacz pełną galerię',
       'index.reviews.heading':  'Co goście cenią w Eva Apartmanie',
       'index.reviews.subtext':  'Zweryfikowane opinie — każdy gość ocenił swój rodzinny wypoczynek idealną oceną 5 gwiazdek.',
       'index.reviews.score':    'Średnia ocena',
@@ -579,19 +579,19 @@
       'gallery.title':          'Galeria zdjęć – Eva Apartman',
       'gallery.breadcrumb':     'Galeria',
       'gallery.header.h1':      'Galeria zdjęć: Nasz apartament w Kućištu i widok na Pelješac',
-      'gallery.header.p':       'Przeglądaj 39 zdjęć Twojego kolejnego rodzinnego domu wakacyjnego. Od spokojnych widoków z tarasu po krystalicznie czyste wody Adriatyku tuż u drzwi w Kućištu.',
+      'gallery.header.p':       'Przeglądaj {n} zdjęć Twojego kolejnego rodzinnego domu wakacyjnego. Od spokojnych widoków z tarasu po krystalicznie czyste wody Adriatyku tuż u drzwi w Kućištu.',
       'gallery.tab.interior':   'Wnętrze',
       'gallery.tab.terrace':    'Taras i widoki',
       'gallery.tab.beach':      'Plaża i okolica',
       'gallery.int.h2':         'Wnętrze',
       'gallery.int.p':          'Jasne, nowoczesne pokoje zaprojektowane z myślą o komforcie i prawdziwym poczuciu domu z dala od domu.',
-      'gallery.int.count':      '31 zdjęć',
+      'gallery.int.count':      '{n} zdjęć',
       'gallery.ter.h2':         'Taras i widoki',
       'gallery.ter.p':          'Wyjdź na prywatny taras — poranna kawa o wschodzie słońca, kolacje o złotej godzinie i niezmącone morskie powietrze.',
-      'gallery.ter.count':      '6 zdjęć',
+      'gallery.ter.count':      '{n} zdjęć',
       'gallery.bea.h2':         'Plaża i okolica',
       'gallery.bea.p':          'Krystalicznie czyste wody Adriatyku, kamieniste zatoczki i dzika uroda Pelješaca — wszystko tuż za drzwiami.',
-      'gallery.bea.count':      '2 zdjęcia',
+      'gallery.bea.count':      '{n} zdjęcia',
       'gallery.cta.heading':    'Widziałeś dość? Przyjedź i zostań.',
       'gallery.cta.p':          'Sprawdź dostępne terminy i wyślij zapytanie — odpowiemy w ciągu 24 godzin.',
       'gallery.cta.btn.book':   'Sprawdź dostępność i zarezerwuj',
@@ -802,7 +802,7 @@
       'index.about.btn':        'Appartement buchen',
       'index.gallery.heading':  'Eva Apartman & die Pelješac-Küste entdecken',
       'index.gallery.subtext':  'Sehen Sie unsere Galerie und überzeugen Sie sich, warum wir die erste Wahl für ein Appartement in der Region Orebić sind. Entdecken Sie unsere geräumigen Räume und die ruhige Nachbarschaft Kućište, die jeden Aufenthalt unvergesslich macht.',
-      'index.gallery.btn':      'Vollständige Galerie — 39 Fotos',
+      'index.gallery.btn':      'Vollständige Galerie',
       'index.reviews.heading':  'Was Gäste an Eva Apartman lieben',
       'index.reviews.subtext':  'Verifizierte Bewertungen — jeder Gast hat seinen Familienurlaub mit der Bestnote 5 Sterne bewertet.',
       'index.reviews.score':    'Durchschnittswertung',
@@ -821,19 +821,19 @@
       'gallery.title':          'Fotogalerie – Eva Apartman',
       'gallery.breadcrumb':     'Galerie',
       'gallery.header.h1':      'Fotogalerie: Unser Appartement in Kućište und der Blick auf Pelješac',
-      'gallery.header.p':       'Durchstöbern Sie 39 Bilder Ihres nächsten Ferienhauses. Von unseren ruhigen Terrassenausblicken bis zu den kristallklaren Adriawassern direkt vor Ihrer Tür in Kućište.',
+      'gallery.header.p':       'Durchstöbern Sie {n} Bilder Ihres nächsten Ferienhauses. Von unseren ruhigen Terrassenausblicken bis zu den kristallklaren Adriawassern direkt vor Ihrer Tür in Kućište.',
       'gallery.tab.interior':   'Innenbereich',
       'gallery.tab.terrace':    'Terrasse & Ausblick',
       'gallery.tab.beach':      'Strand & Umgebung',
       'gallery.int.h2':         'Innenbereich',
       'gallery.int.p':          'Helle, moderne Räume, gestaltet für Komfort und ein echtes Zuhause-fernab-von-Zuhause-Gefühl.',
-      'gallery.int.count':      '31 Fotos',
+      'gallery.int.count':      '{n} Fotos',
       'gallery.ter.h2':         'Terrasse & Ausblick',
       'gallery.ter.p':          'Treten Sie auf Ihre private Terrasse — Morgenkaffee beim Sonnenaufgang, Abendessen in der goldenen Stunde und ungestörte Meeresluft.',
-      'gallery.ter.count':      '6 Fotos',
+      'gallery.ter.count':      '{n} Fotos',
       'gallery.bea.h2':         'Strand & Umgebung',
       'gallery.bea.p':          'Kristallklares Adriawasser, Kiesbuchten und die wilde Schönheit von Pelješac — alles direkt vor Ihrer Tür.',
-      'gallery.bea.count':      '2 Fotos',
+      'gallery.bea.count':      '{n} Fotos',
       'gallery.cta.heading':    'Genug gesehen? Kommen Sie und bleiben Sie.',
       'gallery.cta.p':          'Prüfen Sie verfügbare Termine und senden Sie Ihre Anfrage — wir melden uns innerhalb von 24 Stunden.',
       'gallery.cta.btn.book':   'Verfügbarkeit prüfen & buchen',
@@ -1028,16 +1028,23 @@
     var titleKey = page + '.title';
     if (t[titleKey]) document.title = t[titleKey];
 
+    /* Replace a {n} placeholder with the element's data-n value (used for
+       dynamic photo counts that stay translated across languages). */
+    function withCount(el, str) {
+      var n = el.getAttribute('data-n');
+      return n === null ? str : str.replace('{n}', n);
+    }
+
     /* [data-i18n] → textContent */
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) el.textContent = t[key];
+      if (t[key] !== undefined) el.textContent = withCount(el, t[key]);
     });
 
     /* [data-i18n-html] → innerHTML */
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-html');
-      if (t[key] !== undefined) el.innerHTML = t[key];
+      if (t[key] !== undefined) el.innerHTML = withCount(el, t[key]);
     });
 
     /* [data-i18n-placeholder] → placeholder */
@@ -1099,6 +1106,9 @@
       }
     });
   }
+
+  /* ── Public API (used by gallery-loader to re-apply after building) ── */
+  window.evaI18n = { apply: applyLang, getLang: getLang };
 
   /* ── Init ────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
