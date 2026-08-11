@@ -91,7 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
       item.addEventListener('click', () => {
         const img = item.querySelector('img');
         if (!img) return;
-        lightboxImg.src = img.src;
+        // The grid <img> is a downscaled derivative; data-full (set by the
+        // build) points at the original so the lightbox opens full resolution.
+        lightboxImg.src = item.dataset.full || img.currentSrc || img.src;
         lightboxImg.alt = img.alt;
         lightbox.classList.add('open');
         document.body.style.overflow = 'hidden';

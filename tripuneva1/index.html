@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Belt and braces with the X-Robots-Tag header in netlify.toml: the header
+       covers every response from this directory, the meta tag keeps working if
+       the file is ever served from somewhere without that config. -->
+  <meta name="robots" content="noindex, nofollow, noarchive" />
   <title>Admin – Eva Apartman</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -807,7 +811,50 @@ var TRANSLATIONS = {
 /* ═══════════════════════════════════════════════════════
    CONSTANTS
 ═══════════════════════════════════════════════════════ */
-var PASSWORD = 'Sottomonte2026!';
+/* Login verifier.
+   The password is no longer stored here in plaintext — these are the PBKDF2
+   parameters it has to reproduce. Rotate with:
+
+       node tools/admin-password.js "<new password>"
+
+   and paste the three lines it prints over these.
+
+   This is obfuscation, not access control: the check runs in the browser and
+   can be bypassed from devtools. Anything genuinely sensitive behind this
+   screen (the JSONBin master key field) needs server-side protection —
+   Netlify's password protection or Netlify Identity on /tripuneva1/. */
+var PW_SALT       = 'f4b8d120d3087475685d398cedc44181';
+var PW_HASH       = 'e9eb5d1e15cd7f2dc3b57a716dd610d6eb89d7a8e843928854a3ab4d802139e5';
+var PW_ITERATIONS = 250000;
+
+/* Resolves true when `input` matches PW_HASH. */
+function verifyPassword(input) {
+  var subtle = window.crypto && window.crypto.subtle;
+  if (!subtle) return Promise.reject(new Error('Web Crypto unavailable — use a modern browser over HTTPS.'));
+
+  var enc  = new TextEncoder();
+  var salt = new Uint8Array(PW_SALT.match(/../g).map(function (b) { return parseInt(b, 16); }));
+
+  return subtle.importKey('raw', enc.encode(input), 'PBKDF2', false, ['deriveBits'])
+    .then(function (key) {
+      return subtle.deriveBits(
+        { name: 'PBKDF2', salt: salt, iterations: PW_ITERATIONS, hash: 'SHA-256' },
+        key,
+        256
+      );
+    })
+    .then(function (bits) {
+      var hex = Array.prototype.map.call(new Uint8Array(bits), function (b) {
+        return b.toString(16).padStart(2, '0');
+      }).join('');
+      // Constant-time-ish compare; the timing side channel is irrelevant here
+      // (the attacker already has the hash) but it costs nothing.
+      if (hex.length !== PW_HASH.length) return false;
+      var diff = 0;
+      for (var i = 0; i < hex.length; i++) diff |= hex.charCodeAt(i) ^ PW_HASH.charCodeAt(i);
+      return diff === 0;
+    });
+}
 
 var PROTECTED = [
   'images/indoor/indoor1.jpeg', 'images/indoor/indoor2.jpeg',
@@ -1139,17 +1186,29 @@ function showDashboard() {
 }
 
 document.getElementById('login-btn').addEventListener('click', function() {
+  var btn = this;
   var pw  = document.getElementById('pw-input').value;
   var err = document.getElementById('login-error');
-  if (pw === PASSWORD) {
-    sessionStorage.setItem('eva-admin-auth', '1');
-    err.classList.remove('show');
-    showDashboard();
-  } else {
+
+  // 250k PBKDF2 iterations take a moment — disable the button so it can't be
+  // double-submitted while the hash is being derived.
+  btn.disabled = true;
+  verifyPassword(pw).then(function (ok) {
+    btn.disabled = false;
+    if (ok) {
+      sessionStorage.setItem('eva-admin-auth', '1');
+      err.classList.remove('show');
+      showDashboard();
+    } else {
+      err.classList.add('show');
+      document.getElementById('pw-input').value = '';
+      document.getElementById('pw-input').focus();
+    }
+  }).catch(function (e) {
+    btn.disabled = false;
+    console.error(e);
     err.classList.add('show');
-    document.getElementById('pw-input').value = '';
-    document.getElementById('pw-input').focus();
-  }
+  });
 });
 document.getElementById('pw-input').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') document.getElementById('login-btn').click();

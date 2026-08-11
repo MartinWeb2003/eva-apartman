@@ -1,0 +1,29 @@
+{
+  "name": "eva-apartman",
+  "version": "1.0.0",
+  "description": "Static site for Eva Apartman, Kućište (Pelješac) — EN/HR/PL/DE",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:manifest && npm run build:images && npm run build:site",
+    "build:manifest": "node tools/build-manifest.js",
+    "build:images": "node tools/optimize-images.js",
+    "build:site": "node tools/build-site.js",
+    "rebuild": "node tools/build-manifest.js && node tools/optimize-images.js --force && node tools/build-site.js",
+    "check": "node tools/check-build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartinWeb2003/eva-apartman.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MartinWeb2003/eva-apartman/issues"
+  },
+  "homepage": "https://github.com/MartinWeb2003/eva-apartman#readme",
+  "devDependencies": {
+    "cheerio": "^1.2.0",
+    "sharp": "^0.35.3"
+  }
+}

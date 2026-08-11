@@ -19,7 +19,9 @@ const fs   = require('fs');
 const path = require('path');
 
 const ROOT     = path.resolve(__dirname, '..');
-const GALLERY  = path.join(ROOT, 'gallery.html');
+/* Read the template, not the generated page: this runs first in `npm run
+   build`, before build-site.js has rewritten gallery.html. */
+const GALLERY  = path.join(ROOT, 'src', 'gallery.html');
 const OUT_FILE = path.join(ROOT, 'images', 'gallery-manifest.json');
 const IMG_RE   = /\.(jpe?g|png|webp)$/i;
 

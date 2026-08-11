@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: /tripuneva1/
+
+# The admin panel is kept out of the index with an X-Robots-Tag: noindex header
+# (see netlify.toml) rather than a Disallow rule. robots.txt is a public file —
+# listing the path here only advertised where it lives, and a disallowed URL can
+# still end up indexed if something links to it.
 
 Sitemap: https://www.visit-eva-orebic.com/sitemap.xml

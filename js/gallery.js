@@ -25,7 +25,10 @@
     const img = item.querySelector('img');
     if (!img) return;
 
-    images.push({ src: img.src, alt: img.alt, section: item.closest('.gallery-section')?.dataset.section || '' });
+    // The grid <img> is a downscaled derivative; data-full points at the
+    // original so the lightbox opens the full-resolution photo.
+    const full = item.dataset.full || img.currentSrc || img.src;
+    images.push({ src: full, alt: img.alt, section: item.closest('.gallery-section')?.dataset.section || '' });
     item.dataset.idx = i;
 
     // A listed image whose file is genuinely gone (e.g. deleted from the folder

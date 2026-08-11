@@ -1,0 +1,290 @@
+{
+  "_readme": [
+    "Per-photo alt text for the gallery, in every site language.",
+    "tools/build-site.js reads this when it pre-renders gallery.html, so each",
+    "photo gets a description of what is actually in it instead of 38 copies of",
+    "'Apartment interior'. The build appends a location suffix (see SUFFIX in",
+    "build-site.js), so keep these phrases short and specific.",
+    "Any photo missing from this file falls back to the grid's generic",
+    "data-gallery-alt, so adding new photos never breaks the build."
+  ],
+
+  "images/indoor/indoor1.jpeg": {
+    "en": "Living room sofa with scatter cushions and a decorative lantern",
+    "hr": "Sofa u dnevnom boravku s ukrasnim jastucima i lampionom",
+    "pl": "Sofa w salonie z poduszkami i ozdobnym lampionem",
+    "de": "Wohnzimmersofa mit Zierkissen und dekorativer Laterne"
+  },
+  "images/indoor/indoor2.jpeg": {
+    "en": "Bedroom with fitted wardrobe and fresh towels on the bed",
+    "hr": "Spavaća soba s ugradbenim ormarom i svježim ručnicima na krevetu",
+    "pl": "Sypialnia z szafą w zabudowie i świeżymi ręcznikami na łóżku",
+    "de": "Schlafzimmer mit Einbauschrank und frischen Handtüchern auf dem Bett"
+  },
+  "images/indoor/indoor3.jpeg": {
+    "en": "Mirrored wardrobe and dressing table against leaf-print wallpaper",
+    "hr": "Ormar sa zrcalom i toaletni stolić uz tapetu s lišćem",
+    "pl": "Szafa z lustrem i toaletka na tle tapety w liście",
+    "de": "Spiegelschrank und Schminktisch vor Tapete mit Blattmuster"
+  },
+  "images/indoor/indoor4.jpeg": {
+    "en": "Double bed with reading lamp and botanical wallpaper",
+    "hr": "Bračni krevet s lampom za čitanje i botaničkom tapetom",
+    "pl": "Łóżko dwuosobowe z lampką do czytania i tapetą botaniczną",
+    "de": "Doppelbett mit Leselampe und botanischer Tapete"
+  },
+  "images/indoor/indoor5.jpeg": {
+    "en": "Dining area seen through the terrace door, with flowering planter",
+    "hr": "Blagovaonica kroz vrata terase, s cvjetnom žardinjerom",
+    "pl": "Jadalnia widziana przez drzwi tarasowe, z kwitnącą donicą",
+    "de": "Essbereich durch die Terrassentür, mit blühendem Pflanzkübel"
+  },
+  "images/indoor/indoor6.jpeg": {
+    "en": "View across the channel to Korčula with a sailboat at the jetty",
+    "hr": "Pogled preko kanala na Korčulu s jedrilicom uz mol",
+    "pl": "Widok przez kanał na Korčulę z żaglówką przy pomoście",
+    "de": "Blick über den Kanal nach Korčula mit Segelboot am Steg"
+  },
+  "images/indoor/indoor8.jpeg": {
+    "en": "Double bed with folded towels beside a curtained window",
+    "hr": "Bračni krevet sa složenim ručnicima uz prozor sa zavjesama",
+    "pl": "Łóżko dwuosobowe ze złożonymi ręcznikami przy oknie z zasłonami",
+    "de": "Doppelbett mit gefalteten Handtüchern am Fenster mit Vorhängen"
+  },
+  "images/indoor/indoor9.jpeg": {
+    "en": "Double bed with teal cushions, wall light and wooden bedside table",
+    "hr": "Bračni krevet s tirkiznim jastucima, zidnom lampom i drvenim noćnim ormarićem",
+    "pl": "Łóżko dwuosobowe z turkusowymi poduszkami, kinkietem i drewnianym stolikiem nocnym",
+    "de": "Doppelbett mit petrolfarbenen Kissen, Wandleuchte und Nachttisch aus Holz"
+  },
+  "images/indoor/indoor10.jpeg": {
+    "en": "Corner sofa with a knitted pouffe and side table",
+    "hr": "Kutna sofa s pletenim tabureom i pomoćnim stolićem",
+    "pl": "Sofa narożna z dzianinową pufą i stolikiem bocznym",
+    "de": "Ecksofa mit gestricktem Pouf und Beistelltisch"
+  },
+  "images/indoor/indoor11.jpeg": {
+    "en": "Sunburst mirror as a wall feature in the living room",
+    "hr": "Zrcalo u obliku sunca kao zidni detalj u dnevnom boravku",
+    "pl": "Lustro słońce jako dekoracja ściany w salonie",
+    "de": "Sonnenspiegel als Wanddekoration im Wohnzimmer"
+  },
+  "images/indoor/indoor12.jpeg": {
+    "en": "Dining table with flowers, TV and open-plan kitchen behind",
+    "hr": "Blagovaonički stol s cvijećem, TV i otvorena kuhinja u pozadini",
+    "pl": "Stół jadalny z kwiatami, telewizor i otwarta kuchnia w tle",
+    "de": "Esstisch mit Blumen, Fernseher und offene Küche dahinter"
+  },
+  "images/indoor/indoor13.jpeg": {
+    "en": "Double bed with white bedside table and botanical wallpaper",
+    "hr": "Bračni krevet s bijelim noćnim ormarićem i botaničkom tapetom",
+    "pl": "Łóżko dwuosobowe z białym stolikiem nocnym i tapetą botaniczną",
+    "de": "Doppelbett mit weißem Nachttisch und botanischer Tapete"
+  },
+  "images/indoor/indoor14.jpeg": {
+    "en": "Bathroom vanity with backlit round mirror and wooden unit",
+    "hr": "Kupaonski ormarić s okruglim osvijetljenim zrcalom i drvenim elementom",
+    "pl": "Umywalka łazienkowa z podświetlanym okrągłym lustrem i drewnianą szafką",
+    "de": "Waschtisch mit hinterleuchtetem Rundspiegel und Holzunterschrank"
+  },
+  "images/indoor/indoor15.jpeg": {
+    "en": "Bathroom washbasin with wooden vanity and stacked towels",
+    "hr": "Umivaonik s drvenim ormarićem i složenim ručnicima",
+    "pl": "Umywalka z drewnianą szafką i ułożonymi ręcznikami",
+    "de": "Waschbecken mit Holzunterschrank und gestapelten Handtüchern"
+  },
+  "images/indoor/indoor16.jpeg": {
+    "en": "Marble-tiled bathroom with recessed shelf niche",
+    "hr": "Kupaonica s mramornim pločicama i udubljenom policom",
+    "pl": "Łazienka wyłożona marmurem z wnęką na półkę",
+    "de": "Badezimmer mit Marmorfliesen und Wandnische"
+  },
+  "images/indoor/indoor18.jpeg": {
+    "en": "Entrance hallway with slimline shoe cabinet",
+    "hr": "Ulazni hodnik s uskim ormarićem za cipele",
+    "pl": "Przedpokój z wąską szafką na buty",
+    "de": "Eingangsflur mit schmalem Schuhschrank"
+  },
+  "images/indoor/indoor19.jpeg": {
+    "en": "Bedroom wardrobe with mirror and bedside table",
+    "hr": "Ormar u spavaćoj sobi sa zrcalom i noćnim ormarićem",
+    "pl": "Szafa w sypialni z lustrem i stolikiem nocnym",
+    "de": "Kleiderschrank im Schlafzimmer mit Spiegel und Nachttisch"
+  },
+  "images/indoor/indoor20.jpeg": {
+    "en": "Double bed with upholstered headboard and leaf-print cushion",
+    "hr": "Bračni krevet s tapeciranim uzglavljem i jastukom s uzorkom lišća",
+    "pl": "Łóżko dwuosobowe z tapicerowanym zagłówkiem i poduszką w liście",
+    "de": "Doppelbett mit gepolstertem Kopfteil und Kissen mit Blattmuster"
+  },
+  "images/indoor/indoor21.jpeg": {
+    "en": "Double bed with fresh towels and a window overlooking the garden",
+    "hr": "Bračni krevet sa svježim ručnicima i prozorom s pogledom na vrt",
+    "pl": "Łóżko dwuosobowe ze świeżymi ręcznikami i oknem z widokiem na ogród",
+    "de": "Doppelbett mit frischen Handtüchern und Fenster zum Garten"
+  },
+  "images/indoor/indoor24.jpeg": {
+    "en": "Bright entrance hall with wooden floor and sunburst mirror",
+    "hr": "Svijetli ulazni hodnik s drvenim podom i zrcalom u obliku sunca",
+    "pl": "Jasny przedpokój z drewnianą podłogą i lustrem słońcem",
+    "de": "Heller Eingangsbereich mit Holzboden und Sonnenspiegel"
+  },
+  "images/indoor/indoor25.jpeg": {
+    "en": "Hallway leading to the bedrooms and bathroom",
+    "hr": "Hodnik koji vodi do spavaćih soba i kupaonice",
+    "pl": "Korytarz prowadzący do sypialni i łazienki",
+    "de": "Flur zu den Schlafzimmern und zum Bad"
+  },
+  "images/indoor/indoor26.jpeg": {
+    "en": "Made-up double bed with bedside table and botanical wallpaper",
+    "hr": "Namješten bračni krevet s noćnim ormarićem i botaničkom tapetom",
+    "pl": "Zaścielone łóżko dwuosobowe ze stolikiem nocnym i tapetą botaniczną",
+    "de": "Bezogenes Doppelbett mit Nachttisch und botanischer Tapete"
+  },
+  "images/indoor/indoor27.jpeg": {
+    "en": "Grey corner sofa with side tables and a knitted pouffe",
+    "hr": "Siva kutna sofa s pomoćnim stolićima i pletenim tabureom",
+    "pl": "Szara sofa narożna ze stolikami i dzianinową pufą",
+    "de": "Graues Ecksofa mit Beistelltischen und gestricktem Pouf"
+  },
+  "images/indoor/indoor29.jpeg": {
+    "en": "Fully equipped kitchen with oven, microwave, hob and fridge",
+    "hr": "Potpuno opremljena kuhinja s pećnicom, mikrovalnom, pločom i hladnjakom",
+    "pl": "W pełni wyposażona kuchnia z piekarnikiem, mikrofalą, płytą i lodówką",
+    "de": "Voll ausgestattete Küche mit Backofen, Mikrowelle, Kochfeld und Kühlschrank"
+  },
+  "images/indoor/indoor30.jpeg": {
+    "en": "Kitchen and dining table under pendant lights",
+    "hr": "Kuhinja i blagovaonički stol ispod visećih svjetiljki",
+    "pl": "Kuchnia i stół jadalny pod lampami wiszącymi",
+    "de": "Küche und Esstisch unter Pendelleuchten"
+  },
+  "images/indoor/indoor31.jpeg": {
+    "en": "Open-plan living and dining area with TV and sofa",
+    "hr": "Otvoreni prostor dnevnog boravka i blagovaonice s TV-om i sofom",
+    "pl": "Otwarta przestrzeń salonu i jadalni z telewizorem i sofą",
+    "de": "Offener Wohn- und Essbereich mit Fernseher und Sofa"
+  },
+  "images/indoor/indoor32.jpeg": {
+    "en": "Hallway with decorative wall discs and wooden flooring",
+    "hr": "Hodnik s ukrasnim zidnim krugovima i drvenim podom",
+    "pl": "Korytarz z dekoracyjnymi kołami na ścianie i drewnianą podłogą",
+    "de": "Flur mit dekorativen Wandscheiben und Holzboden"
+  },
+  "images/indoor/indoor33.jpg": {
+    "en": "Double bed with blue throw and folded towels",
+    "hr": "Bračni krevet s plavim prekrivačem i složenim ručnicima",
+    "pl": "Łóżko dwuosobowe z niebieską narzutą i złożonymi ręcznikami",
+    "de": "Doppelbett mit blauer Tagesdecke und gefalteten Handtüchern"
+  },
+  "images/indoor/indoor34.jpg": {
+    "en": "Double bed with sage throw beside a curtained window",
+    "hr": "Bračni krevet sa zelenim prekrivačem uz prozor sa zavjesama",
+    "pl": "Łóżko dwuosobowe z szałwiową narzutą przy oknie z zasłonami",
+    "de": "Doppelbett mit salbeifarbener Decke am Fenster mit Vorhängen"
+  },
+  "images/indoor/indoor35.jpg": {
+    "en": "Double bedroom with wardrobe and fresh linen",
+    "hr": "Spavaća soba s bračnim krevetom, ormarom i svježom posteljinom",
+    "pl": "Sypialnia z łóżkiem dwuosobowym, szafą i świeżą pościelą",
+    "de": "Schlafzimmer mit Doppelbett, Kleiderschrank und frischer Bettwäsche"
+  },
+  "images/indoor/indoor36.jpg": {
+    "en": "Sunlit bed with blue bedding and framed prints",
+    "hr": "Sunčan krevet s plavom posteljinom i uokvirenim slikama",
+    "pl": "Nasłonecznione łóżko z niebieską pościelą i obrazkami w ramkach",
+    "de": "Sonniges Bett mit blauer Bettwäsche und gerahmten Bildern"
+  },
+  "images/indoor/indoor37.jpg": {
+    "en": "Bathroom with washing machine, basin and wooden vanity",
+    "hr": "Kupaonica s perilicom rublja, umivaonikom i drvenim ormarićem",
+    "pl": "Łazienka z pralką, umywalką i drewnianą szafką",
+    "de": "Bad mit Waschmaschine, Waschbecken und Holzunterschrank"
+  },
+  "images/indoor/indoor38.jpg": {
+    "en": "Bathroom with washing machine, heated towel rail and window",
+    "hr": "Kupaonica s perilicom rublja, grijačem za ručnike i prozorom",
+    "pl": "Łazienka z pralką, grzejnikiem na ręczniki i oknem",
+    "de": "Bad mit Waschmaschine, Handtuchheizkörper und Fenster"
+  },
+  "images/indoor/indoor39.jpg": {
+    "en": "Walk-in shower with glass screen and rain head",
+    "hr": "Tuš kabina sa staklenom pregradom i tuš ružom",
+    "pl": "Prysznic typu walk-in ze szklaną ścianką i deszczownicą",
+    "de": "Ebenerdige Dusche mit Glaswand und Regenbrause"
+  },
+
+  "images/terrace/terrace1.jpeg": {
+    "en": "Sun loungers on the terrace framed by bougainvillea",
+    "hr": "Ležaljke na terasi okružene bugenvilijom",
+    "pl": "Leżaki na tarasie otoczone bugenwillą",
+    "de": "Sonnenliegen auf der Terrasse, umrahmt von Bougainvillea"
+  },
+  "images/terrace/terrace2.jpeg": {
+    "en": "Night view from the terrace over the lights of the bay",
+    "hr": "Noćni pogled s terase na svjetla uvale",
+    "pl": "Nocny widok z tarasu na światła zatoki",
+    "de": "Nachtblick von der Terrasse über die Lichter der Bucht"
+  },
+  "images/terrace/terrace3.jpeg": {
+    "en": "Glass of Pelješac Dingač red wine on the terrace after dark",
+    "hr": "Čaša pelješkog Dingača na terasi nakon zalaska sunca",
+    "pl": "Kieliszek czerwonego wina Dingač z Pelješaca na tarasie po zmroku",
+    "de": "Glas Dingač-Rotwein von der Pelješac-Halbinsel auf der Terrasse am Abend"
+  },
+  "images/terrace/terrace4.jpeg": {
+    "en": "Terrace table laid for breakfast with sunflowers and fresh fruit",
+    "hr": "Stol na terasi postavljen za doručak sa suncokretima i svježim voćem",
+    "pl": "Stół na tarasie nakryty do śniadania ze słonecznikami i świeżymi owocami",
+    "de": "Terrassentisch zum Frühstück gedeckt mit Sonnenblumen und frischem Obst"
+  },
+  "images/terrace/terrace5.jpeg": {
+    "en": "Outdoor dining table set under flowering bougainvillea",
+    "hr": "Vanjski blagovaonički stol ispod rascvjetane bugenvilije",
+    "pl": "Stół na zewnątrz nakryty pod kwitnącą bugenwillą",
+    "de": "Gedeckter Esstisch im Freien unter blühender Bougainvillea"
+  },
+  "images/terrace/terrace6.jpeg": {
+    "en": "Open door from the apartment onto the terrace dining table",
+    "hr": "Otvorena vrata iz apartmana prema stolu na terasi",
+    "pl": "Otwarte drzwi z apartamentu na taras ze stołem",
+    "de": "Offene Tür vom Apartment zum Esstisch auf der Terrasse"
+  },
+  "images/terrace/terrace7.jpg": {
+    "en": "Hanging rattan chair on the terrace with a view of the sea",
+    "hr": "Viseća ratan fotelja na terasi s pogledom na more",
+    "pl": "Wiszący fotel rattanowy na tarasie z widokiem na morze",
+    "de": "Hängesessel aus Rattan auf der Terrasse mit Meerblick"
+  },
+  "images/terrace/terrace8.jpg": {
+    "en": "Covered terrace with dining table and hanging chair in the evening",
+    "hr": "Natkrivena terasa sa stolom i visećom foteljom u večernjim satima",
+    "pl": "Zadaszony taras ze stołem i wiszącym fotelem wieczorem",
+    "de": "Überdachte Terrasse mit Esstisch und Hängesessel am Abend"
+  },
+  "images/terrace/terrace9.jpg": {
+    "en": "Hanging chair and flowers with the sea and Korčula beyond",
+    "hr": "Viseća fotelja i cvijeće s pogledom na more i Korčulu",
+    "pl": "Wiszący fotel i kwiaty z widokiem na morze i Korčulę",
+    "de": "Hängesessel und Blumen mit Blick auf das Meer und Korčula"
+  },
+  "images/terrace/terrace10.jpeg": {
+    "en": "Terrace with dining table, hanging chair and apartment entrance",
+    "hr": "Terasa sa stolom, visećom foteljom i ulazom u apartman",
+    "pl": "Taras ze stołem, wiszącym fotelem i wejściem do apartamentu",
+    "de": "Terrasse mit Esstisch, Hängesessel und Apartmenteingang"
+  },
+
+  "images/beach/beach1.jpeg": {
+    "en": "Kućište waterfront with jetty, moored boats and Korčula across the channel",
+    "hr": "Rive u Kućištu s molom, privezanim brodicama i Korčulom preko kanala",
+    "pl": "Nabrzeże w Kućište z pomostem, zacumowanymi łodziami i Korčulą po drugiej stronie kanału",
+    "de": "Uferpromenade von Kućište mit Steg, vertäuten Booten und Korčula gegenüber"
+  },
+  "images/beach/beach2.jpeg": {
+    "en": "Pebble shore with a wooden boat, stone houses and pine trees",
+    "hr": "Šljunčana obala s drvenom brodicom, kamenim kućama i borovima",
+    "pl": "Kamienista plaża z drewnianą łodzią, kamiennymi domami i sosnami",
+    "de": "Kiesstrand mit Holzboot, Steinhäusern und Pinien"
+  }
+}

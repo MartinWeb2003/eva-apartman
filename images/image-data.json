@@ -1,0 +1,1360 @@
+{
+  "images": {
+    "images/Ap_Eva_logo_800x800px-transparent.png": {
+      "width": 500,
+      "height": 500,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/Ap_Eva_logo_800x800px-transparent-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/Ap_Eva_logo_800x800px-transparent-480.webp"
+        }
+      ],
+      "fallback": "images/opt/Ap_Eva_logo_800x800px-transparent-500.png"
+    },
+    "images/Ap_Eva_logo_800x800px_siva.jpg": {
+      "width": 800,
+      "height": 800,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/Ap_Eva_logo_800x800px_siva-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/Ap_Eva_logo_800x800px_siva-480.webp"
+        }
+      ],
+      "fallback": "images/opt/Ap_Eva_logo_800x800px_siva-800.jpg"
+    },
+    "images/beach/beach1.jpeg": {
+      "width": 2040,
+      "height": 942,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/beach/beach1-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/beach/beach1-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/beach/beach1-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/beach/beach1-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/beach/beach1-960.jpg"
+    },
+    "images/beach/beach2.jpeg": {
+      "width": 2040,
+      "height": 942,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/beach/beach2-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/beach/beach2-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/beach/beach2-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/beach/beach2-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/beach/beach2-960.jpg"
+    },
+    "images/crkva.jpg": {
+      "width": 1920,
+      "height": 1078,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/crkva-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/crkva-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/crkva-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/crkva-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/crkva-960.jpg"
+    },
+    "images/indoor/indoor1.jpeg": {
+      "width": 2000,
+      "height": 1500,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor1-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor1-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor1-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor1-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor1-960.jpg"
+    },
+    "images/indoor/indoor10.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor10-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor10-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor10-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor10-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor10-960.jpg"
+    },
+    "images/indoor/indoor11.jpeg": {
+      "width": 2000,
+      "height": 1500,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor11-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor11-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor11-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor11-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor11-960.jpg"
+    },
+    "images/indoor/indoor12.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor12-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor12-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor12-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor12-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor12-960.jpg"
+    },
+    "images/indoor/indoor13.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor13-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor13-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor13-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor13-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor13-960.jpg"
+    },
+    "images/indoor/indoor14.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor14-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor14-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor14-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor14-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor14-960.jpg"
+    },
+    "images/indoor/indoor15.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor15-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor15-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor15-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor15-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor15-960.jpg"
+    },
+    "images/indoor/indoor16.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor16-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor16-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor16-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor16-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor16-960.jpg"
+    },
+    "images/indoor/indoor18.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor18-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor18-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor18-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor18-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor18-960.jpg"
+    },
+    "images/indoor/indoor19.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor19-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor19-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor19-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor19-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor19-960.jpg"
+    },
+    "images/indoor/indoor2.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor2-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor2-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor2-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor2-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor2-960.jpg"
+    },
+    "images/indoor/indoor20.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor20-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor20-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor20-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor20-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor20-960.jpg"
+    },
+    "images/indoor/indoor21.jpeg": {
+      "width": 2000,
+      "height": 1500,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor21-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor21-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor21-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor21-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor21-960.jpg"
+    },
+    "images/indoor/indoor24.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor24-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor24-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor24-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor24-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor24-960.jpg"
+    },
+    "images/indoor/indoor25.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor25-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor25-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor25-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor25-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor25-960.jpg"
+    },
+    "images/indoor/indoor26.jpeg": {
+      "width": 2000,
+      "height": 1500,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor26-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor26-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor26-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor26-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor26-960.jpg"
+    },
+    "images/indoor/indoor27.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor27-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor27-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor27-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor27-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor27-960.jpg"
+    },
+    "images/indoor/indoor29.jpeg": {
+      "width": 2000,
+      "height": 1500,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor29-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor29-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor29-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor29-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor29-960.jpg"
+    },
+    "images/indoor/indoor3.jpeg": {
+      "width": 1440,
+      "height": 1952,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor3-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor3-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor3-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor3-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor3-960.jpg"
+    },
+    "images/indoor/indoor30.jpeg": {
+      "width": 2000,
+      "height": 1500,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor30-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor30-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor30-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor30-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor30-960.jpg"
+    },
+    "images/indoor/indoor31.jpeg": {
+      "width": 2000,
+      "height": 1500,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor31-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor31-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor31-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor31-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor31-960.jpg"
+    },
+    "images/indoor/indoor32.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor32-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor32-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor32-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor32-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor32-960.jpg"
+    },
+    "images/indoor/indoor33.jpg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor33-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor33-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor33-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor33-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor33-960.jpg"
+    },
+    "images/indoor/indoor34.jpg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor34-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor34-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor34-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor34-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor34-960.jpg"
+    },
+    "images/indoor/indoor35.jpg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor35-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor35-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor35-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor35-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor35-960.jpg"
+    },
+    "images/indoor/indoor36.jpg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor36-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor36-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor36-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor36-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor36-960.jpg"
+    },
+    "images/indoor/indoor37.jpg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor37-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor37-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor37-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor37-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor37-960.jpg"
+    },
+    "images/indoor/indoor38.jpg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor38-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor38-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor38-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor38-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor38-960.jpg"
+    },
+    "images/indoor/indoor39.jpg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor39-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor39-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor39-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor39-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor39-960.jpg"
+    },
+    "images/indoor/indoor4.jpeg": {
+      "width": 1952,
+      "height": 1472,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor4-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor4-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor4-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor4-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor4-960.jpg"
+    },
+    "images/indoor/indoor5.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor5-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor5-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor5-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor5-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor5-960.jpg"
+    },
+    "images/indoor/indoor6.jpeg": {
+      "width": 1080,
+      "height": 1080,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor6-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor6-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor6-960.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor6-960.jpg"
+    },
+    "images/indoor/indoor8.jpeg": {
+      "width": 2048,
+      "height": 957,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor8-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor8-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor8-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor8-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor8-960.jpg"
+    },
+    "images/indoor/indoor9.jpeg": {
+      "width": 1472,
+      "height": 1952,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/indoor/indoor9-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/indoor/indoor9-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/indoor/indoor9-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/indoor/indoor9-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/indoor/indoor9-960.jpg"
+    },
+    "images/korcula.jpg": {
+      "width": 848,
+      "height": 566,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/korcula-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/korcula-480.webp"
+        }
+      ],
+      "fallback": "images/opt/korcula-848.jpg"
+    },
+    "images/kuciste-beach.jpg": {
+      "width": 1600,
+      "height": 1200,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/kuciste-beach-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/kuciste-beach-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/kuciste-beach-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/kuciste-beach-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/kuciste-beach-960.jpg"
+    },
+    "images/kuciste-konoba.jpg": {
+      "width": 369,
+      "height": 136,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/kuciste-konoba-240.webp"
+        }
+      ],
+      "fallback": "images/opt/kuciste-konoba-369.jpg"
+    },
+    "images/logo-transparent.png": {
+      "width": 1536,
+      "height": 1024,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/logo-transparent-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/logo-transparent-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/logo-transparent-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/logo-transparent-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/logo-transparent-960.png"
+    },
+    "images/logo.jpeg": {
+      "width": 500,
+      "height": 338,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/logo-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/logo-480.webp"
+        }
+      ],
+      "fallback": "images/opt/logo-500.jpg"
+    },
+    "images/orebic-dining.jpg": {
+      "width": 1700,
+      "height": 949,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/orebic-dining-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/orebic-dining-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/orebic-dining-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/orebic-dining-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/orebic-dining-960.jpg"
+    },
+    "images/perna-beach.jpg": {
+      "width": 500,
+      "height": 333,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/perna-beach-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/perna-beach-480.webp"
+        }
+      ],
+      "fallback": "images/opt/perna-beach-500.jpg"
+    },
+    "images/ston.jpg": {
+      "width": 1920,
+      "height": 1080,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/ston-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/ston-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/ston-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/ston-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/ston-960.jpg"
+    },
+    "images/sv-ilija.jpg": {
+      "width": 900,
+      "height": 675,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/sv-ilija-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/sv-ilija-480.webp"
+        }
+      ],
+      "fallback": "images/opt/sv-ilija-900.jpg"
+    },
+    "images/terrace/terrace1.jpeg": {
+      "width": 2048,
+      "height": 2048,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/terrace/terrace1-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/terrace/terrace1-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/terrace/terrace1-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/terrace/terrace1-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/terrace/terrace1-960.jpg"
+    },
+    "images/terrace/terrace10.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/terrace/terrace10-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/terrace/terrace10-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/terrace/terrace10-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/terrace/terrace10-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/terrace/terrace10-960.jpg"
+    },
+    "images/terrace/terrace2.jpeg": {
+      "width": 2000,
+      "height": 1500,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/terrace/terrace2-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/terrace/terrace2-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/terrace/terrace2-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/terrace/terrace2-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/terrace/terrace2-960.jpg"
+    },
+    "images/terrace/terrace3.jpeg": {
+      "width": 1495,
+      "height": 1794,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/terrace/terrace3-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/terrace/terrace3-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/terrace/terrace3-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/terrace/terrace3-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/terrace/terrace3-960.jpg"
+    },
+    "images/terrace/terrace4.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/terrace/terrace4-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/terrace/terrace4-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/terrace/terrace4-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/terrace/terrace4-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/terrace/terrace4-960.jpg"
+    },
+    "images/terrace/terrace5.jpeg": {
+      "width": 2000,
+      "height": 1500,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/terrace/terrace5-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/terrace/terrace5-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/terrace/terrace5-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/terrace/terrace5-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/terrace/terrace5-960.jpg"
+    },
+    "images/terrace/terrace6.jpeg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/terrace/terrace6-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/terrace/terrace6-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/terrace/terrace6-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/terrace/terrace6-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/terrace/terrace6-960.jpg"
+    },
+    "images/terrace/terrace7.jpg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/terrace/terrace7-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/terrace/terrace7-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/terrace/terrace7-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/terrace/terrace7-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/terrace/terrace7-960.jpg"
+    },
+    "images/terrace/terrace8.jpg": {
+      "width": 2000,
+      "height": 1500,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/terrace/terrace8-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/terrace/terrace8-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/terrace/terrace8-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/terrace/terrace8-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/terrace/terrace8-960.jpg"
+    },
+    "images/terrace/terrace9.jpg": {
+      "width": 1500,
+      "height": 2000,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/terrace/terrace9-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/terrace/terrace9-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/terrace/terrace9-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/terrace/terrace9-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/terrace/terrace9-960.jpg"
+    },
+    "images/trstenica-beach.jpg": {
+      "width": 300,
+      "height": 168,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/trstenica-beach-240.webp"
+        }
+      ],
+      "fallback": "images/opt/trstenica-beach-300.jpg"
+    },
+    "images/viganj-bar.jpg": {
+      "width": 225,
+      "height": 225,
+      "webp": [
+        {
+          "w": 225,
+          "src": "images/opt/viganj-bar-225.webp"
+        }
+      ],
+      "fallback": "images/opt/viganj-bar-225.jpg"
+    },
+    "images/viganj-windsurfing.jpg": {
+      "width": 1911,
+      "height": 903,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/viganj-windsurfing-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/viganj-windsurfing-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/viganj-windsurfing-960.webp"
+        },
+        {
+          "w": 1440,
+          "src": "images/opt/viganj-windsurfing-1440.webp"
+        }
+      ],
+      "fallback": "images/opt/viganj-windsurfing-960.jpg"
+    },
+    "images/vinarije.jpg": {
+      "width": 1024,
+      "height": 678,
+      "webp": [
+        {
+          "w": 240,
+          "src": "images/opt/vinarije-240.webp"
+        },
+        {
+          "w": 480,
+          "src": "images/opt/vinarije-480.webp"
+        },
+        {
+          "w": 960,
+          "src": "images/opt/vinarije-960.webp"
+        }
+      ],
+      "fallback": "images/opt/vinarije-960.jpg"
+    }
+  },
+  "hero": {
+    "webp": [
+      {
+        "w": 1280,
+        "src": "images/opt/hero/hero-1280.webp"
+      },
+      {
+        "w": 1920,
+        "src": "images/opt/hero/hero-1920.webp"
+      }
+    ],
+    "jpg": [
+      {
+        "w": 1280,
+        "src": "images/opt/hero/hero-1280.jpg"
+      },
+      {
+        "w": 1920,
+        "src": "images/opt/hero/hero-1920.jpg"
+      }
+    ]
+  }
+}

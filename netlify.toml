@@ -1,0 +1,127 @@
+#
+# Eva Apartman — Netlify configuration
+# -----------------------------------------------------------------------------
+# The site is published straight from the repo root: tools/build-site.js writes
+# the generated pages (index.html, gallery.html, …, hr/, pl/, de/) and they are
+# committed, so Netlify has nothing to build. Run `npm run build` locally after
+# editing anything in src/ and commit the result.
+#
+
+[build]
+  publish = "."
+  # No build command on purpose — see above. If you ever move to building on
+  # Netlify instead, set:  command = "npm run build"
+
+# -----------------------------------------------------------------------------
+# Caching
+# -----------------------------------------------------------------------------
+# Everything used to be served with `Cache-Control: public, max-age=0,
+# must-revalidate` (the Netlify default), so returning visitors re-validated
+# ~16 MB of photos on every single page view.
+#
+# HTML stays uncached so content edits go live immediately; static assets get
+# long lives. CSS and JS are safe to freeze for a year because build-site.js
+# appends a content hash (`style.css?v=1a2b3c4d`) to every reference — change
+# the file and the URL changes with it.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+
+# HTML: always revalidate, but allow the CDN to serve a stale copy for a moment
+# while it fetches the new one.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Fingerprinted — safe to cache forever.
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Generated derivatives: the filename encodes the width, and they are only ever
+# rewritten when the source photo changes.
+[[headers]]
+  for = "/images/opt/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Original photos keep stable filenames, so cache for a month rather than a
+# year — replacing a photo in place then takes at most 30 days to propagate.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=604800"
+
+# Small JSON the site reads at runtime; keep it fresh-ish.
+[[headers]]
+  for = "/images/*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# -----------------------------------------------------------------------------
+# Admin panel
+# -----------------------------------------------------------------------------
+# robots.txt no longer names this path (a Disallow line is a public signpost,
+# not protection). An X-Robots-Tag header is the real instruction: it keeps the
+# page out of the index even if someone links to it, and unlike a Disallow it
+# still works when the crawler is allowed to fetch the page.
+#
+# NOTE: this is not access control. The panel's password check runs in the
+# browser, so treat the panel as "obscured", not "secured" — see the comment in
+# tripuneva1/index.html.
+[[headers]]
+  for = "/tripuneva1/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store"
+
+# -----------------------------------------------------------------------------
+# Redirects
+# -----------------------------------------------------------------------------
+# One canonical URL per page. /index.html and /hr/index.html would otherwise be
+# reachable alongside / and /hr/.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hr/index.html"
+  to = "/hr/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pl/index.html"
+  to = "/pl/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/de/index.html"
+  to = "/de/"
+  status = 301
+  force = true

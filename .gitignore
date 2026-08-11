@@ -1,0 +1,6 @@
+node_modules/
+
+# Build output IS committed on purpose: Netlify publishes the repo root with no
+# build command, so the generated pages (index.html, gallery.html, location.html,
+# contact.html, hr/, pl/, de/, sitemap.xml) and the image derivatives in
+# images/opt/ all need to be in the repo. Run `npm run build` before committing.
