@@ -169,7 +169,7 @@ const Calendar = (() => {
     // checkout dates can be a start; checkin dates cannot start a range
     if (!selectedStart || selectedEnd) {
       if (!Availability.isStartable(status)) {
-        showError('This date is a check-in day — it can only be used as a check-out. Please pick a green or half-green/half-red date to start.');
+        showError('This date is a check-in day, it can only be used as a check-out. Please pick a green or half-green/half-red date to start.');
         return;
       }
       selectedStart = new Date(date);
@@ -182,7 +182,7 @@ const Calendar = (() => {
     // Case 2: start set, no end — clicked same day or earlier → restart
     if (clickedTs <= startTs) {
       if (!Availability.isStartable(status)) {
-        showError('This date is a check-in day — it can only be used as a check-out. Please pick a green or half-green/half-red date to start.');
+        showError('This date is a check-in day, it can only be used as a check-out. Please pick a green or half-green/half-red date to start.');
         return;
       }
       selectedStart = new Date(date);
@@ -195,7 +195,7 @@ const Calendar = (() => {
     // Case 3: start set, clicked a later date → try to set end
     // End must be 'available' or 'checkin'
     if (!Availability.isEndable(status)) {
-      showError('This date is a check-out day — it can only be used as a check-in. Please pick a green or half-red/half-green date as your check-out.');
+      showError('This date is a check-out day, it can only be used as a check-in. Please pick a green or half-red/half-green date as your check-out.');
       return;
     }
 

@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const payload = {
         access_key:    WEB3FORMS_KEY,
-        subject:       `Booking enquiry — ${firstName} ${lastName} · ${formatDateReadable(startDate)} → ${formatDateReadable(endDate)}`,
+        subject:       `Booking enquiry, ${firstName} ${lastName} · ${formatDateReadable(startDate)} → ${formatDateReadable(endDate)}`,
         from_name:     'Eva Apartman Website',
         to:            'info@visit-eva-orebic.com',
         name:          `${firstName} ${lastName}`,

@@ -701,7 +701,7 @@ var TRANSLATIONS = {
     'sync.guide': 'Create a free JSONBin account, create a public bin with {"seasons":[],"booked":[]}, then paste the Bin ID and Master Key above.',
     'toast.sync.saved': 'Cloud Sync configured ✓',
     'toast.sync.ok': 'Synced to cloud ✓',
-    'toast.sync.err': 'Cloud sync failed — saved locally',
+    'toast.sync.err': 'Cloud sync failed, saved locally',
     'toast.sync.nokey': 'Enter your Bin ID and Master Key first',
     /* amenities tab */
     'tab.amenities': 'Amenities',
@@ -789,7 +789,7 @@ var TRANSLATIONS = {
     'sync.guide': 'Stvorite besplatni JSONBin račun, stvorite javni bin s {"seasons":[],"booked":[]}, zatim zalijepite Bin ID i Master ključ gore.',
     'toast.sync.saved': 'Cloud Sync konfiguriran ✓',
     'toast.sync.ok': 'Sinkronizirano u oblak ✓',
-    'toast.sync.err': 'Sinkronizacija nije uspjela — spremljeno lokalno',
+    'toast.sync.err': 'Sinkronizacija nije uspjela, spremljeno lokalno',
     'toast.sync.nokey': 'Najprije unesite Bin ID i Master ključ',
     /* amenities tab */
     'tab.amenities': 'Opremljenost',
@@ -830,7 +830,7 @@ var PW_ITERATIONS = 250000;
 /* Resolves true when `input` matches PW_HASH. */
 function verifyPassword(input) {
   var subtle = window.crypto && window.crypto.subtle;
-  if (!subtle) return Promise.reject(new Error('Web Crypto unavailable — use a modern browser over HTTPS.'));
+  if (!subtle) return Promise.reject(new Error('Web Crypto unavailable, use a modern browser over HTTPS.'));
 
   var enc  = new TextEncoder();
   var salt = new Uint8Array(PW_SALT.match(/../g).map(function (b) { return parseInt(b, 16); }));
