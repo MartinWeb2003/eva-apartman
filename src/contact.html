@@ -338,6 +338,13 @@
                   <div id="sel-end-date" class="date-sel-value empty" data-i18n="contact.cal.nosel">Not selected</div>
                 </div>
               </div>
+
+              <!-- Estimated total from the prices set in /admin; filled by js/calendar.js. -->
+              <div class="date-total" id="sel-total" aria-live="polite" hidden>
+                <span class="date-total-label" data-i18n="contact.cal.total">Estimated total</span>
+                <strong class="date-total-value" id="sel-total-value"></strong>
+                <span class="date-total-note" id="sel-total-note"></span>
+              </div>
             </div>
 
             <!-- Optional message -->

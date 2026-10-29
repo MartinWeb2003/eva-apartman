@@ -1209,6 +1209,18 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 
 .cal-day.empty { background: transparent; }
 
+/* Nightly price under the date (set in /admin). */
+.cal-day { flex-direction: column; gap: 1px; line-height: 1.1; }
+.cal-day-price {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: -0.01em;
+}
+.cal-day.selected-start .cal-day-price,
+.cal-day.selected-end .cal-day-price,
+.cal-day.available:hover .cal-day-price { color: inherit; opacity: 0.85; }
+
 .cal-day.available {
   color: var(--cal-available);
   font-weight: 600;
@@ -1280,6 +1292,23 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 .date-sel-value { font-family: var(--font-heading); font-size: 1.2rem; color: var(--ink); }
 .date-sel-value.empty { font-family: var(--font-body); font-size: 0.95rem; color: var(--ink-soft); font-style: italic; }
 .date-sel-separator { display: flex; align-items: center; color: var(--line-strong); font-size: 1.2rem; }
+
+/* Estimated total for the selected stay */
+.date-total {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 0.15rem 1rem;
+  margin-top: 0.6rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.date-total[hidden] { display: none; }
+.date-total-label { font-size: 0.82rem; font-weight: 500; color: var(--ink-soft); }
+.date-total-value { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 400; color: var(--ink); text-align: right; }
+.date-total-note { grid-column: 1 / -1; font-size: 0.84rem; color: var(--ink-soft); }
+.date-total-note:empty { display: none; }
 
 .calendar-error {
   display: none;
@@ -1922,6 +1951,8 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 }
 
 @media (max-width: 520px) {
+  .cal-day { font-size: 0.82rem; }
+  .cal-day-price { font-size: 0.58rem; }
   .direct-list,
   .seasons-grid { grid-template-columns: minmax(0, 1fr); }
   .direct-actions .btn { width: 100%; }

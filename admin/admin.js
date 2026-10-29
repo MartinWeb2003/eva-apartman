@@ -41,9 +41,25 @@
       'season.title': 'Sezona',
       'season.text': 'Gosti mogu birati datume samo unutar sezone.',
       'season.empty': 'Sezona nije postavljena, pa gosti ne mogu odabrati nijedan datum.',
-      'copy.text': 'Za {to}. još nema sezone. Kopirati sezonu i rezervacije iz {from}. na iste datume u {to}.?',
+      'copy.text': 'Za {to}. još nema sezone. Kopirati sezonu, rezervacije i cijene iz {from}. na iste datume u {to}.?',
       'copy.btn': 'Kopiraj iz {from}. u {to}.',
-      'copy.done': 'Dodano: {s} sezona i {b} rezervacija.',
+      'copy.done': 'Dodano: {s} sezona, {b} rezervacija i {p} cijena.',
+      'prices.title': 'Cijene',
+      'prices.text': 'Cijena po noći za razdoblje. Gosti je vide u kalendaru i u procjeni ukupne cijene.',
+      'prices.empty': 'Još nema cijena, pa gosti vide samo „od 75 €“ i „cijena na upit“.',
+      'prices.gaps': 'Za {n} dana u sezoni još nema cijene (prvi: {date}). Gosti za njih vide „cijena na upit“.',
+      'btn.addPrice': '+ Dodaj cijenu',
+      'price.new': 'Nova cijena',
+      'price.edit': 'Izmjena cijene',
+      'price.start': 'Prva noć',
+      'price.end': 'Zadnja noć',
+      'price.amount': 'Cijena po noći (€)',
+      'price.per': '{p} po noći',
+      'price.summary': '{n} × {p}',
+      'confirm.price': 'Obrisati cijenu?',
+      'confirm.price.text': '{range}. Gosti za te dane više neće vidjeti cijenu.',
+      'err.price_overlap': 'To se razdoblje preklapa s postojećom cijenom. Skratite ili uredite postojeću.',
+      'err.invalid_price': 'Upišite cijenu po noći, npr. 85.',
       'edit': 'Uredi',
       'delete': 'Obriši',
       'save': 'Spremi',
@@ -112,9 +128,25 @@
       'season.title': 'Season',
       'season.text': 'Guests can only pick dates inside the season.',
       'season.empty': 'No season is set, so guests can’t pick any dates.',
-      'copy.text': 'There’s no season for {to} yet. Copy the {from} season and bookings to the same dates in {to}?',
+      'copy.text': 'There’s no season for {to} yet. Copy the {from} season, bookings and prices to the same dates in {to}?',
       'copy.btn': 'Copy {from} to {to}',
-      'copy.done': 'Added {s} season(s) and {b} booking(s).',
+      'copy.done': 'Added {s} season(s), {b} booking(s) and {p} price(s).',
+      'prices.title': 'Prices',
+      'prices.text': 'Price per night for a period. Guests see it on the calendar and in the estimated total.',
+      'prices.empty': 'No prices yet, so guests only see “from €75” and “price on request”.',
+      'prices.gaps': '{n} days in the season have no price yet (first: {date}). Guests see “price on request” for them.',
+      'btn.addPrice': '+ Add price',
+      'price.new': 'New price',
+      'price.edit': 'Edit price',
+      'price.start': 'First night',
+      'price.end': 'Last night',
+      'price.amount': 'Price per night (€)',
+      'price.per': '{p} per night',
+      'price.summary': '{n} × {p}',
+      'confirm.price': 'Delete this price?',
+      'confirm.price.text': '{range}. Guests will no longer see a price for these days.',
+      'err.price_overlap': 'That period overlaps an existing price. Shorten or edit the existing one.',
+      'err.invalid_price': 'Enter the price per night, e.g. 85.',
       'edit': 'Edit',
       'delete': 'Delete',
       'save': 'Save',
@@ -184,11 +216,22 @@
     var one = lang === 'hr' ? (n % 10 === 1 && n % 100 !== 11) : n === 1;
     return n + ' ' + t(one ? 'nights.one' : 'nights.many');
   }
+  function money(n) {
+    return new Intl.NumberFormat(LOCALE[lang], {
+      style: 'currency', currency: 'EUR', maximumFractionDigits: n % 1 ? 2 : 0, minimumFractionDigits: n % 1 ? 2 : 0
+    }).format(n);
+  }
 
   /* ── State ─────────────────────────────────────────────────────────── */
-  var data = { seasons: [], booked: [] };
+  var data = { seasons: [], booked: [], prices: [] };
   var cursor = (function () { var n = new Date(); return { y: n.getFullYear(), m: n.getMonth() }; })();
-  var editing = null; // { kind: 'booking'|'season', original: range|null }
+  var editing = null; // { kind: 'booking'|'season'|'price', original: range|null }
+
+  /* Prices cover nights: start = first night, end = last night (inclusive). */
+  function priceOn(d) {
+    var p = data.prices.find(function (x) { return d >= x.start && d <= x.end; });
+    return p ? p.price : null;
+  }
 
   /* ── API ───────────────────────────────────────────────────────────── */
   function api(method, path, body) {
@@ -282,9 +325,11 @@
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'day ' + st + (inSeason(d) ? '' : ' off') + (d < today ? ' past' : '') + (d === today ? ' today' : '');
-      btn.textContent = day;
+      var price = priceOn(d);
+      btn.innerHTML = '<span>' + day + '</span>' + (price !== null ? '<span class="p">' + money(price) + '</span>' : '');
       btn.dataset.date = d;
-      btn.setAttribute('aria-label', fmt(d, { day: 'numeric', month: 'long', year: 'numeric' }) + ', ' + t('status.' + st));
+      btn.setAttribute('aria-label', fmt(d, { day: 'numeric', month: 'long', year: 'numeric' }) + ', ' + t('status.' + st) +
+        (price !== null ? ', ' + t('price.per', { p: money(price) }) : ''));
       grid.appendChild(btn);
     }
   }
@@ -333,7 +378,28 @@
       sl.appendChild(entryHtml(s, 'season', t('season.days', { n: daysBetween(s.start, s.end) + 1 })));
     });
 
+    // Prices still in use (finished periods don't matter any more).
+    var prl = $('price-list');
+    prl.innerHTML = '';
+    var current = data.prices.filter(function (p) { return p.end >= today; });
+    if (!current.length) prl.innerHTML = '<li class="empty">' + t('prices.empty') + '</li>';
+    current.forEach(function (p) { prl.appendChild(entryHtml(p, 'price', t('price.per', { p: money(p.price) }))); });
+    renderPriceGaps();
+
     renderCopyOffer();
+  }
+
+  /* Days guests can book (in season, from today on) that have no price. */
+  function renderPriceGaps() {
+    var today = todayIso(), count = 0, first = null;
+    data.seasons.forEach(function (s) {
+      for (var d = s.start > today ? s.start : today; d <= s.end; d = addDays(d, 1)) {
+        if (priceOn(d) === null) { count++; if (!first || d < first) first = d; }
+      }
+    });
+    var el = $('price-gaps');
+    el.hidden = !count || !data.prices.length;
+    if (!el.hidden) el.textContent = t('prices.gaps', { n: count, date: fmt(first, { day: 'numeric', month: 'long', year: 'numeric' }) });
   }
 
   /* Offer "copy last year" when the most recent season is over or this
@@ -373,6 +439,8 @@
     $('label-end').textContent = t(kind + '.end');
     $('date-start').value = r.start || '';
     $('date-end').value = r.end || '';
+    $('price-field').hidden = kind !== 'price';
+    $('price-input').value = kind === 'price' && r.price !== undefined ? r.price : '';
     $('edit-delete').hidden = !original;
     $('edit-error').textContent = '';
     setBusy(false);
@@ -383,7 +451,14 @@
   function updateSummary() {
     var a = $('date-start').value, b = $('date-end').value;
     var summary = '', note = '';
-    if (a && b && a < b) {
+    if (editing.kind === 'price') {
+      // Both ends are nights, so a single night (same date twice) is fine.
+      var price = parseFloat($('price-input').value);
+      if (a && b && a <= b) {
+        var nights = nightsLabel(daysBetween(a, b) + 1);
+        summary = price > 0 ? t('price.summary', { n: nights, p: money(price) }) : nights;
+      }
+    } else if (a && b && a < b) {
       var n = daysBetween(a, b);
       if (editing.kind === 'booking') {
         summary = nightsLabel(n);
@@ -406,11 +481,17 @@
     e.preventDefault();
     var r = { start: $('date-start').value, end: $('date-end').value };
     if (!r.start || !r.end) { $('edit-error').textContent = t('err.invalid_date'); return; }
-    if (r.end <= r.start) { $('edit-error').textContent = t('err.end_before_start'); return; }
-    var Kind = editing.kind === 'booking' ? 'Booking' : 'Season';
-    var body = editing.original
-      ? { op: 'update' + Kind, from: editing.original, to: r }
-      : { op: 'add' + Kind, start: r.start, end: r.end };
+    var isPrice = editing.kind === 'price';
+    if (isPrice ? r.end < r.start : r.end <= r.start) { $('edit-error').textContent = t('err.end_before_start'); return; }
+    if (isPrice) {
+      r.price = parseFloat(String($('price-input').value).replace(',', '.'));
+      if (!(r.price >= 1)) { $('edit-error').textContent = t('err.invalid_price'); $('price-input').focus(); return; }
+    }
+    var Kind = { booking: 'Booking', season: 'Season', price: 'Price' }[editing.kind];
+    var from = editing.original && { start: editing.original.start, end: editing.original.end };
+    var body = from
+      ? { op: 'update' + Kind, from: from, to: r }
+      : Object.assign({ op: 'add' + Kind }, r);
     setBusy(true);
     save(body, t('saved')).then(function () {
       $('edit-dialog').close();
@@ -434,7 +515,7 @@
     $('confirm-dialog').showModal();
     $('confirm-ok').onclick = function () {
       $('confirm-ok').disabled = true;
-      var op = kind === 'booking' ? 'removeBooking' : 'removeSeason';
+      var op = { booking: 'removeBooking', season: 'removeSeason', price: 'removePrice' }[kind];
       save({ op: op, start: r.start, end: r.end }, t('deleted')).then(function () {
         $('confirm-dialog').close();
       }, function (err) {
@@ -446,7 +527,7 @@
 
   /* ── Save + load ───────────────────────────────────────────────────── */
   function accept(json) {
-    data = { seasons: json.seasons || [], booked: json.booked || [] };
+    data = { seasons: json.seasons || [], booked: json.booked || [], prices: json.prices || [] };
     render();
     return json;
   }
@@ -549,6 +630,22 @@
     openEditor('season', null, { start: y + '-06-01', end: y + '-10-01' });
   });
 
+  // Pre-fill the first stretch of the season that has no price yet.
+  $('add-price').addEventListener('click', function () {
+    var today = todayIso(), start = null, end = null;
+    data.seasons.some(function (s) {
+      for (var d = s.start > today ? s.start : today; d <= s.end; d = addDays(d, 1)) {
+        if (priceOn(d) !== null) { if (start) return true; continue; }
+        if (!start) start = d;
+        end = d;
+      }
+      return !!start;
+    });
+    if (!start) { start = today; end = addDays(today, 29); }
+    openEditor('price', null, { start: start, end: end });
+    setTimeout(function () { $('price-input').focus(); }, 50);
+  });
+
   $('copy-btn').addEventListener('click', function () {
     var y = copyYears();
     if (!y) return;
@@ -556,7 +653,7 @@
     btn.disabled = true;
     save({ op: 'copyYear', from: y.from, to: y.to }).then(function (json) {
       var r = json.result || {};
-      toast(t('copy.done', { s: r.addedSeasons || 0, b: r.addedBookings || 0 }));
+      toast(t('copy.done', { s: r.addedSeasons || 0, b: r.addedBookings || 0, p: r.addedPrices || 0 }));
       cursor = { y: y.to, m: 5 };
       renderCalendar();
     }, function (err) { toast(errorText(err)); }).then(function () { btn.disabled = false; });
@@ -566,10 +663,13 @@
   $('date-start').addEventListener('input', function () {
     // Keep the stay length when the arrival moves past the departure.
     var a = this.value, b = $('date-end').value;
-    if (a && (!b || b <= a)) $('date-end').value = addDays(a, editing && editing.kind === 'season' ? 120 : 3);
+    var kind = editing && editing.kind;
+    var tooEarly = kind === 'price' ? b < a : b <= a;
+    if (a && (!b || tooEarly)) $('date-end').value = addDays(a, kind === 'season' ? 120 : kind === 'price' ? 29 : 3);
     updateSummary();
   });
   $('date-end').addEventListener('input', updateSummary);
+  $('price-input').addEventListener('input', updateSummary);
   $('edit-cancel').addEventListener('click', function () { $('edit-dialog').close(); });
   $('edit-delete').addEventListener('click', askDelete);
   $('confirm-cancel').addEventListener('click', function () { $('confirm-dialog').close(); });

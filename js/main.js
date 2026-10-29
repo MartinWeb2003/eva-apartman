@@ -118,6 +118,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── "from €75" → lowest upcoming price set in /admin ────────────
+  // /api/prices (netlify/functions/prices.mjs) is CDN-cached, so this costs
+  // almost nothing. If it can't be reached, the price built into the page stays.
+  const fromEls = document.querySelectorAll('[data-price-from]');
+  if (fromEls.length && window.fetch) {
+    fetch('/api/prices')
+      .then(res => (res.ok ? res.json() : null))
+      .then(json => {
+        if (!json || typeof json.from !== 'number') return;
+        const n = json.from;
+        const text = new Intl.NumberFormat(document.documentElement.lang || 'en', {
+          style: 'currency', currency: 'EUR',
+          minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: n % 1 ? 2 : 0
+        }).format(n);
+        fromEls.forEach(el => {
+          el.textContent = text;
+          const labelled = el.closest('[aria-label]');
+          if (labelled) labelled.setAttribute('aria-label', labelled.getAttribute('aria-label').replace(/€\s?\d+([.,]\d+)?/, text));
+        });
+      })
+      .catch(() => {});
+  }
+
   // ── Sticky booking bar + WhatsApp button ────────────────────────
   // Appear once the visitor has scrolled past the first screen (the hero
   // already carries the booking bar), and step aside over the footer so

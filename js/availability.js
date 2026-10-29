@@ -70,16 +70,21 @@ const Availability = (() => {
   // then updated once the async JSONBin fetch completes.
   let _seasons = [];
   let _booked  = [];
+  let _prices  = [];   // { start, end, price } — nights start…end inclusive, set in /admin
 
-  function applyData(seasonsArr, bookedArr) {
+  function applyData(seasonsArr, bookedArr, pricesArr) {
     _seasons = seasonsArr.map(s => ({ start: parseDate(s.start), end: parseDate(s.end) }));
     _booked  = bookedArr.map(b  => ({ start: parseDate(b.start), end: parseDate(b.end) }));
+    _prices  = (pricesArr || [])
+      .filter(p => p && p.start && p.end && Number.isFinite(Number(p.price)))
+      .map(p => ({ start: parseDate(p.start), end: parseDate(p.end), price: Number(p.price) }));
   }
 
   // Synchronous seed so the calendar can paint before the network call returns.
   applyData(
     loadFromStorage('eva-admin-seasons', _defaultSeasons),
-    loadFromStorage('eva-admin-booked',  _defaultBooked)
+    loadFromStorage('eva-admin-booked',  _defaultBooked),
+    loadFromStorage('eva-prices', [])
   );
 
   // ─── READY PROMISE ───────────────────────────────────────────────────────────
@@ -101,10 +106,14 @@ const Availability = (() => {
           const record = await res.json();
           const s = Array.isArray(record.seasons) ? record.seasons : _defaultSeasons;
           const b = Array.isArray(record.booked)  ? record.booked  : _defaultBooked;
-          applyData(s, b);
+          const p = Array.isArray(record.prices)  ? record.prices  : [];
+          applyData(s, b, p);
           // Keep a local cache so the next page load is instant
-          localStorage.setItem('eva-admin-seasons', JSON.stringify(s));
-          localStorage.setItem('eva-admin-booked',  JSON.stringify(b));
+          try {
+            localStorage.setItem('eva-admin-seasons', JSON.stringify(s));
+            localStorage.setItem('eva-admin-booked',  JSON.stringify(b));
+            localStorage.setItem('eva-prices',        JSON.stringify(p));
+          } catch (e) { /* private mode */ }
         }
       } catch(e) { /* network error — fall back to the cached data already applied */ }
     }
@@ -196,5 +205,31 @@ const Availability = (() => {
     return null;
   }
 
-  return { ready, getStatus, isRangeValid, firstInvalidInRange, parseDate, isStartable, isEndable };
+  // ─── PRICES ──────────────────────────────────────────────────────────────────
+
+  /** Nightly price for the night starting on `date`, or null if none is set. */
+  function getPrice(date) {
+    const day = toDay(date);
+    const p = _prices.find(r => day >= r.start && day <= r.end);
+    return p ? p.price : null;
+  }
+
+  /**
+   * Price for a stay: one night per day from check-in up to (not including)
+   * check-out. `complete` is false when any night has no price set, in which
+   * case the total isn't shown to the guest.
+   */
+  function quote(startDate, endDate) {
+    let total = 0, nights = 0, priced = 0;
+    const cur = toDay(startDate), end = toDay(endDate);
+    while (cur < end) {
+      const p = getPrice(cur);
+      if (p !== null) { total += p; priced++; }
+      nights++;
+      cur.setDate(cur.getDate() + 1);
+    }
+    return { nights, priced, total: Math.round(total * 100) / 100, complete: priced === nights };
+  }
+
+  return { ready, getStatus, isRangeValid, firstInvalidInRange, parseDate, isStartable, isEndable, getPrice, quote };
 })();

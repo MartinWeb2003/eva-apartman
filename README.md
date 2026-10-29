@@ -75,9 +75,18 @@ visitors.
 
 ## Admin panel
 
-`/admin` lets the host add, change and remove bookings and set the season,
-from a phone. It's in Croatian by default (EN button top right). Changes show
-on the public calendar immediately.
+`/admin` lets the host add, change and remove bookings, set the season, and
+set nightly prices for any date range, from a phone. It's in Croatian by
+default (EN button top right). Changes show on the public site immediately.
+
+**Prices.** Each price covers a range of nights (first night to last night,
+both included) at a price per night; ranges can't overlap. The booking calendar
+shows each free day's price and, once dates are picked, the estimated total —
+or "price on request" if any night in the stay has no price. The enquiry email
+includes the same estimate. Every "from €75" on the site is replaced at load
+time by the lowest upcoming price, via `/api/prices`
+(`netlify/functions/prices.mjs`, CDN-cached for 10 minutes); if that can't be
+reached the €75 built into the page stays.
 
 **How it's protected.** The page holds nothing secret. Every read and write
 goes to `netlify/functions/admin.mjs`, which checks the password on the server

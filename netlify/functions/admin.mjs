@@ -6,7 +6,7 @@
  *
  *   POST /api/admin/login    { password }            → sets a 30-day session cookie
  *   POST /api/admin/logout                           → clears it
- *   GET  /api/admin/data                             → { seasons, booked }
+ *   GET  /api/admin/data                             → { seasons, booked, prices }
  *   POST /api/admin/data     { op, ... }             → applies one change, returns new data
  *
  * Secrets live only in Netlify environment variables, never in the browser:
@@ -150,7 +150,8 @@ async function loadData() {
   const data = await res.json();
   return {
     seasons: Array.isArray(data.seasons) ? data.seasons : [],
-    booked: Array.isArray(data.booked) ? data.booked : []
+    booked: Array.isArray(data.booked) ? data.booked : [],
+    prices: Array.isArray(data.prices) ? data.prices : []
   };
 }
 
@@ -177,6 +178,16 @@ function range(input) {
   return { start: input.start, end: input.end };
 }
 
+/* Prices cover nights: `start` is the first night and `end` the last night
+   at that rate (both included, so one night has start === end). */
+function priceRange(input) {
+  if (!input || !isRealDate(input.start) || !isRealDate(input.end)) throw new ApiError(400, 'invalid_date');
+  if (input.end < input.start) throw new ApiError(400, 'end_before_start');
+  const price = Number(input.price);
+  if (!Number.isFinite(price) || price < 1 || price > 100000) throw new ApiError(400, 'invalid_price');
+  return { start: input.start, end: input.end, price: Math.round(price * 100) / 100 };
+}
+
 /* Bookings run arrival → departure; the departure day is free for the next
    arrival, so back-to-back stays don't overlap. */
 const overlaps = (a, b) => a.start < b.end && b.start < a.end;
@@ -201,6 +212,7 @@ function shiftYear(r, from, to) {
 function apply(data, body) {
   const seasons = data.seasons.map(r => ({ start: r.start, end: r.end }));
   const booked = data.booked.map(r => ({ start: r.start, end: r.end }));
+  const prices = (data.prices || []).map(r => ({ start: r.start, end: r.end, price: r.price }));
   let result = {};
 
   switch (body && body.op) {
@@ -236,6 +248,27 @@ function apply(data, body) {
     case 'removeSeason':
       seasons.splice(indexOf(seasons, range(body)), 1);
       break;
+    case 'addPrice': {
+      const r = priceRange(body);
+      if (prices.some(x => seasonsOverlap(x, r))) throw new ApiError(409, 'price_overlap');
+      prices.push(r);
+      break;
+    }
+    case 'updatePrice': {
+      const from = body.from || {};
+      const i = prices.findIndex(x => x.start === from.start && x.end === from.end);
+      if (i === -1) throw new ApiError(404, 'not_found');
+      const r = priceRange(body.to);
+      if (prices.some((x, j) => j !== i && seasonsOverlap(x, r))) throw new ApiError(409, 'price_overlap');
+      prices[i] = r;
+      break;
+    }
+    case 'removePrice': {
+      const i = prices.findIndex(x => x.start === body.start && x.end === body.end);
+      if (i === -1) throw new ApiError(404, 'not_found');
+      prices.splice(i, 1);
+      break;
+    }
     case 'copyYear': {
       const from = String(body.from), to = String(body.to);
       if (!/^\d{4}$/.test(from) || !/^\d{4}$/.test(to) || from === to) throw new ApiError(400, 'invalid_year');
@@ -254,15 +287,29 @@ function apply(data, body) {
         if (booked.some(x => overlaps(x, c))) { skipped++; continue; }
         booked.push(c); addedBookings++;
       }
-      result = { addedSeasons, addedBookings, skipped };
+      let addedPrices = 0;
+      for (const pr of data.prices || []) {
+        const c = shiftYear(pr, from, to);
+        if (!c) continue;
+        const copy = { ...c, price: pr.price };
+        if (prices.some(x => same(x, copy))) continue;
+        if (prices.some(x => seasonsOverlap(x, copy))) { skipped++; continue; }
+        prices.push(copy); addedPrices++;
+      }
+      result = { addedSeasons, addedBookings, addedPrices, skipped };
       break;
     }
     default:
       throw new ApiError(400, 'unknown_op');
   }
 
-  if (seasons.length > MAX_ENTRIES || booked.length > MAX_ENTRIES) throw new ApiError(400, 'too_many');
-  return { data: { seasons: seasons.sort(byStart), booked: booked.sort(byStart) }, result };
+  if (seasons.length > MAX_ENTRIES || booked.length > MAX_ENTRIES || prices.length > MAX_ENTRIES) {
+    throw new ApiError(400, 'too_many');
+  }
+  return {
+    data: { seasons: seasons.sort(byStart), booked: booked.sort(byStart), prices: prices.sort(byStart) },
+    result
+  };
 }
 
 /* ── Routes ────────────────────────────────────────────────────────────── */

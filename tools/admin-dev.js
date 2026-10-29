@@ -42,8 +42,9 @@ let writes = 0;
 const realFetch = globalThis.fetch;
 globalThis.fetch = async (url, opts = {}) => {
   if (String(url).startsWith('https://api.jsonbin.io/v3/b/local-test-bin')) {
-    if (opts.headers?.['X-Master-Key'] !== 'local-test-key') return new Response('{}', { status: 401 });
+    // Like the real bin: anyone can read, only the master key can write.
     if ((opts.method || 'GET') === 'PUT') {
+      if (opts.headers?.['X-Master-Key'] !== 'local-test-key') return new Response('{}', { status: 401 });
       store = JSON.parse(opts.body);
       writes++;
       return new Response('{}', { status: 200 });
@@ -68,12 +69,16 @@ const TYPES = {
     console.log('Could not read the live calendar; starting empty.');
   }
 
-  const { default: handler } = await import(pathToFileURL(path.join(ROOT, 'netlify/functions/admin.mjs')).href);
+  const fnUrl = name => pathToFileURL(path.join(ROOT, 'netlify/functions', name)).href;
+  const { default: adminHandler } = await import(fnUrl('admin.mjs'));
+  const { default: pricesHandler } = await import(fnUrl('prices.mjs'));
 
   http.createServer(async (req, res) => {
     const url = new URL(req.url, `http://localhost:${PORT}`);
+    const handler = url.pathname.startsWith('/api/admin/') ? adminHandler
+      : url.pathname === '/api/prices' ? pricesHandler : null;
 
-    if (url.pathname.startsWith('/api/admin/')) {
+    if (handler) {
       const chunks = [];
       for await (const c of req) chunks.push(c);
       const request = new Request(url, {

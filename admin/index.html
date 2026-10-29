@@ -89,6 +89,16 @@
       </details>
     </section>
 
+    <section class="card" aria-labelledby="prices-heading">
+      <div class="section-head row">
+        <h2 id="prices-heading" data-t="prices.title">Cijene</h2>
+        <button type="button" class="ghost-btn small-btn" id="add-price" data-t="btn.addPrice">+ Dodaj cijenu</button>
+      </div>
+      <p class="muted small" data-t="prices.text">Cijena po noći za razdoblje. Gosti je vide u kalendaru i u procjeni ukupne cijene.</p>
+      <p class="warn small" id="price-gaps" hidden></p>
+      <ul class="entry-list" id="price-list"></ul>
+    </section>
+
     <section class="card" aria-labelledby="season-heading">
       <div class="section-head row">
         <h2 id="season-heading" data-t="season.title">Sezona</h2>
@@ -122,6 +132,13 @@
         <div>
           <label for="date-end" id="label-end"></label>
           <input type="date" id="date-end" required />
+        </div>
+      </div>
+      <div class="price-field" id="price-field" hidden>
+        <label for="price-input" data-t="price.amount">Cijena po noći (€)</label>
+        <div class="price-input-wrap">
+          <span aria-hidden="true">€</span>
+          <input type="number" id="price-input" inputmode="decimal" min="1" max="100000" step="1" />
         </div>
       </div>
       <p class="nights" id="edit-summary" aria-live="polite"></p>

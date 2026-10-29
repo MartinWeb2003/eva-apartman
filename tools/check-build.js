@@ -260,6 +260,9 @@ assert(!/X-Master-Key|\$2[aby]\$|PW_HASH|scrypt\$\d/.test(adminSrc), 'admin — 
 assert(/name="robots"[^>]*noindex/.test(adminSrc), 'admin — noindex meta present');
 const fn = fs.readFileSync(path.join(ROOT, 'netlify/functions/admin.mjs'), 'utf8');
 assert(/HttpOnly; Secure; SameSite=Strict/.test(fn) && /timingSafeEqual/.test(fn), 'admin — server session is HttpOnly, signed and compared safely');
+const pricesFn = path.join(ROOT, 'netlify/functions/prices.mjs');
+assert(fs.existsSync(pricesFn) && !/X-Master-Key/.test(fs.readFileSync(pricesFn, 'utf8')),
+  'prices — public /api/prices present and uses no write key');
 const toml = fs.readFileSync(path.join(ROOT, 'netlify.toml'), 'utf8');
 assert(/for = "\/admin\/\*"[\s\S]*?noindex[\s\S]*?Content-Security-Policy/.test(toml), 'admin — noindex + CSP headers configured');
 

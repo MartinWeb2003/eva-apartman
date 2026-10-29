@@ -101,8 +101,10 @@
     Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"
     X-Frame-Options = "DENY"
 
+# Only the admin API is uncacheable. /api/prices (the public "from €X")
+# sets its own short CDN cache in netlify/functions/prices.mjs.
 [[headers]]
-  for = "/api/*"
+  for = "/api/admin/*"
   [headers.values]
     X-Robots-Tag = "noindex"
     Cache-Control = "no-store"

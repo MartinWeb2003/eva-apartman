@@ -47,6 +47,13 @@ function formatDateReadable(date) {
   });
 }
 
+function estimateForEmail(start, end) {
+  const q = Availability.quote(start, end);
+  if (!q.priced) return 'not shown (no prices set for these dates)';
+  if (!q.complete) return 'not shown (some nights have no price set)';
+  return `€${q.total.toLocaleString('en-GB', { maximumFractionDigits: 2 })}`;
+}
+
 function nightsBetween(start, end) {
   if (!start || !end) return 0;
   return Math.round((end - start) / (1000 * 60 * 60 * 24));
@@ -209,6 +216,8 @@ document.addEventListener('DOMContentLoaded', () => {
         check_in:      formatDateReadable(startDate),
         check_out:     formatDateReadable(endDate),
         nights:        `${nights} night${nights !== 1 ? 's' : ''}`,
+        // What the guest was shown, from the prices set in /admin.
+        estimated_total: estimateForEmail(startDate, endDate),
         message:       message || '(no additional message)',
         // So the host knows which language to reply in.
         language:      LANG_NAMES[pageLang()],

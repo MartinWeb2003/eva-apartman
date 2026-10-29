@@ -34,6 +34,15 @@ const Calendar = (() => {
     return LANG_LOCALE[pageLang()] || 'en-GB';
   }
 
+  /** €75 / 75 € etc., following the page's language. */
+  function money(n) {
+    const cents = n % 1 !== 0;
+    return new Intl.NumberFormat(getLocale(), {
+      style: 'currency', currency: 'EUR',
+      minimumFractionDigits: cents ? 2 : 0, maximumFractionDigits: cents ? 2 : 0
+    }).format(n);
+  }
+
   /** Message from js/translations.js in the page language, English fallback. */
   function tr(key, fallback, vars) {
     const dict = (window.EVA_T && (window.EVA_T[pageLang()] || window.EVA_T.en)) || {};
@@ -132,7 +141,15 @@ const Calendar = (() => {
       const cell   = document.createElement('div');
 
       cell.className = `cal-day ${status}`;
-      cell.textContent = d;
+      // The night of this date is free on 'available' and 'checkout' days,
+      // so that's where the nightly price set in /admin is shown.
+      const price = (status === 'available' || status === 'checkout') ? Availability.getPrice(date) : null;
+      if (price !== null) {
+        cell.innerHTML = `<span class="cal-day-num">${d}</span><span class="cal-day-price">${money(price)}</span>`;
+        cell.setAttribute('aria-label', `${formatDisplay(date)}, ${money(price)}`);
+      } else {
+        cell.textContent = d;
+      }
       cell.dataset.date = formatDate(date);
       cell.dataset.status = status;
 
@@ -291,6 +308,31 @@ const Calendar = (() => {
       endDisplay.textContent = tr('contact.cal.nosel', 'Not selected');
       endDisplay.classList.add('empty');
     }
+
+    updateTotal();
+  }
+
+  // ── Estimated total (prices set in /admin) ──────────────────────
+  function nightsWord(n) {
+    const form = new Intl.PluralRules(getLocale()).select(n);
+    return tr('contact.cal.night.' + form, tr('contact.cal.night.other', n === 1 ? 'night' : 'nights'));
+  }
+
+  function updateTotal() {
+    const box = document.getElementById('sel-total');
+    if (!box) return;
+    if (!selectedStart || !selectedEnd) { box.hidden = true; return; }
+    const q = Availability.quote(selectedStart, selectedEnd);
+    // No prices set for any of these nights: say nothing rather than "on request".
+    if (!q.priced) { box.hidden = true; return; }
+    const nights = `${q.nights} ${nightsWord(q.nights)}`;
+    document.getElementById('sel-total-value').textContent = q.complete
+      ? `${nights} · ${money(q.total)}`
+      : `${nights} · ${tr('contact.cal.onrequest', 'price on request')}`;
+    document.getElementById('sel-total-note').textContent = q.complete
+      ? tr('contact.cal.totalnote', 'The host confirms the final price with your booking.')
+      : '';
+    box.hidden = false;
   }
 
   // ── Error box ───────────────────────────────────────────────────
