@@ -49,6 +49,10 @@ const PAGES = ['index', 'gallery', 'location', 'contact'];
 
 const OG_LOCALE = { en: 'en_US', hr: 'hr_HR', pl: 'pl_PL', de: 'de_DE' };
 
+/* WhatsApp chat number (international format, digits only) — same line as
+   the phone number in the footer. */
+const WHATSAPP = '385993805141';
+
 /* Social preview image per page, mirroring what the templates used. */
 const OG_IMAGE = {
   index: 'images/indoor/indoor1.jpeg',
@@ -69,8 +73,13 @@ const CRUMB_KEY = {
    they track the CSS grid definitions in css/style.css and css/gallery.css. */
 const SIZES_BY_CONTEXT = [
   ['.gm-item', '(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw'],
-  ['.gallery-item', '(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw'],
-  ['.about-image', '(max-width: 900px) 100vw, 50vw'],
+  ['.gallery-item.is-feature', '(max-width: 768px) 100vw, 50vw'],
+  ['.gallery-item', '(max-width: 768px) 100vw, 25vw'],
+  ['.about-image-secondary', '(max-width: 1024px) 45vw, 22vw'],
+  ['.about-image', '(max-width: 1024px) 100vw, 45vw'],
+  ['.host-media', '(max-width: 1024px) 100vw, 40vw'],
+  ['.page-header-media', '100vw'],
+  ['.cta-banner-media', '100vw'],
   ['.poi-image', '(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw']
 ];
 const DEFAULT_SIZES = '(max-width: 768px) 100vw, 50vw';
@@ -135,6 +144,16 @@ function translate($, lang) {
     const key = $(el).attr('data-i18n-placeholder');
     const val = t(lang, key, null);
     if (val !== null && val !== '') $(el).attr('placeholder', val);
+  });
+  // WhatsApp links: open a chat with a greeting pre-filled in the page's language.
+  $('[data-i18n-wa]').each((_, el) => {
+    const msg = t(lang, $(el).attr('data-i18n-wa'), '');
+    $(el).attr('href', `https://wa.me/${WHATSAPP}` + (msg ? `?text=${encodeURIComponent(msg)}` : ''));
+  });
+  $('[data-i18n-aria]').each((_, el) => {
+    const key = $(el).attr('data-i18n-aria');
+    const val = t(lang, key, null);
+    if (val !== null && val !== '') $(el).attr('aria-label', val);
   });
   $('[data-i18n-alt]').each((_, el) => {
     const key = $(el).attr('data-i18n-alt');
@@ -282,12 +301,17 @@ function toPicture($, el, { eager = false } = {}) {
   return true;
 }
 
+/* The first image on a page (the navbar logo) loads eagerly, plus any image
+   marked data-priority — the inner pages' header photo, which is their LCP
+   element and would otherwise be lazy-loaded. */
 function convertImages($) {
   let first = true;
   $('img').each((_, el) => {
     const src = $(el).attr('src') || '';
     if (!src.replace(/^\//, '').startsWith('images/')) return;
-    const converted = toPicture($, el, { eager: first });
+    const priority = $(el).is('[data-priority]');
+    $(el).removeAttr('data-priority');
+    const converted = toPicture($, el, { eager: first || priority });
     if (converted) first = false;
   });
 }
@@ -459,12 +483,12 @@ function renderGallery($, lang) {
       const sizes = '(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw';
       const ratioH = Math.round(1200 * (data.height / data.width));
 
-      // The first two tiles of the first grid are plausibly above the fold on a
-      // desktop viewport; everything else defers.
-      const lazy = !(i < 2 && folder === Object.keys(manifest)[0]);
+      // The page opens on a full-height photo header (marked data-priority in
+      // src/gallery.html), so no tile is above the fold: all of them defer.
+      const lazy = true;
 
       const html =
-        `<div class="gm-item animate-on-scroll" tabindex="0" role="button"` +
+        `<div class="gm-item" tabindex="0" role="button"` +
         ` aria-label="${escapeAttr(openLabel)}: ${escapeAttr(alt)}" data-full="/${src}">` +
         `<picture>` +
         `<source type="image/webp" srcset="${srcset}" sizes="${sizes}" />` +
@@ -523,6 +547,18 @@ function scrapeReviews($) {
   return reviews;
 }
 
+/** The homepage FAQ, read from the rendered (translated) accordion so the
+    FAQPage markup always matches the visible questions and answers. */
+function scrapeFaq($) {
+  const faq = [];
+  $('.faq-item').each((_, el) => {
+    const q = $(el).find('.faq-q').first().text().trim();
+    const a = $(el).find('.faq-a').first().text().trim();
+    if (q && a) faq.push({ q, a });
+  });
+  return faq;
+}
+
 /** Same idea for the location page's point-of-interest cards. */
 function scrapeAttractions($) {
   const TYPE_BY_TAG = {
@@ -553,6 +589,7 @@ function injectStructuredData($, page, lang, extras) {
       lang,
       url,
       reviews: extras.reviews,
+      faq: extras.faq,
       images: [
         `${SITE}/images/indoor/indoor1.jpeg`,
         `${SITE}/images/terrace/terrace1.jpeg`,
@@ -627,7 +664,10 @@ function buildPage(page, lang) {
   fixOnErrorTargets($);
   convertImages($);
 
-  if (page === 'index') extras.reviews = scrapeReviews($);
+  if (page === 'index') {
+    extras.reviews = scrapeReviews($);
+    extras.faq = scrapeFaq($);
+  }
   if (page === 'location') extras.attractions = scrapeAttractions($);
 
   buildHead($, page, lang);

@@ -45,17 +45,15 @@ const WEBP_QUALITY  = 78;
 const JPEG_QUALITY  = 80;
 const WEBP_EFFORT   = 6;   // slower build, ~7% smaller files, no quality cost
 
-/* The hero is a decorative background at 35% opacity behind a dark gradient,
-   so it can take far heavier compression than a photo the guest actually
-   studies — q45 at 1280px is visually identical here and 10× lighter than the
-   2048×2048 original that used to be the LCP element. */
-const HERO_SOURCE  = 'images/terrace/terrace1.jpeg';
-const HERO_WIDTHS  = [1280, 1920];
-const HERO_QUALITY = 45;
-const HERO_RATIO   = 16 / 9;
-/* Matches the existing `background-position: center` so the pre-crop shows the
-   same part of the photo the CSS used to crop to at runtime. */
-const HERO_CROP    = 'center';
+/* The hero is the view from the terrace across the channel to Korčula, shown
+   full-bleed at full opacity, so it needs real quality. The source is already a
+   wide panorama (2040×942); it is resized, not cropped, and `background-size:
+   cover` in css/style.css does the cropping per viewport. One 1920px file
+   covers both desktop and a portrait phone (whose ~850px-tall hero needs the
+   full height of the image anyway). */
+const HERO_SOURCE  = 'images/beach/beach1.jpeg';
+const HERO_WIDTHS  = [1920];
+const HERO_QUALITY = 70;
 
 const SKIP_DIRS = new Set(['opt']);
 const IMAGE_RE  = /\.(jpe?g|png)$/i;
@@ -147,16 +145,15 @@ async function buildHero() {
   const out = { webp: [], jpg: [] };
 
   for (const w of HERO_WIDTHS) {
-    const h = Math.round(w / HERO_RATIO);
     const webp = path.join(outDir, `hero-${w}.webp`);
     const jpg  = path.join(outDir, `hero-${w}.jpg`);
     if (!isFresh(webp, stats)) {
-      await sharp(srcAbs).resize({ width: w, height: h, fit: 'cover', position: HERO_CROP })
+      await sharp(srcAbs).resize({ width: w })
         .webp({ quality: HERO_QUALITY, effort: WEBP_EFFORT, smartSubsample: true }).toFile(webp);
     }
     if (!isFresh(jpg, stats)) {
-      await sharp(srcAbs).resize({ width: w, height: h, fit: 'cover', position: HERO_CROP })
-        .jpeg({ quality: HERO_QUALITY + 15, mozjpeg: true }).toFile(jpg);
+      await sharp(srcAbs).resize({ width: w })
+        .jpeg({ quality: HERO_QUALITY + 10, mozjpeg: true }).toFile(jpg);
     }
     out.webp.push({ w, src: `images/opt/hero/hero-${w}.webp` });
     out.jpg.push({ w, src: `images/opt/hero/hero-${w}.jpg` });

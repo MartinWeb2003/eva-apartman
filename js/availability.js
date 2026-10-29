@@ -2,7 +2,7 @@
  * Eva Apartman - Availability Configuration
  *
  * Edit the default values below to set the apartment's seasons and booked dates.
- * After initial setup, changes are managed through the admin panel (/tripuneva1)
+ * After initial setup, changes are managed through the admin panel (/admin)
  * and stored persistently on JSONBin.io so all visitors see live data.
  *
  *  - seasons:  Date ranges when the apartment IS available for rent.
@@ -22,7 +22,7 @@
  * ── JSONBin.io setup ──────────────────────────────────────────────────────────
  * JSONBIN_BIN_ID: paste your JSONBin Bin ID here after creating an account.
  * Leave empty ('') to run from localStorage / hardcoded defaults only.
- * The admin panel (/tripuneva1) → Cloud Sync handles all writes.
+ * The admin panel (/admin) writes through netlify/functions/admin.mjs.
  */
 
 const Availability = (() => {

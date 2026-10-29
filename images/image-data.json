@@ -1338,19 +1338,11 @@
   "hero": {
     "webp": [
       {
-        "w": 1280,
-        "src": "images/opt/hero/hero-1280.webp"
-      },
-      {
         "w": 1920,
         "src": "images/opt/hero/hero-1920.webp"
       }
     ],
     "jpg": [
-      {
-        "w": 1280,
-        "src": "images/opt/hero/hero-1280.jpg"
-      },
       {
         "w": 1920,
         "src": "images/opt/hero/hero-1920.jpg"

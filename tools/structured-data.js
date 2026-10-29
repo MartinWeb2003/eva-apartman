@@ -189,8 +189,24 @@ function breadcrumbs(trail) {
 
 /* ── Per-page graphs ─────────────────────────────────────────────────── */
 
-function indexGraph({ lang, url, reviews, images }) {
+/* Built from the visible accordion (scraped by tools/build-site.js), so the
+   markup can never claim an answer the page doesn't show. */
+function faqPage({ lang, url, faq }) {
+  return {
+    '@type': 'FAQPage',
+    '@id': url + '#faq',
+    inLanguage: LANG_TAG[lang] || 'en',
+    mainEntity: faq.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a }
+    }))
+  };
+}
+
+function indexGraph({ lang, url, reviews, images, faq }) {
   return [
+    ...(faq && faq.length ? [faqPage({ lang, url, faq })] : []),
     lodgingBusiness({ lang, url, reviews, images }),
     {
       '@type': 'WebSite',

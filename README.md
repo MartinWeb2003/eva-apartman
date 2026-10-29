@@ -26,7 +26,9 @@ src/contact.html ──┘                        sitemap.xml
 | Change layout/markup | Edit the matching file in `src/`, then `npm run build` |
 | Change styling | Edit `css/style.css` or `css/gallery.css`, then `npm run build` (the build re-stamps the cache-busting hash) |
 | Check nothing broke | `npm run check` |
-| Change the admin password | `node tools/admin-password.js "new password"`, paste the three lines into `tripuneva1/index.html` |
+| Edit bookings / season dates | Open `/admin` on any phone or computer and sign in (see "Admin panel" below) |
+| Change the admin password | `node tools/admin-password.js "new password"`, paste the two lines into Netlify's environment variables, redeploy |
+| Try the admin panel locally | `node tools/admin-dev.js`, open http://localhost:8766/admin (in-memory copy, never touches live data) |
 
 After any change: `npm run build`, then commit **and** push the generated files.
 
@@ -71,8 +73,35 @@ appends a content hash (`style.css?v=1a2b3c4d`). If you ever hand-edit a page to
 drop the `?v=`, that file becomes uncacheable-in-practice for returning
 visitors.
 
-**The admin panel is obscured, not secured.** The password check in
-`tripuneva1/index.html` runs in the browser, so anyone determined can bypass it
-from devtools. `netlify.toml` keeps it out of search results. If it ever holds
-anything genuinely sensitive, move it behind Netlify password protection or
-Netlify Identity.
+## Admin panel
+
+`/admin` lets the host add, change and remove bookings and set the season,
+from a phone. It's in Croatian by default (EN button top right). Changes show
+on the public calendar immediately.
+
+**How it's protected.** The page holds nothing secret. Every read and write
+goes to `netlify/functions/admin.mjs`, which checks the password on the server
+(scrypt hash, ~1 s penalty per wrong guess) and then issues a signed,
+HttpOnly, 30-day session cookie. The JSONBin write key lives only in Netlify's
+environment variables and never reaches a browser. Changes are sent as single
+operations ("add this booking") and applied to the latest stored data, so two
+devices can't overwrite each other.
+
+**One-time setup** (Netlify → Site configuration → Environment variables, scope
+"Functions"):
+
+| Variable | Value |
+|---|---|
+| `ADMIN_PASSWORD_HASH` | from `node tools/admin-password.js "the password"` |
+| `SESSION_SECRET` | from the same command |
+| `JSONBIN_BIN_ID` | `69bd6aa7c3097a1dd542e037` (also in `js/availability.js`) |
+| `JSONBIN_MASTER_KEY` | JSONBin dashboard → API Keys → X-Master-Key |
+
+Then Deploys → Trigger deploy. Until all four are set, sign-in shows
+"not set up on the server yet".
+
+**Sign everyone out** (lost phone, password shared too widely): change
+`SESSION_SECRET` (any new value from the password tool) and redeploy.
+
+**The calendar data is public.** The website reads the bin without a key, so
+it must only ever hold dates. The API stores nothing but `start`/`end` pairs.

@@ -22,9 +22,24 @@ const Calendar = (() => {
   // ── Locale helpers (uses Intl so names update with language) ───
   const LANG_LOCALE = { en: 'en-GB', hr: 'hr-HR', pl: 'pl-PL', de: 'de-DE' };
 
+  // The built pages carry their language on <html lang> (/hr/ → hr), which is
+  // what the visitor is reading. The stored preference is only a fallback.
+  function pageLang() {
+    const l = document.documentElement.lang;
+    if (LANG_LOCALE[l]) return l;
+    try { return localStorage.getItem('eva-lang') || 'en'; } catch (e) { return 'en'; }
+  }
+
   function getLocale() {
-    const lang = localStorage.getItem('eva-lang') || 'en';
-    return LANG_LOCALE[lang] || 'en-GB';
+    return LANG_LOCALE[pageLang()] || 'en-GB';
+  }
+
+  /** Message from js/translations.js in the page language, English fallback. */
+  function tr(key, fallback, vars) {
+    const dict = (window.EVA_T && (window.EVA_T[pageLang()] || window.EVA_T.en)) || {};
+    let msg = dict[key] || fallback;
+    Object.keys(vars || {}).forEach(k => { msg = msg.replace('{' + k + '}', vars[k]); });
+    return msg;
   }
 
   function getMonthName(year, month) {
@@ -169,7 +184,7 @@ const Calendar = (() => {
     // checkout dates can be a start; checkin dates cannot start a range
     if (!selectedStart || selectedEnd) {
       if (!Availability.isStartable(status)) {
-        showError('This date is a check-in day, it can only be used as a check-out. Please pick a green or half-green/half-red date to start.');
+        showError(tr('cal.err.start', 'This is a check-in day for another guest, so it can only be your check-out. Please pick a green or half-red date to start.'));
         return;
       }
       selectedStart = new Date(date);
@@ -182,7 +197,7 @@ const Calendar = (() => {
     // Case 2: start set, no end — clicked same day or earlier → restart
     if (clickedTs <= startTs) {
       if (!Availability.isStartable(status)) {
-        showError('This date is a check-in day, it can only be used as a check-out. Please pick a green or half-green/half-red date to start.');
+        showError(tr('cal.err.start', 'This is a check-in day for another guest, so it can only be your check-out. Please pick a green or half-red date to start.'));
         return;
       }
       selectedStart = new Date(date);
@@ -195,16 +210,15 @@ const Calendar = (() => {
     // Case 3: start set, clicked a later date → try to set end
     // End must be 'available' or 'checkin'
     if (!Availability.isEndable(status)) {
-      showError('This date is a check-out day, it can only be used as a check-in. Please pick a green or half-red/half-green date as your check-out.');
+      showError(tr('cal.err.end', 'This is a check-out day for another guest, so it can only be your check-in. Please pick a green or half-green date as your check-out.'));
       return;
     }
 
     const invalid = Availability.firstInvalidInRange(selectedStart, date);
     if (invalid) {
-      showError(
-        `Your selection contains a date that is not available (${formatDisplay(invalid)}). ` +
-        `Please choose dates within a continuous free window.`
-      );
+      showError(tr('cal.err.gap',
+        'Your selection includes a day that is not available ({date}). Please choose dates within one continuous free period.',
+        { date: formatDisplay(invalid) }));
       selectedEnd = null;
       updateDisplay();
       renderDays();
@@ -266,7 +280,7 @@ const Calendar = (() => {
       startDisplay.textContent = formatDisplay(selectedStart);
       startDisplay.classList.remove('empty');
     } else {
-      startDisplay.textContent = 'Not selected';
+      startDisplay.textContent = tr('contact.cal.nosel', 'Not selected');
       startDisplay.classList.add('empty');
     }
 
@@ -274,7 +288,7 @@ const Calendar = (() => {
       endDisplay.textContent = formatDisplay(selectedEnd);
       endDisplay.classList.remove('empty');
     } else {
-      endDisplay.textContent = 'Not selected';
+      endDisplay.textContent = tr('contact.cal.nosel', 'Not selected');
       endDisplay.classList.add('empty');
     }
   }
@@ -305,7 +319,7 @@ const Calendar = (() => {
   }
 
   function formatDisplay(date) {
-    return date.toLocaleDateString('en-GB', {
+    return date.toLocaleDateString(getLocale(), {
       day: 'numeric', month: 'long', year: 'numeric'
     });
   }
@@ -340,11 +354,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Re-render when the language changes so month/weekday names update
 document.addEventListener('eva:langchange', () => {
   if (document.getElementById('calendar-container')) {
-    // Rebuild the weekday header row and re-render the days
+    // i18n.js fires this on page load too, often before Calendar.init() has
+    // built the shell (it waits for the availability fetch). Nothing to
+    // re-render yet in that case — init() renders in the right language.
     const wd = document.querySelector('.calendar-weekdays');
-    if (wd) {
-      wd.innerHTML = Calendar._getWeekdayCells();
-    }
+    if (!wd) return;
+    // Rebuild the weekday header row and re-render the days
+    wd.innerHTML = Calendar._getWeekdayCells();
     Calendar._renderDays();
   }
 });

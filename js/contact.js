@@ -17,6 +17,29 @@ const WEB3FORMS_KEY = '782273a6-6b47-4c87-b29e-d1d0c0452ff6';
 
 // ── Utility ───────────────────────────────────────────────────────────────────
 
+const LANG_NAMES = { en: 'English', hr: 'Croatian', pl: 'Polish', de: 'German' };
+
+/** The page's language (/hr/ → hr), as stamped on <html lang> by the build. */
+function pageLang() {
+  const l = document.documentElement.lang;
+  return LANG_NAMES[l] ? l : 'en';
+}
+
+/** Message from js/translations.js in the page language, English fallback. */
+function tr(key, fallback, vars) {
+  const dict = (window.EVA_T && (window.EVA_T[pageLang()] || window.EVA_T.en)) || {};
+  let msg = dict[key] || fallback;
+  Object.keys(vars || {}).forEach(k => { msg = msg.replace('{' + k + '}', vars[k]); });
+  return msg;
+}
+
+/** The field's visible (already translated) label, e.g. "Ime" on /hr/. */
+function fieldLabel(id, fallback) {
+  const el = document.querySelector(`label[for="${id}"] span`);
+  return (el && el.textContent.trim()) || fallback;
+}
+
+// Dates in the enquiry email stay in English: that email is for the host.
 function formatDateReadable(date) {
   if (!date) return '';
   return date.toLocaleDateString('en-GB', {
@@ -42,32 +65,33 @@ function setFieldState(field, isValid, message = '') {
 // ── Validators ────────────────────────────────────────────────────────────────
 
 function validateName(value, label) {
-  if (!value.trim()) return `${label} is required.`;
-  if (value.trim().length < 2) return `${label} must be at least 2 characters.`;
-  if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]+$/.test(value.trim()))
-    return `${label} contains invalid characters.`;
+  if (!value.trim()) return tr('form.err.required', '{label} is required.', { label });
+  if (value.trim().length < 2) return tr('form.err.short', '{label} must be at least 2 characters.', { label });
+  // Any letter in any alphabet: Šimić, Đurić, Łukasz and Müller must all pass.
+  if (!/^[\p{L}\p{M}\s'.-]+$/u.test(value.trim()))
+    return tr('form.err.chars', '{label} contains invalid characters.', { label });
   return null;
 }
 
 function validateEmail(value) {
   if (!value.trim()) return null; // optional
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()))
-    return 'Please enter a valid email address.';
+    return tr('form.err.email', 'Please enter a valid email address.');
   return null;
 }
 
 function validatePhone(value) {
-  if (!value.trim()) return 'Phone number is required.';
+  if (!value.trim()) return tr('form.err.phone.req', 'Phone number is required.');
   const stripped = value.replace(/[\s\-().+]/g, '');
   if (!/^\d{7,15}$/.test(stripped))
-    return 'Please enter a valid phone number (min. 7 digits).';
+    return tr('form.err.phone', 'Please enter a valid phone number (min. 7 digits).');
   return null;
 }
 
 function validateGuests(value) {
-  if (!value) return 'Please select the number of guests.';
+  if (!value) return tr('form.err.guests.req', 'Please select the number of guests.');
   const n = parseInt(value, 10);
-  if (isNaN(n) || n < 1 || n > 5) return 'Number of guests must be between 1 and 5.';
+  if (isNaN(n) || n < 1 || n > 5) return tr('form.err.guests.range', 'Number of guests must be between 1 and 5.');
   return null;
 }
 
@@ -89,8 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function validateField(el) {
     let error = null;
     switch (el.id) {
-      case 'first-name': error = validateName(el.value, 'First name'); break;
-      case 'last-name':  error = validateName(el.value, 'Last name');  break;
+      case 'first-name': error = validateName(el.value, fieldLabel('first-name', 'First name')); break;
+      case 'last-name':  error = validateName(el.value, fieldLabel('last-name', 'Last name'));   break;
       case 'email':      error = validateEmail(el.value);              break;
       case 'phone':      error = validatePhone(el.value);              break;
       case 'guests':     error = validateGuests(el.value);             break;
@@ -116,11 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const endDate   = Calendar.getEndDate();
 
     if (!startDate || !endDate) {
-      calError.textContent = 'Please select your check-in and check-out dates on the calendar.';
+      calError.textContent = tr('form.err.dates', 'Please select your check-in and check-out dates on the calendar.');
       calError.classList.add('show');
       allValid = false;
     } else if (!Availability.isRangeValid(startDate, endDate)) {
-      calError.textContent = 'Your selected date range contains unavailable dates. Please choose only green dates.';
+      calError.textContent = tr('form.err.range', 'Your selected dates include unavailable days. Please choose only green dates.');
       calError.classList.add('show');
       allValid = false;
     } else {
@@ -152,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
         <path d="M12 2 a10 10 0 0 1 10 10" stroke-opacity="0.9"/>
       </svg>
-      Sending…`;
+      ${tr('form.sending', 'Sending…')}`;
 
     if (!document.getElementById('eva-spin-style')) {
       const s = document.createElement('style');
@@ -186,6 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
         check_out:     formatDateReadable(endDate),
         nights:        `${nights} night${nights !== 1 ? 's' : ''}`,
         message:       message || '(no additional message)',
+        // So the host knows which language to reply in.
+        language:      LANG_NAMES[pageLang()],
         replyto:       email || undefined,
       };
 
@@ -223,8 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
         'margin-top:1rem',
         'line-height:1.5',
       ].join(';');
-      alert.textContent = err.message ||
-        'Something went wrong. Please try again or contact us directly by phone.';
+      // The technical reason goes to the console above; the guest gets a
+      // message in their language with a way to reach us instead.
+      alert.textContent = tr('form.err.generic',
+        'Something went wrong. Please try again, or contact us directly by phone or WhatsApp.');
       form.appendChild(alert);
     }
   });

@@ -12,6 +12,12 @@
   # No build command on purpose — see above. If you ever move to building on
   # Netlify instead, set:  command = "npm run build"
 
+# The admin sign-in and calendar API (netlify/functions/admin.mjs). Netlify
+# deploys functions from here on every push, build command or not. It needs
+# four environment variables — see README.md, "Admin panel".
+[functions]
+  directory = "netlify/functions"
+
 # -----------------------------------------------------------------------------
 # Caching
 # -----------------------------------------------------------------------------
@@ -81,20 +87,24 @@
     Cache-Control = "public, max-age=3600"
 
 # -----------------------------------------------------------------------------
-# Admin panel
+# Admin panel (/admin)
 # -----------------------------------------------------------------------------
-# robots.txt no longer names this path (a Disallow line is a public signpost,
-# not protection). An X-Robots-Tag header is the real instruction: it keeps the
-# page out of the index even if someone links to it, and unlike a Disallow it
-# still works when the crawler is allowed to fetch the page.
-#
-# NOTE: this is not access control. The panel's password check runs in the
-# browser, so treat the panel as "obscured", not "secured" — see the comment in
-# tripuneva1/index.html.
+# The page itself holds nothing secret: every read and write goes through
+# /api/admin/*, which checks the signed session cookie on the server. These
+# headers keep it out of search results and caches, stop other sites framing
+# it, and only let it load its own script, styles and API.
 [[headers]]
-  for = "/tripuneva1/*"
+  for = "/admin/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"
+    X-Frame-Options = "DENY"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
     Cache-Control = "no-store"
 
 # -----------------------------------------------------------------------------

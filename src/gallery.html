@@ -27,15 +27,15 @@
   <!-- Fonts (preconnect for faster paint) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&family=Hanken+Grotesk:wght@400;500;600&display=swap" />
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/gallery.css" />
   <link rel="icon" type="image/png" href="images/Ap_Eva_logo_800x800px-transparent.png" />
   <link rel="apple-touch-icon" href="images/Ap_Eva_logo_800x800px-transparent.png" />
-  <meta name="theme-color" content="#e8c840" />
+  <meta name="theme-color" content="#0e3a4a" />
 </head>
-<body>
+<body class="has-sticky">
 
   <!-- ══════════════════════════════════════════════════════
        NAVBAR
@@ -77,6 +77,9 @@
        PAGE HEADER
   ══════════════════════════════════════════════════════ -->
   <header class="page-header" role="banner">
+    <div class="page-header-media">
+      <img src="images/indoor/indoor31.jpeg" alt="Open-plan living and dining area with TV and sofa" data-priority />
+    </div>
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html" data-i18n="footer.home">Home</a>
@@ -134,7 +137,7 @@
   <section id="interior" class="section gallery-section" data-section="Interior">
     <div class="container">
 
-      <div class="gallery-section-label animate-on-scroll">
+      <div class="gallery-section-label">
         <div class="gallery-section-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -159,7 +162,7 @@
   <section id="terrace" class="section section-alt gallery-section" data-section="Terrace &amp; Views">
     <div class="container">
 
-      <div class="gallery-section-label animate-on-scroll">
+      <div class="gallery-section-label">
         <div class="gallery-section-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M23 12a11.05 11.05 0 0 0-22 0zm-5 7a3 3 0 0 1-6 0v-7"/>
@@ -183,7 +186,7 @@
   <section id="beach" class="section gallery-section" data-section="Beach &amp; Area">
     <div class="container">
 
-      <div class="gallery-section-label animate-on-scroll">
+      <div class="gallery-section-label">
         <div class="gallery-section-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M2 12c1.8-4.2 3.5-6 6.5-6 5.5 0 5.5 8 11 8 3 0 4.5-2 5.5-6"/>
@@ -206,7 +209,10 @@
        CTA BANNER
   ══════════════════════════════════════════════════════ -->
   <section class="cta-banner" aria-labelledby="gallery-cta-heading">
-    <div class="container">
+    <div class="cta-banner-media">
+      <img src="images/terrace/terrace2.jpeg" alt="Night view from the terrace over the lights of the bay" />
+    </div>
+    <div class="container cta-banner-inner">
       <h2 id="gallery-cta-heading" data-i18n="gallery.cta.heading">Seen Enough? Come Stay.</h2>
       <p data-i18n="gallery.cta.p">Check available dates and send your enquiry, we'll get back to you within 24 hours.</p>
       <div class="cta-actions">
@@ -287,14 +293,14 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
-            <span>+385 99 380 5141</span>
+            <a href="tel:+385993805141">+385 99 380 5141</a>
           </div>
           <div class="footer-contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
               <polyline points="22,6 12,13 2,6"/>
             </svg>
-            <span>info@visit-eva-orebic.com</span>
+            <a href="mailto:info@visit-eva-orebic.com">info@visit-eva-orebic.com</a>
           </div>
           <div class="footer-contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -344,6 +350,18 @@
     <div class="lb-caption" aria-live="polite"></div>
 
   </div>
+
+
+  <!-- Sticky booking bar (mobile). Shown by js/main.js once the visitor has
+       scrolled past the first screen; hidden again over the footer. -->
+  <div class="sticky-book" data-sticky>
+    <p class="sticky-book-price"><span data-i18n="index.hero.price.from">from</span> <strong>€75</strong> <span data-i18n="index.hero.price.unit">/ night</span></p>
+    <a href="https://wa.me/385993805141" class="sticky-book-wa" data-i18n-wa="whatsapp.msg" aria-label="Chat with us on WhatsApp" data-i18n-aria="whatsapp.aria" target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
+    <a href="contact.html" class="btn btn-accent" data-i18n="sticky.btn">Check dates</a>
+  </div>
+
+  <!-- Floating WhatsApp button (desktop, and on pages without the sticky bar). -->
+  <a href="https://wa.me/385993805141" class="wa-float" data-sticky data-i18n-wa="whatsapp.msg" aria-label="Chat with us on WhatsApp" data-i18n-aria="whatsapp.aria" target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="js/main.js"></script>

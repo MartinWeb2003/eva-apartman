@@ -27,16 +27,16 @@
   <!-- Fonts (preconnect for faster paint) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&family=Hanken+Grotesk:wght@400;500;600&display=swap" />
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/png" href="images/Ap_Eva_logo_800x800px-transparent.png" />
   <link rel="apple-touch-icon" href="images/Ap_Eva_logo_800x800px-transparent.png" />
-  <meta name="theme-color" content="#e8c840" />
+  <meta name="theme-color" content="#0e3a4a" />
 
   <!-- JSON-LD structured data is injected per language by tools/build-site.js -->
 </head>
-<body>
+<body class="has-sticky">
 
   <!-- ══════════════════════════════════════════════════════
        NAVBAR
@@ -78,51 +78,60 @@
        HERO
   ══════════════════════════════════════════════════════ -->
   <section class="hero" aria-label="Welcome to Eva Apartman">
-    <div class="hero-bg" role="img" aria-label="Aerial view of the coast"></div>
+    <!-- The view from the terrace across the channel to Korčula. -->
+    <div class="hero-bg" role="img" aria-label="View from Eva Apartman across the Pelješac channel to Korčula"></div>
     <div class="hero-overlay"></div>
 
-    <div class="hero-content">
-      <div class="hero-badge" data-i18n="index.hero.badge">Adriatic Coast · Croatia</div>
+    <div class="container hero-content">
+      <p class="hero-badge" data-i18n="index.hero.badge">Adriatic Coast · Croatia</p>
       <h1 data-i18n="index.hero.h1">Your Premier Apartment in Orebić & Pelješac</h1>
       <p class="hero-subtitle" data-i18n="index.hero.subtitle">
         Experience the ultimate family holiday on the Adriatic Coast. Nestled between the charm of Orebić and the breeze of Viganj, our apartments offer a serene coastal escape in the heart of Kućište.
       </p>
-      <div class="hero-price-badge" aria-label="Price from €75 per night">
-        <span class="hero-price-from" data-i18n="index.hero.price.from">from</span>
-        <span class="hero-price-value">€75</span>
-        <span class="hero-price-unit" data-i18n="index.hero.price.unit">/ night</span>
-      </div>
-
-      <div class="hero-actions">
-        <a href="contact.html" class="btn btn-accent" data-i18n="index.hero.btn.book">Book Your Stay</a>
-        <a href="#about" class="btn btn-secondary" data-i18n="index.hero.btn.explore">Explore the Region</a>
-      </div>
     </div>
 
-    <div class="hero-scroll" aria-hidden="true">
-      <span>Scroll</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"/>
-      </svg>
+    <!-- Booking bar: the facts a guest compares first, and the way to act on them. -->
+    <div class="container hero-bar-wrap">
+      <div class="hero-bar">
+        <div class="hero-price-badge" aria-label="Price from €75 per night">
+          <span class="hero-price-from" data-i18n="index.hero.price.from">from</span>
+          <span class="hero-price-value">€75</span>
+          <span class="hero-price-unit" data-i18n="index.hero.price.unit">/ night</span>
+        </div>
+        <dl class="hero-facts">
+          <div class="stat-item">
+            <dt class="stat-label" data-i18n="index.stat.bedrooms">Bedrooms</dt>
+            <dd class="stat-number">2</dd>
+          </div>
+          <div class="stat-item">
+            <dt class="stat-label" data-i18n="index.stat.guests">Max Guests</dt>
+            <dd class="stat-number">4–5</dd>
+          </div>
+          <div class="stat-item">
+            <dt class="stat-label" data-i18n="index.stat.area">Floor Area</dt>
+            <dd class="stat-number">67&nbsp;m²</dd>
+          </div>
+        </dl>
+        <a href="contact.html" class="btn btn-accent hero-bar-btn" data-i18n="index.hero.btn.book">Book Your Stay</a>
+      </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════
        FEATURES / HIGHLIGHTS
   ══════════════════════════════════════════════════════ -->
-  <section class="section" aria-labelledby="features-heading">
-    <div class="container">
-      <div class="section-header">
+  <section class="section intro-section" aria-labelledby="features-heading">
+    <div class="container intro-grid">
+      <div class="intro-lead">
         <h2 id="features-heading" data-i18n="index.feat.heading">Top-Rated Accommodation in Pelješac</h2>
-        <div class="divider"></div>
-        <p data-i18n="index.feat.subtext">Everything for your Pelješac getaway: Modern apartment comfort in Kućište, located perfectly between the historic streets of Orebić and the beaches of Viganj.</p>
+        <p class="lead" data-i18n="index.feat.subtext">Everything for your Pelješac getaway: Modern apartment comfort in Kućište, located perfectly between the historic streets of Orebić and the beaches of Viganj.</p>
       </div>
 
       <div class="features-grid">
-        <div class="feature-card animate-on-scroll">
+        <div class="feature-card">
           <div class="feature-icon" aria-hidden="true">
             <!-- Waves -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
               <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
               <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
               <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
@@ -131,10 +140,10 @@
           <h3 data-i18n="index.feat1.title">Steps from the Adriatic</h3>
           <p data-i18n="index.feat1.desc">Just a short walk from the pristine beaches of Kućište and crystal-clear coves.</p>
         </div>
-        <div class="feature-card animate-on-scroll">
+        <div class="feature-card">
           <div class="feature-icon" aria-hidden="true">
             <!-- Home -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
               <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
@@ -142,10 +151,10 @@
           <h3 data-i18n="index.feat2.title">Modern Family Comfort</h3>
           <p data-i18n="index.feat2.desc">Fully equipped with AC and Wi-Fi, perfect for a stress-free family holiday.</p>
         </div>
-        <div class="feature-card animate-on-scroll">
+        <div class="feature-card">
           <div class="feature-icon" aria-hidden="true">
             <!-- Parking / Car -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
               <rect x="1" y="3" width="15" height="13" rx="2"/>
               <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
               <circle cx="5.5" cy="18.5" r="2.5"/>
@@ -155,10 +164,10 @@
           <h3 data-i18n="index.feat3.title">Free Private Parking</h3>
           <p data-i18n="index.feat3.desc">Secure, on-site parking in Kućište, making day trips to Orebić easy.</p>
         </div>
-        <div class="feature-card animate-on-scroll">
+        <div class="feature-card">
           <div class="feature-icon" aria-hidden="true">
             <!-- Utensils -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
               <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
               <path d="M7 2v20"/>
               <path d="M21 15V2a5 5 0 0 0-5 5v6h3.5a1.5 1.5 0 0 1 0 3H16v4"/>
@@ -177,15 +186,19 @@
   <section class="section section-alt" id="about" aria-labelledby="about-heading">
     <div class="container">
       <div class="about-grid">
-        <div class="about-image animate-on-scroll">
-          <!-- Replace src with your actual apartment photo -->
-          <img src="images/indoor/indoor1.jpeg"
-               alt="Eva Apartman living area" />
+        <div class="about-media">
+          <div class="about-image">
+            <img src="images/indoor/indoor31.jpeg"
+                 alt="Open-plan living and dining area at Eva Apartman" />
+          </div>
+          <div class="about-image about-image-secondary">
+            <img src="images/indoor/indoor6.jpeg"
+                 alt="View across the channel to Korčula with a sailboat at the jetty" />
+          </div>
         </div>
 
-        <div class="about-content animate-on-scroll">
+        <div class="about-content">
           <h2 id="about-heading" data-i18n="index.about.heading">Experience the Best of Viganj and Orebić</h2>
-          <div class="divider" style="margin-left:0;"></div>
           <p data-i18n="index.about.p1">
             Eva Apartman is a beautifully appointed holiday apartment in Pelješac, designed to give you the freedom and comfort needed for an unforgettable Adriatic holiday. Perfectly situated in Kućište, our home offers a peaceful retreat just a stone's throw from the vibrant windsurfing scene of Viganj and the historic charm of Orebić.
           </p>
@@ -196,22 +209,38 @@
             Whether you are seeking a family holiday in Kućište, a romantic getaway near Orebić, or a solo adventure exploring the Pelješac wine roads, Eva Apartman provides the perfect base. Experience the best of the Croatian coast with all the modern amenities of a true home away from home.
           </p>
 
-          <div class="about-stats">
-            <div class="stat-item">
-              <span class="stat-number" data-target="2" data-suffix="">2</span>
-              <span class="stat-label" data-i18n="index.stat.bedrooms">Bedrooms</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">4-5</span>
-              <span class="stat-label" data-i18n="index.stat.guests">Max Guests</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-target="67" data-suffix="m²">67m²</span>
-              <span class="stat-label" data-i18n="index.stat.area">Floor Area</span>
-            </div>
-          </div>
-
           <a href="contact.html" class="btn btn-primary" data-i18n="index.about.btn">Book Your Apartment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       IS IT RIGHT FOR YOU — an honest fit check
+  ══════════════════════════════════════════════════════ -->
+  <section class="section fit-section" aria-labelledby="fit-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="fit-heading" data-i18n="index.fit.heading">Is Eva Apartman right for you?</h2>
+        <p data-i18n="index.fit.subtext">An honest look before you book, so you know exactly what to expect.</p>
+      </div>
+      <div class="fit-grid">
+        <div class="fit-col fit-yes">
+          <h3 data-i18n="index.fit.yes.title">A great fit for</h3>
+          <ul role="list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="index.fit.yes1">Families who want the beach a minute's walk away and a quiet street to come home to</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="index.fit.yes2">Couples of any age looking for calm, good seafood and Pelješac wine</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="index.fit.yes3">Guests planning day trips to Korčula, Ston and the wine roads, or windsurfing in Viganj</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="index.fit.yes4">Groups of up to 5 who want two proper bedrooms and a full kitchen</span></li>
+          </ul>
+        </div>
+        <div class="fit-col fit-no">
+          <h3 data-i18n="index.fit.no.title">Probably not the right fit for</h3>
+          <ul role="list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="12" x2="18" y2="12"/></svg><span data-i18n="index.fit.no1">Groups of more than 5: the apartment sleeps 5 at most</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="12" x2="18" y2="12"/></svg><span data-i18n="index.fit.no2">Anyone looking for nightlife: Kućište is a quiet village</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="12" x2="18" y2="12"/></svg><span data-i18n="index.fit.no3">Stays between November and April: we're open May to October</span></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -220,11 +249,10 @@
   <!-- ══════════════════════════════════════════════════════
        OPREMLJENOST / AMENITIES
   ══════════════════════════════════════════════════════ -->
-  <section class="section" id="amenities" aria-labelledby="amenities-heading">
+  <section class="section section-alt" id="amenities" aria-labelledby="amenities-heading">
     <div class="container">
       <div class="section-header">
         <h2 id="amenities-heading" data-i18n="index.amenities.heading">Everything for Your Pelješac Family Holiday</h2>
-        <div class="divider"></div>
         <p data-i18n="index.amenities.subtext">After a day of windsurfing in Viganj or exploring the Pelješac wine roads, return to a home with modern amenities, air conditioning, and a sea-view terrace.</p>
       </div>
 
@@ -232,7 +260,7 @@
         <ul class="amenities-grid" id="amenities-grid" role="list">
 
           <!-- Wi-Fi -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="wifi">
+          <li class="amenity-item" data-amenity-id="wifi">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
@@ -245,7 +273,7 @@
           </li>
 
           <!-- TV ×3 -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="tv">
+          <li class="amenity-item" data-amenity-id="tv">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="7" width="20" height="14" rx="2"/>
@@ -256,7 +284,7 @@
           </li>
 
           <!-- Satellite TV -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="satellite">
+          <li class="amenity-item" data-amenity-id="satellite">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="4"/>
@@ -270,7 +298,7 @@
           </li>
 
           <!-- Air Conditioning -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="ac">
+          <li class="amenity-item" data-amenity-id="ac">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="3" width="20" height="8" rx="2"/>
@@ -282,7 +310,7 @@
           </li>
 
           <!-- Heating -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="heating">
+          <li class="amenity-item" data-amenity-id="heating">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
@@ -293,7 +321,7 @@
           </li>
 
           <!-- Microwave -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="microwave">
+          <li class="amenity-item" data-amenity-id="microwave">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="5" width="20" height="14" rx="2"/>
@@ -305,7 +333,7 @@
           </li>
 
           <!-- Fridge -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="fridge">
+          <li class="amenity-item" data-amenity-id="fridge">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="5" y="2" width="14" height="20" rx="2"/>
@@ -316,7 +344,7 @@
           </li>
 
           <!-- Kettle -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="kettle">
+          <li class="amenity-item" data-amenity-id="kettle">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
@@ -328,7 +356,7 @@
           </li>
 
           <!-- Dishwasher -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="dishwasher">
+          <li class="amenity-item" data-amenity-id="dishwasher">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="2"/>
@@ -339,7 +367,7 @@
           </li>
 
           <!-- Netflix / HBO / IPTV -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="streaming">
+          <li class="amenity-item" data-amenity-id="streaming">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
@@ -349,7 +377,7 @@
           </li>
 
           <!-- Coffee Machine -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="coffee">
+          <li class="amenity-item" data-amenity-id="coffee">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
@@ -361,7 +389,7 @@
           </li>
 
           <!-- Washing Machine -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="washer">
+          <li class="amenity-item" data-amenity-id="washer">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="2"/>
@@ -373,7 +401,7 @@
           </li>
 
           <!-- Safe -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="safe">
+          <li class="amenity-item" data-amenity-id="safe">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -386,7 +414,7 @@
           </li>
 
           <!-- Baby Cot -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="babycot">
+          <li class="amenity-item" data-amenity-id="babycot">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 9V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/>
@@ -400,7 +428,7 @@
           </li>
 
           <!-- Phone -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="phone">
+          <li class="amenity-item" data-amenity-id="phone">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l1.06-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -410,7 +438,7 @@
           </li>
 
           <!-- Game Console -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="console">
+          <li class="amenity-item" data-amenity-id="console">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/>
@@ -422,7 +450,7 @@
           </li>
 
           <!-- Radio -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="radio">
+          <li class="amenity-item" data-amenity-id="radio">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16.5 8.5l-9-5"/>
@@ -435,7 +463,7 @@
           </li>
 
           <!-- Computer -->
-          <li class="amenity-item animate-on-scroll" data-amenity-id="computer">
+          <li class="amenity-item" data-amenity-id="computer">
             <span class="amenity-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="3" width="20" height="14" rx="2"/>
@@ -476,81 +504,35 @@
     <div class="container">
       <div class="section-header">
         <h2 id="gallery-heading" data-i18n="index.gallery.heading">Explore Eva Apartman & the Pelješac Coast</h2>
-        <div class="divider"></div>
         <p data-i18n="index.gallery.subtext">View our gallery to see why we are the top choice for an apartment in the Orebić area. Explore our spacious living areas and the peaceful Kućište neighborhood that makes every stay unforgettable.</p>
       </div>
 
       <div class="gallery-grid" role="list">
-        <!-- Replace src values with your actual photos -->
-        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Living area">
-          <img src="images/indoor/indoor2.jpeg" alt="Apartment living area" />
-          <div class="gallery-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-            </svg>
-          </div>
+        <div class="gallery-item is-feature" role="listitem" tabindex="0" aria-label="Open photo: Terrace dining">
+          <img src="images/terrace/terrace5.jpeg" alt="Outdoor dining table set under flowering bougainvillea" />
+          <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
         </div>
-
-        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Kitchen">
-          <img src="images/indoor/indoor5.jpeg" alt="Modern kitchen" />
-          <div class="gallery-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-            </svg>
-          </div>
-        </div>
-
         <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Bedroom">
-          <img src="images/indoor/indoor3.jpeg" alt="Comfortable bedroom" />
-          <div class="gallery-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-            </svg>
-          </div>
+          <img src="images/indoor/indoor34.jpg" alt="Double bed with sage throw beside a curtained window" />
+          <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
         </div>
-
-        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Terrace">
-          <img src="images/terrace/terrace1.jpeg" alt="Private terrace with sea view" />
-          <div class="gallery-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-            </svg>
-          </div>
+        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Evening on the terrace">
+          <img src="images/terrace/terrace3.jpeg" alt="Glass of Pelješac Dingač red wine on the terrace after dark" />
+          <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
         </div>
-
-        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Beach nearby">
-          <img src="images/beach/beach1.jpeg" alt="Nearby beach" />
-          <div class="gallery-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-            </svg>
-          </div>
+        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Kitchen">
+          <img src="images/indoor/indoor29.jpeg" alt="Fully equipped kitchen with oven, microwave, hob and fridge" />
+          <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
         </div>
-
-        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Sunset view">
-          <img src="images/terrace/terrace4.jpeg" alt="Adriatic sunset view" />
-          <div class="gallery-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-            </svg>
-          </div>
+        <div class="gallery-item" role="listitem" tabindex="0" aria-label="Open photo: Bathroom">
+          <img src="images/indoor/indoor14.jpeg" alt="Bathroom vanity with backlit round mirror and wooden unit" />
+          <div class="gallery-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
         </div>
       </div>
 
       <!-- See Full Gallery CTA -->
       <div class="gallery-full-cta">
         <a href="gallery.html" class="btn btn-outline">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <circle cx="8.5" cy="8.5" r="1.5"/>
-            <polyline points="21 15 16 10 5 21"/>
-          </svg>
           <span data-i18n="index.gallery.btn">See Full Gallery</span>
         </a>
       </div>
@@ -569,216 +551,202 @@
        TESTIMONIALS
   ══════════════════════════════════════════════════════ -->
   <section class="section section-alt testimonials-section" aria-labelledby="reviews-heading">
-    <div class="container">
-      <div class="section-header">
+    <div class="container reviews-grid">
+      <div class="reviews-summary">
         <!-- Rating shown here MUST match aggregateRating in the JSON-LD that
              tools/build-site.js emits — Google drops (and can penalise) review
              snippets whose numbers aren't visible on the page. Both read from
              REVIEWS in tools/structured-data.js. -->
         <div class="reviews-score-badge" aria-label="Rated 4.9 out of 5 stars from 27 reviews">
-          <span class="score-stars" aria-hidden="true">★★★★★</span>
           <span class="score-number" data-review-rating>4.9</span>
+          <span class="score-stars" aria-hidden="true">★★★★★</span>
           <span class="score-label" data-i18n="index.reviews.score">Average Score</span>
           <span class="score-count" data-i18n="index.reviews.count" data-n="27">Based on 27 Google reviews</span>
         </div>
         <h2 id="reviews-heading" data-i18n="index.reviews.heading">What Guests Love About Eva Apartman</h2>
-        <div class="divider"></div>
         <p data-i18n="index.reviews.subtext">Verified reviews, every single guest has rated their family holiday experience a perfect 5 stars.</p>
+        <div class="reviews-nav">
+          <button type="button" class="reviews-nav-btn" data-dir="-1" aria-label="Previous reviews" data-i18n-aria="index.reviews.prev">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button type="button" class="reviews-nav-btn" data-dir="1" aria-label="Next reviews" data-i18n-aria="index.reviews.next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scrolls sideways under the visitor's control (swipe, trackpad,
+           shift+wheel or keyboard once focused). -->
+      <div class="reviews-track-wrapper" tabindex="0" role="region" aria-labelledby="reviews-heading">
+        <div class="reviews-track">
+          <figure class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote><p class="review-text" data-i18n="index.rev1.text">Best apartment in Croatia. If you visit Pelješac, you should stay here. Great location, best view in a peaceful neighbourhood, close to the sea with umbrella and sunbeds.</p></blockquote>
+            <figcaption class="review-author"><strong>Michał Kowalski</strong><span>3 years ago · Google</span></figcaption>
+          </figure>
+          <figure class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote><p class="review-text" data-i18n="index.rev2.text">Beautiful apartment created with big heart by the Owner with amazing view on the sea and Korčula, very clean, near a great beach with private umbrella and sunbeds! I highly recommend it!!!</p></blockquote>
+            <figcaption class="review-author"><strong>Agata Kowalska</strong><span>3 years ago · Google</span></figcaption>
+          </figure>
+          <figure class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote><p class="review-text" data-i18n="index.rev3.text">Very nice and clean apartment, right by the sea with free parking.</p></blockquote>
+            <figcaption class="review-author"><strong>Annnavi5</strong><span>6 months ago · Google</span></figcaption>
+          </figure>
+          <figure class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote><p class="review-text" data-i18n="index.rev4.text">I recommend it, very comfortable apartment, terrace with a wonderful view of Korčula and one of the friendliest hosts we've stayed with (delicious fig cake). Greetings to Ewa and her family! 😉</p></blockquote>
+            <figcaption class="review-author"><strong>Maria Węgierek</strong><span>1 year ago · Google</span></figcaption>
+          </figure>
+          <figure class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote><p class="review-text" data-i18n="index.rev5.text">Beautiful newly renovated apartment. Full praise to the hosts, we will definitely see each other again.</p></blockquote>
+            <figcaption class="review-author"><strong>Mili Tolj</strong><span>1 year ago · Google</span></figcaption>
+          </figure>
+          <figure class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote><p class="review-text" data-i18n="index.rev6.text">Thank you for the wonderful holiday, we look forward to the next time! 💓</p></blockquote>
+            <figcaption class="review-author"><strong>Sabina Roskova</strong><span>2 years ago · Google</span></figcaption>
+          </figure>
+          <figure class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote><p class="review-text" data-i18n="index.rev7.text">I will be back someday.</p></blockquote>
+            <figcaption class="review-author"><strong>wieslaw dobosz</strong><span>9 months ago · Google</span></figcaption>
+          </figure>
+          <figure class="review-card review-card-short">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <figcaption class="review-author"><strong>Łukasz Knap</strong><span>2 months ago · Google</span></figcaption>
+          </figure>
+          <figure class="review-card review-card-short">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <figcaption class="review-author"><strong>Wojtek Wojcieski</strong><span>3 years ago · Google</span></figcaption>
+          </figure>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Full-width scrolling track (outside container so it bleeds edge-to-edge) -->
-    <div class="reviews-track-wrapper" aria-hidden="true">
-      <div class="reviews-track">
+  <!-- ══════════════════════════════════════════════════════
+       HOST + WHY BOOK DIRECT
+  ══════════════════════════════════════════════════════ -->
+  <section class="section host-section" id="host" aria-labelledby="host-heading">
+    <div class="container">
+      <div class="host-grid">
+        <div class="host-media">
+          <img src="images/terrace/terrace4.jpeg" alt="Breakfast laid out on the terrace at Eva Apartman" data-i18n-alt="index.host.img" />
+        </div>
+        <div class="host-text">
+          <h2 id="host-heading" data-i18n="index.host.heading">Book directly with Anamarija</h2>
+          <p class="lead" data-i18n="index.host.p1">We're a local family living right here in Kućište, and we've been welcoming guests to this apartment for several years. Both sides of our family have worked in tourism, so looking after guests comes naturally to us.</p>
+          <p data-i18n="index.host.p2">Kućište is simply a good place to be: beautiful beaches, great restaurants, phenomenal wine and real peace and quiet, with Korčula, Orebić and Viganj all close by. It's ideal for families and for couples who want to slow down.</p>
+          <p class="host-sign">
+            <span class="host-name">Anamarija Bogoje</span>
+            <span class="host-role" data-i18n="index.host.role">Your host</span>
+          </p>
+        </div>
+      </div>
 
-        <!-- ── 9 real cards ─────────────────────────────────── -->
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev1.text">Best apartment in Croatia. If you visit Pelješac, you should stay here. Great location, best view in a peaceful neighbourhood, close to the sea with umbrella and sunbeds.</p>
-          <div class="review-author">
-            <div class="review-avatar">M</div>
-            <div>
-              <strong>Michał Kowalski</strong>
-              <span>3 years ago · Google</span>
-            </div>
-          </div>
+      <div class="direct-card" role="region" aria-labelledby="direct-heading">
+        <h3 id="direct-heading" data-i18n="index.direct.heading">Why book direct</h3>
+        <ul class="direct-list" role="list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.2"/></svg>
+            <div><strong data-i18n="index.direct.1.t">Always cheaper than Booking.com or Airbnb</strong><span data-i18n="index.direct.1.d">No platform fees are added to your stay.</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <div><strong data-i18n="index.direct.2.t">You talk to the host</strong><span data-i18n="index.direct.2.d">Ask us anything before you decide, by message, WhatsApp or phone.</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+            <div><strong data-i18n="index.direct.3.t">An answer within 24 hours</strong><span data-i18n="index.direct.3.d">We confirm availability personally.</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <div><strong data-i18n="index.direct.4.t">No payment to enquire</strong><span data-i18n="index.direct.4.d">Sending an enquiry doesn't commit you to anything.</span></div>
+          </li>
+        </ul>
+        <div class="direct-actions">
+          <a href="contact.html" class="btn btn-accent" data-i18n="index.direct.btn">Check dates &amp; enquire</a>
+          <a href="https://wa.me/385993805141" class="btn btn-secondary btn-wa" data-i18n-wa="whatsapp.msg" target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><span data-i18n="whatsapp.btn">Message on WhatsApp</span></a>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev2.text">Beautiful apartment created with big heart by the Owner with amazing view on the sea and Korčula, very clean, near a great beach with private umbrella and sunbeds! I highly recommend it!!!</p>
-          <div class="review-author">
-            <div class="review-avatar">A</div>
-            <div>
-              <strong>Agata Kowalska</strong>
-              <span>3 years ago · Google</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev3.text">Very nice and clean apartment, right by the sea with free parking.</p>
-          <div class="review-author">
-            <div class="review-avatar">A</div>
-            <div>
-              <strong>Annnavi5</strong>
-              <span>6 months ago · Google</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev4.text">I recommend it, very comfortable apartment, terrace with a wonderful view of Korčula and one of the friendliest hosts we've stayed with (delicious fig cake). Greetings to Ewa and her family! 😉</p>
-          <div class="review-author">
-            <div class="review-avatar">M</div>
-            <div>
-              <strong>Maria Węgierek</strong>
-              <span>1 year ago · Google</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev5.text">Beautiful newly renovated apartment. Full praise to the hosts, we will definitely see each other again.</p>
-          <div class="review-author">
-            <div class="review-avatar">M</div>
-            <div>
-              <strong>Mili Tolj</strong>
-              <span>1 year ago · Google</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev6.text">Thank you for the wonderful holiday, we look forward to the next time! 💓</p>
-          <div class="review-author">
-            <div class="review-avatar">S</div>
-            <div>
-              <strong>Sabina Roskova</strong>
-              <span>2 years ago · Google</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev7.text">I will be back someday.</p>
-          <div class="review-author">
-            <div class="review-avatar">W</div>
-            <div>
-              <strong>wieslaw dobosz</strong>
-              <span>9 months ago · Google</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-author">
-            <div class="review-avatar">Ł</div>
-            <div>
-              <strong>Łukasz Knap</strong>
-              <span>2 months ago · Google</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-author">
-            <div class="review-avatar">W</div>
-            <div>
-              <strong>Wojtek Wojcieski</strong>
-              <span>3 years ago · Google</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── Duplicate set for seamless loop ──────────────── -->
-        <div class="review-card" aria-hidden="true">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev1.text">Best apartment in Croatia. If you visit Pelješac, you should stay here. Great location, best view in a peaceful neighbourhood, close to the sea with umbrella and sunbeds.</p>
-          <div class="review-author">
-            <div class="review-avatar">M</div>
-            <div><strong>Michał Kowalski</strong><span>3 years ago · Google</span></div>
-          </div>
-        </div>
-        <div class="review-card" aria-hidden="true">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev2.text">Beautiful apartment created with big heart by the Owner with amazing view on the sea and Korčula, very clean, near a great beach with private umbrella and sunbeds! I highly recommend it!!!</p>
-          <div class="review-author">
-            <div class="review-avatar">A</div>
-            <div><strong>Agata Kowalska</strong><span>3 years ago · Google</span></div>
-          </div>
-        </div>
-        <div class="review-card" aria-hidden="true">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev3.text">Very nice and clean apartment, right by the sea with free parking.</p>
-          <div class="review-author">
-            <div class="review-avatar">A</div>
-            <div><strong>Annnavi5</strong><span>6 months ago · Google</span></div>
-          </div>
-        </div>
-        <div class="review-card" aria-hidden="true">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev4.text">I recommend it, very comfortable apartment, terrace with a wonderful view of Korčula and one of the friendliest hosts we've stayed with (delicious fig cake). Greetings to Ewa and her family! 😉</p>
-          <div class="review-author">
-            <div class="review-avatar">M</div>
-            <div><strong>Maria Węgierek</strong><span>1 year ago · Google</span></div>
-          </div>
-        </div>
-        <div class="review-card" aria-hidden="true">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev5.text">Beautiful newly renovated apartment. Full praise to the hosts, we will definitely see each other again.</p>
-          <div class="review-author">
-            <div class="review-avatar">M</div>
-            <div><strong>Mili Tolj</strong><span>1 year ago · Google</span></div>
-          </div>
-        </div>
-        <div class="review-card" aria-hidden="true">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev6.text">Thank you for the wonderful holiday, we look forward to the next time! 💓</p>
-          <div class="review-author">
-            <div class="review-avatar">S</div>
-            <div><strong>Sabina Roskova</strong><span>2 years ago · Google</span></div>
-          </div>
-        </div>
-        <div class="review-card" aria-hidden="true">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text" data-i18n="index.rev7.text">I will be back someday.</p>
-          <div class="review-author">
-            <div class="review-avatar">W</div>
-            <div><strong>wieslaw dobosz</strong><span>9 months ago · Google</span></div>
-          </div>
-        </div>
-        <div class="review-card" aria-hidden="true">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-author">
-            <div class="review-avatar">Ł</div>
-            <div><strong>Łukasz Knap</strong><span>2 months ago · Google</span></div>
-          </div>
-        </div>
-        <div class="review-card" aria-hidden="true">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-author">
-            <div class="review-avatar">W</div>
-            <div><strong>Wojtek Wojcieski</strong><span>3 years ago · Google</span></div>
-          </div>
-        </div>
-
-      </div><!-- /.reviews-track -->
-    </div><!-- /.reviews-track-wrapper -->
+  <!-- ══════════════════════════════════════════════════════
+       FAQ — answers the worries that stop an enquiry.
+       tools/build-site.js turns these into FAQPage JSON-LD.
+  ══════════════════════════════════════════════════════ -->
+  <section class="section section-alt faq-section" id="faq" aria-labelledby="faq-heading">
+    <div class="container faq-grid">
+      <div class="faq-intro">
+        <h2 id="faq-heading" data-i18n="index.faq.heading">Questions guests ask before booking</h2>
+        <p data-i18n="index.faq.subtext">Can't find your answer? Message us on WhatsApp or send an enquiry. We reply within 24 hours.</p>
+        <a href="https://wa.me/385993805141" class="btn btn-outline btn-wa" data-i18n-wa="whatsapp.msg" target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><span data-i18n="whatsapp.btn">Message on WhatsApp</span></a>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q1">How far is the beach?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a1">Perna beach is a 1-minute walk from the apartment. Kućište's pebble coves line the promenade, and Trstenica beach in Orebić is a 6-minute drive.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q2">Is there parking?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a2">Yes. Free private parking on site is included for all guests.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q3">How many people can stay?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a3">Up to 5 guests. The 67 m² apartment has two double bedrooms and a sofa bed in the living room.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q4">Is there air conditioning and Wi-Fi?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a4">Yes, both. There's also heating, satellite TV and a fully equipped kitchen with a dishwasher, microwave, fridge and kettle.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q5">Does the apartment have a sea view?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a5">Yes. The private terrace looks out across the channel to Korčula.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q6">Is it suitable for families with children?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a6">Yes. It's on a quiet street in a peaceful village, the beach is a minute's walk away, and two bedrooms plus a full kitchen make longer family stays easy.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q7">When is the apartment available?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a7">From May to October. The minimum stay is 3 nights, check-in is between 14:00 and 20:00, and check-out is by 10:00.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q8">How do I get to Korčula?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a8">Drive about 6 minutes to the Orebić ferry port. The crossing to Korčula Town takes about 15 minutes.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q9">Which airport is closest?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a9">Split (about 1 h 45 min) or Dubrovnik (about 2 h). The drive comes over the Pelješac Bridge.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q10">Are there restaurants nearby?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a10">Yes. Kućište's waterfront konobas are a 6-minute walk away, and Orebić's restaurants are a 6-minute drive.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q11">Why book direct instead of Booking.com or Airbnb?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a11">Booking direct is always cheaper because no platform fees are added, and you deal with us, the host family, from your first question to check-out.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q" data-i18n="index.faq.q12">How does booking work? Do I pay now?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="faq-a"><p data-i18n="index.faq.a12">Pick your dates on the calendar and send an enquiry. We confirm availability within 24 hours, then arrange payment and check-in details with you. Sending an enquiry costs nothing and doesn't commit you.</p></div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════
        CTA BANNER
   ══════════════════════════════════════════════════════ -->
   <section class="cta-banner" aria-labelledby="cta-heading">
-    <div class="container">
+    <div class="cta-banner-media">
+      <img src="images/terrace/terrace2.jpeg" alt="Night view from the terrace over the lights of the bay" />
+    </div>
+    <div class="container cta-banner-inner">
       <h2 id="cta-heading" data-i18n="index.cta.heading">Ready to Book Your Pelješac Getaway?</h2>
       <p data-i18n="index.cta.subtext">Check available dates for our apartment in Kućište and send us your inquiry, we’ll help you plan the perfect stay near Orebić and Viganj within 24 hours.</p>
       <div class="cta-actions">
@@ -861,14 +829,14 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
-            <span>+385 99 380 5141</span>
+            <a href="tel:+385993805141">+385 99 380 5141</a>
           </div>
           <div class="footer-contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
               <polyline points="22,6 12,13 2,6"/>
             </svg>
-            <span>info@visit-eva-orebic.com</span>
+            <a href="mailto:info@visit-eva-orebic.com">info@visit-eva-orebic.com</a>
           </div>
           <div class="footer-contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -885,6 +853,18 @@
       </div>
     </div>
   </footer>
+
+
+  <!-- Sticky booking bar (mobile). Shown by js/main.js once the visitor has
+       scrolled past the first screen; hidden again over the footer. -->
+  <div class="sticky-book" data-sticky>
+    <p class="sticky-book-price"><span data-i18n="index.hero.price.from">from</span> <strong>€75</strong> <span data-i18n="index.hero.price.unit">/ night</span></p>
+    <a href="https://wa.me/385993805141" class="sticky-book-wa" data-i18n-wa="whatsapp.msg" aria-label="Chat with us on WhatsApp" data-i18n-aria="whatsapp.aria" target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
+    <a href="contact.html" class="btn btn-accent" data-i18n="sticky.btn">Check dates</a>
+  </div>
+
+  <!-- Floating WhatsApp button (desktop, and on pages without the sticky bar). -->
+  <a href="https://wa.me/385993805141" class="wa-float" data-sticky data-i18n-wa="whatsapp.msg" aria-label="Chat with us on WhatsApp" data-i18n-aria="whatsapp.aria" target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="js/main.js"></script>

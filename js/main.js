@@ -98,6 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
         lightbox.classList.add('open');
         document.body.style.overflow = 'hidden';
       });
+      // Tiles are focusable (tabindex="0"), so let Enter/Space open them too.
+      item.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); item.click(); }
+      });
     });
 
     function closeLightbox() {
@@ -114,6 +118,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Sticky booking bar + WhatsApp button ────────────────────────
+  // Appear once the visitor has scrolled past the first screen (the hero
+  // already carries the booking bar), and step aside over the footer so
+  // they never cover the contact details.
+  const stickies = document.querySelectorAll('[data-sticky]');
+  const footer = document.querySelector('.footer');
+  if (stickies.length) {
+    let footerVisible = false;
+    const sync = () => {
+      const show = window.scrollY > window.innerHeight * 0.7 && !footerVisible;
+      stickies.forEach(el => el.classList.toggle('is-visible', show));
+    };
+    if (footer && 'IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        footerVisible = entries[0].isIntersecting;
+        sync();
+      }).observe(footer);
+    }
+    window.addEventListener('scroll', sync, { passive: true });
+    sync();
+  }
+
+  // ── Reviews row: prev/next step one card at a time ──────────────
+  const reviewsRow = document.querySelector('.reviews-track-wrapper');
+  const reviewsBtns = document.querySelectorAll('.reviews-nav-btn');
+  if (reviewsRow && reviewsBtns.length) {
+    const update = () => {
+      const max = reviewsRow.scrollWidth - reviewsRow.clientWidth - 2;
+      reviewsBtns[0].disabled = reviewsRow.scrollLeft <= 2;
+      reviewsBtns[1].disabled = reviewsRow.scrollLeft >= max;
+    };
+    reviewsBtns.forEach(btn => btn.addEventListener('click', () => {
+      const card = reviewsRow.querySelector('.review-card');
+      const step = card ? card.getBoundingClientRect().width + 16 : reviewsRow.clientWidth * 0.8;
+      reviewsRow.scrollBy({ left: step * Number(btn.dataset.dir), behavior: 'smooth' });
+    }));
+    reviewsRow.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
   // ── Smooth scroll for anchor links ──────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -126,36 +171,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-  // ── Counter animation for stats ─────────────────────────────────
-  function animateCounter(el) {
-    const target = parseInt(el.dataset.target || el.textContent, 10);
-    if (isNaN(target)) return;
-    const suffix = el.dataset.suffix || '';
-    let start = 0;
-    const duration = 1200;
-    const step = (timestamp) => {
-      if (!start) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      const value = Math.floor(progress * target);
-      el.textContent = value + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target + suffix;
-    };
-    requestAnimationFrame(step);
-  }
-
-  const statNumbers = document.querySelectorAll('.stat-number');
-  if ('IntersectionObserver' in window && statNumbers.length) {
-    const statsObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          statsObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    statNumbers.forEach(el => statsObserver.observe(el));
-  }
 
 });

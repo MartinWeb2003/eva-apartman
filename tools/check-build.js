@@ -249,10 +249,19 @@ assert(!/^\s*Disallow:\s*\/tripuneva1/mi.test(robots),
 assert(/Sitemap:\s*https:\/\//i.test(robots), 'robots.txt — sitemap declared');
 
 /* --- admin ----------------------------------------------------------- */
-const admin = fs.readFileSync(path.join(ROOT, 'tripuneva1/index.html'), 'utf8');
-assert(!/var PASSWORD\s*=/.test(admin), 'admin — no plaintext password');
-assert(/PW_HASH\s*=\s*'[0-9a-f]{64}'/.test(admin), 'admin — PBKDF2 verifier present');
-assert(/name="robots"[^>]*noindex/.test(admin), 'admin — noindex meta present');
+// The panel signs in on the server (netlify/functions/admin.mjs). Nothing
+// that grants access may ever ship in the public files.
+assert(!fs.existsSync(path.join(ROOT, 'tripuneva1')), 'admin — old client-side panel removed');
+const adminFiles = ['admin/index.html', 'admin/admin.js', 'admin/admin.css'];
+assert(adminFiles.every(f => fs.existsSync(path.join(ROOT, f))), 'admin — /admin page present');
+const adminSrc = adminFiles.filter(f => fs.existsSync(path.join(ROOT, f)))
+  .map(f => fs.readFileSync(path.join(ROOT, f), 'utf8')).join('\n');
+assert(!/X-Master-Key|\$2[aby]\$|PW_HASH|scrypt\$\d/.test(adminSrc), 'admin — no keys or password hashes in public files');
+assert(/name="robots"[^>]*noindex/.test(adminSrc), 'admin — noindex meta present');
+const fn = fs.readFileSync(path.join(ROOT, 'netlify/functions/admin.mjs'), 'utf8');
+assert(/HttpOnly; Secure; SameSite=Strict/.test(fn) && /timingSafeEqual/.test(fn), 'admin — server session is HttpOnly, signed and compared safely');
+const toml = fs.readFileSync(path.join(ROOT, 'netlify.toml'), 'utf8');
+assert(/for = "\/admin\/\*"[\s\S]*?noindex[\s\S]*?Content-Security-Policy/.test(toml), 'admin — noindex + CSP headers configured');
 
 console.log(`\n${failures ? '✗' : '✓'} ${checks - failures}/${checks} checks passed`);
 if (failures) {

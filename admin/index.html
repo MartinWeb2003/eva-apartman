@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="same-origin" />
+  <meta name="theme-color" content="#0e3a4a" />
+  <title>Eva Apartman · Kalendar</title>
+  <link rel="icon" type="image/png" href="/images/Ap_Eva_logo_800x800px-transparent.png" />
+  <link rel="apple-touch-icon" href="/images/Ap_Eva_logo_800x800px-transparent.png" />
+  <link rel="stylesheet" href="/admin/admin.css" />
+  <!-- Everything this page can do is checked by the server
+       (netlify/functions/admin.mjs). Nothing secret lives in this file. -->
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="/" target="_blank" rel="noopener">
+      <img src="/images/opt/Ap_Eva_logo_800x800px-transparent-240.webp" alt="" width="40" height="40" />
+      <span>
+        <strong>Eva Apartman</strong>
+        <small data-t="title">Upravljanje kalendarom</small>
+      </span>
+    </a>
+    <div class="topbar-actions">
+      <button type="button" class="link-btn" id="lang-btn" aria-label="English">EN</button>
+      <button type="button" class="link-btn" id="signout-btn" hidden data-t="signout">Odjava</button>
+    </div>
+  </header>
+
+  <!-- Loading -->
+  <main id="view-loading" class="view center">
+    <div class="spinner" aria-hidden="true"></div>
+  </main>
+
+  <!-- Sign in -->
+  <main id="view-login" class="view center" hidden>
+    <form id="login-form" class="card login-card" novalidate>
+      <h1 data-t="login.title">Prijava</h1>
+      <p data-t="login.text">Unesite lozinku za uređivanje kalendara rezervacija.</p>
+      <label for="password" data-t="login.password">Lozinka</label>
+      <div class="password-row">
+        <input id="password" name="password" type="password" autocomplete="current-password" required autocapitalize="none" spellcheck="false" />
+        <button type="button" class="ghost-btn" id="show-pw" data-t="login.show">Prikaži</button>
+      </div>
+      <p class="form-error" id="login-error" role="alert"></p>
+      <button type="submit" class="primary-btn" id="login-btn" data-t="login.submit">Prijavi se</button>
+      <p class="muted small" data-t="login.remember">Na ovom uređaju ostat ćete prijavljeni 30 dana.</p>
+    </form>
+  </main>
+
+  <!-- Editor -->
+  <main id="view-app" class="view" hidden>
+
+    <section class="card" aria-labelledby="cal-heading">
+      <div class="section-head">
+        <h2 id="cal-heading" data-t="cal.title">Kalendar</h2>
+        <p class="muted small" data-t="cal.live">Promjene su odmah vidljive na web stranici.</p>
+      </div>
+      <div class="cal-nav">
+        <button type="button" class="round-btn" id="prev-month" data-t-aria="cal.prev" aria-label="Prethodni mjesec">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <h3 id="month-label" aria-live="polite"></h3>
+        <button type="button" class="round-btn" id="next-month" data-t-aria="cal.next" aria-label="Sljedeći mjesec">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="cal-weekdays" id="weekdays" aria-hidden="true"></div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <ul class="legend" aria-hidden="true">
+        <li><span class="dot free"></span><span data-t="legend.free">Slobodno</span></li>
+        <li><span class="dot booked"></span><span data-t="legend.booked">Zauzeto</span></li>
+        <li><span class="dot off"></span><span data-t="legend.off">Izvan sezone</span></li>
+      </ul>
+      <p class="muted small" data-t="cal.hint">Dodirnite slobodan dan za novu rezervaciju ili zauzeti dan za izmjenu.</p>
+    </section>
+
+    <section class="card" aria-labelledby="upcoming-heading">
+      <div class="section-head row">
+        <h2 id="upcoming-heading" data-t="upcoming.title">Nadolazeće rezervacije</h2>
+        <button type="button" class="primary-btn small-btn desktop-only" data-action="new-booking" data-t="btn.newBooking">+ Nova rezervacija</button>
+      </div>
+      <ul class="entry-list" id="upcoming-list"></ul>
+      <details class="past" id="past-wrap">
+        <summary><span data-t="past.title">Prošle rezervacije</span> (<span id="past-count">0</span>)</summary>
+        <ul class="entry-list" id="past-list"></ul>
+      </details>
+    </section>
+
+    <section class="card" aria-labelledby="season-heading">
+      <div class="section-head row">
+        <h2 id="season-heading" data-t="season.title">Sezona</h2>
+        <button type="button" class="ghost-btn small-btn" id="add-season" data-t="btn.addSeason">+ Dodaj sezonu</button>
+      </div>
+      <p class="muted small" data-t="season.text">Gosti mogu birati datume samo unutar sezone.</p>
+      <ul class="entry-list" id="season-list"></ul>
+      <div class="copy-offer" id="copy-offer" hidden>
+        <p id="copy-text"></p>
+        <button type="button" class="ghost-btn" id="copy-btn" data-t="copy.btn">Kopiraj</button>
+      </div>
+    </section>
+
+    <p class="muted small center-text" id="session-note"></p>
+  </main>
+
+  <!-- Sticky primary action on phones -->
+  <div class="bottom-bar" id="bottom-bar" hidden>
+    <button type="button" class="primary-btn" data-action="new-booking" data-t="btn.newBooking">+ Nova rezervacija</button>
+  </div>
+
+  <!-- Booking / season editor -->
+  <dialog id="edit-dialog" aria-labelledby="edit-title">
+    <form method="dialog" id="edit-form" novalidate>
+      <h2 id="edit-title"></h2>
+      <div class="date-pair">
+        <div>
+          <label for="date-start" id="label-start"></label>
+          <input type="date" id="date-start" required />
+        </div>
+        <div>
+          <label for="date-end" id="label-end"></label>
+          <input type="date" id="date-end" required />
+        </div>
+      </div>
+      <p class="nights" id="edit-summary" aria-live="polite"></p>
+      <p class="form-note" id="edit-note"></p>
+      <p class="form-error" id="edit-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="danger-link" id="edit-delete" data-t="delete">Obriši</button>
+        <span class="spacer"></span>
+        <button type="button" class="ghost-btn" value="cancel" id="edit-cancel" data-t="cancel">Odustani</button>
+        <button type="submit" class="primary-btn" id="edit-save" data-t="save">Spremi</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Confirm delete -->
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+    <form method="dialog">
+      <h2 id="confirm-title"></h2>
+      <p id="confirm-text" class="muted"></p>
+      <p class="form-error" id="confirm-error" role="alert"></p>
+      <div class="dialog-actions">
+        <span class="spacer"></span>
+        <button type="button" class="ghost-btn" id="confirm-cancel" data-t="cancel">Odustani</button>
+        <button type="button" class="danger-btn" id="confirm-ok" data-t="delete">Obriši</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/admin/admin.js" defer></script>
+</body>
+</html>
