@@ -14,8 +14,12 @@
  *   ADMIN_PASSWORD_HASH   scrypt verifier, from `node tools/admin-password.js`
  *   SESSION_SECRET        random string (≥ 32 chars), signs the session cookie.
  *                         Changing it signs everyone out on every device.
- *   JSONBIN_BIN_ID        the bin the public calendar reads
  *   JSONBIN_MASTER_KEY    JSONBin write key
+ *
+ * The bin ID is NOT a secret — the public site reads the calendar with it
+ * (js/availability.js) — so it lives in code below, not in an environment
+ * variable. Netlify's secrets scanner fails the deploy if an environment
+ * variable's value also appears in the repo, so don't add JSONBIN_BIN_ID there.
  *
  * Changes are sent as single operations ("add this booking"), not as a whole
  * new calendar. The server applies each one to the latest stored data, so two
@@ -30,6 +34,9 @@ import { promisify } from 'node:util';
 export const config = { path: '/api/admin/*' };
 
 const scrypt = promisify(crypto.scrypt);
+
+/* Same public bin as js/availability.js (JSONBIN_BIN_ID). */
+const BIN_ID = '69bd6aa7c3097a1dd542e037';
 
 const COOKIE = '__Host-eva_admin';
 const SESSION_DAYS = 30;
@@ -128,7 +135,9 @@ function requireSession(req) {
 /* ── Storage (JSONBin) ─────────────────────────────────────────────────── */
 
 function binConfig() {
-  const id = env('JSONBIN_BIN_ID');
+  // JSONBIN_BIN_ID_OVERRIDE only exists for tools/admin-dev.js, which swaps
+  // in an in-memory bin; production always uses the public BIN_ID.
+  const id = env('JSONBIN_BIN_ID_OVERRIDE') || BIN_ID;
   const key = env('JSONBIN_MASTER_KEY');
   if (!id || !key) throw new ApiError(503, 'not_configured');
   return { id, key };

@@ -33,7 +33,7 @@ const N = 2 ** 15, r = 8, p = 1;
 const hash = crypto.scryptSync(PASSWORD, salt, 32, { N, r, p, maxmem: 256 * 1024 * 1024 });
 process.env.ADMIN_PASSWORD_HASH = `scrypt$${N}$${r}$${p}$${salt.toString('base64')}$${hash.toString('base64')}`;
 process.env.SESSION_SECRET = crypto.randomBytes(32).toString('base64url');
-process.env.JSONBIN_BIN_ID = 'local-test-bin';
+process.env.JSONBIN_BIN_ID_OVERRIDE = 'local-test-bin';
 process.env.JSONBIN_MASTER_KEY = 'local-test-key';
 
 /* In-memory stand-in for JSONBin. */

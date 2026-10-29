@@ -94,11 +94,14 @@ devices can't overwrite each other.
 |---|---|
 | `ADMIN_PASSWORD_HASH` | from `node tools/admin-password.js "the password"` |
 | `SESSION_SECRET` | from the same command |
-| `JSONBIN_BIN_ID` | `69bd6aa7c3097a1dd542e037` (also in `js/availability.js`) |
 | `JSONBIN_MASTER_KEY` | JSONBin dashboard → API Keys → X-Master-Key |
 
-Then Deploys → Trigger deploy. Until all four are set, sign-in shows
+Then Deploys → Trigger deploy. Until all three are set, sign-in shows
 "not set up on the server yet".
+
+Don't add the bin ID as a variable: it isn't secret (the public calendar reads
+with it, see `js/availability.js`) and Netlify's secrets scanner fails the
+deploy when a variable's value also appears in the code.
 
 **Sign everyone out** (lost phone, password shared too widely): change
 `SESSION_SECRET` (any new value from the password tool) and redeploy.
