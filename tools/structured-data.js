@@ -60,10 +60,12 @@ const DESCRIPTION = {
   en: 'Holiday apartment in Kućište on the Pelješac peninsula, Croatia. Steps from the Adriatic with a private terrace, air conditioning, Wi-Fi and a full kitchen.',
   hr: 'Apartman za odmor u Kućištu na poluotoku Pelješcu. Nekoliko koraka od Jadrana, s privatnom terasom, klimom, Wi-Fi-jem i potpuno opremljenom kuhinjom.',
   pl: 'Apartament wakacyjny w Kućište na półwyspie Pelješac w Chorwacji. Kilka kroków od Adriatyku, z prywatnym tarasem, klimatyzacją, Wi-Fi i w pełni wyposażoną kuchnią.',
-  de: 'Ferienwohnung in Kućište auf der Halbinsel Pelješac, Kroatien. Wenige Schritte zur Adria, mit privater Terrasse, Klimaanlage, WLAN und voll ausgestatteter Küche.'
+  de: 'Ferienwohnung in Kućište auf der Halbinsel Pelješac, Kroatien. Wenige Schritte zur Adria, mit privater Terrasse, Klimaanlage, WLAN und voll ausgestatteter Küche.',
+  sl: 'Počitniški apartma v Kućištu na polotoku Pelješac na Hrvaškem. Le nekaj korakov od Jadrana, z zasebno teraso, klimo, Wi-Fijem in popolnoma opremljeno kuhinjo.',
+  cs: 'Prázdninový apartmán v Kućište na poloostrově Pelješac v Chorvatsku. Pár kroků od Jadranu, se soukromou terasou, klimatizací, Wi-Fi a plně vybavenou kuchyní.'
 };
 
-const LANG_TAG = { en: 'en', hr: 'hr', pl: 'pl', de: 'de' };
+const LANG_TAG = { en: 'en', hr: 'hr', pl: 'pl', de: 'de', sl: 'sl', cs: 'cs' };
 
 function abs(pathOrUrl) {
   if (/^https?:\/\//.test(pathOrUrl)) return pathOrUrl;

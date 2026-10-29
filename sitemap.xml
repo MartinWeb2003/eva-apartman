@@ -8,6 +8,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -19,6 +21,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -30,6 +34,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -41,6 +47,34 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.visit-eva-orebic.com/sl/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.visit-eva-orebic.com/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.visit-eva-orebic.com/cs/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.visit-eva-orebic.com/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -52,6 +86,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/gallery.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -247,6 +283,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/gallery.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -442,6 +480,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/gallery.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -637,6 +677,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/gallery.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/gallery.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -827,11 +869,407 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.visit-eva-orebic.com/sl/gallery.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.visit-eva-orebic.com/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/gallery.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor1.jpeg</image:loc>
+      <image:title>Kavč v dnevni sobi z okrasnimi blazinami in dekorativno svetilko, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor2.jpeg</image:loc>
+      <image:title>Spalnica z vgradno omaro in svežimi brisačami na postelji, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor3.jpeg</image:loc>
+      <image:title>Omara z ogledalom in toaletna mizica ob tapeti z listnatim vzorcem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor4.jpeg</image:loc>
+      <image:title>Zakonska postelja z bralno lučko in botanično tapeto, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor5.jpeg</image:loc>
+      <image:title>Jedilnica, vidna skozi vrata na teraso, s cvetočim koritom, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor6.jpeg</image:loc>
+      <image:title>Pogled čez kanal na Korčulo z jadrnico ob pomolu, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor8.jpeg</image:loc>
+      <image:title>Zakonska postelja z zloženimi brisačami ob oknu z zavesami, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor9.jpeg</image:loc>
+      <image:title>Zakonska postelja s petrolejsko modrimi blazinami, stensko lučjo in leseno nočno omarico, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor10.jpeg</image:loc>
+      <image:title>Kotni kavč s pletenim pufom in pomožno mizico, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor11.jpeg</image:loc>
+      <image:title>Ogledalo v obliki sonca kot okras na steni dnevne sobe, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor12.jpeg</image:loc>
+      <image:title>Jedilna miza s cvetjem, televizor in odprta kuhinja v ozadju, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor13.jpeg</image:loc>
+      <image:title>Zakonska postelja z belo nočno omarico in botanično tapeto, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor14.jpeg</image:loc>
+      <image:title>Kopalniški umivalnik z osvetljenim okroglim ogledalom in leseno omarico, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor15.jpeg</image:loc>
+      <image:title>Kopalniški umivalnik z leseno omarico in zloženimi brisačami, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor16.jpeg</image:loc>
+      <image:title>Kopalnica z marmornimi ploščicami in vgradno nišo za police, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor18.jpeg</image:loc>
+      <image:title>Vhodni hodnik z ozko omarico za čevlje, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor19.jpeg</image:loc>
+      <image:title>Omara v spalnici z ogledalom in nočno omarico, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor20.jpeg</image:loc>
+      <image:title>Zakonska postelja z oblazinjenim vzglavjem in blazino z listnatim vzorcem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor21.jpeg</image:loc>
+      <image:title>Zakonska postelja s svežimi brisačami in oknom z razgledom na vrt, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor24.jpeg</image:loc>
+      <image:title>Svetel vhodni hodnik z lesenim podom in ogledalom v obliki sonca, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor25.jpeg</image:loc>
+      <image:title>Hodnik, ki vodi do spalnic in kopalnice, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor26.jpeg</image:loc>
+      <image:title>Postlana zakonska postelja z nočno omarico in botanično tapeto, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor27.jpeg</image:loc>
+      <image:title>Siv kotni kavč s pomožnimi mizicami in pletenim pufom, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor29.jpeg</image:loc>
+      <image:title>Popolnoma opremljena kuhinja s pečico, mikrovalovno pečico, kuhalno ploščo in hladilnikom, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor30.jpeg</image:loc>
+      <image:title>Kuhinja in jedilna miza pod visečimi svetilkami, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor31.jpeg</image:loc>
+      <image:title>Odprt dnevni prostor z jedilnico, televizorjem in kavčem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor32.jpeg</image:loc>
+      <image:title>Hodnik z okrasnimi stenskimi krogi in lesenim podom, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor33.jpg</image:loc>
+      <image:title>Zakonska postelja z modrim pregrinjalom in zloženimi brisačami, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor34.jpg</image:loc>
+      <image:title>Zakonska postelja z žajbljevo zelenim pregrinjalom ob oknu z zavesami, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor35.jpg</image:loc>
+      <image:title>Spalnica z zakonsko posteljo, omaro in svežo posteljnino, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor36.jpg</image:loc>
+      <image:title>Osončena postelja z modro posteljnino in uokvirjenimi slikami, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor37.jpg</image:loc>
+      <image:title>Kopalnica s pralnim strojem, umivalnikom in leseno omarico, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor38.jpg</image:loc>
+      <image:title>Kopalnica s pralnim strojem, ogrevanim sušilnikom za brisače in oknom, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor39.jpg</image:loc>
+      <image:title>Tuš kabina s stekleno steno in deževno prho, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace1.jpeg</image:loc>
+      <image:title>Ležalniki na terasi, obdani z bugenvilijo, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace2.jpeg</image:loc>
+      <image:title>Nočni pogled s terase na luči zaliva, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace3.jpeg</image:loc>
+      <image:title>Kozarec pelješkega rdečega vina dingač na terasi po mraku, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace4.jpeg</image:loc>
+      <image:title>Miza na terasi, pripravljena za zajtrk, s sončnicami in svežim sadjem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace5.jpeg</image:loc>
+      <image:title>Zunanja jedilna miza pod cvetočo bugenvilijo, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace6.jpeg</image:loc>
+      <image:title>Odprta vrata iz apartmaja na teraso z jedilno mizo, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace7.jpg</image:loc>
+      <image:title>Viseči ratanast stol na terasi s pogledom na morje, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace8.jpg</image:loc>
+      <image:title>Pokrita terasa z jedilno mizo in visečim stolom zvečer, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace9.jpg</image:loc>
+      <image:title>Viseči stol in cvetje, v ozadju morje in Korčula, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace10.jpeg</image:loc>
+      <image:title>Terasa z jedilno mizo, visečim stolom in vhodom v apartma, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/beach/beach1.jpeg</image:loc>
+      <image:title>Obala Kućišta s pomolom, privezanimi čolni in Korčulo čez kanal, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/beach/beach2.jpeg</image:loc>
+      <image:title>Prodnata obala z lesenim čolnom, kamnitimi hišami in borovci, Eva Apartman, Kućište</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.visit-eva-orebic.com/cs/gallery.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.visit-eva-orebic.com/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/gallery.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor1.jpeg</image:loc>
+      <image:title>Pohovka v obývacím pokoji s dekorativními polštáři a lucernou, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor2.jpeg</image:loc>
+      <image:title>Ložnice s vestavěnou skříní a čistými ručníky na posteli, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor3.jpeg</image:loc>
+      <image:title>Zrcadlová skříň a toaletní stolek u tapety s listovým vzorem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor4.jpeg</image:loc>
+      <image:title>Manželská postel s lampičkou na čtení a botanickou tapetou, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor5.jpeg</image:loc>
+      <image:title>Jídelní kout viděný dveřmi z terasy, s kvetoucím truhlíkem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor6.jpeg</image:loc>
+      <image:title>Výhled přes průliv na Korčulu s plachetnicí u mola, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor8.jpeg</image:loc>
+      <image:title>Manželská postel se složenými ručníky u okna se závěsy, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor9.jpeg</image:loc>
+      <image:title>Manželská postel s petrolejovými polštáři, nástěnnou lampou a dřevěným nočním stolkem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor10.jpeg</image:loc>
+      <image:title>Rohová pohovka s pleteným pufem a odkládacím stolkem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor11.jpeg</image:loc>
+      <image:title>Zrcadlo ve tvaru slunce jako ozdoba stěny v obývacím pokoji, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor12.jpeg</image:loc>
+      <image:title>Jídelní stůl s květinami, televize a otevřená kuchyně v pozadí, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor13.jpeg</image:loc>
+      <image:title>Manželská postel s bílým nočním stolkem a botanickou tapetou, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor14.jpeg</image:loc>
+      <image:title>Koupelnové umyvadlo s podsvíceným kulatým zrcadlem a dřevěnou skříňkou, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor15.jpeg</image:loc>
+      <image:title>Koupelnové umyvadlo s dřevěnou skříňkou a složenými ručníky, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor16.jpeg</image:loc>
+      <image:title>Koupelna s mramorovými obklady a zapuštěnou nikou na police, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor18.jpeg</image:loc>
+      <image:title>Vstupní chodba s úzkým botníkem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor19.jpeg</image:loc>
+      <image:title>Skříň v ložnici se zrcadlem a nočním stolkem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor20.jpeg</image:loc>
+      <image:title>Manželská postel s čalouněným čelem a polštářem s listovým vzorem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor21.jpeg</image:loc>
+      <image:title>Manželská postel s čistými ručníky a oknem s výhledem do zahrady, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor24.jpeg</image:loc>
+      <image:title>Světlá vstupní chodba s dřevěnou podlahou a zrcadlem ve tvaru slunce, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor25.jpeg</image:loc>
+      <image:title>Chodba vedoucí do ložnic a koupelny, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor26.jpeg</image:loc>
+      <image:title>Ustlaná manželská postel s nočním stolkem a botanickou tapetou, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor27.jpeg</image:loc>
+      <image:title>Šedá rohová pohovka s odkládacími stolky a pleteným pufem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor29.jpeg</image:loc>
+      <image:title>Plně vybavená kuchyně s troubou, mikrovlnkou, varnou deskou a lednicí, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor30.jpeg</image:loc>
+      <image:title>Kuchyně a jídelní stůl pod závěsnými světly, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor31.jpeg</image:loc>
+      <image:title>Otevřený obývací prostor s jídelnou, televizí a pohovkou, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor32.jpeg</image:loc>
+      <image:title>Chodba s dekorativními nástěnnými kruhy a dřevěnou podlahou, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor33.jpg</image:loc>
+      <image:title>Manželská postel s modrým přehozem a složenými ručníky, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor34.jpg</image:loc>
+      <image:title>Manželská postel se šalvějově zeleným přehozem u okna se závěsy, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor35.jpg</image:loc>
+      <image:title>Ložnice s manželskou postelí, skříní a čistým povlečením, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor36.jpg</image:loc>
+      <image:title>Prosluněná postel s modrým povlečením a zarámovanými obrázky, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor37.jpg</image:loc>
+      <image:title>Koupelna s pračkou, umyvadlem a dřevěnou skříňkou, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor38.jpg</image:loc>
+      <image:title>Koupelna s pračkou, vyhřívaným žebříkem na ručníky a oknem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/indoor/indoor39.jpg</image:loc>
+      <image:title>Sprchový kout se skleněnou zástěnou a dešťovou sprchou, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace1.jpeg</image:loc>
+      <image:title>Lehátka na terase lemované bugenvileou, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace2.jpeg</image:loc>
+      <image:title>Noční výhled z terasy na světla zálivu, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace3.jpeg</image:loc>
+      <image:title>Sklenka pelješackého červeného vína Dingač na terase po setmění, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace4.jpeg</image:loc>
+      <image:title>Stůl na terase prostřený ke snídani se slunečnicemi a čerstvým ovocem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace5.jpeg</image:loc>
+      <image:title>Venkovní jídelní stůl pod kvetoucí bugenvileou, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace6.jpeg</image:loc>
+      <image:title>Otevřené dveře z apartmánu na terasu s jídelním stolem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace7.jpg</image:loc>
+      <image:title>Závěsné ratanové křeslo na terase s výhledem na moře, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace8.jpg</image:loc>
+      <image:title>Krytá terasa s jídelním stolem a závěsným křeslem večer, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace9.jpg</image:loc>
+      <image:title>Závěsné křeslo a květiny, v pozadí moře a Korčula, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/terrace/terrace10.jpeg</image:loc>
+      <image:title>Terasa s jídelním stolem, závěsným křeslem a vchodem do apartmánu, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/beach/beach1.jpeg</image:loc>
+      <image:title>Nábřeží Kućište s molem, kotvícími čluny a Korčulou za průlivem, Eva Apartman, Kućište</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visit-eva-orebic.com/images/beach/beach2.jpeg</image:loc>
+      <image:title>Oblázkový břeh s dřevěnou loďkou, kamennými domy a borovicemi, Eva Apartman, Kućište</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.visit-eva-orebic.com/location.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.visit-eva-orebic.com/location.html"/>
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/location.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/location.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/location.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/location.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/location.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/location.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -843,6 +1281,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/location.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/location.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/location.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/location.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/location.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/location.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -854,6 +1294,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/location.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/location.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/location.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/location.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/location.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/location.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -865,6 +1307,34 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/location.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/location.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/location.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/location.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/location.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/location.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.visit-eva-orebic.com/sl/location.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.visit-eva-orebic.com/location.html"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/location.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/location.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/location.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/location.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/location.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/location.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.visit-eva-orebic.com/cs/location.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.visit-eva-orebic.com/location.html"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/location.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/location.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/location.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/location.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/location.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/location.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -876,6 +1346,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/contact.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/contact.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/contact.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -887,6 +1359,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/contact.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/contact.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/contact.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -898,6 +1372,8 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/contact.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/contact.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/contact.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -909,6 +1385,34 @@
     <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/contact.html"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/contact.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/contact.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.visit-eva-orebic.com/sl/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.visit-eva-orebic.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/contact.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.visit-eva-orebic.com/cs/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.visit-eva-orebic.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.visit-eva-orebic.com/hr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.visit-eva-orebic.com/pl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.visit-eva-orebic.com/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://www.visit-eva-orebic.com/sl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.visit-eva-orebic.com/cs/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visit-eva-orebic.com/contact.html"/>
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>

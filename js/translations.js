@@ -124,7 +124,7 @@
         'location.by.ferry2':     '<strong>By Ferry, Ploče ↔ Trpanj:</strong> Alternatively, take the Ploče–Trpanj ferry (60 min crossing) for a relaxing shortcut to the Pelješac peninsula, followed by a 35-minute drive to Kućište.',
         'location.airports':      '<strong>Nearest Airports:</strong> Most guests arrive via Dubrovnik (approx. 2h) or Split (approx. 1h 45m). Both airports offer easy access to the Pelješac peninsula via well-maintained coastal roads.',
         'location.dist.h3':       'Distances at a Glance',
-        'location.dist1':         'Kućište pebble beach, <strong>1 min walk</strong>',
+        'location.dist1':         'Perna beach, <strong>right across the road</strong>',
         'location.dist2':         'Seaside Konobas & Restaurants, <strong>6 min walk</strong>',
         'location.dist3':         'Viganj Windsurfing & Kite Centers, <strong>5 min drive</strong>',
         'location.dist4':         'Orebić Town, Shops & Supermarkets, <strong>6 min drive</strong>',
@@ -135,8 +135,8 @@
         'location.beaches.h2':    'Top Beaches in Kućište & Orebić',
         'location.beaches.p':     'The Pelješac peninsula is home to some of the finest shores on the Adriatic coast, from surf spots to sandy coves.',
         'location.b1.title':      'Perna Beach',
-        'location.b1.desc':       'Steps away from your apartment, offering sunbeds and calm morning waters.',
-        'location.b1.dist':       '1 min walk',
+        'location.b1.desc':       'Right across the road from the apartment, with sunbeds and calm morning water.',
+        'location.b1.dist':       'Across the road',
         'location.b2.title':      'Kućište Bay',
         'location.b2.desc':       'Discover peaceful pebble coves and crystal-clear turquoise waters along the Kućište promenade.',
         'location.b2.dist':       '5 min drive',
@@ -375,7 +375,7 @@
         'location.by.ferry2':     '<strong>Trajektom, Ploče ↔ Trpanj:</strong> Kao alternativa, uzmite trajekt Ploče–Trpanj (60 min) za opuštenu prečicu do poluotoka Pelješac, a zatim 35 minuta vožnje do Kućišta.',
         'location.airports':      '<strong>Najbliže zrakoplovne luke:</strong> Većina gostiju stiže iz Dubrovnika (oko 2 h) ili Splita (oko 1 h 45 min). Obje luke nude jednostavan pristup poluotoku Pelješac dobro održavanim obalnim cestama.',
         'location.dist.h3':       'Udaljenosti na prvi pogled',
-        'location.dist1':         'Šljunčana plaža Kućište, <strong>1 min hoda</strong>',
+        'location.dist1':         'Plaža Perna, <strong>odmah preko ceste</strong>',
         'location.dist2':         'Primorske konobe i restorani, <strong>6 min hoda</strong>',
         'location.dist3':         'Surfovački i kite centri u Vignju, <strong>5 min vožnje</strong>',
         'location.dist4':         'Grad Orebić, trgovine i supermarketi, <strong>6 min vožnje</strong>',
@@ -386,8 +386,8 @@
         'location.beaches.h2':    'Najljepše plaže u Kućištu i Orebiću',
         'location.beaches.p':     'Poluotok Pelješac dom je nekih od najljepših obala na Jadranu, od surfovačkih točaka do pješčanih uvala.',
         'location.b1.title':      'Plaža Perna',
-        'location.b1.desc':       'Tik uz apartman, s ležaljkama i mirnom jutarnjom vodom.',
-        'location.b1.dist':       '1 min hoda',
+        'location.b1.desc':       'Odmah preko ceste od apartmana, s ležaljkama i mirnom jutarnjom vodom.',
+        'location.b1.dist':       'Preko ceste',
         'location.b2.title':      'Uvala Kućište',
         'location.b2.desc':       'Otkrijte mirne šljunčane uvale i kristalno bistru tirkiznu vodu duž kućišanske šetnice.',
         'location.b2.dist':       '5 min vožnje',
@@ -495,7 +495,7 @@
         'index.hero.price.from':    'od',
         'index.hero.price.unit':    '/ noć',
         'index.amenities.heading':  'Sve za Vaš Obiteljski Odmor na Pelješcu',
-        'index.amenities.subtext':  'Nakon dana jedrenja na dasci u Vignaju ili otkrivanja peljeških vinskih cesta, vratite se u dom s modernom opremom, klima uređajem i terasom s pogledom na more.',
+        'index.amenities.subtext':  'Nakon dana jedrenja na dasci u Vignju ili otkrivanja peljeških vinskih cesta, vratite se u dom s modernom opremom, klima uređajem i terasom s pogledom na more.',
         'index.am.wifi':            'Internet / Wi-Fi',
         'index.am.tv':              'Televizija (×3)',
         'index.am.streaming':       'Netflix / HBO / IPTV',
@@ -620,7 +620,7 @@
         'location.by.ferry2':     '<strong>Promem, Ploče ↔ Trpanj:</strong> Alternatywnie wybierz prom Ploče–Trpanj (przeprawa 60 min) jako relaksujący skrót na półwysep Pelješac, a następnie 35 minut jazdy do Kućišta.',
         'location.airports':      '<strong>Najbliższe lotniska:</strong> Większość gości przylatuje przez Dubrownik (ok. 2 h) lub Split (ok. 1 h 45 min). Oba lotniska zapewniają łatwy dojazd na półwysep Pelješac dobrze utrzymanymi drogami nadbrzeżnymi.',
         'location.dist.h3':       'Odległości w skrócie',
-        'location.dist1':         'Kamienista plaża Kućište, <strong>1 min pieszo</strong>',
+        'location.dist1':         'Plaża Perna, <strong>tuż po drugiej stronie drogi</strong>',
         'location.dist2':         'Nadmorskie konobe i restauracje, <strong>6 min pieszo</strong>',
         'location.dist3':         'Centra windsurfingowe i kitesurfingowe w Viganju, <strong>5 min jazdy</strong>',
         'location.dist4':         'Miasto Orebić, sklepy i supermarkety, <strong>6 min jazdy</strong>',
@@ -631,8 +631,8 @@
         'location.beaches.h2':    'Najlepsze plaże w Kućištu i Orebiciu',
         'location.beaches.p':     'Półwysep Pelješac jest domem niektórych z najpiękniejszych plaż na Adriatyku, od miejsc windsurfingowych po piaszczyste zatoczki.',
         'location.b1.title':      'Plaża Perna',
-        'location.b1.desc':       'Tuż przy apartamencie, z leżakami i spokojnymi rannymi wodami.',
-        'location.b1.dist':       '1 min pieszo',
+        'location.b1.desc':       'Tuż po drugiej stronie drogi od apartamentu, z leżakami i spokojną poranną wodą.',
+        'location.b1.dist':       'Po drugiej stronie drogi',
         'location.b2.title':      'Zatoka Kućište',
         'location.b2.desc':       'Odkryj spokojne kamieniste zatoczki i krystalicznie czystą turkusową wodę wzdłuż promenady Kućište.',
         'location.b2.dist':       '5 min jazdy',
@@ -739,7 +739,7 @@
         'index.hero.price.from':    'od',
         'index.hero.price.unit':    '/ noc',
         'index.amenities.heading':  'Wszystko na Rodzinne Wakacje na Pelješacu',
-        'index.amenities.subtext':  'Po dniu windsurfingu w Vignaju lub odkrywania peljeskich szlaków winnych wróć do domu z nowoczesnym wyposażeniem, klimatyzacją i tarasem z widokiem na morze.',
+        'index.amenities.subtext':  'Po dniu windsurfingu w Viganju lub odkrywania peljeskich szlaków winnych wróć do domu z nowoczesnym wyposażeniem, klimatyzacją i tarasem z widokiem na morze.',
         'index.am.wifi':            'Internet / Wi-Fi',
         'index.am.tv':              'Telewizor (×3)',
         'index.am.streaming':       'Netflix / HBO / IPTV',
@@ -864,7 +864,7 @@
         'location.by.ferry2':     '<strong>Mit der Fähre, Ploče ↔ Trpanj:</strong> Alternativ nehmen Sie die Fähre Ploče–Trpanj (60 Min. Überfahrt) als entspannte Abkürzung zur Halbinsel Pelješac, gefolgt von einer 35-minütigen Fahrt nach Kućište.',
         'location.airports':      '<strong>Nächste Flughäfen:</strong> Die meisten Gäste reisen über Dubrovnik (ca. 2 Std.) oder Split (ca. 1 Std. 45 Min.) an. Beide Flughäfen bieten einfachen Zugang zur Halbinsel Pelješac über gut ausgebaute Küstenstraßen.',
         'location.dist.h3':       'Entfernungen auf einen Blick',
-        'location.dist1':         'Kiesstrand Kućište, <strong>1 Min. zu Fuß</strong>',
+        'location.dist1':         'Strand Perna, <strong>direkt auf der anderen Straßenseite</strong>',
         'location.dist2':         'Konobas & Restaurants am Meer, <strong>6 Min. zu Fuß</strong>',
         'location.dist3':         'Windsurfing- & Kite-Center in Viganj, <strong>5 Min. Fahrt</strong>',
         'location.dist4':         'Stadt Orebić, Geschäfte & Supermärkte, <strong>6 Min. Fahrt</strong>',
@@ -875,8 +875,8 @@
         'location.beaches.h2':    'Top-Strände in Kućište & Orebić',
         'location.beaches.p':     'Die Halbinsel Pelješac beherbergt einige der schönsten Strände an der Adria, von Surfspots bis zu Sandbuchten.',
         'location.b1.title':      'Strand Perna',
-        'location.b1.desc':       'Direkt beim Appartement, mit Liegestühlen und ruhigen Morgenwassern.',
-        'location.b1.dist':       '1 Min. zu Fuß',
+        'location.b1.desc':       'Direkt gegenüber dem Apartment, auf der anderen Straßenseite, mit Liegestühlen und ruhigem Wasser am Morgen.',
+        'location.b1.dist':       'Direkt gegenüber',
         'location.b2.title':      'Bucht Kućište',
         'location.b2.desc':       'Entdecken Sie ruhige Kiesbuchten und kristallklares türkisfarbenes Wasser entlang der Promenade von Kućište.',
         'location.b2.dist':       '5 Min. Fahrt',
@@ -1079,9 +1079,8 @@
   var BOOKING = {
     en: {
       "index.fit.heading": "Is Eva Apartman right for you?",
-      "index.fit.subtext": "An honest look before you book, so you know exactly what to expect.",
       "index.fit.yes.title": "A great fit for",
-      "index.fit.yes1": "Families who want the beach a minute's walk away and a quiet street to come home to",
+      "index.fit.yes1": "Families who want the beach just across the road and a quiet street to come home to",
       "index.fit.yes2": "Couples of any age looking for calm, good seafood and Pelješac wine",
       "index.fit.yes3": "Guests planning day trips to Korčula, Ston and the wine roads, or windsurfing in Viganj",
       "index.fit.yes4": "Groups of up to 5 who want two proper bedrooms and a full kitchen",
@@ -1101,7 +1100,7 @@
       "index.direct.1.d": "No platform fees are added to your stay.",
       "index.direct.2.t": "You talk to the host",
       "index.direct.2.d": "Ask us anything before you decide, by message, WhatsApp or phone.",
-      "index.direct.3.t": "An answer within 24 hours",
+      "index.direct.3.t": "A reply as soon as possible",
       "index.direct.3.d": "We confirm availability personally.",
       "index.direct.4.t": "No payment to enquire",
       "index.direct.4.d": "Sending an enquiry doesn't commit you to anything.",
@@ -1110,7 +1109,7 @@
       "index.faq.heading": "Questions guests ask before booking",
       "index.faq.subtext": "Can't find your answer? Message us on WhatsApp or send an enquiry. We reply within 24 hours.",
       "index.faq.q1": "How far is the beach?",
-      "index.faq.a1": "Perna beach is a 1-minute walk from the apartment. Kućište's pebble coves line the promenade, and Trstenica beach in Orebić is a 6-minute drive.",
+      "index.faq.a1": "Perna beach is right across the road from the apartment. Kućište's pebble coves line the promenade, and Trstenica beach in Orebić is a 6-minute drive.",
       "index.faq.q2": "Is there parking?",
       "index.faq.a2": "Yes. Free private parking on site is included for all guests.",
       "index.faq.q3": "How many people can stay?",
@@ -1120,7 +1119,7 @@
       "index.faq.q5": "Does the apartment have a sea view?",
       "index.faq.a5": "Yes. The private terrace looks out across the channel to Korčula.",
       "index.faq.q6": "Is it suitable for families with children?",
-      "index.faq.a6": "Yes. It's on a quiet street in a peaceful village, the beach is a minute's walk away, and two bedrooms plus a full kitchen make longer family stays easy.",
+      "index.faq.a6": "Yes. It's on a quiet street in a peaceful village, the beach is right across the road, and two bedrooms plus a full kitchen make longer family stays easy.",
       "index.faq.q7": "When is the apartment available?",
       "index.faq.a7": "From May to October. The minimum stay is 3 nights, check-in is between 14:00 and 20:00, and check-out is by 10:00.",
       "index.faq.q8": "How do I get to Korčula?",
@@ -1179,9 +1178,8 @@
 
     hr: {
       "index.fit.heading": "Je li Eva Apartman pravi izbor za vas?",
-      "index.fit.subtext": "Iskren pregled prije rezervacije, kako biste točno znali što vas čeka.",
       "index.fit.yes.title": "Savršen izbor za",
-      "index.fit.yes1": "Obitelji koje žele plažu na minutu hoda i mirnu ulicu za povratak",
+      "index.fit.yes1": "Obitelji koje žele plažu odmah preko ceste i mirnu ulicu za povratak",
       "index.fit.yes2": "Parove svih dobi koji traže mir, dobre plodove mora i pelješko vino",
       "index.fit.yes3": "Goste koji planiraju izlete na Korčulu, u Ston i vinskim cestama ili jedrenje na dasci u Vignju",
       "index.fit.yes4": "Grupe do 5 osoba koje žele dvije prave spavaće sobe i potpuno opremljenu kuhinju",
@@ -1201,7 +1199,7 @@
       "index.direct.1.d": "Na vaš boravak ne dodaju se naknade platformi.",
       "index.direct.2.t": "Razgovarate s domaćinom",
       "index.direct.2.d": "Pitajte nas sve prije nego što odlučite, porukom, na WhatsApp ili telefonom.",
-      "index.direct.3.t": "Odgovor unutar 24 sata",
+      "index.direct.3.t": "Odgovor u najkraćem roku",
       "index.direct.3.d": "Dostupnost termina potvrđujemo osobno.",
       "index.direct.4.t": "Upit bez plaćanja",
       "index.direct.4.d": "Slanje upita ne obvezuje vas ni na što.",
@@ -1210,7 +1208,7 @@
       "index.faq.heading": "Pitanja koja gosti postavljaju prije rezervacije",
       "index.faq.subtext": "Niste pronašli odgovor? Pošaljite nam poruku na WhatsApp ili upit. Odgovaramo unutar 24 sata.",
       "index.faq.q1": "Koliko je daleko plaža?",
-      "index.faq.a1": "Plaža Perna udaljena je minutu hoda od apartmana. Šljunčane uvale Kućišta nižu se uz šetnicu, a plaža Trstenica u Orebiću udaljena je 6 minuta vožnje.",
+      "index.faq.a1": "Plaža Perna nalazi se odmah preko ceste od apartmana. Šljunčane uvale Kućišta nižu se uz šetnicu, a plaža Trstenica u Orebiću udaljena je 6 minuta vožnje.",
       "index.faq.q2": "Ima li parkinga?",
       "index.faq.a2": "Da. Besplatan privatni parking na posjedu uključen je za sve goste.",
       "index.faq.q3": "Koliko osoba može boraviti?",
@@ -1220,7 +1218,7 @@
       "index.faq.q5": "Ima li apartman pogled na more?",
       "index.faq.a5": "Da. S privatne terase pruža se pogled preko kanala na Korčulu.",
       "index.faq.q6": "Je li apartman prikladan za obitelji s djecom?",
-      "index.faq.a6": "Da. Nalazi se u mirnoj ulici u tihom mjestu, plaža je na minutu hoda, a dvije spavaće sobe i potpuno opremljena kuhinja olakšavaju i duži obiteljski boravak.",
+      "index.faq.a6": "Da. Nalazi se u mirnoj ulici u tihom mjestu, plaža je odmah preko ceste, a dvije spavaće sobe i potpuno opremljena kuhinja olakšavaju i duži obiteljski boravak.",
       "index.faq.q7": "Kada je apartman dostupan?",
       "index.faq.a7": "Od svibnja do listopada. Minimalni boravak je 3 noći, prijava je od 14:00 do 20:00, a odjava do 10:00.",
       "index.faq.q8": "Kako doći do Korčule?",
@@ -1280,9 +1278,8 @@
 
     pl: {
       "index.fit.heading": "Czy Eva Apartman jest dla Ciebie?",
-      "index.fit.subtext": "Uczciwie, jeszcze przed rezerwacją, żeby było jasne, czego się spodziewać.",
       "index.fit.yes.title": "Świetny wybór dla",
-      "index.fit.yes1": "Rodzin, które chcą mieć plażę minutę spacerem od domu i spokojną ulicę na powrót",
+      "index.fit.yes1": "Rodzin, które chcą mieć plażę tuż po drugiej stronie drogi i spokojną ulicę na powrót",
       "index.fit.yes2": "Par w każdym wieku, które szukają spokoju, dobrych owoców morza i wina z Pelješca",
       "index.fit.yes3": "Osób planujących wycieczki na Korčulę, do Stonu i szlakiem winnic albo windsurfing w Viganju",
       "index.fit.yes4": "Grup do 5 osób, które chcą mieć dwie prawdziwe sypialnie i w pełni wyposażoną kuchnię",
@@ -1302,7 +1299,7 @@
       "index.direct.1.d": "Do pobytu nie są doliczane opłaty platform.",
       "index.direct.2.t": "Rozmawiasz z gospodarzami",
       "index.direct.2.d": "Zapytaj nas o wszystko przed decyzją: wiadomością, przez WhatsApp lub telefonicznie.",
-      "index.direct.3.t": "Odpowiedź w ciągu 24 godzin",
+      "index.direct.3.t": "Odpowiedź najszybciej, jak to możliwe",
       "index.direct.3.d": "Dostępność terminu potwierdzamy osobiście.",
       "index.direct.4.t": "Zapytanie bez płatności",
       "index.direct.4.d": "Wysłanie zapytania do niczego nie zobowiązuje.",
@@ -1311,7 +1308,7 @@
       "index.faq.heading": "Pytania, które goście zadają przed rezerwacją",
       "index.faq.subtext": "Nie ma tu Twojego pytania? Napisz do nas na WhatsApp lub wyślij zapytanie. Odpowiadamy w ciągu 24 godzin.",
       "index.faq.q1": "Jak daleko jest plaża?",
-      "index.faq.a1": "Plaża Perna jest minutę spacerem od apartamentu. Kamieniste zatoczki Kućište ciągną się wzdłuż promenady, a plaża Trstenica w Orebiću jest 6 minut samochodem.",
+      "index.faq.a1": "Plaża Perna jest tuż po drugiej stronie drogi od apartamentu. Kamieniste zatoczki Kućište ciągną się wzdłuż promenady, a plaża Trstenica w Orebiću jest 6 minut samochodem.",
       "index.faq.q2": "Czy jest parking?",
       "index.faq.a2": "Tak. Bezpłatny prywatny parking na miejscu jest dostępny dla wszystkich gości.",
       "index.faq.q3": "Ile osób może się zatrzymać?",
@@ -1321,7 +1318,7 @@
       "index.faq.q5": "Czy z apartamentu widać morze?",
       "index.faq.a5": "Tak. Z prywatnego tarasu roztacza się widok przez kanał na Korčulę.",
       "index.faq.q6": "Czy apartament nadaje się dla rodzin z dziećmi?",
-      "index.faq.a6": "Tak. Leży przy cichej ulicy w spokojnej miejscowości, plaża jest minutę spacerem, a dwie sypialnie i pełna kuchnia ułatwiają dłuższy rodzinny pobyt.",
+      "index.faq.a6": "Tak. Leży przy cichej ulicy w spokojnej miejscowości, plaża jest tuż po drugiej stronie drogi, a dwie sypialnie i pełna kuchnia ułatwiają dłuższy rodzinny pobyt.",
       "index.faq.q7": "Kiedy apartament jest dostępny?",
       "index.faq.a7": "Od maja do października. Minimalny pobyt to 3 noce, zameldowanie od 14:00 do 20:00, wymeldowanie do 10:00.",
       "index.faq.q8": "Jak dostać się na Korčulę?",
@@ -1382,9 +1379,8 @@
 
     de: {
       "index.fit.heading": "Passt Eva Apartman zu Ihnen?",
-      "index.fit.subtext": "Ein ehrlicher Überblick vor der Buchung, damit Sie genau wissen, was Sie erwartet.",
       "index.fit.yes.title": "Ideal für",
-      "index.fit.yes1": "Familien, die den Strand eine Gehminute entfernt und eine ruhige Straße zum Heimkommen möchten",
+      "index.fit.yes1": "Familien, die den Strand direkt gegenüber und eine ruhige Straße zum Heimkommen möchten",
       "index.fit.yes2": "Paare jeden Alters, die Ruhe, gute Meeresfrüchte und Wein von Pelješac suchen",
       "index.fit.yes3": "Gäste, die Ausflüge nach Korčula, Ston und auf die Weinstraßen oder Windsurfen in Viganj planen",
       "index.fit.yes4": "Gruppen bis 5 Personen, die zwei richtige Schlafzimmer und eine voll ausgestattete Küche möchten",
@@ -1404,7 +1400,7 @@
       "index.direct.1.d": "Auf Ihren Aufenthalt kommen keine Plattformgebühren.",
       "index.direct.2.t": "Sie sprechen mit der Gastgeberin",
       "index.direct.2.d": "Fragen Sie uns vor Ihrer Entscheidung alles, per Nachricht, WhatsApp oder Telefon.",
-      "index.direct.3.t": "Antwort innerhalb von 24 Stunden",
+      "index.direct.3.t": "Antwort so schnell wie möglich",
       "index.direct.3.d": "Wir bestätigen die Verfügbarkeit persönlich.",
       "index.direct.4.t": "Anfrage ohne Zahlung",
       "index.direct.4.d": "Eine Anfrage verpflichtet Sie zu nichts.",
@@ -1413,7 +1409,7 @@
       "index.faq.heading": "Fragen, die Gäste vor der Buchung stellen",
       "index.faq.subtext": "Ihre Frage ist nicht dabei? Schreiben Sie uns auf WhatsApp oder senden Sie eine Anfrage. Wir antworten innerhalb von 24 Stunden.",
       "index.faq.q1": "Wie weit ist der Strand?",
-      "index.faq.a1": "Der Strand Perna liegt eine Gehminute vom Apartment entfernt. Die Kieselbuchten von Kućište reihen sich entlang der Promenade, und der Strand Trstenica in Orebić ist 6 Autominuten entfernt.",
+      "index.faq.a1": "Der Strand Perna liegt direkt gegenüber, auf der anderen Straßenseite. Die Kieselbuchten von Kućište reihen sich entlang der Promenade, und der Strand Trstenica in Orebić ist 6 Autominuten entfernt.",
       "index.faq.q2": "Gibt es Parkplätze?",
       "index.faq.a2": "Ja. Ein kostenloser privater Parkplatz auf dem Grundstück ist für alle Gäste inklusive.",
       "index.faq.q3": "Wie viele Personen können übernachten?",
@@ -1423,7 +1419,7 @@
       "index.faq.q5": "Hat das Apartment Meerblick?",
       "index.faq.a5": "Ja. Von der privaten Terrasse blicken Sie über den Kanal nach Korčula.",
       "index.faq.q6": "Ist es für Familien mit Kindern geeignet?",
-      "index.faq.a6": "Ja. Es liegt in einer ruhigen Straße in einem friedlichen Dorf, der Strand ist eine Gehminute entfernt, und zwei Schlafzimmer sowie eine voll ausgestattete Küche machen auch längere Familienaufenthalte einfach.",
+      "index.faq.a6": "Ja. Es liegt in einer ruhigen Straße in einem friedlichen Dorf, der Strand liegt direkt gegenüber, und zwei Schlafzimmer sowie eine voll ausgestattete Küche machen auch längere Familienaufenthalte einfach.",
       "index.faq.q7": "Wann ist das Apartment verfügbar?",
       "index.faq.a7": "Von Mai bis Oktober. Der Mindestaufenthalt beträgt 3 Nächte, Check-in ist von 14:00 bis 20:00 Uhr, Check-out bis 10:00 Uhr.",
       "index.faq.q8": "Wie komme ich nach Korčula?",
@@ -1481,13 +1477,35 @@
     }
   };
 
-  [META, BOOKING].forEach(function (block) {
+  /* Text that never had a translation: the calendar legend for split-colour
+     days, the line under the logo, and the copyright line. */
+  var LEGEND = {
+    en: { 'nav.sub': 'Tourist Accommodation', 'footer.rights': 'All rights reserved.',
+          'contact.leg.checkout': 'Guest leaves (you can arrive)', 'contact.leg.checkin': 'Guest arrives (you can leave)' },
+    hr: { 'nav.sub': 'Turistički smještaj', 'footer.rights': 'Sva prava pridržana.',
+          'contact.leg.checkout': 'Odlazak gosta (možete doći)',    'contact.leg.checkin': 'Dolazak gosta (možete otići)' },
+    pl: { 'nav.sub': 'Zakwaterowanie turystyczne', 'footer.rights': 'Wszelkie prawa zastrzeżone.',
+          'contact.leg.checkout': 'Wyjazd gościa (możesz przyjechać)', 'contact.leg.checkin': 'Przyjazd gościa (możesz wyjechać)' },
+    de: { 'nav.sub': 'Ferienunterkunft', 'footer.rights': 'Alle Rechte vorbehalten.',
+          'contact.leg.checkout': 'Abreisetag (Anreise möglich)',   'contact.leg.checkin': 'Anreisetag (Abreise möglich)' }
+  };
+
+  [META, BOOKING, LEGEND].forEach(function (block) {
     Object.keys(block).forEach(function (lang) {
       Object.keys(block[lang]).forEach(function (key) {
         T[lang][key] = block[lang][key];
       });
     });
   });
+
+  /* Slovenian and Czech live in js/translations-sl.js / -cs.js: require()d
+     at build time, and in the browser loaded just before this file on their
+     own pages only. */
+  var node = typeof module === 'object' && module.exports && typeof require === 'function';
+  var SL = node ? require('./translations-sl.js') : (typeof self !== 'undefined' && self.EVA_T_SL);
+  var CS = node ? require('./translations-cs.js') : (typeof self !== 'undefined' && self.EVA_T_CS);
+  if (SL) T.sl = SL;
+  if (CS) T.cs = CS;
 
   return T;
 }));

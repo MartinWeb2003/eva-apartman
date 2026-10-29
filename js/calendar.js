@@ -20,7 +20,7 @@
 const Calendar = (() => {
 
   // ── Locale helpers (uses Intl so names update with language) ───
-  const LANG_LOCALE = { en: 'en-GB', hr: 'hr-HR', pl: 'pl-PL', de: 'de-DE' };
+  const LANG_LOCALE = { en: 'en-GB', hr: 'hr-HR', pl: 'pl-PL', de: 'de-DE', sl: 'sl-SI', cs: 'cs-CZ' };
 
   // The built pages carry their language on <html lang> (/hr/ → hr), which is
   // what the visitor is reading. The stored preference is only a fallback.

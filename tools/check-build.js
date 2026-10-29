@@ -24,7 +24,7 @@ const cheerio = require('cheerio');
 
 const ROOT = path.resolve(__dirname, '..');
 const SITE = 'https://www.visit-eva-orebic.com';
-const LANGS = ['en', 'hr', 'pl', 'de'];
+const LANGS = ['en', 'hr', 'pl', 'de', 'sl', 'cs'];
 const PAGES = ['index', 'gallery', 'location', 'contact'];
 
 let failures = 0;

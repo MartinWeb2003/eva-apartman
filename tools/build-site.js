@@ -43,11 +43,11 @@ const ROOT = path.resolve(__dirname, '..');
 const SRC = path.join(ROOT, 'src');
 
 const SITE = SD.SITE;
-const LANGS = ['en', 'hr', 'pl', 'de'];
+const LANGS = ['en', 'hr', 'pl', 'de', 'sl', 'cs'];
 const DEFAULT_LANG = 'en';
 const PAGES = ['index', 'gallery', 'location', 'contact'];
 
-const OG_LOCALE = { en: 'en_US', hr: 'hr_HR', pl: 'pl_PL', de: 'de_DE' };
+const OG_LOCALE = { en: 'en_US', hr: 'hr_HR', pl: 'pl_PL', de: 'de_DE', sl: 'sl_SI', cs: 'cs_CZ' };
 
 /* WhatsApp chat number (international format, digits only) — same line as
    the phone number in the footer. */
@@ -454,7 +454,9 @@ const ALT_SUFFIX = {
   en: 'Eva Apartman, Kućište',
   hr: 'Eva Apartman, Kućište',
   pl: 'Eva Apartman, Kućište',
-  de: 'Eva Apartman, Kućište'
+  de: 'Eva Apartman, Kućište',
+  sl: 'Eva Apartman, Kućište',
+  cs: 'Eva Apartman, Kućište'
 };
 
 function renderGallery($, lang) {
@@ -560,21 +562,20 @@ function scrapeFaq($) {
 }
 
 /** Same idea for the location page's point-of-interest cards. */
+/* Each card carries its schema.org type in data-type (Beach, Restaurant,
+   TouristAttraction) — the visible tags were removed from the design. */
+const POI_TYPES = new Set(['Beach', 'Restaurant', 'TouristAttraction']);
+
 function scrapeAttractions($) {
-  const TYPE_BY_TAG = {
-    Beach: 'Beach',
-    Dining: 'Restaurant',
-    Activity: 'TouristAttraction'
-  };
   const out = [];
   $('.poi-card').each((_, el) => {
     const $card = $(el);
     const name = $card.find('.poi-body h4').first().text().trim();
     const description = $card.find('.poi-body p').first().text().trim();
-    const tag = $card.find('.poi-tag').first().text().trim();
+    const type = $card.attr('data-type');
     const image = ($card.find('img').first().attr('src') || '').replace(/^\//, '');
     if (!name) return;
-    out.push({ name, description, image, type: TYPE_BY_TAG[tag] || 'TouristAttraction' });
+    out.push({ name, description, image, type: POI_TYPES.has(type) ? type : 'TouristAttraction' });
   });
   return out;
 }
@@ -630,11 +631,16 @@ function injectStructuredData($, page, lang, extras) {
 
 /* ── Misc head/body touches ──────────────────────────────────────────── */
 
-function addTranslationsScript($) {
+/* The Slovenian and Czech dictionaries live in their own files and are only
+   loaded on their own pages, so the other languages don't download them. */
+const SEPARATE_DICTS = ['sl', 'cs'];
+
+function addTranslationsScript($, lang) {
   const $i18n = $('script[src$="i18n.js"]').first();
   if (!$i18n.length) return;
   if ($('script[src$="translations.js"]').length) return;
-  $i18n.before('<script src="/js/translations.js"></script>\n  ');
+  const extra = SEPARATE_DICTS.includes(lang) ? `<script src="/js/translations-${lang}.js"></script>\n  ` : '';
+  $i18n.before(extra + '<script src="/js/translations.js"></script>\n  ');
 }
 
 function escapeHtml(s) {
@@ -673,7 +679,7 @@ function buildPage(page, lang) {
   buildHead($, page, lang);
   preloadHero($, page);
   localiseSwitcher($, page, lang);
-  addTranslationsScript($);
+  addTranslationsScript($, lang);
   injectStructuredData($, page, lang, extras);
   fingerprintAssets($); // last, so it also stamps the script tag added above
 

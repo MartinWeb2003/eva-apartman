@@ -17,7 +17,7 @@ const WEB3FORMS_KEY = '782273a6-6b47-4c87-b29e-d1d0c0452ff6';
 
 // ── Utility ───────────────────────────────────────────────────────────────────
 
-const LANG_NAMES = { en: 'English', hr: 'Croatian', pl: 'Polish', de: 'German' };
+const LANG_NAMES = { en: 'English', hr: 'Croatian', pl: 'Polish', de: 'German', sl: 'Slovenian', cs: 'Czech' };
 
 /** The page's language (/hr/ → hr), as stamped on <html lang> by the build. */
 function pageLang() {

@@ -145,6 +145,10 @@ p { margin-bottom: 1rem; color: var(--ink-soft); text-wrap: pretty; }
 .section-header h2 { margin: 0; max-width: 18ch; }
 .section-header p { margin: 0; max-width: 34rem; font-size: 1.05rem; }
 
+/* A header that is only a heading, centred over the section. */
+.section-header-center { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; }
+.section-header-center h2 { max-width: 22ch; }
+
 /* --- Buttons --- */
 .btn {
   display: inline-flex;
@@ -1364,8 +1368,9 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 .footer-brand { margin-bottom: 1.4rem; }
 .footer-brand a { display: inline-block; }
 
-.footer-logo-wrap { display: inline-block; border-radius: 50%; line-height: 0; overflow: hidden; }
-.footer-logo { height: 72px; width: auto; display: block; border-radius: 50%; }
+/* Same transparent mark as the navbar; no circle or backing colour. */
+.footer-logo-wrap { display: inline-block; line-height: 0; }
+.footer-logo { height: 72px; width: 72px; display: block; }
 
 .footer-desc { font-size: 0.98rem; color: rgba(255,255,255,0.68); margin-bottom: 1.5rem; max-width: 22rem; }
 

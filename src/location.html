@@ -42,7 +42,7 @@
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container navbar-inner">
       <a href="index.html" class="navbar-brand" aria-label="Eva Apartman – Home">
-        <img src="images/Ap_Eva_logo_800x800px-transparent.png" alt="Eva Apartman" class="navbar-logo" /><div class="navbar-brand-text"><span class="navbar-brand-name">Eva Apartman</span><span class="navbar-brand-sub">Tourist Accommodation</span></div>
+        <img src="images/Ap_Eva_logo_800x800px-transparent.png" alt="Eva Apartman" class="navbar-logo" /><div class="navbar-brand-text"><span class="navbar-brand-name">Eva Apartman</span><span class="navbar-brand-sub" data-i18n="nav.sub">Tourist Accommodation</span></div>
       </a>
 
       <button class="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -66,6 +66,8 @@
             <li><button class="lang-option" data-lang="hr"><span class="lang-flag">🇭🇷</span> Hrvatski</button></li>
             <li><button class="lang-option" data-lang="pl"><span class="lang-flag">🇵🇱</span> Polski</button></li>
             <li><button class="lang-option" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch</button></li>
+            <li><button class="lang-option" data-lang="sl"><span class="lang-flag">🇸🇮</span> Slovenščina</button></li>
+            <li><button class="lang-option" data-lang="cs"><span class="lang-flag">🇨🇿</span> Čeština</button></li>
           </ul>
         </li>
       </ul>
@@ -161,7 +163,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/>
               </svg>
-              <p data-i18n-html="location.dist1">Kućište pebble beach, <strong>1 min walk</strong></p>
+              <p data-i18n-html="location.dist1">Perna beach, <strong>right across the road</strong></p>
             </li>
 
             <li class="info-item">
@@ -259,29 +261,27 @@
 
       <div class="poi-grid">
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="Beach">
           <div class="poi-image">
             <img src="images/perna-beach.jpg" alt="Kućište village beach"
                  onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Beach Photo</span></div>'" />
-            <span class="poi-tag">Beach</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.b1.title">Perna Beach</h4>
-            <p data-i18n="location.b1.desc">Steps away from your apartment, offering sunbeds and calm morning waters.</p>
+            <p data-i18n="location.b1.desc">Right across the road from the apartment, with sunbeds and calm morning water.</p>
             <div class="poi-distance">
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
               </svg>
-              <span data-i18n="location.b1.dist">1 min walk</span>
+              <span data-i18n="location.b1.dist">Across the road</span>
             </div>
           </div>
         </article>
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="Beach">
           <div class="poi-image">
             <img src="images/kuciste-beach.jpg" alt="Viganj beach"
                  onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Beach Photo</span></div>'" />
-            <span class="poi-tag">Beach</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.b2.title">Kućište Bay</h4>
@@ -295,11 +295,10 @@
           </div>
         </article>
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="Beach">
           <div class="poi-image">
             <img src="images/trstenica-beach.jpg" alt="Orebić beach"
                  onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Beach Photo</span></div>'" />
-            <span class="poi-tag">Beach</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.b3.title">Trstenica Beach (Orebić)</h4>
@@ -329,11 +328,10 @@
 
       <div class="poi-grid">
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="Restaurant">
           <div class="poi-image">
             <img src="images/kuciste-konoba.jpg" alt="Kućište waterfront konoba"
                  onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Restaurant Photo</span></div>'" />
-            <span class="poi-tag">Konoba</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.r1.title">Kućište Waterfront Konobas</h4>
@@ -347,11 +345,10 @@
           </div>
         </article>
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="Restaurant">
           <div class="poi-image">
             <img src="images/orebic-dining.jpg" alt="Orebić restaurants"
                  onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Restaurant Photo</span></div>'" />
-            <span class="poi-tag">Restaurant</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.r2.title">Orebić Dining Experience</h4>
@@ -365,11 +362,10 @@
           </div>
         </article>
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="Restaurant">
           <div class="poi-image">
             <img src="images/viganj-bar.jpg" alt="Viganj beach bar"
                  onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Bar Photo</span></div>'" />
-            <span class="poi-tag">Beach Bar</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.r3.title">Viganj Beach Bars</h4>
@@ -399,11 +395,10 @@
 
       <div class="poi-grid">
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="TouristAttraction">
           <div class="poi-image">
             <img src="images/viganj-windsurfing.jpg" alt="Viganj windsurfing"
                  onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Attraction Photo</span></div>'" />
-            <span class="poi-tag">Sport</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.a1.title">Viganj Windsurfing & Watersports</h4>
@@ -417,11 +412,10 @@
           </div>
         </article>
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="TouristAttraction">
           <div class="poi-image">
             <img src="images/korcula.jpg" alt="Korčula island"
                  onerror="this.parentElement.innerHTML=’<div class=\’img-placeholder\’><svg viewBox=\’0 0 24 24\’ fill=\’none\’ stroke-width=\’1.5\’><rect x=\’3\’ y=\’3\’ width=\’18\’ height=\’18\’ rx=\’2\’/><circle cx=\’8.5\’ cy=\’8.5\’ r=\’1.5\’/><polyline points=\’21 15 16 10 5 21\’/></svg><span>Activity Photo</span></div>’" />
-            <span class="poi-tag">Day Trip</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.a2.title">Island Hopping to Korčula</h4>
@@ -435,11 +429,10 @@
           </div>
         </article>
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="TouristAttraction">
           <div class="poi-image">
             <img src="images/ston.jpg" alt="Ston walls"
                  onerror="this.parentElement.innerHTML=’<div class=\’img-placeholder\’><svg viewBox=\’0 0 24 24\’ fill=\’none\’ stroke-width=\’1.5\’><rect x=\’3\’ y=\’3\’ width=\’18\’ height=\’18\’ rx=\’2\’/><circle cx=\’8.5\’ cy=\’8.5\’ r=\’1.5\’/><polyline points=\’21 15 16 10 5 21\’/></svg><span>Attraction Photo</span></div>’" />
-            <span class="poi-tag">History</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.a3.title">Ston & The Great Wall of Croatia</h4>
@@ -453,11 +446,10 @@
           </div>
         </article>
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="TouristAttraction">
           <div class="poi-image">
             <img src="images/vinarije.jpg" alt="Pelješac wine route"
                  onerror="this.parentElement.innerHTML=’<div class=\’img-placeholder\’><svg viewBox=\’0 0 24 24\’ fill=\’none\’ stroke-width=\’1.5\’><rect x=\’3\’ y=\’3\’ width=\’18\’ height=\’18\’ rx=\’2\’/><circle cx=\’8.5\’ cy=\’8.5\’ r=\’1.5\’/><polyline points=\’21 15 16 10 5 21\’/></svg><span>Attraction Photo</span></div>’" />
-            <span class="poi-tag">Wine</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.a4.title">Pelješac Wine Route & Dingač</h4>
@@ -471,11 +463,10 @@
           </div>
         </article>
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="TouristAttraction">
           <div class="poi-image">
             <img src="images/crkva.jpg" alt="Orebić and Franciscan Monastery"
                  onerror="this.parentElement.innerHTML=’<div class=\’img-placeholder\’><svg viewBox=\’0 0 24 24\’ fill=\’none\’ stroke-width=\’1.5\’><rect x=\’3\’ y=\’3\’ width=\’18\’ height=\’18\’ rx=\’2\’/><circle cx=\’8.5\’ cy=\’8.5\’ r=\’1.5\’/><polyline points=\’21 15 16 10 5 21\’/></svg><span>Attraction Photo</span></div>’" />
-            <span class="poi-tag">Culture</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.a5.title">Orebić Promenade & Monastery</h4>
@@ -489,11 +480,10 @@
           </div>
         </article>
 
-        <article class="poi-card">
+        <article class="poi-card" data-type="TouristAttraction">
           <div class="poi-image">
             <img src="images/sv-ilija.jpg" alt="Sveti Ilija hiking"
                  onerror="this.parentElement.innerHTML=’<div class=\’img-placeholder\’><svg viewBox=\’0 0 24 24\’ fill=\’none\’ stroke-width=\’1.5\’><rect x=\’3\’ y=\’3\’ width=\’18\’ height=\’18\’ rx=\’2\’/><circle cx=\’8.5\’ cy=\’8.5\’ r=\’1.5\’/><polyline points=\’21 15 16 10 5 21\’/></svg><span>Attraction Photo</span></div>’" />
-            <span class="poi-tag">Hiking</span>
           </div>
           <div class="poi-body">
             <h4 data-i18n="location.a6.title">Sveti Ilija Peak</h4>
@@ -538,7 +528,7 @@
           <div class="footer-brand">
             <a href="index.html" aria-label="Eva Apartman – Home">
               <div class="footer-logo-wrap">
-                <img src="images/Ap_Eva_logo_800x800px_siva.jpg" alt="Eva Apartman" class="footer-logo" />
+                <img src="images/Ap_Eva_logo_800x800px-transparent.png" alt="Eva Apartman" class="footer-logo" />
               </div>
             </a>
           </div>
@@ -613,7 +603,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; <span id="year"></span> Eva Apartman. All rights reserved.</p>
+        <p>&copy; <span id="year"></span> Eva Apartman. <span data-i18n="footer.rights">All rights reserved.</span></p>
       </div>
     </div>
   </footer>

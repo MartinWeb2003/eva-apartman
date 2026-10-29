@@ -24,7 +24,7 @@
   'use strict';
 
   var LANG_KEY = 'eva-lang';
-  var LANGS    = ['en', 'hr', 'pl', 'de'];
+  var LANGS    = ['en', 'hr', 'pl', 'de', 'sl', 'cs'];
   var DEFAULT  = 'en';
   var PAGES    = ['index', 'gallery', 'location', 'contact'];
 

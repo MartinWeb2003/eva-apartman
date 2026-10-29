@@ -137,3 +137,15 @@
   to = "/de/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/sl/index.html"
+  to = "/sl/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cs/index.html"
+  to = "/cs/"
+  status = 301
+  force = true
